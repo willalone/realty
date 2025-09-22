@@ -29,18 +29,5 @@ Thumbs.db
 logs
 *.log
 
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
-
-# Coverage directory used by tools like istanbul
-coverage/
-
 # TypeScript
 *.tsbuildinfo
-
-# Temporary folders
-tmp/
-temp/

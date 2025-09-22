@@ -61,9 +61,16 @@ function App() {
   const PHONE_RE = /^\+7\(\d{3}\)-\d{3}-\d{2}-\d{2}$/;
 
   const sendToTelegram = async (data: any) => {
-    // Замените на ваши данные
-    const BOT_TOKEN = '8026350498:AAGcyKMsrJyD0mGgj26Ss2m49vX5jp8LzaM'; // Токен вашего бота
-    const CHAT_ID = '919481169'; // Замените на ваш реальный Chat ID (число)
+    // Получаем данные из переменных окружения
+    const BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
+    const CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID;
+    
+    // Проверяем, что переменные окружения заданы
+    if (!BOT_TOKEN || !CHAT_ID) {
+      console.error('❌ Не настроены переменные окружения для Telegram бота');
+      console.error('Создайте файл .env на основе env.example');
+      return false;
+    }
 
     const message = `
 🏠 **Новая заявка с сайта**
@@ -144,8 +151,14 @@ function App() {
 
   // Тестовая функция для проверки Telegram бота
   const testTelegramBot = async () => {
-    const BOT_TOKEN = '8026350498:AAGcyKMsrJyD0mGgj26Ss2m49vX5jp8LzaM';
-    const CHAT_ID = '919481169';
+    const BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
+    const CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID;
+    
+    if (!BOT_TOKEN || !CHAT_ID) {
+      console.error('❌ Не настроены переменные окружения для Telegram бота');
+      alert('❌ Сначала настройте переменные окружения в файле .env');
+      return false;
+    }
     
     console.log('🧪 Тестирование Telegram бота...');
     
@@ -224,8 +237,14 @@ function App() {
 
   // Функция для детальной диагностики Telegram API
   (window as any).debugTelegramAPI = async () => {
-    const BOT_TOKEN = '8026350498:AAGcyKMsrJyD0mGgj26Ss2m49vX5jp8LzaM';
-    const CHAT_ID = '919481169';
+    const BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
+    const CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID;
+    
+    if (!BOT_TOKEN || !CHAT_ID) {
+      console.error('❌ Не настроены переменные окружения для Telegram бота');
+      alert('❌ Сначала настройте переменные окружения в файле .env');
+      return;
+    }
     
     console.log('🔍 Детальная диагностика Telegram API...');
     
@@ -422,9 +441,16 @@ function BookingForm({ onOpen }: { onOpen: (id: ModalId) => void }) {
   const [bookedSlots, setBookedSlots] = useState<Set<string>>(new Set());
 
     const sendToTelegram = async (data: any) => {
-      // Замените на ваши данные
-      const BOT_TOKEN = '8026350498:AAGcyKMsrJyD0mGgj26Ss2m49vX5jp8LzaM'; // Токен вашего бота
-      const CHAT_ID = '919481169'; // Замените на ваш реальный Chat ID (число)
+      // Получаем данные из переменных окружения
+      const BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
+      const CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID;
+      
+      // Проверяем, что переменные окружения заданы
+      if (!BOT_TOKEN || !CHAT_ID) {
+        console.error('❌ Не настроены переменные окружения для Telegram бота');
+        console.error('Создайте файл .env на основе env.example');
+        return false;
+      }
 
     const message = `
 🏠 **Новая заявка с сайта**

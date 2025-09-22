@@ -61,14 +61,15 @@ function App() {
   const PHONE_RE = /^\+7\(\d{3}\)-\d{3}-\d{2}-\d{2}$/;
 
   const sendToTelegram = async (data: any) => {
-    // Получаем данные из переменных окружения
-    const BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
-    const CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID;
+    // Получаем данные из переменных окружения или используем значения по умолчанию для GitHub Pages
+    const BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN || '8026350498:AAGcyKMsrJyD0mGgj26Ss2m49vX5jp8LzaM';
+    const CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID || '919481169';
     
-    // Проверяем, что переменные окружения заданы
+    console.log('🔧 Используемые данные бота:', { BOT_TOKEN: BOT_TOKEN ? '***' : 'undefined', CHAT_ID });
+    
+    // Проверяем, что данные заданы
     if (!BOT_TOKEN || !CHAT_ID) {
-      console.error('❌ Не настроены переменные окружения для Telegram бота');
-      console.error('Создайте файл .env на основе env.example');
+      console.error('❌ Не настроены данные для Telegram бота');
       return false;
     }
 
@@ -441,14 +442,15 @@ function BookingForm({ onOpen }: { onOpen: (id: ModalId) => void }) {
   const [bookedSlots, setBookedSlots] = useState<Set<string>>(new Set());
 
     const sendToTelegram = async (data: any) => {
-      // Получаем данные из переменных окружения
-      const BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
-      const CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID;
+      // Получаем данные из переменных окружения или используем значения по умолчанию для GitHub Pages
+      const BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN || '8026350498:AAGcyKMsrJyD0mGgj26Ss2m49vX5jp8LzaM';
+      const CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID || '919481169';
       
-      // Проверяем, что переменные окружения заданы
+      console.log('🔧 BookingForm: Используемые данные бота:', { BOT_TOKEN: BOT_TOKEN ? '***' : 'undefined', CHAT_ID });
+      
+      // Проверяем, что данные заданы
       if (!BOT_TOKEN || !CHAT_ID) {
-        console.error('❌ Не настроены переменные окружения для Telegram бота');
-        console.error('Создайте файл .env на основе env.example');
+        console.error('❌ Не настроены данные для Telegram бота');
         return false;
       }
 

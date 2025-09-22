@@ -29,8 +29,8 @@
 
 ```bash
 # Клонирование репозитория
-git clone https://github.com/USERNAME/realty-website.git
-cd realty-website
+git clone https://github.com/willalone/realty.git
+cd realty
 
 # Установка зависимостей
 npm install
@@ -74,12 +74,12 @@ VITE_TELEGRAM_CHAT_ID=ваш_chat_id
 1. Создайте репозиторий на GitHub
 2. Загрузите код в репозиторий
 3. Включите GitHub Pages в настройках
-4. Сайт будет доступен по адресу: `https://USERNAME.github.io/realty-website/`
+4. Сайт будет доступен по адресу: `https://willalone.github.io/realty/`
 
 ## 📁 Структура проекта
 
 ```
-realty-website/
+realty/
 ├── src/
 │   ├── App.tsx          # Основной компонент
 │   ├── main.tsx         # Точка входа

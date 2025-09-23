@@ -704,18 +704,10 @@ body {
   
   /* Адаптивная навигация */
   .nav { 
-    display: none; 
-    position: absolute; 
-    top: 100%; 
-    left: 0; 
-    right: 0; 
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-    padding: 20px;
-    flex-direction: column;
-    gap: 12px;
+    display: flex; 
+    gap: 8px;
+    align-items: center;
   }
-  .nav.show { display: flex; }
   
   .nav-toggle { display: inline-flex; }
 }
@@ -787,16 +779,15 @@ body {
   /* Навигация */
   .nav-toggle { display: inline-flex; }
   .nav { 
-    position: absolute; 
-    right: 16px; 
-    top: 60px; 
-    flex-direction: column; 
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 12px;
-    min-width: 200px;
-    box-shadow: var(--shadow);
+    display: flex; 
+    gap: 4px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-link {
+    padding: 8px 12px !important;
+    font-size: 12px !important;
   }
   .nav-list { 
     position: absolute; 

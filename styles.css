@@ -1,16 +1,16 @@
 :root {
-  --bg: #0b0d12;
-  --surface: #121622;
-  --card: #171b29;
-  --text: #e6e9f0;
-  --muted: #a6adbf;
-  --primary: #4f7cff;
-  --primary-600: #3f6af0;
-  --accent: #22c55e;
-  --danger: #ef4444;
-  --pill: #24304a;
-  --border: #263045;
-  --shadow: 0 10px 30px rgba(0,0,0,.4);
+  --bg: #ffffff;
+  --surface: #f8f9fa;
+  --card: #ffffff;
+  --text: #333333;
+  --muted: #666666;
+  --primary: #007bff;
+  --primary-600: #0056b3;
+  --accent: #28a745;
+  --danger: #dc3545;
+  --pill: #e9ecef;
+  --border: #dee2e6;
+  --shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 * { box-sizing: border-box; }
@@ -20,9 +20,7 @@ body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--text);
-  background: radial-gradient(1200px 800px at 20% -10%, #1a2140 0%, transparent 60%),
-              radial-gradient(1600px 1000px at 120% 10%, #0e1428 0%, transparent 60%),
-              var(--bg);
+  background: var(--bg);
   line-height: 1.6;
 }
 
@@ -31,6 +29,19 @@ body {
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.section-tabs { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
+.view-controls { display: flex; gap: 8px; }
+.view-btn { padding: 8px 16px; border: 1px solid var(--border); background: transparent; color: var(--muted); border-radius: 6px; cursor: pointer; transition: all 0.3s ease; }
+.view-btn.active, .view-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+.project-status { position: absolute; top: 12px; left: 12px; background: var(--primary); color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+.project-prices { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.project-prices .price { font-size: 18px; font-weight: 700; color: var(--primary); }
+.project-prices .rooms { font-size: 14px; color: var(--muted); background: var(--pill); padding: 4px 8px; border-radius: 12px; }
+.project-features { display: flex; gap: 8px; margin: 12px 0; flex-wrap: wrap; }
+.project-features .feature { font-size: 12px; color: var(--muted); }
+.project-features .discount { font-size: 12px; color: var(--accent); font-weight: 600; }
+.project-features .status { font-size: 12px; color: var(--primary); font-weight: 600; }
+.project-actions { margin-top: 16px; }
 .promos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 
 .skip-link { position: absolute; left: -9999px; top: 0; background: var(--primary); color: #fff; padding: 8px 12px; z-index: 1000; }
@@ -38,14 +49,15 @@ body {
 
 .site-header {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(11,13,18,.6); backdrop-filter: blur(10px);
+  background: rgba(255,255,255,.95); backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 .header-inner { 
   display: flex; 
   align-items: center; 
-  justify-content: center; 
-  padding: 14px 0; 
+  justify-content: space-between; 
+  padding: 16px 0; 
   position: relative;
 }
 .header-actions { display: flex; align-items: center; gap: 12px; }
@@ -557,19 +569,16 @@ body {
 
 /* Секции */
 .hero {
-  padding: 80px 0;
+  padding: 120px 0 80px;
   text-align: center;
-  background: linear-gradient(135deg, rgba(79,124,255,0.1) 0%, rgba(34,197,94,0.1) 100%);
+  background: linear-gradient(135deg, rgba(0,123,255,0.05) 0%, rgba(40,167,69,0.05) 100%);
 }
 
 .hero-content h1 {
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: 700;
-  margin-bottom: 20px;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  margin-bottom: 24px;
+  color: var(--text);
 }
 
 .hero-cta {
@@ -636,11 +645,35 @@ body {
 
 .promo-card {
   background: var(--card);
-  padding: 32px;
-  border-radius: 16px;
+  padding: 24px;
+  border-radius: 12px;
   text-align: center;
   border: 1px solid var(--border);
   transition: transform 0.3s ease;
+  position: relative;
+  box-shadow: var(--shadow);
+}
+.promo-badge {
+  position: absolute;
+  top: -8px;
+  right: 16px;
+  background: var(--accent);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.promo-details {
+  margin: 16px 0;
+  padding: 12px;
+  background: var(--surface);
+  border-radius: 8px;
+}
+.promo-period, .promo-feature {
+  font-size: 14px;
+  color: var(--muted);
+  display: block;
 }
 
 .promo-card:hover {
@@ -649,6 +682,45 @@ body {
 
 .mortgage {
   padding: 80px 0;
+}
+.mortgage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.mortgage-card {
+  background: var(--card);
+  padding: 24px;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid var(--border);
+  transition: transform 0.3s ease;
+  box-shadow: var(--shadow);
+}
+.mortgage-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+.mortgage-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+.mortgage-rate {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 16px 0;
+}
+.mortgage-features {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0;
+}
+.mortgage-features .feature {
+  font-size: 14px;
+  color: var(--muted);
+  padding: 4px 0;
 }
 
 .mortgage h2 {
@@ -660,6 +732,30 @@ body {
 .consultation {
   padding: 80px 0;
   background: var(--surface);
+}
+.consultation-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.consultation-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+.consultation-text p {
+  font-size: 1.2rem;
+  color: var(--muted);
+  margin-bottom: 0;
+}
+.form-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.form-row input {
+  flex: 1;
 }
 
 .consultation h2 {
@@ -694,13 +790,48 @@ body {
 }
 
 .site-footer {
-  padding: 40px 0;
-  background: var(--bg);
+  padding: 60px 0 20px;
+  background: var(--surface);
   border-top: 1px solid var(--border);
-  text-align: center;
 }
-
-.footer-inner p {
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-bottom: 32px;
+}
+.footer-section h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+.footer-section p {
+  color: var(--muted);
+  margin: 8px 0;
+}
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-section ul li {
+  margin: 8px 0;
+}
+.footer-section ul li a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer-section ul li a:hover {
+  color: var(--primary);
+}
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.footer-bottom p {
   color: var(--muted);
   margin: 0;
 }

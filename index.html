@@ -50,7 +50,10 @@
     <section id="booking" class="booking-section" style="display: none;">
         <div class="container">
             <div class="booking-header">
-                <h2>Записаться на просмотр</h2>
+                <div class="booking-header-top">
+                    <h2>Записаться на просмотр</h2>
+                    <button class="btn-close" onclick="closeBookingCalendar()" title="Закрыть календарь">&times;</button>
+                </div>
                 <p>Выберите удобное время для посещения наших объектов</p>
             </div>
             <div class="booking-content">
@@ -478,25 +481,43 @@
         let isBookingVisible = false;
 
         // Toggle booking calendar visibility
-        function toggleBookingCalendar() {
+        function toggleBookingCalendar(event) {
             const bookingSection = document.getElementById('booking');
             const button = event.target;
             
             if (isBookingVisible) {
-                bookingSection.style.display = 'none';
-                button.textContent = 'Смотреть квартиры';
-                isBookingVisible = false;
+                // Hide calendar
+                closeBookingCalendar();
             } else {
-                bookingSection.style.display = 'block';
-                button.textContent = 'Скрыть календарь';
-                isBookingVisible = true;
-                
-                // Scroll to booking section
-                bookingSection.scrollIntoView({ behavior: 'smooth' });
-                
-                // Load saved bookings from localStorage
-                loadBookingsFromStorage();
+                // Show calendar
+                showBookingCalendar();
             }
+        }
+
+        // Show booking calendar
+        function showBookingCalendar() {
+            const bookingSection = document.getElementById('booking');
+            const button = document.querySelector('.hero-cta .btn-primary');
+            
+            bookingSection.style.display = 'block';
+            button.textContent = 'Скрыть календарь';
+            isBookingVisible = true;
+            
+            // Scroll to booking section
+            bookingSection.scrollIntoView({ behavior: 'smooth' });
+            
+            // Load saved bookings from localStorage
+            loadBookingsFromStorage();
+        }
+
+        // Close booking calendar
+        function closeBookingCalendar() {
+            const bookingSection = document.getElementById('booking');
+            const button = document.querySelector('.hero-cta .btn-primary');
+            
+            bookingSection.style.display = 'none';
+            button.textContent = 'Смотреть квартиры';
+            isBookingVisible = false;
         }
 
         // Initialize booking system

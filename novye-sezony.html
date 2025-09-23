@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЖК Новые сезоны - Проект завершен</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="novye-sezony">
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo">
+                <a href="index.html">
+                    <span class="logo-text">СК НВМ</span>
+                </a>
+            </div>
+            <button class="nav-toggle" onclick="toggleNav()" aria-label="Открыть меню">
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <nav class="nav" id="nav">
+                <a href="index.html#projects" class="nav-link">Проекты</a>
+                <a href="index.html#mortgage" class="nav-link">Ипотека</a>
+                <a href="index.html#about" class="nav-link">О компании</a>
+                <a href="index.html#promos" class="nav-link">Акции</a>
+            </nav>
+            <div class="header-actions">
+                <a href="tel:+78612112850" class="phone">+7(861)211-28-50</a>
+                <button class="btn btn-primary" onclick="openModal('consultation')">Обратный звонок</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="project-hero">
+        <div class="hero-video">
+            <video autoplay muted loop playsinline preload="auto" poster="src/img/новые сезоны/banner.png">
+                <source src="src/img/новые сезоны/новые сезоны.webp" type="video/webm">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="index.html">Главная</a> / <a href="index.html#projects">Проекты</a> / <span>ЖК Новые сезоны</span>
+            </div>
+            <div class="project-hero-content">
+                <div class="project-info">
+                    <div class="project-date">Проект завершен</div>
+                    <div class="project-status-badges">
+                        <span class="badge badge-primary">Сдан в 2024</span>
+                    </div>
+                    <h1>ЖК Новые сезоны</h1>
+                    <h2 class="project-subtitle">Идеальный дом для всех сезонов жизни</h2>
+                    <div class="hero-cta">
+                        <button class="btn btn-primary btn-large" onclick="openModal('consultation')">Связаться с нами</button>
+                    </div>
+                </div>
+                <div class="project-features">
+                    <div class="feature-highlight">
+                        <h3>2240+</h3>
+                        <p>квартир в комплексе</p>
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>2024</h3>
+                        <p>год сдачи проекта</p>
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>14</h3>
+                        <p>девятиэтажных жилых домов</p>
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>15</h3>
+                        <p>жилых корпусов</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Details -->
+    <section class="project-details">
+        <div class="container">
+            <h2>О проекте</h2>
+            <p>«Новые Сезоны» — жилой комплекс комфорт-класса на западе Краснодара. Включает 15 жилых корпусов и собственную инфраструктуру: детские сады, школу, парки и торговый центр. Для автомобилистов предусмотрены подземные и наземные паркинги. Дворы оборудованы спортивными и детскими площадками, есть зоны отдыха. Ввод в эксплуатацию произведен в апреле 2024 года.</p>
+        </div>
+        
+        <div class="project-banner-full">
+            <img src="src/img/новые сезоны/banner.png" alt="ЖК Новые сезоны" class="banner-image-full">
+        </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section class="advantages-section">
+        <div class="container">
+            <h2>Преимущества</h2>
+            <div class="project-sections-grid">
+                <div class="project-section-card">
+                    <div class="section-image">
+                        <img src="src/img/новые сезоны/spirt-detsk-ploshadki.png" alt="Спортивные и детские площадки">
+                    </div>
+                    <div class="section-content">
+                        <h3>Спортивные и детские площадки</h3>
+                        <p>Современные площадки для активного отдыха всей семьи. Безопасные игровые зоны для детей и спортивные площадки для взрослых.</p>
+                    </div>
+                </div>
+                
+                <div class="project-section-card">
+                    <div class="section-image">
+                        <img src="src/img/новые сезоны/naz-parking.png" alt="Многоуровневый наземный паркинг">
+                    </div>
+                    <div class="section-content">
+                        <h3>Многоуровневый наземный паркинг</h3>
+                        <p>Удобная парковка для всех жителей комплекса. Многоуровневый наземный паркинг с достаточным количеством мест.</p>
+                    </div>
+                </div>
+                
+                <div class="project-section-card">
+                    <div class="section-image">
+                        <img src="src/img/новые сезоны/terrotoriya.png" alt="Благоустроенная территория">
+                    </div>
+                    <div class="section-content">
+                        <h3>Благоустроенная территория</h3>
+                        <p>Уютный двор, закрытый от городского шума. Современное благоустройство с зелеными зонами и местами для отдыха.</p>
+                    </div>
+                </div>
+                
+                <div class="project-section-card">
+                    <div class="section-image">
+                        <img src="src/img/новые сезоны/planirovki.png" alt="Удобные планировки">
+                    </div>
+                    <div class="section-content">
+                        <h3>Удобные планировки</h3>
+                        <p>Продуманные планировки от студий до 3-комнатных квартир. Функциональные решения для комфортного проживания.</p>
+                    </div>
+                </div>
+                
+                <div class="project-section-card">
+                    <div class="section-image">
+                        <img src="src/img/новые сезоны/otdelka.png" alt="Предчистовая отделка">
+                    </div>
+                    <div class="section-content">
+                        <h3>Предчистовая отделка</h3>
+                        <p>Качественная предчистовая отделка во всех квартирах. Готовность к финальному ремонту и заселению.</p>
+                    </div>
+                </div>
+                
+                <div class="project-section-card">
+                    <div class="section-image">
+                        <img src="src/img/новые сезоны/dvor.png" alt="Уютный двор">
+                    </div>
+                    <div class="section-content">
+                        <h3>Уютный двор, закрытый от городского шума</h3>
+                        <p>Тихая и спокойная атмосфера для комфортного проживания. Закрытая территория с контролируемым доступом.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2>Остались вопросы?</h2>
+            <p>Задайте их в наших соцсетях или оставьте свои данные для обратной связи</p>
+            <form class="consultation-form" onsubmit="handleConsultationSubmit(event)">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Имя" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone" placeholder="+7 (999) 999-99-99" required>
+                </div>
+                <div class="form-checkbox">
+                    <input type="checkbox" id="privacy-novye-sezony-contact" required>
+                    <label for="privacy-novye-sezony-contact">Я соглашаюсь с политикой конфиденциальности сайта</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Получить консультацию</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Spacing at the end -->
+    <div style="height: 80px;"></div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal-backdrop" style="display: none;" onclick="closeModal()">
+        <div class="modal-dialog" onclick="event.stopPropagation()">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+                <div id="modal-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Telegram config
+        const TG_BOT_TOKEN = (window && window.TELEGRAM_BOT_TOKEN) ? window.TELEGRAM_BOT_TOKEN : '8026350498:AAGcyKMsrJyD0mGgj26Ss2m49vX5jp8LzaM';
+        const TG_CHAT_ID = (window && window.TELEGRAM_CHAT_ID) ? window.TELEGRAM_CHAT_ID : '919481169';
+
+        function openModal(modalId) {
+            console.log('openModal called with:', modalId);
+            const modal = document.getElementById('modal');
+            const modalBody = document.getElementById('modal-body');
+            modalBody.innerHTML = getModalContent(modalId);
+            modal.style.display = 'flex';
+            document.body.classList.add('modal-open');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+            document.body.classList.remove('modal-open');
+        }
+
+        function getModalContent(modalId) {
+            const modalContents = {
+                'consultation': `
+                    <h3>Получить консультацию</h3>
+                    <p>Оставьте свои данные, и мы свяжемся с вами в ближайшее время.</p>
+                    <form class="consultation-form" onsubmit="handleConsultationSubmit(event)">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="+7(___)___-__-__" required>
+                        </div>
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="privacy-modal" required>
+                            <label for="privacy-modal">Я соглашаюсь с политикой конфиденциальности сайта</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Отправить заявку</button>
+                    </form>
+                `
+            };
+            return modalContents[modalId] || '<p>Содержимое не найдено.</p>';
+        }
+
+        function handleConsultationSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const name = form.querySelector('input[name="name"]').value.trim();
+            const phone = form.querySelector('input[name="phone"]').value.trim();
+            const privacyCheckbox = form.querySelector('input[type="checkbox"]');
+
+            if (!name || !phone) {
+                showToast('Пожалуйста, заполните все обязательные поля', 'error');
+                return;
+            }
+            if (!privacyCheckbox.checked) {
+                showToast('Пожалуйста, согласитесь с политикой конфиденциальности', 'error');
+                return;
+            }
+
+            const phoneDigits = phone.replace(/\D/g, '');
+            if (phoneDigits.length !== 11) {
+                showToast('Введите полный номер телефона (11 цифр)', 'error');
+                return;
+            }
+
+            sendConsultationToTelegram({ name, phone });
+            closeModal();
+        }
+
+        function sendConsultationToTelegram(formData) {
+            const botToken = TG_BOT_TOKEN;
+            const chatId = TG_CHAT_ID;
+            const message = `📝 Новая заявка на консультацию
+            
+👤 Имя: ${formData.name}
+📞 Телефон: ${formData.phone}`;
+
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: 'HTML'
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+                } else {
+                    console.error('Telegram API error:', data);
+                    showToast('Ошибка при отправке заявки. Попробуйте еще раз.', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Network error:', error);
+                showToast('Ошибка сети при отправке заявки. Попробуйте еще раз.', 'error');
+            });
+        }
+
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `<div class="toast-content">${message}</div><button class="toast-close" aria-label="Закрыть">×</button>`;
+            document.body.appendChild(toast);
+
+            toast.querySelector('.toast-close').addEventListener('click', () => {
+                toast.remove();
+            });
+
+            setTimeout(() => {
+                toast.remove();
+            }, 5000);
+        }
+
+        function toggleNav() {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('show');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing...');
+            try {
+                // No specific init for novye-sezony.html needed beyond general modal/nav
+                console.log('Initialization completed successfully');
+            } catch (error) {
+                console.error('Initialization error:', error);
+            }
+        });
+    </script>
+</body>
+</html>

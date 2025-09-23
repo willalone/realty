@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Варианты квартир - Литер 1.9 - ЖК ДОМ 101 - СК НВМ</title>
+    <meta name="description" content="Варианты квартир в Литере 1.9 ЖК ДОМ 101. Планировки от 36 м². Цены от 5 млн ₽." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dom-101-floor-plans">
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-text">СК НВМ</span>
+            </div>
+            <button class="nav-toggle" onclick="toggleNav()" aria-label="Открыть меню">
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <nav class="nav" id="nav">
+                <a href="index.html#projects" class="nav-link">Проекты</a>
+                <a href="index.html#mortgage" class="nav-link">Ипотека</a>
+                <a href="index.html#about" class="nav-link">О компании</a>
+                <a href="index.html#promos" class="nav-link">Акции</a>
+            </nav>
+            <div class="header-actions">
+                <a href="tel:+78612112850" class="phone">+7(861)211-28-50</a>
+                <button class="btn btn-primary" onclick="openModal('consultation')">Обратный звонок</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="floor-plans-hero">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="index.html">Главная</a> / <a href="index.html#projects">Проекты</a> / <a href="dom-101.html">ДОМ 101</a> / <a href="dom-101-apartments.html">Варианты квартир</a> / <span>Литер 1.9</span>
+            </div>
+            <h1>Литер 1.9</h1>
+            <p class="hero-subtitle">Краснодар</p>
+        </div>
+    </section>
+
+    <!-- Floor Plans Grid -->
+    <section class="floor-plans-section">
+        <div class="container">
+            <div class="floor-plans-grid">
+                <!-- Планировка 1 -->
+                <div class="floor-plan-card">
+                    <div class="floor-plan-header">
+                        <h3>Литер 1.9</h3>
+                        <p class="location">Краснодар</p>
+                        <div class="room-badge">1к</div>
+                    </div>
+                    <div class="floor-plan-image">
+                        <img src="src/img/варианты планировок/1к.png" alt="Планировка 1к">
+                        <div class="area-details">
+                            <div class="area-box">
+                                <span class="area-value">12.30</span>
+                                <span class="area-value">36.50</span>
+                                <span class="area-value">37.80</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floor-plan-info">
+                        <div class="price-area">
+                            <span class="price">от 4 995 000 Р</span>
+                            <span class="total-area">37.8 м²</span>
+                        </div>
+                        <div class="navigation-arrows">
+                            <button class="nav-arrow prev" onclick="changeFloorPlan(-1)">‹</button>
+                            <button class="nav-arrow next" onclick="changeFloorPlan(1)">›</button>
+                        </div>
+                        <button class="rooms-button" onclick="openApartmentsPanel(6, 37.8, '12.30,36.50,37.80')">6 помещений</button>
+                    </div>
+                </div>
+
+                <!-- Планировка 2 -->
+                <div class="floor-plan-card">
+                    <div class="floor-plan-header">
+                        <h3>Литер 1.9</h3>
+                        <p class="location">Краснодар</p>
+                    </div>
+                    <div class="floor-plan-image">
+                        <img src="src/img/варианты планировок/1к.png" alt="Планировка 1к">
+                        <div class="area-details">
+                            <div class="area-box">
+                                <span class="area-value">13.80</span>
+                                <span class="area-value">38.90</span>
+                                <span class="area-value">40.20</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floor-plan-info">
+                        <div class="price-area">
+                            <span class="price">от 5 250 000 Р</span>
+                            <span class="total-area">40.2 м²</span>
+                        </div>
+                        <div class="navigation-arrows">
+                            <button class="nav-arrow prev" onclick="changeFloorPlan(-1)">‹</button>
+                            <button class="nav-arrow next" onclick="changeFloorPlan(1)">›</button>
+                        </div>
+                        <button class="rooms-button" onclick="openApartmentsPanel(7, 40.2, '13.80,38.90,40.20')">7 помещений</button>
+                    </div>
+                </div>
+
+                <!-- Планировка 3 -->
+                <div class="floor-plan-card">
+                    <div class="floor-plan-header">
+                        <h3>Литер 1.9</h3>
+                        <p class="location">Краснодар</p>
+                    </div>
+                    <div class="floor-plan-image">
+                        <img src="src/img/варианты планировок/1к.png" alt="Планировка 1к">
+                        <div class="area-details">
+                            <div class="area-box">
+                                <span class="area-value">15.20</span>
+                                <span class="area-value">41.50</span>
+                                <span class="area-value">43.10</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floor-plan-info">
+                        <div class="price-area">
+                            <span class="price">от 5 600 000 Р</span>
+                            <span class="total-area">43.1 м²</span>
+                        </div>
+                        <div class="navigation-arrows">
+                            <button class="nav-arrow prev" onclick="changeFloorPlan(-1)">‹</button>
+                            <button class="nav-arrow next" onclick="changeFloorPlan(1)">›</button>
+                        </div>
+                        <button class="rooms-button" onclick="openApartmentsPanel(8, 43.1, '15.20,41.50,43.10')">8 помещений</button>
+                    </div>
+                </div>
+
+                <!-- Планировка 4 -->
+                <div class="floor-plan-card">
+                    <div class="floor-plan-header">
+                        <h3>Литер 1.9</h3>
+                        <p class="location">Краснодар</p>
+                        <div class="room-badge">1к</div>
+                    </div>
+                    <div class="floor-plan-image">
+                        <img src="src/img/варианты планировок/1к.png" alt="Планировка 1к">
+                        <div class="area-details">
+                            <div class="area-box">
+                                <span class="area-value">16.80</span>
+                                <span class="area-value">44.20</span>
+                                <span class="area-value">46.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floor-plan-info">
+                        <div class="price-area">
+                            <span class="price">от 6 100 000 Р</span>
+                            <span class="total-area">46.0 м²</span>
+                        </div>
+                        <div class="navigation-arrows">
+                            <button class="nav-arrow prev" onclick="changeFloorPlan(-1)">‹</button>
+                            <button class="nav-arrow next" onclick="changeFloorPlan(1)">›</button>
+                        </div>
+                        <button class="rooms-button" onclick="openApartmentsPanel(9, 46.0, '16.80,44.20,46.00')">9 помещений</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apartments Detail Panel -->
+    <div id="apartments-panel" class="apartments-panel" style="display: none;">
+        <div class="panel-header">
+            <div class="panel-title">
+                <h3>Дом 101</h3>
+                <p>Литер 1.9 - Не построено</p>
+            </div>
+            <button class="panel-close" onclick="closeApartmentsPanel()">&times;</button>
+        </div>
+        
+        <div class="panel-content">
+            <div class="panel-floor-plan">
+                <img src="src/img/варианты планировок/1к.png" alt="Планировка">
+            </div>
+            
+            <div class="panel-summary">
+                <p class="room-info">Помещение: 1 комнатная, <span id="panel-area">40.2</span> м²</p>
+                <p class="found-info">Найдено: <span id="panel-count">7</span> помещений</p>
+            </div>
+            
+            <div class="apartments-list" id="apartments-list">
+                <!-- Список квартир будет заполнен JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal-backdrop" style="display: none;" onclick="closeModal()">
+        <div class="modal-dialog" onclick="event.stopPropagation()">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+                <div id="modal-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Telegram config
+        const TG_BOT_TOKEN = (window && window.TELEGRAM_BOT_TOKEN) ? window.TELEGRAM_BOT_TOKEN : '8026350498:AAGcyKMsrJyD0mGgj26Ss2m49vX5jp8LzaM';
+        const TG_CHAT_ID = (window && window.TELEGRAM_CHAT_ID) ? window.TELEGRAM_CHAT_ID : '919481169';
+
+        function openModal(modalId) {
+            console.log('openModal called with:', modalId);
+            const modal = document.getElementById('modal');
+            const modalBody = document.getElementById('modal-body');
+            
+            if (!modal || !modalBody) {
+                console.error('Modal elements not found');
+                return;
+            }
+            
+            const content = {
+                'consultation': `
+                    <h3>Консультация</h3>
+                    <form onsubmit="handleConsultationSubmit(event)">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="+7(___)___-__-__" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Отправить заявку</button>
+                    </form>
+                `
+            };
+            
+            modalBody.innerHTML = content[modalId] || '<p>Информация недоступна</p>';
+            modal.style.display = 'flex';
+            console.log('Modal opened successfully');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function sendToTelegram(data) {
+            const botToken = TG_BOT_TOKEN;
+            const chatId = TG_CHAT_ID;
+            
+            const message = `📞 Новая заявка на консультацию
+
+👤 Имя: ${data.name}
+📞 Телефон: ${data.phone}
+📋 Тип заявки: ${data.formType}`;
+
+            console.log('Sending consultation to Telegram:', { botToken: botToken ? botToken.substring(0, 10) + '...' : '(empty)', chatId, message });
+
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: 'HTML'
+                }),
+                signal: controller.signal
+            })
+            .then(response => {
+                clearTimeout(timeoutId);
+                console.log('Telegram response status:', response.status);
+                return response.json();
+            })
+            .then(data => {
+                console.log('Telegram response data:', data);
+                
+                if (data.ok) {
+                    showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
+                    closeModal();
+                } else {
+                    console.error('Telegram API error:', data);
+                    showToast(`Ошибка при отправке заявки: ${data.description || 'Неизвестная ошибка'}`, 'error');
+                }
+            })
+            .catch(error => {
+                clearTimeout(timeoutId);
+                console.error('Network error:', error);
+                
+                if (error.name === 'AbortError') {
+                    showToast('Превышено время ожидания. Попробуйте еще раз.', 'error');
+                } else {
+                    showToast('Ошибка сети при отправке заявки. Попробуйте еще раз.', 'error');
+                }
+            });
+        }
+
+        function handleConsultationSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = {
+                name: formData.get('name'),
+                phone: formData.get('phone'),
+                formType: 'Консультация'
+            };
+
+            if (!data.name || !data.phone) {
+                showToast('Пожалуйста, заполните имя и телефон', 'error');
+                return;
+            }
+
+            const phoneDigits = data.phone.replace(/\D/g, '');
+            const phoneRegex = /^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$/;
+            
+            if (phoneDigits.length !== 11) {
+                showToast('Введите полный номер телефона (11 цифр) в формате +7(999)999-99-99', 'error');
+                return;
+            }
+            
+            if (!phoneRegex.test(data.phone)) {
+                showToast('Введите корректный номер телефона в формате +7(999)999-99-99', 'error');
+                return;
+            }
+
+            sendToTelegram(data);
+        }
+
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `<div class="toast-content">${message}</div><button class="toast-close" aria-label="Закрыть">×</button>`;
+            document.body.appendChild(toast);
+            
+            const removeToast = () => {
+                if (toast && toast.parentNode) toast.parentNode.removeChild(toast);
+            };
+            
+            toast.querySelector('.toast-close')?.addEventListener('click', removeToast);
+            
+            setTimeout(removeToast, 4000);
+        }
+
+        function toggleNav() {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('show');
+        }
+
+        function changeFloorPlan(direction) {
+            // Функция для переключения между планировками
+            console.log('Changing floor plan:', direction);
+        }
+
+        function openApartmentsPanel(count, area, dimensions) {
+            const panel = document.getElementById('apartments-panel');
+            const panelArea = document.getElementById('panel-area');
+            const panelCount = document.getElementById('panel-count');
+            const apartmentsList = document.getElementById('apartments-list');
+            
+            // Обновляем информацию
+            panelArea.textContent = area;
+            panelCount.textContent = count;
+            
+            // Генерируем список квартир
+            apartmentsList.innerHTML = '';
+            
+            const apartments = generateApartmentsList(count, area);
+            apartments.forEach(apartment => {
+                const apartmentItem = document.createElement('div');
+                apartmentItem.className = 'apartment-item';
+                apartmentItem.innerHTML = `
+                    <div class="apartment-details">
+                        <div class="apartment-price">${apartment.price} P</div>
+                        <div class="apartment-price-per-m2">${apartment.pricePerM2} р/м²</div>
+                        <button class="status-button available">Свободно</button>
+                    </div>
+                    <div class="apartment-floor">${apartment.floor} этаж</div>
+                `;
+                apartmentsList.appendChild(apartmentItem);
+            });
+            
+            panel.style.display = 'block';
+            setTimeout(() => {
+                panel.classList.add('show');
+            }, 10);
+        }
+
+        function closeApartmentsPanel() {
+            const panel = document.getElementById('apartments-panel');
+            panel.classList.remove('show');
+            setTimeout(() => {
+                panel.style.display = 'none';
+            }, 300);
+        }
+
+        function generateApartmentsList(count, area) {
+            const apartments = [];
+            const basePrice = Math.floor(4995000 + (area - 30) * 50000);
+            const pricePerM2 = Math.floor(basePrice / area);
+            
+            for (let i = 0; i < count; i++) {
+                const floor = 9 - i; // Начинаем с 9 этажа
+                const priceVariation = Math.floor(Math.random() * 200000) - 100000;
+                const price = basePrice + priceVariation;
+                
+                apartments.push({
+                    floor: floor,
+                    price: price.toLocaleString('ru-RU'),
+                    pricePerM2: Math.floor(price / area).toLocaleString('ru-RU')
+                });
+            }
+            
+            return apartments;
+        }
+    </script>
+</body>
+</html>

@@ -35,6 +35,12 @@
 
     <!-- Project Hero -->
     <section class="project-hero">
+        <div class="hero-video">
+            <video autoplay muted loop playsinline preload="auto" poster="src/img/dom-101/dom-101-poster.jpg">
+                <source src="src/img/dom-101/dom-101.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
         <div class="container">
             <div class="breadcrumbs">
                 <a href="index.html">Главная</a> / <a href="index.html#projects">Проекты</a> / <span>ДОМ 101</span>
@@ -49,7 +55,7 @@
                     <h2 class="project-subtitle">ЖК «ДОМ 101»</h2>
                     <div class="hero-cta">
                         <button class="btn btn-primary btn-large" onclick="openModal('consultation')">Получить предложение</button>
-                        <button class="btn btn-secondary btn-large" onclick="toggleBookingCalendar(event)">Подобрать квартиру</button>
+                        <a href="dom-101-apartments.html" class="btn btn-secondary btn-large">Подобрать квартиру</a>
                     </div>
                 </div>
                 <div class="project-features">
@@ -106,40 +112,44 @@
                         <h2>О проекте</h2>
                         <p>ДОМ 101 — это экосистема, где каждый найдёт для себя что-то особенное. Здесь царит атмосфера дружелюбия и взаимопомощи, а развитая транспортная сеть позволяет легко добираться до других районов города.</p>
                         
-                        <div class="project-sections">
-                            <div class="project-section">
-                                <h3>Детские сады и школы</h3>
-                                <p>Школа на 1 725 мест и 5 детских садов по 310−350 мест каждый. Качественное образование от детского сада до выпускного класса.</p>
+                        <div class="project-sections-grid">
+                            <div class="project-section-card">
                                 <div class="section-image">
-                                    <img src="img/dom-101.jpg.webp" alt="Детские сады и школы">
-                                    <div class="image-counter">1/1</div>
+                                    <img src="src/img/dom-101/detckiy-sad.png" alt="Детские сады и школы">
+                                </div>
+                                <div class="section-content">
+                                    <h3>Детские сады и школы</h3>
+                                    <p>Школа на 1 725 мест и 5 детских садов по 310−350 мест каждый. Качественное образование от детского сада до выпускного класса.</p>
                                 </div>
                             </div>
                             
-                            <div class="project-section">
-                                <h3>Архитектура</h3>
-                                <p>Индивидуальный облик каждого здания. Каждый дом с уникальным дизайном создает особую атмосферу района. Амфитеатр для культурных мероприятий — центр притяжения жителей.</p>
+                            <div class="project-section-card">
                                 <div class="section-image">
-                                    <img src="img/dom-101.jpg.webp" alt="Архитектура">
-                                    <div class="image-counter">1/4</div>
+                                    <img src="src/img/dom-101/architecture.png" alt="Архитектура">
+                                </div>
+                                <div class="section-content">
+                                    <h3>Архитектура</h3>
+                                    <p>Индивидуальный облик каждого здания. Каждый дом с уникальным дизайном создает особую атмосферу района. Амфитеатр для культурных мероприятий — центр притяжения жителей.</p>
                                 </div>
                             </div>
                             
-                            <div class="project-section">
-                                <h3>Колесо обозрения</h3>
-                                <p>Уникальный символ района и центр притяжения жителей. Особая достопримечательность парка для незабываемых впечатлений и панорамных видов.</p>
+                            <div class="project-section-card">
                                 <div class="section-image">
-                                    <img src="img/dom-101.jpg.webp" alt="Колесо обозрения">
-                                    <div class="image-counter">1/2</div>
+                                    <img src="src/img/dom-101/koleso.png" alt="Колесо обозрения">
+                                </div>
+                                <div class="section-content">
+                                    <h3>Колесо обозрения</h3>
+                                    <p>Уникальный символ района и центр притяжения жителей. Особая достопримечательность парка для незабываемых впечатлений и панорамных видов.</p>
                                 </div>
                             </div>
                             
-                            <div class="project-section">
-                                <h3>Парки и зоны отдыха</h3>
-                                <p>Территория 101 га с ландшафтным парком 20 гектаров и спортивными площадками. Благоустроенные дворы с детскими зонами создают комфортную среду для семейного отдыха.</p>
+                            <div class="project-section-card">
                                 <div class="section-image">
-                                    <img src="img/dom-101.jpg.webp" alt="Парки и зоны отдыха">
-                                    <div class="image-counter">1/5</div>
+                                    <img src="src/img/dom-101/park.png" alt="Парки и зоны отдыха">
+                                </div>
+                                <div class="section-content">
+                                    <h3>Парки и зоны отдыха</h3>
+                                    <p>Территория 101 га с ландшафтным парком 20 гектаров и спортивными площадками. Благоустроенные дворы с детскими зонами создают комфортную среду для семейного отдыха.</p>
                                 </div>
                             </div>
                         </div>
@@ -147,58 +157,272 @@
                         <h3>Варианты планировок</h3>
                         <p>Выбирайте от функциональных студий до просторных трехкомнатных квартир</p>
                         
-                        <div class="floor-plans">
-                            <div class="plan-item">
-                                <h4>Студия</h4>
-                                <span class="plan-price">от 3,8 млн ₽</span>
-                                <p>от 22,56 м²</p>
-                                <button class="btn btn-outline">Получить консультацию</button>
+                        <div class="layout-options-grid">
+                            <div class="layout-card">
+                                <h4 class="layout-title">Студия</h4>
+                                <div class="layout-plan">
+                                    <img src="src/img/варианты планировок/студия.png" alt="Студия">
+                                </div>
+                                <div class="layout-info">
+                                    <div class="layout-metrics">
+                                        <div class="metric">
+                                            <span class="metric-label">от</span>
+                                            <span class="metric-value">22,56</span>
+                                            <span class="metric-unit">м²</span>
+                                </div>
+                                        <div class="metric">
+                                            <span class="metric-label">от</span>
+                                            <span class="metric-value">3,8</span>
+                                            <span class="metric-unit">млн ₽</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="plan-item">
-                                <h4>1-комнатная</h4>
-                                <span class="plan-price">от 4,3 млн ₽</span>
-                                <p>от 33,30 м²</p>
-                                <button class="btn btn-outline">Узнать подробности</button>
+                            
+                            <div class="layout-card">
+                                <h4 class="layout-title">1-к</h4>
+                                <div class="layout-plan">
+                                    <img src="src/img/варианты планировок/1к.png" alt="1-комнатная">
+                                </div>
+                                <div class="layout-info">
+                                    <div class="layout-metrics">
+                                        <div class="metric">
+                                            <span class="metric-label">от</span>
+                                            <span class="metric-value">33,30</span>
+                                            <span class="metric-unit">м²</span>
+                                </div>
+                                        <div class="metric">
+                                            <span class="metric-label">от</span>
+                                            <span class="metric-value">4,3</span>
+                                            <span class="metric-unit">млн ₽</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="plan-item">
-                                <h4>2-комнатная</h4>
-                                <span class="plan-price">от 5,4 млн ₽</span>
-                                <p>от 48,80 м²</p>
-                                <button class="btn btn-outline">Связаться с менеджером</button>
+                            
+                            <div class="layout-card">
+                                <h4 class="layout-title">2-к</h4>
+                                <div class="layout-plan">
+                                    <img src="src/img/варианты планировок/2к.png" alt="2-комнатная">
+                                </div>
+                                <div class="layout-info">
+                                    <div class="layout-metrics">
+                                        <div class="metric">
+                                            <span class="metric-label">от</span>
+                                            <span class="metric-value">48,80</span>
+                                            <span class="metric-unit">м²</span>
+                                </div>
+                                        <div class="metric">
+                                            <span class="metric-label">от</span>
+                                            <span class="metric-value">5,4</span>
+                                            <span class="metric-unit">млн ₽</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="plan-item">
-                                <h4>3-комнатная</h4>
-                                <span class="plan-price">от 8,1 млн ₽</span>
-                                <p>от 77,46 м²</p>
-                                <button class="btn btn-outline">Изучить предложения</button>
+                            
+                            <div class="layout-card">
+                                <h4 class="layout-title">3-к</h4>
+                                <div class="layout-plan">
+                                    <img src="src/img/варианты планировок/3к.png" alt="3-комнатная">
+                                </div>
+                                <div class="layout-info">
+                                    <div class="layout-metrics">
+                                        <div class="metric">
+                                            <span class="metric-label">от</span>
+                                            <span class="metric-value">77,46</span>
+                                            <span class="metric-unit">м²</span>
+                                </div>
+                                        <div class="metric">
+                                            <span class="metric-label">от</span>
+                                            <span class="metric-value">8,1</span>
+                                            <span class="metric-unit">млн ₽</span>
                             </div>
                         </div>
-                        
-                        <div class="location-section">
-                            <h3>Расположение</h3>
-                            <p>город Краснодар, улица Дорожная</p>
-                            <div class="virtual-tour">
-                                <span class="tour-label">Виртуальный тур</span>
-                                <span class="tour-duration">3d</span>
+                                </div>
                             </div>
                         </div>
                         
                         <div class="purchase-options">
                             <h3>Варианты покупки</h3>
-                            <div class="options-grid">
-                                <div class="option-item">
-                                    <h4>Единоразовый платеж</h4>
+                            
+                            <!-- Purchase Option Cards -->
+                            <div class="purchase-cards">
+                                <div class="purchase-card">
+                                    <div class="card-icon">🏦</div>
+                                    <div class="card-content">
+                                        <h4>Ипотека</h4>
+                                        <button class="card-button">Скоро</button>
                                 </div>
-                                <div class="option-item">
+                                </div>
+                                
+                                <div class="purchase-card">
+                                    <div class="card-icon">👨‍👩‍👧‍👦</div>
+                                    <div class="card-content">
+                                        <h4>Материнский<br>капитал</h4>
+                                    </div>
+                                </div>
+                                
+                                <div class="purchase-card">
+                                    <div class="card-icon">📄</div>
+                                    <div class="card-content">
                                     <h4>Рассрочка</h4>
-                                    <p>0%</p>
+                                        <div class="card-badge">0%</div>
                                 </div>
-                                <div class="option-item">
-                                    <h4>Материнский капитал</h4>
                                 </div>
-                                <div class="option-item">
-                                    <h4>Ипотека</h4>
-                                    <p>Скоро</p>
+                                
+                                <div class="purchase-card">
+                                    <div class="card-icon">✅</div>
+                                    <div class="card-content">
+                                        <h4>Единоразовый<br>платеж</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Mortgage Details -->
+                            <div class="mortgage-details">
+                                <div class="mortgage-row">
+                                    <div class="mortgage-icon">💻</div>
+                                    <div class="mortgage-info">
+                                        <h4>IT-ипотека</h4>
+                                        <div class="mortgage-specs">
+                                            <span class="spec-item">
+                                                <strong>Срок кредита:</strong> от 3 лет.
+                                            </span>
+                                            <span class="spec-item">
+                                                <strong>Первоначальный взнос:</strong> от 20,1%
+                                            </span>
+                                            <span class="spec-item">
+                                                <strong>Сумма кредита:</strong> до 9 млн ₽
+                                            </span>
+                                            <span class="spec-item">
+                                                <strong>Ставка:</strong> от 5,99%
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mortgage-row">
+                                    <div class="mortgage-icon">👨‍👩‍👧‍👦</div>
+                                    <div class="mortgage-info">
+                                        <h4>Семейная ипотека</h4>
+                                        <div class="mortgage-specs">
+                                            <span class="spec-item">
+                                                <strong>Срок кредита:</strong> от 12 мес.
+                                            </span>
+                                            <span class="spec-item">
+                                                <strong>Первоначальный взнос:</strong> от 20%
+                                            </span>
+                                            <span class="spec-item">
+                                                <strong>Сумма кредита:</strong> от 250 000 ₽
+                                            </span>
+                                            <span class="spec-item">
+                                                <strong>Ставка:</strong> от 6%
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Finish Types Section -->
+                        <div class="finish-types-section">
+                            <div class="finish-header">
+                                <h3>Виды отделок</h3>
+                                <div class="finish-tabs">
+                                    <button class="finish-tab active" data-finish="ready">Готовый ремонт</button>
+                                    <button class="finish-tab" data-finish="fine">Чистовая</button>
+                                    <button class="finish-tab" data-finish="rough">Черновая</button>
+                                </div>
+                            </div>
+                            
+                            <div class="finish-content">
+                                <!-- Ready Finish -->
+                                <div class="finish-panel active" id="ready-finish">
+                                    <div class="finish-image">
+                                        <img src="src/img/виды отделок/готовый ремонт.png" alt="Готовый ремонт">
+                                    </div>
+                                    <div class="finish-info">
+                                        <p>Квартира полностью готова к заселению с качественной отделкой стен и потолков, напольными покрытиями, установленной сантехникой и встроенной мебелью. Можно сразу въезжать и наслаждаться комфортом.</p>
+                                        
+                                        <div class="finish-features">
+                                            <div class="feature-card">
+                                                <div class="feature-icon">✓</div>
+                                                <div class="feature-content">
+                                                    <h4>Сэкономленное время</h4>
+                                                    <p>Квартира готова к заселению сразу.</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="feature-card">
+                                                <div class="feature-icon">✓</div>
+                                                <div class="feature-content">
+                                                    <h4>Современный дизайн</h4>
+                                                    <p>Актуальные интерьерные решения.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                
+                                <!-- Fine Finish -->
+                                <div class="finish-panel" id="fine-finish">
+                                    <div class="finish-image">
+                                        <img src="src/img/виды отделок/чистовая.png" alt="Чистовая отделка">
+                                    </div>
+                                    <div class="finish-info">
+                                        <p>Квартира с оштукатуренными стенами, черновой стяжкой пола и проведенными коммуникациями до точек подключения.</p>
+                                        <p>Полная свобода творчества в выборе планировочных решений и отделочных материалов.</p>
+                                        
+                                        <div class="finish-features">
+                                            <div class="feature-card">
+                                                <div class="feature-icon">✓</div>
+                                                <div class="feature-content">
+                                                    <h4>Быстрая готовность</h4>
+                                                    <p>Все подготовлено для финального ремонта</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="feature-card">
+                                                <div class="feature-icon">✓</div>
+                                                <div class="feature-content">
+                                                    <h4>Гибкость в оформлении</h4>
+                                                    <p>Возможность выбрать свои материалы и цвета.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                
+                                <!-- Rough Finish -->
+                                <div class="finish-panel" id="rough-finish">
+                                    <div class="finish-image">
+                                        <img src="src/img/виды отделок/черновая.png" alt="Черновая отделка">
+                                    </div>
+                                    <div class="finish-info">
+                                        <p>Базовая отделка включает выровненные и загрунтованные стены, цементную стяжку пола, установленные входные двери и разведенные коммуникации. Остается только выбрать финишные материалы по своему вкусу.</p>
+                                        
+                                        <div class="finish-features">
+                                            <div class="feature-card">
+                                                <div class="feature-icon">✓</div>
+                                                <div class="feature-content">
+                                                    <h4>Свобода выбора</h4>
+                                                    <p>Полный контроль материалов и планировки.</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="feature-card">
+                                                <div class="feature-icon">✓</div>
+                                                <div class="feature-content">
+                                                    <h4>Контроль бюджета</h4>
+                                                    <p>Выбирайте отделку по своему кошельку.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -207,9 +431,9 @@
 
                 <div class="details-sidebar">
                     <div class="booking-card">
-                        <h3>Записаться на просмотр</h3>
-                        <p>Выберите удобное время для посещения объекта</p>
-                        <button class="btn btn-primary btn-large" onclick="toggleBookingCalendar(event)">Записаться</button>
+                        <h3>Получить консультацию</h3>
+                        <p>Оставьте заявку и мы свяжемся с вами</p>
+                        <button class="btn btn-primary btn-large" onclick="openModal('consultation')">Оставить заявку</button>
                     </div>
 
                     <div class="contact-card">
@@ -230,64 +454,6 @@
         </div>
     </section>
 
-    <!-- Booking Section -->
-    <section id="booking" class="booking-section" style="display: none;">
-        <div class="container">
-            <div class="booking-header">
-                <div class="booking-header-top">
-                    <h2>Записаться на просмотр</h2>
-                    <button class="btn-close" onclick="closeBookingCalendar()" title="Закрыть календарь">&times;</button>
-                </div>
-                <p>Выберите удобное время для посещения объекта ДОМ 101</p>
-            </div>
-            <div class="booking-content">
-                <div class="booking-form">
-                    <div class="form-group">
-                        <label>Объект:</label>
-                        <input type="text" value="ДОМ 101" readonly class="form-input">
-                    </div>
-                    
-                    <div class="calendar-section">
-                        <div class="calendar-compact">
-                            <h3>Выберите дату</h3>
-                            <div class="calendar-week" id="calendarWeek">
-                                <!-- Compact calendar will be generated by JavaScript -->
-                            </div>
-                            <div class="calendar-navigation">
-                                <button class="btn btn-outline" onclick="previousWeek()">← Предыдущая</button>
-                                <span id="currentWeekRange"></span>
-                                <button class="btn btn-outline" onclick="nextWeek()">Следующая →</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="time-section" id="timeSection" style="display: none;">
-                        <h3>Выберите время</h3>
-                        <div class="time-grid" id="timeGrid">
-                            <!-- Time slots will be generated by JavaScript -->
-                        </div>
-                        <div class="available-info" id="availableInfo"></div>
-                    </div>
-
-                    <div class="booking-form-fields" id="bookingFormFields" style="display: none;">
-                        <div class="form-group">
-                            <input type="text" id="visitorName" class="form-input" placeholder="Ваше имя" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" id="visitorPhone" class="form-input" placeholder="+7(___)___-__-__" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="visitorEmail" class="form-input" placeholder="Email (необязательно)">
-                        </div>
-                        <div class="form-group">
-                            <textarea id="visitorComment" class="form-input" placeholder="Комментарий (необязательно)" rows="3"></textarea>
-                        </div>
-                        <button type="button" class="btn btn-primary" onclick="submitBooking()">Записаться на просмотр</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Modal -->
     <div id="modal" class="modal-backdrop" style="display: none;" onclick="closeModal()">
@@ -871,11 +1037,32 @@
             nav.classList.toggle('show');
         }
 
+        // Finish types functionality
+        function initFinishTypes() {
+            const finishTabs = document.querySelectorAll('.finish-tab');
+            const finishPanels = document.querySelectorAll('.finish-panel');
+            
+            finishTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const finishType = this.getAttribute('data-finish');
+                    
+                    // Remove active class from all tabs and panels
+                    finishTabs.forEach(t => t.classList.remove('active'));
+                    finishPanels.forEach(p => p.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding panel
+                    this.classList.add('active');
+                    document.getElementById(finishType + '-finish').classList.add('active');
+                });
+            });
+        }
+
         // Initialize when page loads
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM loaded, initializing...');
             try {
                 initBookingSystem();
+                initFinishTypes();
                 console.log('Initialization completed successfully');
             } catch (error) {
                 console.error('Initialization error:', error);

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Варианты квартир - ЖК ДОМ 101 - СК НВМ</title>
+    <meta name="description" content="Варианты квартир в ЖК ДОМ 101. Литеры 1.5-1.18. Цены от 3,8 млн ₽. Старт продаж." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dom-101-apartments">
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-text">СК НВМ</span>
+            </div>
+            <button class="nav-toggle" onclick="toggleNav()" aria-label="Открыть меню">
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <nav class="nav" id="nav">
+                <a href="index.html#projects" class="nav-link">Проекты</a>
+                <a href="index.html#mortgage" class="nav-link">Ипотека</a>
+                <a href="index.html#about" class="nav-link">О компании</a>
+                <a href="index.html#promos" class="nav-link">Акции</a>
+            </nav>
+            <div class="header-actions">
+                <a href="tel:+78612112850" class="phone">+7(861)211-28-50</a>
+                <button class="btn btn-primary" onclick="openModal('consultation')">Обратный звонок</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="apartments-hero">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="index.html">Главная</a> / <a href="index.html#projects">Проекты</a> / <a href="dom-101.html">ДОМ 101</a> / <span>Варианты квартир</span>
+            </div>
+            <h1>Жилой комплекс "Дом 101"</h1>
+        </div>
+    </section>
+
+    <!-- Apartments Grid -->
+    <section class="apartments-section">
+        <div class="container">
+            <div class="apartments-grid">
+                <!-- Литер 1.5 -->
+                <a href="dom-101-liter-1-5.html" class="apartment-card">
+                    <div class="apartment-image">
+                        <img src="src/img/dom-101/architecture.png" alt="Литер 1.5">
+                        <div class="apartment-badges">
+                            <span class="badge floors">18 этажей</span>
+                            <span class="badge finish">Отделка: предчистовая</span>
+                        </div>
+                        <button class="sales-button" onclick="event.stopPropagation(); openModal('consultation')">Старт продаж →</button>
+                    </div>
+                    <div class="apartment-info">
+                        <h3>"Дом 101"</h3>
+                        <h4>Литер 1.5</h4>
+                        <p class="location">Краснодар</p>
+                        <p class="completion">I кв. 2030</p>
+                        <div class="apartment-details">
+                            <span class="apartments-link">47 квартир</span>
+                            <div class="pricing">
+                                <span class="total-price">от 4 329 000 Р</span>
+                                <span class="price-per-m2">от 130 000 Р/м²</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Литер 1.6 -->
+                <a href="dom-101-liter-1-6.html" class="apartment-card">
+                    <div class="apartment-image">
+                        <img src="src/img/dom-101/architecture.png" alt="Литер 1.6">
+                        <div class="apartment-badges">
+                            <span class="badge floors">18 этажей</span>
+                            <span class="badge finish">Отделка: предчистовая</span>
+                        </div>
+                        <button class="sales-button" onclick="event.stopPropagation(); openModal('consultation')">Старт продаж →</button>
+                    </div>
+                    <div class="apartment-info">
+                        <h3>"Дом 101"</h3>
+                        <h4>Литер 1.6</h4>
+                        <p class="location">Краснодар</p>
+                        <p class="completion">I кв. 2030</p>
+                        <div class="apartment-details">
+                            <span class="apartments-link">33 квартиры</span>
+                            <div class="pricing">
+                                <span class="total-price">от 5 270 200 Р</span>
+                                <span class="price-per-m2">от 110 000 Р/м²</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Литер 1.17 -->
+                <a href="dom-101-liter-1-17.html" class="apartment-card">
+                    <div class="apartment-image">
+                        <img src="src/img/dom-101/architecture.png" alt="Литер 1.17">
+                        <div class="apartment-badges">
+                            <span class="badge floors">18 этажей</span>
+                        </div>
+                        <button class="sales-button" onclick="event.stopPropagation(); openModal('consultation')">Старт продаж →</button>
+                    </div>
+                    <div class="apartment-info">
+                        <h3>"Дом 101"</h3>
+                        <h4>Литер 1.17</h4>
+                        <p class="location">Краснодар</p>
+                        <p class="completion">Не построено</p>
+                        <div class="apartment-details">
+                            <span class="apartments-link">184 квартиры</span>
+                            <div class="pricing">
+                                <span class="total-price">от 4 329 000 Р</span>
+                                <span class="price-per-m2">от 105 000 Р/м²</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Литер 1.18 -->
+                <a href="dom-101-liter-1-18.html" class="apartment-card">
+                    <div class="apartment-image">
+                        <img src="src/img/dom-101/architecture.png" alt="Литер 1.18">
+                        <div class="apartment-badges">
+                            <span class="badge floors">18 этажей</span>
+                        </div>
+                        <button class="sales-button" onclick="event.stopPropagation(); openModal('consultation')">Старт продаж →</button>
+                    </div>
+                    <div class="apartment-info">
+                        <h3>"Дом 101"</h3>
+                        <h4>Литер 1.18</h4>
+                        <p class="location">Краснодар</p>
+                        <p class="completion">Не построено</p>
+                        <div class="apartment-details">
+                            <span class="apartments-link">81 квартира</span>
+                            <div class="pricing">
+                                <span class="total-price">от 3 835 200 Р</span>
+                                <span class="price-per-m2">от 105 000 Р/м²</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Литер 1.9 -->
+                <a href="dom-101-liter-1-9.html" class="apartment-card">
+                    <div class="apartment-image">
+                        <img src="src/img/dom-101/architecture.png" alt="Литер 1.9">
+                        <div class="apartment-badges">
+                            <span class="badge floors">18 этажей</span>
+                        </div>
+                        <button class="sales-button" onclick="event.stopPropagation(); openModal('consultation')">Старт продаж →</button>
+                    </div>
+                    <div class="apartment-info">
+                        <h3>"Дом 101"</h3>
+                        <h4>Литер 1.9</h4>
+                        <p class="location">Краснодар</p>
+                        <p class="completion">Не построено</p>
+                        <div class="apartment-details">
+                            <span class="apartments-link">139 квартир</span>
+                            <div class="pricing">
+                                <span class="total-price">от 4 995 000 Р</span>
+                                <span class="price-per-m2">от 105 000 Р/м²</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Литер 1.7 -->
+                <a href="dom-101-liter-1-7.html" class="apartment-card">
+                    <div class="apartment-image">
+                        <img src="src/img/dom-101/architecture.png" alt="Литер 1.7">
+                        <div class="apartment-badges">
+                            <span class="badge floors">18 этажей</span>
+                        </div>
+                        <button class="sales-button" onclick="event.stopPropagation(); openModal('consultation')">Старт продаж →</button>
+                    </div>
+                    <div class="apartment-info">
+                        <h3>"Дом 101"</h3>
+                        <h4>Литер 1.7</h4>
+                        <p class="location">Краснодар</p>
+                        <p class="completion">Не построено</p>
+                        <div class="apartment-details">
+                            <span class="apartments-link">156 квартир</span>
+                            <div class="pricing">
+                                <span class="total-price">от 4 500 000 Р</span>
+                                <span class="price-per-m2">от 105 000 Р/м²</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Литер 1.8 -->
+                <a href="dom-101-liter-1-8.html" class="apartment-card">
+                    <div class="apartment-image">
+                        <img src="src/img/dom-101/architecture.png" alt="Литер 1.8">
+                        <div class="apartment-badges">
+                            <span class="badge floors">18 этажей</span>
+                            <span class="badge finish">Отделка: предчистовая</span>
+                        </div>
+                        <button class="sales-button" onclick="event.stopPropagation(); openModal('consultation')">Старт продаж →</button>
+                    </div>
+                    <div class="apartment-info">
+                        <h3>"Дом 101"</h3>
+                        <h4>Литер 1.8</h4>
+                        <p class="location">Краснодар, Дорожная, 1.8</p>
+                        <p class="completion">I кв. 2030</p>
+                        <div class="apartment-details">
+                            <span class="apartments-link">92 квартиры</span>
+                            <div class="pricing">
+                                <span class="total-price">от 4 200 000 Р</span>
+                                <span class="price-per-m2">от 120 000 Р/м²</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="modal" class="modal-backdrop" style="display: none;" onclick="closeModal()">
+        <div class="modal-dialog" onclick="event.stopPropagation()">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+                <div id="modal-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Telegram config
+        const TG_BOT_TOKEN = (window && window.TELEGRAM_BOT_TOKEN) ? window.TELEGRAM_BOT_TOKEN : '8026350498:AAGcyKMsrJyD0mGgj26Ss2m49vX5jp8LzaM';
+        const TG_CHAT_ID = (window && window.TELEGRAM_CHAT_ID) ? window.TELEGRAM_CHAT_ID : '919481169';
+
+        function openModal(modalId) {
+            console.log('openModal called with:', modalId);
+            const modal = document.getElementById('modal');
+            const modalBody = document.getElementById('modal-body');
+            
+            if (!modal || !modalBody) {
+                console.error('Modal elements not found');
+                return;
+            }
+            
+            const content = {
+                'consultation': `
+                    <h3>Консультация</h3>
+                    <form onsubmit="handleConsultationSubmit(event)">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="+7(___)___-__-__" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Отправить заявку</button>
+                    </form>
+                `
+            };
+            
+            modalBody.innerHTML = content[modalId] || '<p>Информация недоступна</p>';
+            modal.style.display = 'flex';
+            console.log('Modal opened successfully');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function sendToTelegram(data) {
+            const botToken = TG_BOT_TOKEN;
+            const chatId = TG_CHAT_ID;
+            
+            const message = `📞 Новая заявка на консультацию
+
+👤 Имя: ${data.name}
+📞 Телефон: ${data.phone}
+📋 Тип заявки: ${data.formType}`;
+
+            console.log('Sending consultation to Telegram:', { botToken: botToken ? botToken.substring(0, 10) + '...' : '(empty)', chatId, message });
+
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: 'HTML'
+                }),
+                signal: controller.signal
+            })
+            .then(response => {
+                clearTimeout(timeoutId);
+                console.log('Telegram response status:', response.status);
+                return response.json();
+            })
+            .then(data => {
+                console.log('Telegram response data:', data);
+                
+                if (data.ok) {
+                    showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
+                    closeModal();
+                } else {
+                    console.error('Telegram API error:', data);
+                    showToast(`Ошибка при отправке заявки: ${data.description || 'Неизвестная ошибка'}`, 'error');
+                }
+            })
+            .catch(error => {
+                clearTimeout(timeoutId);
+                console.error('Network error:', error);
+                
+                if (error.name === 'AbortError') {
+                    showToast('Превышено время ожидания. Попробуйте еще раз.', 'error');
+                } else {
+                    showToast('Ошибка сети при отправке заявки. Попробуйте еще раз.', 'error');
+                }
+            });
+        }
+
+        function handleConsultationSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = {
+                name: formData.get('name'),
+                phone: formData.get('phone'),
+                formType: 'Консультация'
+            };
+
+            if (!data.name || !data.phone) {
+                showToast('Пожалуйста, заполните имя и телефон', 'error');
+                return;
+            }
+
+            const phoneDigits = data.phone.replace(/\D/g, '');
+            const phoneRegex = /^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$/;
+            
+            if (phoneDigits.length !== 11) {
+                showToast('Введите полный номер телефона (11 цифр) в формате +7(999)999-99-99', 'error');
+                return;
+            }
+            
+            if (!phoneRegex.test(data.phone)) {
+                showToast('Введите корректный номер телефона в формате +7(999)999-99-99', 'error');
+                return;
+            }
+
+            sendToTelegram(data);
+        }
+
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `<div class="toast-content">${message}</div><button class="toast-close" aria-label="Закрыть">×</button>`;
+            document.body.appendChild(toast);
+            
+            const removeToast = () => {
+                if (toast && toast.parentNode) toast.parentNode.removeChild(toast);
+            };
+            
+            toast.querySelector('.toast-close')?.addEventListener('click', removeToast);
+            
+            setTimeout(removeToast, 4000);
+        }
+
+        function toggleNav() {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

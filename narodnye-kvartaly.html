@@ -35,6 +35,12 @@
 
     <!-- Project Hero -->
     <section class="project-hero">
+        <div class="hero-video">
+            <video autoplay muted loop playsinline preload="auto" poster="src/img/narodnye-kvartaly/narodnye-kvartaly-poster.jpg">
+                <source src="src/img/narodnye-kvartaly/narodnye-kvartaly.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
         <div class="container">
             <div class="breadcrumbs">
                 <a href="index.html">Главная</a> / <a href="index.html#projects">Проекты</a> / <span>Народные кварталы</span>
@@ -45,29 +51,29 @@
                     <div class="project-status-badges">
                         <span class="badge badge-primary">400+ планировок</span>
                     </div>
-                    <h1>Народные кварталы</h1>
-                    <h2 class="project-subtitle">Комфортное жилье для всей семьи</h2>
+                    <h1>ЖР «Народные кварталы»</h1>
+                    <h2 class="project-subtitle">Современный жилой район с собственными детскими садами, школой и подземным паркингом</h2>
                     <div class="hero-cta">
                         <button class="btn btn-primary btn-large" onclick="openModal('consultation')">Получить предложение</button>
-                        <button class="btn btn-secondary btn-large" onclick="toggleBookingCalendar(event)">Подобрать квартиру</button>
+                        <a href="narodnye-kvartaly-apartments.html" class="btn btn-secondary btn-large">Подобрать квартиру</a>
                     </div>
                 </div>
                 <div class="project-features">
                     <div class="feature-highlight">
-                        <h3>Ремонт в подарок</h3>
-                        <p>Получите ремонт в подарок при покупке квартиры</p>
+                        <h3>Паркинг</h3>
+                        <p>5000+ мест</p>
                     </div>
                     <div class="feature-highlight">
-                        <h3>400+ планировок</h3>
-                        <p>Большой выбор планировок на любой вкус</p>
+                        <h3>Зеленая территория</h3>
+                        <p>18 000 м²</p>
                     </div>
                     <div class="feature-highlight">
-                        <h3>Развитая инфраструктура</h3>
-                        <p>Все необходимое для комфортной жизни</p>
+                        <h3>Кладовые</h3>
+                        <p>от 171 тыс. ₽</p>
                     </div>
                     <div class="feature-highlight">
-                        <h3>Выгодные условия</h3>
-                        <p>Скидка -12% на все квартиры</p>
+                        <h3>3 детских сада</h3>
+                        <p>Школа 1550 мест</p>
                     </div>
                 </div>
             </div>
@@ -97,64 +103,164 @@
         <div class="container">
             <div class="details-grid">
                 <div class="details-main">
-                    <h2>О проекте</h2>
-                    <p>ЖК "Народные кварталы" — это современный жилой комплекс с большим выбором планировок и выгодными условиями покупки. Проект предлагает комфортное жилье для всей семьи в развивающемся районе Краснодара.</p>
-                    
-                    <h3>Особенности проекта</h3>
-                    <ul class="features-list">
-                        <li>400+ планировок на выбор</li>
-                        <li>Ремонт в подарок от застройщика</li>
-                        <li>Скидка -12% на все квартиры</li>
-                        <li>Комфортное жилье для всей семьи</li>
-                        <li>Современные планировки</li>
-                        <li>Качественная отделка</li>
-                    </ul>
-
-                    <h3>Планировки и цены</h3>
-                    <div class="floor-plans">
-                        <div class="plan-item">
-                            <h4>Студии</h4>
-                            <span class="plan-price">от 3,0 млн ₽</span>
-                            <p>Компактные студии для комфортного проживания</p>
-                        </div>
-                        <div class="plan-item">
-                            <h4>1-комнатные</h4>
-                            <span class="plan-price">от 4,7 млн ₽</span>
-                            <p>Просторные однокомнатные квартиры</p>
-                        </div>
-                        <div class="plan-item">
-                            <h4>3-комнатные</h4>
-                            <span class="plan-price">от 7,9 млн ₽</span>
-                            <p>Семейные трехкомнатные квартиры</p>
-                        </div>
+                    <div class="section-tabs">
+                        <button class="tab active">О проекте</button>
+                        <button class="tab">Видео</button>
                     </div>
-
-                    <h3>Инфраструктура</h3>
-                    <div class="infrastructure-grid">
-                        <div class="infra-item">
-                            <span class="infra-icon">🏫</span>
-                            <span>Школы и детские сады</span>
+                    
+                    <div class="tab-content active">
+                        <h2>О проекте</h2>
+                        <p>«Народные кварталы» — современный жилой район с собственными детскими садами, школой и подземным паркингом. Планировки от студий до трехкомнатных с гибкими условиями покупки.</p>
+                        
+                        <div class="project-sections-grid">
+                            <div class="project-section-card">
+                                <div class="section-image">
+                                    <img src="src/img/narodnye-kvartaly/detsk-ploshadki.png" alt="Детские площадки">
+                                </div>
+                                <div class="section-content">
+                                    <h3>Детские площадки</h3>
+                                    <p>Обширная территория для активного отдыха детей с современными игровыми комплексами, спортивными площадками и безопасным покрытием. 18000 м² спортивных и игровых зон.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="project-section-card">
+                                <div class="section-image">
+                                    <img src="src/img/narodnye-kvartaly/perspectiva.png" alt="Перспективный район">
+                                </div>
+                                <div class="section-content">
+                                    <h3>Перспективный район</h3>
+                                    <p>Район активно развивается с появлением новых транспортных развязок, торговых центров и объектов социальной инфраструктуры, что повышает инвестиционную привлекательность.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="project-section-card">
+                                <div class="section-image">
+                                    <img src="src/img/narodnye-kvartaly/blagoustroystvo.png" alt="Благоустройство">
+                                </div>
+                                <div class="section-content">
+                                    <h3>Благоустройство</h3>
+                                    <p>Профессионально спроектированные зоны отдыха с зелеными насаждениями, прогулочными аллеями и местами для семейного досуга.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="project-section-card">
+                                <div class="section-image">
+                                    <img src="src/img/narodnye-kvartaly/uslugi.png" alt="Услуги и магазины">
+                                </div>
+                                <div class="section-content">
+                                    <h3>Услуги и магазины в шаговой доступности</h3>
+                                    <p>Размещаются магазины, кафе, аптеки и другие объекты сферы услуг для удобства жителей. На первых этажах зданий.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="project-section-card">
+                                <div class="section-image">
+                                    <img src="src/img/narodnye-kvartaly/restorany.png" alt="Рестораны и кафе">
+                                </div>
+                                <div class="section-content">
+                                    <h3>Рестораны и кафе</h3>
+                                    <p>Гастрономическая зона на территории. Закусочные, семейные кафе, парковые кафе и рестораны прямо на первых этажах зданий. От быстрого перекуса до семейного ужина — все варианты питания в шаговой доступности от дома.</p>
+                                </div>
+                            </div>
+                            
                         </div>
-                        <div class="infra-item">
-                            <span class="infra-icon">🏥</span>
-                            <span>Медицинские центры</span>
-                        </div>
-                        <div class="infra-item">
-                            <span class="infra-icon">🛒</span>
-                            <span>Торговые центры</span>
-                        </div>
-                        <div class="infra-item">
-                            <span class="infra-icon">🚌</span>
-                            <span>Общественный транспорт</span>
+                        
+                        <h3>Варианты планировок</h3>
+                        <p>Выбирайте от функциональных студий до просторных трехкомнатных квартир</p>
+                        
+                        <div class="layout-options-grid">
+                            <div class="layout-card">
+                                <h4 class="layout-title">Студия</h4>
+                                <div class="layout-plan">
+                                    <img src="src/img/варианты планировок/народные кварталы/студия.png" alt="Студия">
+                                </div>
+                                <div class="layout-info">
+                                    <div class="layout-metrics">
+                                        <div class="metric">
+                                            <span class="metric-label">от</span>
+                                            <span class="metric-value">19,87</span>
+                                            <span class="metric-unit">м²</span>
+                                        </div>
+                                        <div class="metric">
+                                            <span class="metric-label">от</span>
+                                            <span class="metric-value">3,0</span>
+                                            <span class="metric-unit">млн ₽</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="layout-card">
+                                <h4 class="layout-title">1-комнатная</h4>
+                                <div class="layout-plan">
+                                    <img src="src/img/варианты планировок/народные кварталы/1к.png" alt="1-комнатная">
+                                </div>
+                                <div class="layout-info">
+                                    <div class="layout-metrics">
+                                        <div class="metric">
+                                            <span class="metric-label">от</span>
+                                            <span class="metric-value">34,2</span>
+                                            <span class="metric-unit">м²</span>
+                                        </div>
+                                        <div class="metric">
+                                            <span class="metric-label">от</span>
+                                            <span class="metric-value">4,7</span>
+                                            <span class="metric-unit">млн ₽</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="layout-card">
+                                <h4 class="layout-title">2-комнатная</h4>
+                                <div class="layout-plan">
+                                    <img src="src/img/варианты планировок/народные кварталы/2к.png" alt="2-комнатная">
+                                </div>
+                                <div class="layout-info">
+                                    <div class="layout-metrics">
+                                        <div class="metric">
+                                            <span class="metric-label">от</span>
+                                            <span class="metric-value">51,55</span>
+                                            <span class="metric-unit">м²</span>
+                                        </div>
+                                        <div class="metric">
+                                            <span class="metric-label">от</span>
+                                            <span class="metric-value">6,6</span>
+                                            <span class="metric-unit">млн ₽</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="layout-card">
+                                <h4 class="layout-title">3-комнатная</h4>
+                                <div class="layout-plan">
+                                    <img src="src/img/варианты планировок/народные кварталы/3к.png" alt="3-комнатная">
+                                </div>
+                                <div class="layout-info">
+                                    <div class="layout-metrics">
+                                        <div class="metric">
+                                            <span class="metric-label">от</span>
+                                            <span class="metric-value">67,38</span>
+                                            <span class="metric-unit">м²</span>
+                                        </div>
+                                        <div class="metric">
+                                            <span class="metric-label">от</span>
+                                            <span class="metric-value">7,9</span>
+                                            <span class="metric-unit">млн ₽</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="details-sidebar">
                     <div class="booking-card">
-                        <h3>Записаться на просмотр</h3>
-                        <p>Выберите удобное время для посещения объекта</p>
-                        <button class="btn btn-primary btn-large" onclick="toggleBookingCalendar(event)">Записаться</button>
+                        <h3>Получить консультацию</h3>
+                        <p>Оставьте заявку и мы свяжемся с вами</p>
+                        <button class="btn btn-primary btn-large" onclick="openModal('consultation')">Оставить заявку</button>
                     </div>
 
                     <div class="contact-card">
@@ -175,64 +281,159 @@
         </div>
     </section>
 
-    <!-- Booking Section -->
-    <section id="booking" class="booking-section" style="display: none;">
+
+
+    <!-- Purchase Options -->
+    <section class="purchase-options">
         <div class="container">
-            <div class="booking-header">
-                <div class="booking-header-top">
-                    <h2>Записаться на просмотр</h2>
-                    <button class="btn-close" onclick="closeBookingCalendar()" title="Закрыть календарь">&times;</button>
+            <h3>Варианты покупки</h3>
+            <div class="purchase-cards">
+                <div class="purchase-card">
+                    <div class="card-icon">🏦</div>
+                    <div class="card-content">
+                        <h4>Ипотека</h4>
+                    </div>
                 </div>
-                <p>Выберите удобное время для посещения объекта Народные кварталы</p>
+                <div class="purchase-card">
+                    <div class="card-icon">👨‍👩‍👧‍👦</div>
+                    <div class="card-content">
+                        <h4>Материнский капитал</h4>
+                    </div>
+                </div>
+                <div class="purchase-card">
+                    <div class="card-icon">📅</div>
+                    <div class="card-content">
+                        <h4>Рассрочка</h4>
+                    </div>
+                </div>
+                <div class="purchase-card">
+                    <div class="card-icon">💰</div>
+                    <div class="card-content">
+                        <h4>Единовременная оплата</h4>
+                    </div>
+                </div>
             </div>
-            <div class="booking-content">
-                <div class="booking-form">
-                    <div class="form-group">
-                        <label>Объект:</label>
-                        <input type="text" value="Народные кварталы" readonly class="form-input">
-                    </div>
-                    
-                    <div class="calendar-section">
-                        <div class="calendar-compact">
-                            <h3>Выберите дату</h3>
-                            <div class="calendar-week" id="calendarWeek">
-                                <!-- Compact calendar will be generated by JavaScript -->
-                            </div>
-                            <div class="calendar-navigation">
-                                <button class="btn btn-outline" onclick="previousWeek()">← Предыдущая</button>
-                                <span id="currentWeekRange"></span>
-                                <button class="btn btn-outline" onclick="nextWeek()">Следующая →</button>
-                            </div>
+            <div class="mortgage-details">
+                <div class="mortgage-row">
+                    <div class="mortgage-icon">💻</div>
+                    <div class="mortgage-info">
+                        <h4>IT-ипотека</h4>
+                        <div class="mortgage-specs">
+                            <span class="spec-item"><strong>Срок кредита:</strong> от 3 лет.</span>
+                            <span class="spec-item"><strong>Первоначальный взнос:</strong> от 20,1%</span>
+                            <span class="spec-item"><strong>Сумма кредита:</strong> до 9 млн ₽</span>
+                            <span class="spec-item"><strong>Ставка:</strong> от 5,99%</span>
                         </div>
                     </div>
-
-                    <div class="time-section" id="timeSection" style="display: none;">
-                        <h3>Выберите время</h3>
-                        <div class="time-grid" id="timeGrid">
-                            <!-- Time slots will be generated by JavaScript -->
+                </div>
+                <div class="mortgage-row">
+                    <div class="mortgage-icon">👨‍👩‍👧‍👦</div>
+                    <div class="mortgage-info">
+                        <h4>Семейная ипотека</h4>
+                        <div class="mortgage-specs">
+                            <span class="spec-item"><strong>Срок кредита:</strong> от 12 мес.</span>
+                            <span class="spec-item"><strong>Первоначальный взнос:</strong> от 20%</span>
+                            <span class="spec-item"><strong>Сумма кредита:</strong> от 250 000 ₽</span>
+                            <span class="spec-item"><strong>Ставка:</strong> от 6%</span>
                         </div>
-                        <div class="available-info" id="availableInfo"></div>
-                    </div>
-
-                    <div class="booking-form-fields" id="bookingFormFields" style="display: none;">
-                        <div class="form-group">
-                            <input type="text" id="visitorName" class="form-input" placeholder="Ваше имя" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" id="visitorPhone" class="form-input" placeholder="+7(___)___-__-__" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="visitorEmail" class="form-input" placeholder="Email (необязательно)">
-                        </div>
-                        <div class="form-group">
-                            <textarea id="visitorComment" class="form-input" placeholder="Комментарий (необязательно)" rows="3"></textarea>
-                        </div>
-                        <button type="button" class="btn btn-primary" onclick="submitBooking()">Записаться на просмотр</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Finish Types -->
+    <section class="finish-types-section">
+        <div class="container">
+            <div class="finish-header">
+                <h3>Виды отделок</h3>
+                <div class="finish-tabs">
+                    <button class="finish-tab active" data-finish="ready">Готовый ремонт</button>
+                    <button class="finish-tab" data-finish="fine">Чистовая</button>
+                    <button class="finish-tab" data-finish="rough">Черновая</button>
+                </div>
+            </div>
+            <div class="finish-content">
+                <div class="finish-panel active" id="ready-finish">
+                    <div class="finish-image">
+                        <img src="src/img/виды отделок/готовый ремонт.png" alt="Готовый ремонт">
+                    </div>
+                    <div class="finish-info">
+                        <p>Квартира полностью готова к заселению с качественной отделкой стен и потолков, напольными покрытиями, установленной сантехникой и встроенной мебелью. Можно сразу въезжать и наслаждаться комфортом.</p>
+                        <div class="finish-features">
+                            <div class="feature-card">
+                                <div class="feature-icon">✓</div>
+                                <div class="feature-content">
+                                    <h4>Ремонт в подарок</h4>
+                                    <p>Получите ремонт в подарок от компании НВМ при покупке квартиры.</p>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">✓</div>
+                                <div class="feature-content">
+                                    <h4>Современный дизайн</h4>
+                                    <p>Актуальные интерьерные решения.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="finish-panel" id="fine-finish">
+                    <div class="finish-image">
+                        <img src="src/img/виды отделок/чистовая.png" alt="Чистовая отделка">
+                    </div>
+                    <div class="finish-info">
+                        <p>Квартира с чистовой отделкой включает в себя все необходимые коммуникации, выровненные стены и потолки, подготовленные под финишную отделку. Остается только выбрать материалы и стиль.</p>
+                        <div class="finish-features">
+                            <div class="feature-card">
+                                <div class="feature-icon">✓</div>
+                                <div class="feature-content">
+                                    <h4>Гибкость выбора</h4>
+                                    <p>Возможность выбрать материалы и стиль отделки.</p>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">✓</div>
+                                <div class="feature-content">
+                                    <h4>Экономия средств</h4>
+                                    <p>Более доступная стоимость по сравнению с готовым ремонтом.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="finish-panel" id="rough-finish">
+                    <div class="finish-image">
+                        <img src="src/img/виды отделок/черновая.png" alt="Черновая отделка">
+                    </div>
+                    <div class="finish-info">
+                        <p>Черновая отделка включает в себя все инженерные коммуникации, выровненные стены и потолки, подготовленные под любую отделку. Максимальная свобода в выборе дизайна и материалов.</p>
+                        <div class="finish-features">
+                            <div class="feature-card">
+                                <div class="feature-icon">✓</div>
+                                <div class="feature-content">
+                                    <h4>Полная свобода</h4>
+                                    <p>Возможность создать уникальный дизайн с нуля.</p>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">✓</div>
+                                <div class="feature-content">
+                                    <h4>Максимальная экономия</h4>
+                                    <p>Самая доступная стоимость квартиры.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spacing after finish types -->
+    <div style="height: 80px;"></div>
 
     <!-- Modal -->
     <div id="modal" class="modal-backdrop" style="display: none;" onclick="closeModal()">
@@ -815,11 +1016,55 @@
             nav.classList.toggle('show');
         }
 
+        // Initialize finish types
+        function initFinishTypes() {
+            const finishTabs = document.querySelectorAll('.finish-tab');
+            const finishPanels = document.querySelectorAll('.finish-panel');
+            
+            finishTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const finishType = this.getAttribute('data-finish');
+                    
+                    finishTabs.forEach(t => t.classList.remove('active'));
+                    finishPanels.forEach(p => p.classList.remove('active'));
+                    
+                    this.classList.add('active');
+                    document.getElementById(finishType + '-finish').classList.add('active');
+                });
+            });
+        }
+
+        // Initialize section tabs
+        function initSectionTabs() {
+            const tabs = document.querySelectorAll('.section-tabs .tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabName = this.textContent.trim();
+                    
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    this.classList.add('active');
+                    
+                    if (tabName === 'О проекте') {
+                        document.querySelector('.tab-content').classList.add('active');
+                    } else if (tabName === 'Видео') {
+                        // Add video content here if needed
+                        document.querySelector('.tab-content').classList.add('active');
+                    }
+                });
+            });
+        }
+
         // Initialize when page loads
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM loaded, initializing...');
             try {
                 initBookingSystem();
+                initFinishTypes();
+                initSectionTabs();
                 console.log('Initialization completed successfully');
             } catch (error) {
                 console.error('Initialization error:', error);

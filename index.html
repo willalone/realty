@@ -39,7 +39,7 @@
                 <h1>Застройщик NPM</h1>
                 <p>Современное жилье с развитой инфраструктурой</p>
                 <div class="hero-cta">
-                    <button class="btn btn-primary" onclick="toggleBookingCalendar()">Смотреть квартиры</button>
+                    <button class="btn btn-primary" onclick="toggleBookingCalendar(event)">Смотреть квартиры</button>
                     <button class="btn btn-secondary" onclick="openModal('consultation')">Получить консультацию</button>
                 </div>
             </div>
@@ -482,9 +482,7 @@
 
         // Toggle booking calendar visibility
         function toggleBookingCalendar(event) {
-            const bookingSection = document.getElementById('booking');
-            const button = event.target;
-            
+            console.log('Toggle calendar clicked, current state:', isBookingVisible);
             if (isBookingVisible) {
                 // Hide calendar
                 closeBookingCalendar();
@@ -496,28 +494,44 @@
 
         // Show booking calendar
         function showBookingCalendar() {
+            console.log('ShowBookingCalendar called');
             const bookingSection = document.getElementById('booking');
-            const button = document.querySelector('.hero-cta .btn-primary');
+            const button = document.querySelector('button[onclick*="toggleBookingCalendar"]');
             
-            bookingSection.style.display = 'block';
-            button.textContent = 'Скрыть календарь';
-            isBookingVisible = true;
+            console.log('Booking section found:', bookingSection);
+            console.log('Button found:', button);
             
-            // Scroll to booking section
-            bookingSection.scrollIntoView({ behavior: 'smooth' });
-            
-            // Load saved bookings from localStorage
-            loadBookingsFromStorage();
+            if (bookingSection) {
+                bookingSection.style.display = 'block';
+                if (button) {
+                    button.textContent = 'Скрыть календарь';
+                }
+                isBookingVisible = true;
+                
+                console.log('Calendar should be visible now');
+                
+                // Scroll to booking section
+                bookingSection.scrollIntoView({ behavior: 'smooth' });
+                
+                // Load saved bookings from localStorage
+                loadBookingsFromStorage();
+            } else {
+                console.error('Booking section not found!');
+            }
         }
 
         // Close booking calendar
         function closeBookingCalendar() {
             const bookingSection = document.getElementById('booking');
-            const button = document.querySelector('.hero-cta .btn-primary');
+            const button = document.querySelector('button[onclick*="toggleBookingCalendar"]');
             
-            bookingSection.style.display = 'none';
-            button.textContent = 'Смотреть квартиры';
-            isBookingVisible = false;
+            if (bookingSection) {
+                bookingSection.style.display = 'none';
+                if (button) {
+                    button.textContent = 'Смотреть квартиры';
+                }
+                isBookingVisible = false;
+            }
         }
 
         // Initialize booking system

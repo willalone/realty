@@ -19,7 +19,10 @@
                 <span class="logo-icon">🏠</span>
                 <span class="logo-text">Застройщик NPM</span>
             </div>
-            <nav class="nav">
+            <button class="nav-toggle" onclick="toggleNav()" aria-label="Открыть меню">
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <nav class="nav" id="nav">
                 <a href="#hero" class="nav-link">Главная</a>
                 <a href="#projects" class="nav-link">Проекты</a>
                 <a href="#promos" class="nav-link">Акции</a>
@@ -224,13 +227,30 @@
             closeModal();
         }
 
-        // Плавная прокрутка для навигации
+        // Мобильное меню
+        function toggleNav() {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('show');
+        }
+
+        // Закрытие меню при клике на ссылку
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href').substring(1);
                 scrollToSection(targetId);
+                // Закрываем мобильное меню
+                document.getElementById('nav').classList.remove('show');
             });
+        });
+
+        // Закрытие меню при клике вне его
+        document.addEventListener('click', function(e) {
+            const nav = document.getElementById('nav');
+            const navToggle = document.querySelector('.nav-toggle');
+            if (!nav.contains(e.target) && !navToggle.contains(e.target)) {
+                nav.classList.remove('show');
+            }
         });
     </script>
 </body>

@@ -30,6 +30,8 @@ body {
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.promos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 
 .skip-link { position: absolute; left: -9999px; top: 0; background: var(--primary); color: #fff; padding: 8px 12px; z-index: 1000; }
 .skip-link:focus { left: 12px; top: 12px; }
@@ -415,20 +417,269 @@ body {
   transform: translateY(0);
 }
 
+/* Секции */
+.hero {
+  padding: 80px 0;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(79,124,255,0.1) 0%, rgba(34,197,94,0.1) 100%);
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.projects {
+  padding: 80px 0;
+}
+
+.projects h2 {
+  text-align: center;
+  margin-bottom: 48px;
+  font-size: 2.5rem;
+}
+
+.project-card {
+  background: var(--card);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--border);
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow);
+}
+
+.project-image img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.project-content {
+  padding: 24px;
+}
+
+.project-content h3 {
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.project-content p {
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.promos {
+  padding: 80px 0;
+  background: var(--surface);
+}
+
+.promos h2 {
+  text-align: center;
+  margin-bottom: 48px;
+  font-size: 2.5rem;
+}
+
+.promo-card {
+  background: var(--card);
+  padding: 32px;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid var(--border);
+  transition: transform 0.3s ease;
+}
+
+.promo-card:hover {
+  transform: translateY(-4px);
+}
+
+.mortgage {
+  padding: 80px 0;
+}
+
+.mortgage h2 {
+  text-align: center;
+  margin-bottom: 48px;
+  font-size: 2.5rem;
+}
+
+.consultation {
+  padding: 80px 0;
+  background: var(--surface);
+}
+
+.consultation h2 {
+  text-align: center;
+  margin-bottom: 48px;
+  font-size: 2.5rem;
+}
+
+.consultation-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--text);
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.site-footer {
+  padding: 40px 0;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.footer-inner p {
+  color: var(--muted);
+  margin: 0;
+}
+
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+/* Планшеты */
+@media (max-width: 1024px) {
+  .container { width: min(960px, 95%); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  .promos-grid { grid-template-columns: repeat(2, 1fr); }
+}
 
 @media (max-width: 980px) {
   .grid-3 { grid-template-columns: 1fr 1fr; }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .footer-inner { grid-template-columns: 1fr; justify-items: start; }
   .inline-form { grid-template-columns: 1fr; }
   .cta-form { grid-template-columns: 1fr; }
+  
+  /* Адаптивная навигация */
+  .nav { 
+    display: none; 
+    position: absolute; 
+    top: 100%; 
+    left: 0; 
+    right: 0; 
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 20px;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .nav.show { display: flex; }
+  
+  .nav-toggle { display: inline-flex; }
 }
 
+/* Мобильные устройства */
 @media (max-width: 760px) {
+  .container { width: min(100%, 95%); padding: 0 16px; }
+  
+  /* Сетки в одну колонку */
   .grid-2 { grid-template-columns: 1fr; }
   .grid-3 { grid-template-columns: 1fr; }
   .grid-4 { grid-template-columns: 1fr; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .promos-grid { grid-template-columns: 1fr; }
+  
+  /* Заголовки */
+  h1 { font-size: 2.5rem; line-height: 1.2; }
+  h2 { font-size: 2rem; line-height: 1.3; }
+  h3 { font-size: 1.5rem; }
+  
+  /* Header */
+  .header-inner { 
+    flex-direction: column; 
+    gap: 16px; 
+    padding: 16px 0; 
+  }
+  .logo { font-size: 1.5rem; }
+  
+  /* Hero секция */
+  .hero { padding: 60px 0; }
+  .hero-content { text-align: center; }
+  .hero-cta { 
+    flex-direction: column; 
+    gap: 12px; 
+    align-items: center; 
+  }
+  
+  /* Карточки */
+  .project-card { 
+    margin-bottom: 24px; 
+  }
+  .project-image img { 
+    width: 100%; 
+    height: 200px; 
+    object-fit: cover; 
+  }
+  
+  /* Кнопки */
+  .btn { 
+    width: 100%; 
+    padding: 16px 24px; 
+    font-size: 16px; 
+  }
+  
+  /* Формы */
+  .form-group input { 
+    width: 100%; 
+    padding: 16px; 
+    font-size: 16px; 
+  }
+  
+  /* Модальные окна */
+  .modal-dialog { 
+    width: 95%; 
+    max-width: none; 
+    margin: 20px; 
+  }
+  
+  /* Навигация */
   .nav-toggle { display: inline-flex; }
+  .nav { 
+    position: absolute; 
+    right: 16px; 
+    top: 60px; 
+    flex-direction: column; 
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+    min-width: 200px;
+    box-shadow: var(--shadow);
+  }
   .nav-list { 
     position: absolute; 
     right: 16px; 
@@ -456,6 +707,27 @@ body {
   .nav-list a.active {
     background: var(--primary);
     color: var(--text);
+  }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 480px) {
+  .container { padding: 0 12px; }
+  
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.25rem; }
+  
+  .hero { padding: 40px 0; }
+  
+  .btn { 
+    padding: 14px 20px; 
+    font-size: 14px; 
+  }
+  
+  .modal-dialog { 
+    width: 98%; 
+    margin: 10px; 
   }
 }
 

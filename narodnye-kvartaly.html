@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="narodnye-kvartaly">
     <!-- Header -->
     <header class="site-header">
         <div class="header-inner">
@@ -41,30 +41,34 @@
             </div>
             <div class="project-hero-content">
                 <div class="project-info">
-                    <h1>Народные кварталы</h1>
-                    <p class="project-location">г. Краснодар, улица Народная</p>
+                    <div class="project-date">В продаже</div>
                     <div class="project-status-badges">
                         <span class="badge badge-primary">400+ планировок</span>
-                        <span class="badge badge-discount">-12%</span>
-                        <span class="badge badge-available">в продаже</span>
                     </div>
-                    <div class="project-prices-overview">
-                        <div class="price-item">
-                            <span class="price">от 4,7 млн ₽</span>
-                            <span class="rooms">1-к</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="price">от 3,0 млн ₽</span>
-                            <span class="rooms">Студии</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="price">от 7,9 млн ₽</span>
-                            <span class="rooms">3-к</span>
-                        </div>
+                    <h1>Народные кварталы</h1>
+                    <h2 class="project-subtitle">Комфортное жилье для всей семьи</h2>
+                    <div class="hero-cta">
+                        <button class="btn btn-primary btn-large" onclick="openModal('consultation')">Получить предложение</button>
+                        <button class="btn btn-secondary btn-large" onclick="toggleBookingCalendar(event)">Подобрать квартиру</button>
                     </div>
                 </div>
-                <div class="project-image">
-                    <img src="img/narodnye-kvartaly.jpg.webp" alt="Народные кварталы">
+                <div class="project-features">
+                    <div class="feature-highlight">
+                        <h3>Ремонт в подарок</h3>
+                        <p>Получите ремонт в подарок при покупке квартиры</p>
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>400+ планировок</h3>
+                        <p>Большой выбор планировок на любой вкус</p>
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Развитая инфраструктура</h3>
+                        <p>Все необходимое для комфортной жизни</p>
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Выгодные условия</h3>
+                        <p>Скидка -12% на все квартиры</p>
+                    </div>
                 </div>
             </div>
         </div>

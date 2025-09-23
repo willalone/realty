@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ЖК ДОМ 101 - СК НВМ</title>
-    <meta name="description" content="ЖК ДОМ 101 - современный жилой комплекс в Краснодаре. Цены от 4,7 млн ₽. Квартиры от студий до 3-комнатных. Старт продаж." />
+    <meta name="description" content="ЖК ДОМ 101 - экосистема на территории 101 га. Цены от 3,8 млн ₽. Парк 20 га, колесо обозрения, школа на 1725 мест. Старт продаж 24 августа 2025." />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="dom-101">
     <!-- Header -->
     <header class="site-header">
         <div class="header-inner">
             <div class="logo">
-                <span class="logo-text">ГК НВМ</span>
+                <span class="logo-text">СК НВМ</span>
             </div>
             <button class="nav-toggle" onclick="toggleNav()" aria-label="Открыть меню">
                 <span class="nav-toggle-bar"></span>
@@ -41,30 +41,34 @@
             </div>
             <div class="project-hero-content">
                 <div class="project-info">
-                    <h1>ДОМ 101</h1>
-                    <p class="project-location">г. Краснодар, улица Дорожная</p>
+                    <div class="project-date">24 августа 2025</div>
                     <div class="project-status-badges">
                         <span class="badge badge-primary">Старт продаж</span>
-                        <span class="badge badge-discount">-12%</span>
-                        <span class="badge badge-available">в продаже</span>
                     </div>
-                    <div class="project-prices-overview">
-                        <div class="price-item">
-                            <span class="price">от 4,7 млн ₽</span>
-                            <span class="rooms">1-к</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="price">от 3,0 млн ₽</span>
-                            <span class="rooms">Студии</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="price">от 7,9 млн ₽</span>
-                            <span class="rooms">3-к</span>
-                        </div>
+                    <h1>101 повод, почему именно здесь стоит выбрать свой новый дом</h1>
+                    <h2 class="project-subtitle">ЖК «ДОМ 101»</h2>
+                    <div class="hero-cta">
+                        <button class="btn btn-primary btn-large" onclick="openModal('consultation')">Получить предложение</button>
+                        <button class="btn btn-secondary btn-large" onclick="toggleBookingCalendar(event)">Подобрать квартиру</button>
                     </div>
                 </div>
-                <div class="project-image">
-                    <img src="img/dom-101.jpg.webp" alt="ДОМ 101">
+                <div class="project-features">
+                    <div class="feature-highlight">
+                        <h3>Инфраструктура</h3>
+                        <p>Парк 20 га, храм, колесо обозрения</p>
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Образование</h3>
+                        <p>Школа на 1725 мест, 5 детских садов</p>
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Спортивная зона</h3>
+                        <p>Современные детские и спортивные площадки</p>
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Просторная территория</h3>
+                        <p>101 га благоустроенной территории</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -76,17 +80,42 @@
             <div class="details-grid">
                 <div class="details-main">
                     <h2>О проекте</h2>
-                    <p>ЖК "ДОМ 101" — это современный жилой комплекс, расположенный в развивающемся районе Краснодара. Проект сочетает в себе комфортное проживание, развитую инфраструктуру и выгодное расположение.</p>
+                    <p>ДОМ 101 — это экосистема, где каждый найдёт для себя что-то особенное. Здесь царит атмосфера дружелюбия и взаимопомощи, а развитая транспортная сеть позволяет легко добираться до других районов города.</p>
                     
-                    <h3>Особенности проекта</h3>
-                    <ul class="features-list">
-                        <li>400+ планировок на выбор</li>
-                        <li>Ремонт в подарок от застройщика</li>
-                        <li>Скидка -12% на все квартиры</li>
-                        <li>Старт продаж уже начался</li>
-                        <li>Квартал для жизни с развитой инфраструктурой</li>
-                        <li>Современные планировки и качественная отделка</li>
-                    </ul>
+                    <h3>Территория 101 га с ландшафтным парком</h3>
+                    <p>Ландшафтный парк 20 гектаров и спортивными площадками. Благоустроенные дворы с детскими зонами создают комфортную среду для семейного отдыха.</p>
+                    
+                    <h3>Собственное колесо обозрения</h3>
+                    <p>Уникальный символ района и центр притяжения жителей. Особая достопримечательность парка для незабываемых впечатлений и панорамных видов.</p>
+                    
+                    <h3>Образование от детского сада до выпуска</h3>
+                    <p>Школа на 1 725 мест и 5 детских садов по 310−350 мест каждый. Качественное образование от детского сада до выпускного класса.</p>
+                    
+                    <h3>Варианты планировок</h3>
+                    <p>Выбирайте от функциональных студий до просторных трехкомнатных квартир</p>
+                    
+                    <div class="floor-plans">
+                        <div class="plan-item">
+                            <h4>Студия</h4>
+                            <span class="plan-price">от 3,8 млн ₽</span>
+                            <p>от 22,56 м²</p>
+                        </div>
+                        <div class="plan-item">
+                            <h4>1-комнатная</h4>
+                            <span class="plan-price">от 4,3 млн ₽</span>
+                            <p>от 33,30 м²</p>
+                        </div>
+                        <div class="plan-item">
+                            <h4>2-комнатная</h4>
+                            <span class="plan-price">от 5,4 млн ₽</span>
+                            <p>от 48,80 м²</p>
+                        </div>
+                        <div class="plan-item">
+                            <h4>3-комнатная</h4>
+                            <span class="plan-price">от 8,1 млн ₽</span>
+                            <p>от 77,46 м²</p>
+                        </div>
+                    </div>
 
                     <h3>Инфраструктура</h3>
                     <div class="infrastructure-grid">

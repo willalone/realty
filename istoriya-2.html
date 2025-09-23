@@ -71,6 +71,24 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Personal Selection Form -->
+            <div class="personal-selection">
+                <div class="container">
+                    <h3>Подготовим персональную подборку под ваши критерии</h3>
+                    <form class="selection-form" onsubmit="handleConsultationSubmit(event)">
+                        <div class="form-row">
+                            <input type="text" name="name" placeholder="Имя" required>
+                            <input type="tel" name="phone" placeholder="Телефон" required>
+                        </div>
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="privacy-istoriya" required>
+                            <label for="privacy-istoriya">Я соглашаюсь с политикой конфиденциальности сайта</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Получить консультацию</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 

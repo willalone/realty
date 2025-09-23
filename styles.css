@@ -855,10 +855,10 @@ body {
 
 .project-hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, rgba(34, 197, 94, 0.9) 0%, rgba(22, 163, 74, 0.8) 100%);
+  background: #ffffff;
   overflow: hidden;
 }
 .project-hero::before {
@@ -871,7 +871,9 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   z-index: -1;
+  opacity: 0.3;
 }
 
 /* Specific backgrounds for each project */
@@ -894,6 +896,61 @@ body.istoriya-2 .project-hero::before {
   width: 100%;
   padding: 80px 0;
 }
+
+.personal-selection {
+  background: var(--surface);
+  padding: 60px 0;
+  margin-top: 0;
+}
+.personal-selection h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 32px;
+  color: var(--text);
+  text-align: center;
+}
+.selection-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.selection-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.selection-form .form-row input {
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--text);
+  font-size: 16px;
+}
+.selection-form .form-row input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+.form-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.form-checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+.form-checkbox label {
+  font-size: 14px;
+  color: var(--muted);
+  cursor: pointer;
+}
+.selection-form .btn {
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+}
 .project-date {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.8);
@@ -901,11 +958,10 @@ body.istoriya-2 .project-hero::before {
   font-weight: 500;
 }
 .project-subtitle {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 600;
   margin-bottom: 32px;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  color: var(--text);
 }
 .project-features {
   display: flex;
@@ -913,36 +969,34 @@ body.istoriya-2 .project-hero::before {
   gap: 24px;
 }
 .feature-highlight {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 24px;
-  border-radius: 12px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  background: var(--card);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
 }
 .feature-highlight h3 {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--primary);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
   margin-bottom: 8px;
 }
 .feature-highlight p {
   font-size: 14px;
-  color: var(--text);
+  color: var(--muted);
   margin: 0;
 }
 .project-hero h1 {
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 700;
   margin-bottom: 16px;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  color: var(--text);
+  line-height: 1.2;
 }
 .project-location {
   font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--muted);
   margin-bottom: 24px;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 .project-status-badges {
   display: flex;
@@ -957,19 +1011,19 @@ body.istoriya-2 .project-hero::before {
   font-weight: 600;
 }
 .badge-primary {
-  background: rgba(255, 255, 255, 0.9);
-  color: var(--primary);
-  border: 2px solid var(--primary);
-}
-.badge-discount {
   background: var(--primary);
   color: white;
-  border: 2px solid white;
+  border: none;
+}
+.badge-discount {
+  background: var(--accent);
+  color: white;
+  border: none;
 }
 .badge-available {
-  background: rgba(255, 255, 255, 0.9);
-  color: var(--primary);
-  border: 2px solid var(--primary);
+  background: var(--pill);
+  color: var(--text);
+  border: 1px solid var(--border);
 }
 .project-prices-overview {
   display: grid;
@@ -1015,6 +1069,136 @@ body.istoriya-2 .project-hero::before {
   font-size: 1.5rem;
   margin: 32px 0 16px;
   color: var(--text);
+}
+
+.project-sections {
+  display: grid;
+  gap: 40px;
+  margin: 40px 0;
+}
+.project-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+.project-section h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+.project-section p {
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+.section-image {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.section-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.image-counter {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.location-section {
+  margin: 40px 0;
+  padding: 24px;
+  background: var(--surface);
+  border-radius: 8px;
+}
+.location-section h3 {
+  margin-bottom: 8px;
+}
+.location-section p {
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.virtual-tour {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tour-label {
+  font-size: 14px;
+  color: var(--text);
+}
+.tour-duration {
+  background: var(--primary);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.purchase-options {
+  margin: 40px 0;
+}
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+.option-item {
+  background: var(--surface);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.option-item h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+.option-item p {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
+.section-tabs {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+.section-tabs .tab {
+  background: transparent;
+  border: none;
+  padding: 12px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+.section-tabs .tab.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
 }
 .features-list {
   list-style: none;

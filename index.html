@@ -3,44 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Застройщик NPM - Тест</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        .status {
-            background: #4CAF50;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center;
-            margin: 20px 0;
-        }
-    </style>
+    <title>Застройщик NPM — помощь в подборе недвижимости</title>
+    <meta name="description" content="Застройщик NPM — современное жилье с развитой инфраструктурой. Консультации, ипотека, выгодные предложения." />
+    <meta name="theme-color" content="#0b0d12" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>🏠 Застройщик NPM</h1>
-        <div class="status">
-            ✅ GitHub Pages работает! Сайт успешно загружен.
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-icon">🏠</span>
+                <span class="logo-text">Застройщик NPM</span>
+            </div>
+            <nav class="nav">
+                <a href="#hero" class="nav-link">Главная</a>
+                <a href="#projects" class="nav-link">Проекты</a>
+                <a href="#promos" class="nav-link">Акции</a>
+                <a href="#mortgage" class="nav-link">Ипотека</a>
+                <a href="#consultation" class="nav-link">Консультация</a>
+            </nav>
         </div>
-        <p>Это тестовая страница для проверки работы GitHub Pages.</p>
-        <p>Время загрузки: <script>document.write(new Date().toLocaleString('ru-RU'));</script></p>
-        <p>Если вы видите эту страницу, значит GitHub Pages функционирует корректно.</p>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container hero-inner">
+            <div class="hero-content">
+                <h1>Застройщик NPM</h1>
+                <p>Современное жилье с развитой инфраструктурой</p>
+                <div class="hero-cta">
+                    <button class="btn btn-primary" onclick="scrollToSection('projects')">Смотреть проекты</button>
+                    <button class="btn btn-secondary" onclick="openModal('consultation')">Получить консультацию</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Выберите квартиру</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="img/dom-101.jpg.webp" alt="ДОМ 101">
+                    </div>
+                    <div class="project-content">
+                        <h3>ДОМ 101</h3>
+                        <p>Современный жилой комплекс в центре города</p>
+                        <button class="btn btn-outline" onclick="openModal('dom101')">О проекте</button>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="img/narodnye-kvartaly.jpg.webp" alt="Народные кварталы">
+                    </div>
+                    <div class="project-content">
+                        <h3>Народные кварталы</h3>
+                        <p>Комфортное жилье для всей семьи</p>
+                        <button class="btn btn-outline" onclick="openModal('narodnye')">О проекте</button>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="img/istoriya-2.jpg.webp" alt="История 2">
+                    </div>
+                    <div class="project-content">
+                        <h3>История 2</h3>
+                        <p>Элитное жилье в историческом центре</p>
+                        <button class="btn btn-outline" onclick="openModal('istoriya2')">О проекте</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promos Section -->
+    <section id="promos" class="promos">
+        <div class="container">
+            <h2>Акции</h2>
+            <div class="promos-grid">
+                <div class="promo-card">
+                    <h3>Скидка 15%</h3>
+                    <p>При покупке до конца месяца</p>
+                    <button class="btn btn-primary" onclick="openModal('promo1')">Подробнее</button>
+                </div>
+                <div class="promo-card">
+                    <h3>Бесплатная парковка</h3>
+                    <p>Для всех жителей комплекса</p>
+                    <button class="btn btn-primary" onclick="openModal('promo2')">Подробнее</button>
+                </div>
+                <div class="promo-card">
+                    <h3>Рассрочка 0%</h3>
+                    <p>На 24 месяца без переплат</p>
+                    <button class="btn btn-primary" onclick="openModal('promo3')">Подробнее</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mortgage Section -->
+    <section id="mortgage" class="mortgage">
+        <div class="container">
+            <h2>Ипотечные программы</h2>
+            <div class="grid-4">
+                <div class="card">
+                    <h3>Государственная ипотека</h3>
+                    <p>От 6% годовых</p>
+                    <button class="btn btn-primary" onclick="openModal('state')">Подробнее</button>
+                </div>
+                <div class="card">
+                    <h3>Семейная ипотека</h3>
+                    <p>Льготные условия</p>
+                    <button class="btn btn-primary" onclick="openModal('family')">Подробнее</button>
+                </div>
+                <div class="card">
+                    <h3>Военная ипотека</h3>
+                    <p>Специальные условия</p>
+                    <button class="btn btn-primary" onclick="openModal('military')">Подробнее</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultation Section -->
+    <section id="consultation" class="consultation">
+        <div class="container">
+            <h2>Получить консультацию</h2>
+            <div class="consultation-form">
+                <form onsubmit="handleConsultationSubmit(event)">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" placeholder="Ваш телефон" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Отправить заявку</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>&copy; 2024 Застройщик NPM. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal" class="modal-backdrop" style="display: none;" onclick="closeModal()">
+        <div class="modal-dialog" onclick="event.stopPropagation()">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+                <div id="modal-body"></div>
+            </div>
+        </div>
     </div>
+
+    <script>
+        // Простая JavaScript функциональность
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function openModal(modalId) {
+            const modal = document.getElementById('modal');
+            const modalBody = document.getElementById('modal-body');
+            
+            // Простой контент для модальных окон
+            const content = {
+                'consultation': `
+                    <h3>Консультация</h3>
+                    <form onsubmit="handleConsultationSubmit(event)">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="Ваш телефон" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Отправить заявку</button>
+                    </form>
+                `,
+                'dom101': '<h3>ДОМ 101</h3><p>Подробная информация о проекте ДОМ 101...</p>',
+                'narodnye': '<h3>Народные кварталы</h3><p>Подробная информация о проекте Народные кварталы...</p>',
+                'istoriya2': '<h3>История 2</h3><p>Подробная информация о проекте История 2...</p>',
+                'promo1': '<h3>Скидка 15%</h3><p>Подробная информация об акции...</p>',
+                'promo2': '<h3>Бесплатная парковка</h3><p>Подробная информация об акции...</p>',
+                'promo3': '<h3>Рассрочка 0%</h3><p>Подробная информация об акции...</p>',
+                'state': '<h3>Государственная ипотека</h3><p>Подробная информация об ипотеке...</p>',
+                'family': '<h3>Семейная ипотека</h3><p>Подробная информация об ипотеке...</p>',
+                'military': '<h3>Военная ипотека</h3><p>Подробная информация об ипотеке...</p>'
+            };
+            
+            modalBody.innerHTML = content[modalId] || '<p>Информация недоступна</p>';
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function handleConsultationSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = {
+                name: formData.get('name'),
+                phone: formData.get('phone'),
+                formType: 'Консультация'
+            };
+            
+            // Простая отправка в Telegram (заглушка)
+            alert('Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
+            closeModal();
+        }
+
+        // Плавная прокрутка для навигации
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                scrollToSection(targetId);
+            });
+        });
+    </script>
 </body>
 </html>

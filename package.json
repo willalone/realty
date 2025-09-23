@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://willalone.github.io/victory-realty/",
+  "homepage": "https://willalone.github.io/realty/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

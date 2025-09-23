@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Застройщик NPM — помощь в подборе недвижимости</title>
@@ -10,37 +10,37 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+  </head>
+  <body>
     <!-- Header -->
     <header class="site-header">
         <div class="header-inner">
             <button class="nav-toggle" onclick="toggleNav()" aria-label="Открыть меню">
-                <span class="nav-toggle-bar"></span>
-            </button>
+            <span class="nav-toggle-bar"></span>
+          </button>
             <nav class="nav" id="nav">
                 <a href="#hero" class="nav-link">Главная</a>
                 <a href="#projects" class="nav-link">Проекты</a>
                 <a href="#promos" class="nav-link">Акции</a>
                 <a href="#mortgage" class="nav-link">Ипотека</a>
                 <a href="#consultation" class="nav-link">Консультация</a>
-            </nav>
-        </div>
+        </nav>
+      </div>
     </header>
 
     <!-- Hero Section -->
     <section id="hero" class="hero">
         <div class="container hero-inner">
-            <div class="hero-content">
+          <div class="hero-content">
                 <h1>Застройщик NPM</h1>
                 <p>Современное жилье с развитой инфраструктурой</p>
-                <div class="hero-cta">
+            <div class="hero-cta">
                     <button class="btn btn-primary" onclick="toggleBookingCalendar(event)">Смотреть квартиры</button>
                     <button class="btn btn-secondary" onclick="openModal('consultation')">Получить консультацию</button>
                 </div>
-            </div>
+          </div>
         </div>
-    </section>
+      </section>
 
     <!-- Booking Section -->
     <section id="booking" class="booking-section" style="display: none;">
@@ -102,9 +102,9 @@
                         <button type="button" class="btn btn-primary" onclick="submitBooking()">Записаться на просмотр</button>
                     </div>
                 </div>
-            </div>
+          </div>
         </div>
-    </section>
+      </section>
 
     <!-- Projects Section -->
     <section id="projects" class="projects">
@@ -119,19 +119,19 @@
                         <h3>ДОМ 101</h3>
                         <p>Современный жилой комплекс в центре города</p>
                         <button class="btn btn-outline" onclick="openModal('dom101')">О проекте</button>
-                    </div>
-                </div>
+            </div>
+          </div>
                 
                 <div class="project-card">
                     <div class="project-image">
                         <img src="img/narodnye-kvartaly.jpg.webp" alt="Народные кварталы">
-                    </div>
+                  </div>
                     <div class="project-content">
-                        <h3>Народные кварталы</h3>
+                  <h3>Народные кварталы</h3>
                         <p>Комфортное жилье для всей семьи</p>
                         <button class="btn btn-outline" onclick="openModal('narodnye')">О проекте</button>
-                    </div>
-                </div>
+              </div>
+            </div>
                 
                 <div class="project-card">
                     <div class="project-image">
@@ -141,11 +141,11 @@
                         <h3>История 2</h3>
                         <p>Элитное жилье в историческом центре</p>
                         <button class="btn btn-outline" onclick="openModal('istoriya2')">О проекте</button>
-                    </div>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+      </section>
 
     <!-- Promos Section -->
     <section id="promos" class="promos">
@@ -182,7 +182,7 @@
                     <button class="btn btn-primary" onclick="openModal('state')">Подробнее</button>
                 </div>
                 <div class="card">
-                    <h3>Семейная ипотека</h3>
+              <h3>Семейная ипотека</h3>
                     <p>Льготные условия</p>
                     <button class="btn btn-primary" onclick="openModal('family')">Подробнее</button>
                 </div>
@@ -191,9 +191,9 @@
                     <p>Специальные условия</p>
                     <button class="btn btn-primary" onclick="openModal('military')">Подробнее</button>
                 </div>
-            </div>
+          </div>
         </div>
-    </section>
+      </section>
 
     <!-- Consultation Section -->
     <section id="consultation" class="consultation">
@@ -208,16 +208,16 @@
                         <input type="tel" name="phone" placeholder="+7(___)___-__-__" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Отправить заявку</button>
-                </form>
-            </div>
+            </form>
+          </div>
         </div>
-    </section>
+      </section>
 
     <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-inner">
             <p>&copy; 2024 Застройщик NPM. Все права защищены.</p>
-        </div>
+      </div>
     </footer>
 
     <!-- Modal -->
@@ -227,7 +227,7 @@
                 <button class="modal-close" onclick="closeModal()">&times;</button>
                 <div id="modal-body"></div>
             </div>
-        </div>
+      </div>
     </div>
 
     <script>
@@ -258,7 +258,7 @@
                             <input type="tel" name="phone" placeholder="+7(___)___-__-__" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Отправить заявку</button>
-                    </form>
+        </form>
                 `,
                 'dom101': `
                     <h3>🏠 ДОМ 101</h3>
@@ -458,10 +458,10 @@
                             <li>Быстрое одобрение</li>
                             <li>Специальные условия для военных</li>
                         </ul>
-                    </div>
+      </div>
                     <div style="background: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(79,124,255,0.1)); padding: 15px; border-radius: 10px; margin-bottom: 20px;">
                         <p><strong>🏠 Спецпредложение:</strong> Скидка -12% на все квартиры для военнослужащих!</p>
-                    </div>
+    </div>
                     <button class="btn btn-primary" onclick="openModal('consultation')">Узнать подробности</button>
                 `
             };
@@ -499,7 +499,8 @@
         function showBookingCalendar() {
             console.log('ShowBookingCalendar called');
             const bookingSection = document.getElementById('booking');
-            const button = document.querySelector('button[onclick*="toggleBookingCalendar"]');
+            const button = document.querySelector('button[onclick*="toggleBookingCalendar"]') || 
+                          document.querySelector('.btn-primary');
             
             console.log('Booking section found:', bookingSection);
             console.log('Button found:', button);
@@ -526,7 +527,8 @@
         // Close booking calendar
         function closeBookingCalendar() {
             const bookingSection = document.getElementById('booking');
-            const button = document.querySelector('button[onclick*="toggleBookingCalendar"]');
+            const button = document.querySelector('button[onclick*="toggleBookingCalendar"]') || 
+                          document.querySelector('.btn-primary');
             
             if (bookingSection) {
                 bookingSection.style.display = 'none';
@@ -557,6 +559,8 @@
             // Limit to 11 digits maximum
             if (value.length > 11) {
                 value = value.slice(0, 11);
+                event.target.value = formatPhoneValue(value);
+                return;
             }
             
             if (value.length === 0) {
@@ -574,31 +578,19 @@
                 value = '7' + value;
             }
             
-            // Format based on length
-            if (value.length === 1 && value[0] === '7') {
-                event.target.value = '+7(';
-                return;
-            }
-            
-            if (value.length <= 4) {
-                event.target.value = '+7(' + value.slice(1);
-                return;
-            }
-            
-            if (value.length <= 7) {
-                event.target.value = '+7(' + value.slice(1, 4) + ')' + value.slice(4);
-                return;
-            }
-            
-            if (value.length <= 9) {
-                event.target.value = '+7(' + value.slice(1, 4) + ')' + value.slice(4, 7) + '-' + value.slice(7);
-                return;
-            }
-            
-            if (value.length <= 11) {
-                event.target.value = '+7(' + value.slice(1, 4) + ')' + value.slice(4, 7) + '-' + value.slice(7, 9) + '-' + value.slice(9);
-                return;
-            }
+            // Use helper function to format
+            event.target.value = formatPhoneValue(value);
+        }
+
+        // Helper function to format phone value
+        function formatPhoneValue(value) {
+            if (value.length === 0) return '';
+            if (value.length === 1 && value[0] === '7') return '+7(';
+            if (value.length <= 4) return '+7(' + value.slice(1);
+            if (value.length <= 7) return '+7(' + value.slice(1, 4) + ')' + value.slice(4);
+            if (value.length <= 9) return '+7(' + value.slice(1, 4) + ')' + value.slice(4, 7) + '-' + value.slice(7);
+            if (value.length <= 11) return '+7(' + value.slice(1, 4) + ')' + value.slice(4, 7) + '-' + value.slice(7, 9) + '-' + value.slice(9);
+            return '+7(' + value.slice(1, 4) + ')' + value.slice(4, 7) + '-' + value.slice(7, 9) + '-' + value.slice(9, 11);
         }
 
         // Handle phone input keydown
@@ -623,9 +615,10 @@
                 return;
             }
             
-            // Ensure that it is a number and stop the keypress
-            if ((event.shiftKey || (event.keyCode < 48 || event.keyCode > 57)) && (event.keyCode < 96 || event.keyCode > 105)) {
+            // Block all non-numeric characters
+            if (!((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105))) {
                 event.preventDefault();
+                return;
             }
         }
 
@@ -988,8 +981,14 @@
 
         // Initialize booking system when page loads
         document.addEventListener('DOMContentLoaded', function() {
-            initBookingSystem();
-            initPhoneMasks();
+            console.log('DOM loaded, initializing...');
+            try {
+                initBookingSystem();
+                initPhoneMasks();
+                console.log('Initialization completed successfully');
+            } catch (error) {
+                console.error('Initialization error:', error);
+            }
         });
 
         // Initialize phone masks for all phone inputs
@@ -1107,6 +1106,15 @@
             nav.classList.toggle('show');
         }
 
+        // Make functions globally available
+        window.openModal = openModal;
+        window.closeModal = closeModal;
+        window.toggleBookingCalendar = toggleBookingCalendar;
+        window.handleConsultationSubmit = handleConsultationSubmit;
+        window.toggleNav = toggleNav;
+        
+        console.log('All functions are now globally available');
+
         // Закрытие меню при клике на ссылку
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function(e) {
@@ -1127,5 +1135,5 @@
             }
         });
     </script>
-</body>
-</html>
+  </body>
+  </html>

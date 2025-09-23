@@ -231,6 +231,9 @@
     </div>
 
     <script>
+        // Telegram config (override via window.TELEGRAM_BOT_TOKEN and window.TELEGRAM_CHAT_ID)
+        const TG_BOT_TOKEN = (window && window.TELEGRAM_BOT_TOKEN) ? window.TELEGRAM_BOT_TOKEN : '';
+        const TG_CHAT_ID = (window && window.TELEGRAM_CHAT_ID) ? window.TELEGRAM_CHAT_ID : '';
         // Простая JavaScript функциональность
         function scrollToSection(sectionId) {
             document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
@@ -842,9 +845,9 @@
 
         // Send booking to Telegram
         function sendBookingToTelegram(bookingData) {
-            // Use environment variables or fallback to test values
-            const botToken = import.meta?.env?.VITE_TELEGRAM_BOT_TOKEN || '6954560974:AAH8e3X4x5x5x5x5x5x5x5x5x5x5x5x';
-            const chatId = import.meta?.env?.VITE_TELEGRAM_CHAT_ID || '1234567890';
+            // Read from safe globals or fallback placeholders
+            const botToken = TG_BOT_TOKEN || 'REPLACE_ME_TELEGRAM_BOT_TOKEN';
+            const chatId = TG_CHAT_ID || 'REPLACE_ME_CHAT_ID';
             
             const objectNames = {
                 'dom101': 'ДОМ 101',
@@ -863,7 +866,7 @@
 📧 Email: ${bookingData.email || 'не указан'}
 💬 Комментарий: ${bookingData.comment || 'нет'}`;
 
-            console.log('Sending to Telegram:', { botToken: botToken.substring(0, 10) + '...', chatId, message });
+            console.log('Sending to Telegram:', { botToken: botToken ? botToken.substring(0, 10) + '...' : '(empty)', chatId, message });
 
             // Create AbortController for timeout
             const controller = new AbortController();
@@ -1011,9 +1014,9 @@
 
         // Send consultation form to Telegram
         function sendToTelegram(data) {
-            // Use environment variables or fallback to test values
-            const botToken = import.meta?.env?.VITE_TELEGRAM_BOT_TOKEN || '6954560974:AAH8e3X4x5x5x5x5x5x5x5x5x5x5x5x';
-            const chatId = import.meta?.env?.VITE_TELEGRAM_CHAT_ID || '1234567890';
+            // Read from safe globals or fallback placeholders
+            const botToken = TG_BOT_TOKEN || '8026350498:AAGcyKMsrJyD0mGgj26Ss2m49vX5jp8LzaM';
+            const chatId = TG_CHAT_ID || '919481169';
             
             const message = `📞 Новая заявка на консультацию
 
@@ -1021,7 +1024,7 @@
 📞 Телефон: ${data.phone}
 📋 Тип заявки: ${data.formType}`;
 
-            console.log('Sending consultation to Telegram:', { botToken: botToken.substring(0, 10) + '...', chatId, message });
+            console.log('Sending consultation to Telegram:', { botToken: botToken ? botToken.substring(0, 10) + '...' : '(empty)', chatId, message });
 
             // Create AbortController for timeout
             const controller = new AbortController();

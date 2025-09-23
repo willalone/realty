@@ -15,10 +15,6 @@
     <!-- Header -->
     <header class="site-header">
         <div class="header-inner">
-            <div class="logo">
-                <span class="logo-icon">🏠</span>
-                <span class="logo-text">Застройщик NPM</span>
-            </div>
             <button class="nav-toggle" onclick="toggleNav()" aria-label="Открыть меню">
                 <span class="nav-toggle-bar"></span>
             </button>
@@ -209,7 +205,7 @@
                         <input type="text" name="name" placeholder="Ваше имя" required>
                     </div>
                     <div class="form-group">
-                        <input type="tel" name="phone" placeholder="Ваш телефон" required>
+                        <input type="tel" name="phone" placeholder="+7(___)___-__-__" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Отправить заявку</button>
                 </form>
@@ -253,7 +249,7 @@
                             <input type="text" name="name" placeholder="Ваше имя" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" name="phone" placeholder="Ваш телефон" required>
+                            <input type="tel" name="phone" placeholder="+7(___)___-__-__" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Отправить заявку</button>
                     </form>
@@ -986,7 +982,84 @@
         // Initialize booking system when page loads
         document.addEventListener('DOMContentLoaded', function() {
             initBookingSystem();
+            initPhoneMasks();
         });
+
+        // Initialize phone masks for all phone inputs
+        function initPhoneMasks() {
+            // Find all phone inputs
+            const phoneInputs = document.querySelectorAll('input[type="tel"], input[name="phone"]');
+            
+            phoneInputs.forEach(input => {
+                // Add event listeners
+                input.addEventListener('input', formatPhoneNumber);
+                input.addEventListener('keydown', handlePhoneKeydown);
+                input.addEventListener('paste', function(e) {
+                    // Allow paste, but format after paste
+                    setTimeout(() => {
+                        formatPhoneNumber({ target: input });
+                    }, 10);
+                });
+            });
+        }
+
+        // Send consultation form to Telegram
+        function sendToTelegram(data) {
+            // Use environment variables or fallback to test values
+            const botToken = import.meta?.env?.VITE_TELEGRAM_BOT_TOKEN || '6954560974:AAH8e3X4x5x5x5x5x5x5x5x5x5x5x5x';
+            const chatId = import.meta?.env?.VITE_TELEGRAM_CHAT_ID || '1234567890';
+            
+            const message = `📞 Новая заявка на консультацию
+
+👤 Имя: ${data.name}
+📞 Телефон: ${data.phone}
+📋 Тип заявки: ${data.formType}`;
+
+            console.log('Sending consultation to Telegram:', { botToken: botToken.substring(0, 10) + '...', chatId, message });
+
+            // Create AbortController for timeout
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: 'HTML'
+                }),
+                signal: controller.signal
+            })
+            .then(response => {
+                clearTimeout(timeoutId);
+                console.log('Telegram response status:', response.status);
+                return response.json();
+            })
+            .then(data => {
+                console.log('Telegram response data:', data);
+                
+                if (data.ok) {
+                    showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
+                    closeModal();
+                } else {
+                    console.error('Telegram API error:', data);
+                    showToast(`Ошибка при отправке заявки: ${data.description || 'Неизвестная ошибка'}`, 'error');
+                }
+            })
+            .catch(error => {
+                clearTimeout(timeoutId);
+                console.error('Network error:', error);
+                
+                if (error.name === 'AbortError') {
+                    showToast('Превышено время ожидания. Попробуйте еще раз.', 'error');
+                } else {
+                    showToast('Ошибка сети при отправке заявки. Попробуйте еще раз.', 'error');
+                }
+            });
+        }
 
         function handleConsultationSubmit(event) {
             event.preventDefault();
@@ -996,10 +1069,29 @@
                 phone: formData.get('phone'),
                 formType: 'Консультация'
             };
+
+            // Validate required fields
+            if (!data.name || !data.phone) {
+                showToast('Пожалуйста, заполните имя и телефон', 'error');
+                return;
+            }
+
+            // Validate phone number
+            const phoneDigits = data.phone.replace(/\D/g, '');
+            const phoneRegex = /^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$/;
             
-            // Простая отправка в Telegram (заглушка)
-            alert('Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
-            closeModal();
+            if (phoneDigits.length !== 11) {
+                showToast('Введите полный номер телефона (11 цифр) в формате +7(999)999-99-99', 'error');
+                return;
+            }
+            
+            if (!phoneRegex.test(data.phone)) {
+                showToast('Введите корректный номер телефона в формате +7(999)999-99-99', 'error');
+                return;
+            }
+
+            // Send to Telegram
+            sendToTelegram(data);
         }
 
         // Мобильное меню

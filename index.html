@@ -232,8 +232,8 @@
 
     <script>
         // Telegram config (override via window.TELEGRAM_BOT_TOKEN and window.TELEGRAM_CHAT_ID)
-        const TG_BOT_TOKEN = (window && window.TELEGRAM_BOT_TOKEN) ? window.TELEGRAM_BOT_TOKEN : '';
-        const TG_CHAT_ID = (window && window.TELEGRAM_CHAT_ID) ? window.TELEGRAM_CHAT_ID : '';
+        const TG_BOT_TOKEN = (window && window.TELEGRAM_BOT_TOKEN) ? window.TELEGRAM_BOT_TOKEN : '8026350498:AAGcyKMsrJyD0mGgj26Ss2m49vX5jp8LzaM';
+        const TG_CHAT_ID = (window && window.TELEGRAM_CHAT_ID) ? window.TELEGRAM_CHAT_ID : '919481169';
         // Простая JavaScript функциональность
         function scrollToSection(sectionId) {
             document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
@@ -551,6 +551,7 @@
             const phoneInput = document.getElementById('visitorPhone');
             phoneInput.addEventListener('input', formatPhoneNumber);
             phoneInput.addEventListener('keydown', handlePhoneKeydown);
+            phoneInput.setAttribute('maxlength', '17'); // +7(999)999-99-99
             
             loadBookingsFromStorage();
         }
@@ -618,8 +619,10 @@
                 return;
             }
             
-            // Block all non-numeric characters
-            if (!((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105))) {
+            // Block all non-numeric characters (allow navigation keys)
+            const isNumberKey = (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105);
+            const isNavKey = [35,36,37,38,39,40].includes(event.keyCode);
+            if (!isNumberKey && !isNavKey) {
                 event.preventDefault();
                 return;
             }
@@ -846,8 +849,8 @@
         // Send booking to Telegram
         function sendBookingToTelegram(bookingData) {
             // Read from safe globals or fallback placeholders
-            const botToken = TG_BOT_TOKEN || 'REPLACE_ME_TELEGRAM_BOT_TOKEN';
-            const chatId = TG_CHAT_ID || 'REPLACE_ME_CHAT_ID';
+            const botToken = TG_BOT_TOKEN;
+            const chatId = TG_CHAT_ID;
             
             const objectNames = {
                 'dom101': 'ДОМ 101',
@@ -974,12 +977,16 @@
         function showToast(message, type = 'info') {
             const toast = document.createElement('div');
             toast.className = `toast ${type}`;
-            toast.textContent = message;
+            toast.innerHTML = `<div class="toast-content">${message}</div><button class="toast-close" aria-label="Закрыть">×</button>`;
             document.body.appendChild(toast);
             
-            setTimeout(() => {
-                toast.remove();
-            }, 5000);
+            const removeToast = () => {
+                if (toast && toast.parentNode) toast.parentNode.removeChild(toast);
+            };
+            
+            toast.querySelector('.toast-close')?.addEventListener('click', removeToast);
+            
+            setTimeout(removeToast, 4000);
         }
 
         // Initialize booking system when page loads
@@ -1003,6 +1010,7 @@
                 // Add event listeners
                 input.addEventListener('input', formatPhoneNumber);
                 input.addEventListener('keydown', handlePhoneKeydown);
+                input.setAttribute('maxlength', '17'); // ensure max length mask
                 input.addEventListener('paste', function(e) {
                     // Allow paste, but format after paste
                     setTimeout(() => {

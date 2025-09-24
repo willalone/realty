@@ -686,6 +686,30 @@
             document.querySelectorAll('.filter-dropdown').forEach(dropdown => {
                 dropdown.style.display = 'none';
             });
+            
+            // Add event listeners for automatic filtering
+            addFilterEventListeners();
+        }
+
+        // Add event listeners for automatic filtering
+        function addFilterEventListeners() {
+            // Listen for changes in radio buttons (type)
+            document.querySelectorAll('input[name="type"]').forEach(radio => {
+                radio.addEventListener('change', applyFilters);
+            });
+            
+            // Listen for changes in checkboxes (rooms)
+            document.querySelectorAll('input[name="rooms"]').forEach(checkbox => {
+                checkbox.addEventListener('change', applyFilters);
+            });
+            
+            // Listen for changes in price inputs
+            document.getElementById('priceFrom').addEventListener('input', applyFilters);
+            document.getElementById('priceTo').addEventListener('input', applyFilters);
+            
+            // Listen for changes in area inputs
+            document.getElementById('areaFrom').addEventListener('input', applyFilters);
+            document.getElementById('areaTo').addEventListener('input', applyFilters);
         }
 
         // Toggle filter dropdown
@@ -731,8 +755,8 @@
             document.querySelectorAll('.price-tab').forEach(tab => tab.classList.remove('active'));
             event.target.classList.add('active');
             
-            // Update hidden radio inputs
-            document.querySelector(`input[name="priceType"][value="${type}"]`).checked = true;
+            // Apply filters automatically
+            applyFilters();
         }
 
         // Select area type
@@ -741,8 +765,8 @@
             document.querySelectorAll('.area-tab').forEach(tab => tab.classList.remove('active'));
             event.target.classList.add('active');
             
-            // Update hidden radio inputs
-            document.querySelector(`input[name="areaType"][value="${type}"]`).checked = true;
+            // Apply filters automatically
+            applyFilters();
         }
 
         // Apply filters
@@ -757,43 +781,74 @@
             const areaFrom = document.getElementById('areaFrom').value ? parseFloat(document.getElementById('areaFrom').value) : null;
             const areaTo = document.getElementById('areaTo').value ? parseFloat(document.getElementById('areaTo').value) : null;
 
+            console.log('Applying filters:', {
+                selectedType,
+                selectedRooms,
+                priceType,
+                areaType,
+                priceFrom,
+                priceTo,
+                areaFrom,
+                areaTo
+            });
+
             const filteredApartments = allApartments.filter(apartment => {
+                console.log('Checking apartment:', apartment.dataset);
+
                 // Type filter
                 if (apartment.dataset.type !== selectedType) {
+                    console.log('Failed type filter');
                     return false;
                 }
 
                 // Rooms filter
                 if (selectedRooms.length > 0 && !selectedRooms.includes(apartment.dataset.rooms)) {
+                    console.log('Failed rooms filter');
                     return false;
                 }
 
-                // Price filter
-                const priceValue = priceType === 'total' 
-                    ? parseFloat(apartment.dataset.priceTotal) 
-                    : parseFloat(apartment.dataset.pricePerM2);
-                
-                if (priceFrom !== null && priceValue < priceFrom) {
-                    return false;
-                }
-                if (priceTo !== null && priceValue > priceTo) {
-                    return false;
+                // Price filter - only apply if price inputs are filled
+                if (priceFrom !== null || priceTo !== null) {
+                    const priceValue = priceType === 'total' 
+                        ? parseFloat(apartment.dataset.priceTotal) 
+                        : parseFloat(apartment.dataset.pricePerM2);
+                    
+                    // Skip price filtering for "по запросу" (price = 0)
+                    if (priceValue === 0) {
+                        console.log('Skipping price filter - price on request');
+                    } else {
+                        if (priceFrom !== null && priceValue < priceFrom) {
+                            console.log('Failed price from filter');
+                            return false;
+                        }
+                        if (priceTo !== null && priceValue > priceTo) {
+                            console.log('Failed price to filter');
+                            return false;
+                        }
+                    }
                 }
 
                 // Area filter
-                const areaValue = areaType === 'total' 
-                    ? parseFloat(apartment.dataset.areaTotal) 
-                    : parseFloat(apartment.dataset.areaLiving);
-                
-                if (areaFrom !== null && areaValue < areaFrom) {
-                    return false;
-                }
-                if (areaTo !== null && areaValue > areaTo) {
-                    return false;
+                if (areaFrom !== null || areaTo !== null) {
+                    const areaValue = areaType === 'total' 
+                        ? parseFloat(apartment.dataset.areaTotal) 
+                        : parseFloat(apartment.dataset.areaLiving);
+                    
+                    if (areaFrom !== null && areaValue < areaFrom) {
+                        console.log('Failed area from filter');
+                        return false;
+                    }
+                    if (areaTo !== null && areaValue > areaTo) {
+                        console.log('Failed area to filter');
+                        return false;
+                    }
                 }
 
+                console.log('Apartment passed all filters');
                 return true;
             });
+
+            console.log('Filtered apartments count:', filteredApartments.length);
 
             // Hide all apartments
             allApartments.forEach(apartment => {

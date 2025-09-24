@@ -827,6 +827,30 @@
             document.querySelectorAll('.filter-dropdown').forEach(dropdown => {
                 dropdown.style.display = 'none';
             });
+            
+            // Add event listeners for automatic filtering
+            addFilterEventListeners();
+        }
+
+        // Add event listeners for automatic filtering
+        function addFilterEventListeners() {
+            // Listen for changes in radio buttons (type)
+            document.querySelectorAll('input[name="type"]').forEach(radio => {
+                radio.addEventListener('change', applyFilters);
+            });
+            
+            // Listen for changes in checkboxes (rooms)
+            document.querySelectorAll('input[name="rooms"]').forEach(checkbox => {
+                checkbox.addEventListener('change', applyFilters);
+            });
+            
+            // Listen for changes in price inputs
+            document.getElementById('priceFrom').addEventListener('input', applyFilters);
+            document.getElementById('priceTo').addEventListener('input', applyFilters);
+            
+            // Listen for changes in area inputs
+            document.getElementById('areaFrom').addEventListener('input', applyFilters);
+            document.getElementById('areaTo').addEventListener('input', applyFilters);
         }
 
         // Toggle filter dropdown
@@ -871,6 +895,9 @@
             currentPriceType = type;
             document.querySelectorAll('.price-tab').forEach(tab => tab.classList.remove('active'));
             event.target.classList.add('active');
+            
+            // Apply filters automatically
+            applyFilters();
         }
 
         // Select area type
@@ -878,6 +905,9 @@
             currentAreaType = type;
             document.querySelectorAll('.area-tab').forEach(tab => tab.classList.remove('active'));
             event.target.classList.add('active');
+            
+            // Apply filters automatically
+            applyFilters();
         }
 
         // Apply filters

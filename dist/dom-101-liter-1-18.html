@@ -66,12 +66,8 @@
                     </div>
                     <div class="floor-plan-info">
                         <div class="price-area">
-                            <span class="price">от 3 835 200 Р</span>
+                            <span class="price">от 3 835 200 ₽</span>
                             <span class="total-area">35.1 м²</span>
-                        </div>
-                        <div class="navigation-arrows">
-                            <button class="nav-arrow prev" onclick="changeFloorPlan(-1)">‹</button>
-                            <button class="nav-arrow next" onclick="changeFloorPlan(1)">›</button>
                         </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(5, 35.1, '10.80,34.20,35.10')">5 помещений</button>
                     </div>
@@ -95,12 +91,8 @@
                     </div>
                     <div class="floor-plan-info">
                         <div class="price-area">
-                            <span class="price">от 4 100 000 Р</span>
+                            <span class="price">от 4 100 000 ₽</span>
                             <span class="total-area">37.9 м²</span>
-                        </div>
-                        <div class="navigation-arrows">
-                            <button class="nav-arrow prev" onclick="changeFloorPlan(-1)">‹</button>
-                            <button class="nav-arrow next" onclick="changeFloorPlan(1)">›</button>
                         </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(6, 37.9, '12.20,36.80,37.90')">6 помещений</button>
                     </div>
@@ -124,12 +116,8 @@
                     </div>
                     <div class="floor-plan-info">
                         <div class="price-area">
-                            <span class="price">от 4 350 000 Р</span>
+                            <span class="price">от 4 350 000 ₽</span>
                             <span class="total-area">39.8 м²</span>
-                        </div>
-                        <div class="navigation-arrows">
-                            <button class="nav-arrow prev" onclick="changeFloorPlan(-1)">‹</button>
-                            <button class="nav-arrow next" onclick="changeFloorPlan(1)">›</button>
                         </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(7, 39.8, '13.50,38.40,39.80')">7 помещений</button>
                     </div>
@@ -154,12 +142,8 @@
                     </div>
                     <div class="floor-plan-info">
                         <div class="price-area">
-                            <span class="price">от 4 600 000 Р</span>
+                            <span class="price">от 4 600 000 ₽</span>
                             <span class="total-area">41.5 м²</span>
-                        </div>
-                        <div class="navigation-arrows">
-                            <button class="nav-arrow prev" onclick="changeFloorPlan(-1)">‹</button>
-                            <button class="nav-arrow next" onclick="changeFloorPlan(1)">›</button>
                         </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(8, 41.5, '14.80,40.20,41.50')">8 помещений</button>
                     </div>
@@ -169,16 +153,15 @@
     </section>
 
     <!-- Apartments Detail Panel -->
-    <div id="apartments-panel" class="apartments-panel" style="display: none;">
-        <div class="panel-header">
-            <div class="panel-title">
-                <h3>Дом 101</h3>
-                <p>Литер 1.18 - Не построено</p>
+    <div id="apartments-panel" class="apartments-panel" style="display: none;" onclick="closeApartmentsPanel()">
+        <div class="panel-content" onclick="event.stopPropagation()">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <h3>Дом 101</h3>
+                    <p>Литер 1.18 - Не построено</p>
+                </div>
+                <button class="panel-close" onclick="closeApartmentsPanel()">&times;</button>
             </div>
-            <button class="panel-close" onclick="closeApartmentsPanel()">&times;</button>
-        </div>
-        
-        <div class="panel-content">
             <div class="panel-floor-plan">
                 <img src="src/img/варианты планировок/1к.png" alt="Планировка">
             </div>
@@ -229,6 +212,10 @@
                         <div class="form-group">
                             <input type="tel" name="phone" placeholder="+7(___)___-__-__" required>
                         </div>
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="privacy-modal" required>
+                            <label for="privacy-modal">Я соглашаюсь с политикой конфиденциальности сайта</label>
+                        </div>
                         <button type="submit" class="btn btn-primary">Отправить заявку</button>
                     </form>
                 `
@@ -236,6 +223,10 @@
             
             modalBody.innerHTML = content[modalId] || '<p>Информация недоступна</p>';
             modal.style.display = 'flex';
+            
+            // Initialize phone masks for dynamically created content
+            initPhoneMasks();
+            
             console.log('Modal opened successfully');
         }
 
@@ -279,7 +270,7 @@
                 console.log('Telegram response data:', data);
                 
                 if (data.ok) {
-                    showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+                    showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
                     closeModal();
                 } else {
                     console.error('Telegram API error:', data);
@@ -309,6 +300,18 @@
 
             if (!data.name || !data.phone) {
                 showToast('Пожалуйста, заполните имя и телефон', 'error');
+                return;
+            }
+
+            // Validate name - only letters, minimum 2 characters
+            const nameRegex = /^[a-zA-Zа-яА-ЯёЁ\s\-']+$/;
+            if (!nameRegex.test(data.name.trim())) {
+                showToast('Имя должно содержать только буквы', 'error');
+                return;
+            }
+
+            if (data.name.trim().length < 2) {
+                showToast('Имя должно содержать минимум 2 символа', 'error');
                 return;
             }
 
@@ -348,10 +351,6 @@
             nav.classList.toggle('show');
         }
 
-        function changeFloorPlan(direction) {
-            // Функция для переключения между планировками
-            console.log('Changing floor plan:', direction);
-        }
 
         function openApartmentsPanel(count, area, dimensions) {
             const panel = document.getElementById('apartments-panel');
@@ -372,8 +371,8 @@
                 apartmentItem.className = 'apartment-item';
                 apartmentItem.innerHTML = `
                     <div class="apartment-details">
-                        <div class="apartment-price">${apartment.price} P</div>
-                        <div class="apartment-price-per-m2">${apartment.pricePerM2} р/м²</div>
+                        <div class="apartment-price">${apartment.price} ₽</div>
+                        <div class="apartment-price-per-m2">${apartment.pricePerM2} ₽/м²</div>
                         <button class="status-button available">Свободно</button>
                     </div>
                     <div class="apartment-floor">${apartment.floor} этаж</div>
@@ -414,6 +413,155 @@
             
             return apartments;
         }
+
+        // Phone mask functions
+        function formatPhoneNumber(input) {
+            let value = input.value.replace(/\D/g, '');
+            if (value.length === 0) {
+                input.value = '';
+                return;
+            }
+            
+            if (value[0] === '7') {
+                value = value.substring(1);
+            } else if (value[0] === '8') {
+                value = value.substring(1);
+            }
+            
+            if (value.length > 10) {
+                value = value.substring(0, 10);
+            }
+            
+            let formattedValue = '+7';
+            if (value.length > 0) {
+                formattedValue += '(' + value.substring(0, 3);
+            }
+            if (value.length >= 4) {
+                formattedValue += ')' + value.substring(3, 6);
+            }
+            if (value.length >= 7) {
+                formattedValue += '-' + value.substring(6, 8);
+            }
+            if (value.length >= 9) {
+                formattedValue += '-' + value.substring(8, 10);
+            }
+            
+            input.value = formattedValue;
+        }
+
+        function formatPhoneValue(value) {
+            let digits = value.replace(/\D/g, '');
+            if (digits.length === 0) return '';
+            
+            if (digits[0] === '7') {
+                digits = digits.substring(1);
+            } else if (digits[0] === '8') {
+                digits = digits.substring(1);
+            }
+            
+            if (digits.length > 10) {
+                digits = digits.substring(0, 10);
+            }
+            
+            let formatted = '+7';
+            if (digits.length > 0) {
+                formatted += '(' + digits.substring(0, 3);
+            }
+            if (digits.length >= 4) {
+                formatted += ')' + digits.substring(3, 6);
+            }
+            if (digits.length >= 7) {
+                formatted += '-' + digits.substring(6, 8);
+            }
+            if (digits.length >= 9) {
+                formatted += '-' + digits.substring(8, 10);
+            }
+            
+            return formatted;
+        }
+
+        function handlePhoneKeydown(event) {
+            const input = event.target;
+            const key = event.key;
+            
+            // Allow: backspace, delete, tab, escape, enter
+            if ([8, 9, 27, 13, 46].indexOf(event.keyCode) !== -1 ||
+                // Allow: Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+                (event.keyCode === 65 && event.ctrlKey === true) ||
+                (event.keyCode === 67 && event.ctrlKey === true) ||
+                (event.keyCode === 86 && event.ctrlKey === true) ||
+                (event.keyCode === 88 && event.ctrlKey === true)) {
+                return;
+            }
+            
+            // Ensure that it is a number and stop the keypress
+            if ((event.shiftKey || (event.keyCode < 48 || event.keyCode > 57)) && (event.keyCode < 96 || event.keyCode > 105)) {
+                event.preventDefault();
+            }
+        }
+
+        function formatNameInput(input) {
+            let value = input.value;
+            // Remove numbers and special characters, keep only letters, spaces, hyphens, and apostrophes
+            value = value.replace(/[^a-zA-Zа-яА-ЯёЁ\s\-']/g, '');
+            input.value = value;
+        }
+
+        function handleNameKeydown(event) {
+            const key = event.key;
+            // Allow: backspace, delete, tab, escape, enter, space, hyphen, apostrophe
+            if ([8, 9, 27, 13, 32, 45, 39].indexOf(event.keyCode) !== -1 ||
+                // Allow: Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+                (event.keyCode === 65 && event.ctrlKey === true) ||
+                (event.keyCode === 67 && event.ctrlKey === true) ||
+                (event.keyCode === 86 && event.ctrlKey === true) ||
+                (event.keyCode === 88 && event.ctrlKey === true)) {
+                return;
+            }
+            
+            // Allow letters (A-Z, a-z, а-я, А-Я, ё, Ё)
+            if ((event.keyCode >= 65 && event.keyCode <= 90) ||
+                (event.keyCode >= 97 && event.keyCode <= 122) ||
+                (event.keyCode >= 1040 && event.keyCode <= 1103) ||
+                event.keyCode === 1105 || event.keyCode === 1025) {
+                return;
+            }
+            
+            event.preventDefault();
+        }
+
+        function initPhoneMasks() {
+            const phoneInputs = document.querySelectorAll('input[type="tel"]');
+            phoneInputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    formatPhoneNumber(this);
+                });
+                input.addEventListener('keydown', handlePhoneKeydown);
+                input.addEventListener('paste', function(e) {
+                    setTimeout(() => {
+                        formatPhoneNumber(this);
+                    }, 10);
+                });
+            });
+
+            const nameInputs = document.querySelectorAll('input[type="text"][name="name"]');
+            nameInputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    formatNameInput(this);
+                });
+                input.addEventListener('keydown', handleNameKeydown);
+                input.addEventListener('paste', function(e) {
+                    setTimeout(() => {
+                        formatNameInput(this);
+                    }, 10);
+                });
+            });
+        }
+
+        // Initialize phone masks on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initPhoneMasks();
+        });
     </script>
 </body>
 </html>

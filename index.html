@@ -1110,7 +1110,8 @@
                 if (isWeekend) cellClass += ' weekend';
                 if (isToday) cellClass += ' today';
                 if (hasBookings) cellClass += ' has-bookings';
-                if (availableSlots > 0 && !isPast && !isWeekend) cellClass += ' available';
+                // Allow booking on weekends too
+                if (availableSlots > 0 && !isPast) cellClass += ' available';
                 
                 const weekdayNames = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
                 
@@ -1160,8 +1161,7 @@
             cells.forEach(cell => cell.classList.remove('selected'));
             
             const selectedCell = document.querySelector(`[data-date="${dateStr}"]`);
-            if (selectedCell && !selectedCell.classList.contains('past') && 
-                !selectedCell.classList.contains('weekend')) {
+            if (selectedCell && !selectedCell.classList.contains('past')) {
                 selectedCell.classList.add('selected');
                 generateTimeSlots();
                 document.getElementById('timeSection').style.display = 'block';

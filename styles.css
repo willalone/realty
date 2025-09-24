@@ -3655,8 +3655,14 @@ body.istoriya-2 .feature-highlight:hover {
   background: rgba(239, 68, 68, 0.1);
   color: #ef4444;
   cursor: not-allowed;
+}
+
+.time-slot.past-time {
+  background: rgba(107, 114, 128, 0.1);
+  color: #6b7280;
+  cursor: not-allowed;
+  opacity: 0.6;
   text-decoration: line-through;
-  opacity: 0.7;
 }
 
 .time-text {

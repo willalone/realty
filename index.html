@@ -1176,18 +1176,31 @@
                 '15:00', '16:00', '17:00', '18:00', '19:00'
             ];
             
+            // Check if selected date is today
+            const today = new Date();
+            const selectedDateObj = new Date(selectedDate);
+            const isToday = selectedDateObj.toDateString() === today.toDateString();
+            const currentHour = today.getHours();
+            
             let timeHTML = '';
             timeSlots.forEach(time => {
                 const slotKey = selectedDate + '_' + time;
                 const isBooked = bookedSlots.has(slotKey);
                 
+                // Check if time is in the past for today
+                const timeHour = parseInt(time.split(':')[0]);
+                const isPastTime = isToday && timeHour <= currentHour;
+                
                 let slotClass = 'time-slot';
                 if (isBooked) slotClass += ' booked';
+                if (isPastTime) slotClass += ' past-time';
                 
-                timeHTML += `<div class="${slotClass}" onclick="selectTime('${time}')" data-time="${time}">`;
+                timeHTML += `<div class="${slotClass}" onclick="${isPastTime ? '' : 'selectTime(\'' + time + '\')'}" data-time="${time}">`;
                 timeHTML += `<span class="time-text">${time}</span>`;
                 if (isBooked) {
                     timeHTML += '<span class="booked-icon">❌</span>';
+                } else if (isPastTime) {
+                    timeHTML += '<span class="past-icon">⏰</span>';
                 }
                 timeHTML += '</div>';
             });
@@ -1195,7 +1208,14 @@
             timeGrid.innerHTML = timeHTML;
             
             // Update available info
-            const availableCount = timeSlots.filter(time => !bookedSlots.has(selectedDate + '_' + time)).length;
+            const availableCount = timeSlots.filter(time => {
+                const slotKey = selectedDate + '_' + time;
+                const isBooked = bookedSlots.has(slotKey);
+                const timeHour = parseInt(time.split(':')[0]);
+                const isPastTime = isToday && timeHour <= currentHour;
+                return !isBooked && !isPastTime;
+            }).length;
+            
             document.getElementById('availableInfo').innerHTML = 
                 `<p>Доступно временных слотов: ${availableCount} из ${timeSlots.length}</p>`;
         }

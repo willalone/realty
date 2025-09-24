@@ -870,21 +870,21 @@
         function addFilterEventListeners() {
             // Listen for changes in radio buttons (type)
             document.querySelectorAll('input[name="type"]').forEach(radio => {
-                radio.addEventListener('change', applyFilters);
+                radio.addEventListener('change', updateFilterResults);
             });
             
             // Listen for changes in checkboxes (rooms)
             document.querySelectorAll('input[name="rooms"]').forEach(checkbox => {
-                checkbox.addEventListener('change', applyFilters);
+                checkbox.addEventListener('change', updateFilterResults);
             });
             
             // Listen for changes in price inputs
-            document.getElementById('priceFrom').addEventListener('input', applyFilters);
-            document.getElementById('priceTo').addEventListener('input', applyFilters);
+            document.getElementById('priceFrom').addEventListener('input', updateFilterResults);
+            document.getElementById('priceTo').addEventListener('input', updateFilterResults);
             
             // Listen for changes in area inputs
-            document.getElementById('areaFrom').addEventListener('input', applyFilters);
-            document.getElementById('areaTo').addEventListener('input', applyFilters);
+            document.getElementById('areaFrom').addEventListener('input', updateFilterResults);
+            document.getElementById('areaTo').addEventListener('input', updateFilterResults);
             
             // Listen for clicks outside filter dropdowns
             document.addEventListener('click', function(event) {
@@ -951,7 +951,7 @@
             event.target.classList.add('active');
             
             // Apply filters automatically
-            applyFilters();
+            updateFilterResults();
         }
 
         // Select area type
@@ -961,11 +961,11 @@
             event.target.classList.add('active');
             
             // Apply filters automatically
-            applyFilters();
+            updateFilterResults();
         }
 
-        // Apply filters
-        function applyFilters() {
+        // Update filter results without closing dropdowns
+        function updateFilterResults() {
             const selectedType = document.querySelector('input[name="type"]:checked').value;
             const selectedRooms = Array.from(document.querySelectorAll('input[name="rooms"]:checked')).map(cb => cb.value);
             const priceType = currentPriceType;
@@ -1027,8 +1027,11 @@
             });
 
             updateResultsCount(filteredApartments.length);
-            
-            // Close all dropdowns after applying filters
+        }
+
+        // Apply filters and close dropdowns (called by "Применить" button)
+        function applyFilters() {
+            updateFilterResults();
             closeAllDropdowns();
         }
 

@@ -172,8 +172,8 @@
                         <div class="apartment-details">
                             <span class="apartments-link">47 квартир</span>
                             <div class="pricing">
-                                <span class="total-price">от 4 329 000 Р</span>
-                                <span class="price-per-m2">от 130 000 Р/м²</span>
+                                <span class="total-price">от 4 329 000 ₽</span>
+                                <span class="price-per-m2">от 130 000 ₽/м²</span>
                             </div>
                         </div>
                     </div>
@@ -203,8 +203,8 @@
                         <div class="apartment-details">
                             <span class="apartments-link">33 квартиры</span>
                             <div class="pricing">
-                                <span class="total-price">от 5 270 200 Р</span>
-                                <span class="price-per-m2">от 110 000 Р/м²</span>
+                                <span class="total-price">от 5 270 200 ₽</span>
+                                <span class="price-per-m2">от 110 000 ₽/м²</span>
                             </div>
                         </div>
                     </div>
@@ -233,8 +233,8 @@
                         <div class="apartment-details">
                             <span class="apartments-link">184 квартиры</span>
                             <div class="pricing">
-                                <span class="total-price">от 4 329 000 Р</span>
-                                <span class="price-per-m2">от 105 000 Р/м²</span>
+                                <span class="total-price">от 4 329 000 ₽</span>
+                                <span class="price-per-m2">от 105 000 ₽/м²</span>
                             </div>
                         </div>
                     </div>
@@ -263,8 +263,8 @@
                         <div class="apartment-details">
                             <span class="apartments-link">81 квартира</span>
                             <div class="pricing">
-                                <span class="total-price">от 3 835 200 Р</span>
-                                <span class="price-per-m2">от 105 000 Р/м²</span>
+                                <span class="total-price">от 3 835 200 ₽</span>
+                                <span class="price-per-m2">от 105 000 ₽/м²</span>
                             </div>
                         </div>
                     </div>
@@ -293,8 +293,8 @@
                         <div class="apartment-details">
                             <span class="apartments-link">139 квартир</span>
                             <div class="pricing">
-                                <span class="total-price">от 4 995 000 Р</span>
-                                <span class="price-per-m2">от 105 000 Р/м²</span>
+                                <span class="total-price">от 4 995 000 ₽</span>
+                                <span class="price-per-m2">от 105 000 ₽/м²</span>
                             </div>
                         </div>
                     </div>
@@ -323,8 +323,8 @@
                         <div class="apartment-details">
                             <span class="apartments-link">156 квартир</span>
                             <div class="pricing">
-                                <span class="total-price">от 4 500 000 Р</span>
-                                <span class="price-per-m2">от 105 000 Р/м²</span>
+                                <span class="total-price">от 4 500 000 ₽</span>
+                                <span class="price-per-m2">от 105 000 ₽/м²</span>
                             </div>
                         </div>
                     </div>
@@ -354,8 +354,8 @@
                         <div class="apartment-details">
                             <span class="apartments-link">92 квартиры</span>
                             <div class="pricing">
-                                <span class="total-price">от 4 200 000 Р</span>
-                                <span class="price-per-m2">от 120 000 Р/м²</span>
+                                <span class="total-price">от 4 200 000 ₽</span>
+                                <span class="price-per-m2">от 120 000 ₽/м²</span>
                             </div>
                         </div>
                     </div>
@@ -398,6 +398,10 @@
                         </div>
                         <div class="form-group">
                             <input type="tel" name="phone" placeholder="+7(___)___-__-__" required>
+                        </div>
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="privacy-modal" required>
+                            <label for="privacy-modal">Я соглашаюсь с политикой конфиденциальности сайта</label>
                         </div>
                         <button type="submit" class="btn btn-primary">Отправить заявку</button>
                     </form>
@@ -453,7 +457,7 @@
                 console.log('Telegram response data:', data);
                 
                 if (data.ok) {
-                    showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+                    showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
                     closeModal();
                 } else {
                     console.error('Telegram API error:', data);
@@ -475,6 +479,7 @@
         function handleConsultationSubmit(event) {
             event.preventDefault();
             const formData = new FormData(event.target);
+            const privacyCheckbox = event.target.querySelector('input[type="checkbox"]');
             const data = {
                 name: formData.get('name'),
                 phone: formData.get('phone'),
@@ -483,6 +488,24 @@
 
             if (!data.name || !data.phone) {
                 showToast('Пожалуйста, заполните имя и телефон', 'error');
+                return;
+            }
+
+            // Check privacy checkbox
+            if (!privacyCheckbox || !privacyCheckbox.checked) {
+                showToast('Необходимо согласие на обработку персональных данных', 'error');
+                return;
+            }
+
+            // Validate name - only letters, minimum 2 characters
+            const nameRegex = /^[a-zA-Zа-яА-ЯёЁ\s\-']+$/;
+            if (!nameRegex.test(data.name.trim())) {
+                showToast('Имя должно содержать только буквы', 'error');
+                return;
+            }
+
+            if (data.name.trim().length < 2) {
+                showToast('Имя должно содержать минимум 2 символа', 'error');
                 return;
             }
 
@@ -695,21 +718,41 @@
         function addFilterEventListeners() {
             // Listen for changes in radio buttons (type)
             document.querySelectorAll('input[name="type"]').forEach(radio => {
-                radio.addEventListener('change', applyFilters);
+                radio.addEventListener('change', updateFilterResults);
             });
             
             // Listen for changes in checkboxes (rooms)
             document.querySelectorAll('input[name="rooms"]').forEach(checkbox => {
-                checkbox.addEventListener('change', applyFilters);
+                checkbox.addEventListener('change', updateFilterResults);
             });
             
             // Listen for changes in price inputs
-            document.getElementById('priceFrom').addEventListener('input', applyFilters);
-            document.getElementById('priceTo').addEventListener('input', applyFilters);
+            document.getElementById('priceFrom').addEventListener('input', updateFilterResults);
+            document.getElementById('priceTo').addEventListener('input', updateFilterResults);
             
             // Listen for changes in area inputs
-            document.getElementById('areaFrom').addEventListener('input', applyFilters);
-            document.getElementById('areaTo').addEventListener('input', applyFilters);
+            document.getElementById('areaFrom').addEventListener('input', updateFilterResults);
+            document.getElementById('areaTo').addEventListener('input', updateFilterResults);
+            
+            // Listen for clicks outside filter dropdowns
+            document.addEventListener('click', function(event) {
+                const filterSection = document.querySelector('.filter-section');
+                if (!filterSection.contains(event.target)) {
+                    closeAllDropdowns();
+                }
+            });
+        }
+
+        // Close all filter dropdowns
+        function closeAllDropdowns() {
+            document.querySelectorAll('.filter-dropdown').forEach(dropdown => {
+                dropdown.style.display = 'none';
+            });
+            
+            // Reset all arrows
+            document.querySelectorAll('.dropdown-arrow').forEach(arrow => {
+                arrow.textContent = '⌄';
+            });
         }
 
         // Toggle filter dropdown
@@ -756,7 +799,7 @@
             event.target.classList.add('active');
             
             // Apply filters automatically
-            applyFilters();
+            updateFilterResults();
         }
 
         // Select area type
@@ -766,11 +809,11 @@
             event.target.classList.add('active');
             
             // Apply filters automatically
-            applyFilters();
+            updateFilterResults();
         }
 
-        // Apply filters
-        function applyFilters() {
+        // Update filter results without closing dropdowns
+        function updateFilterResults() {
             const selectedType = document.querySelector('input[name="type"]:checked').value;
             const selectedRooms = Array.from(document.querySelectorAll('input[name="rooms"]:checked')).map(cb => cb.value);
             const priceType = currentPriceType;
@@ -781,29 +824,14 @@
             const areaFrom = document.getElementById('areaFrom').value ? parseFloat(document.getElementById('areaFrom').value) : null;
             const areaTo = document.getElementById('areaTo').value ? parseFloat(document.getElementById('areaTo').value) : null;
 
-            console.log('Applying filters:', {
-                selectedType,
-                selectedRooms,
-                priceType,
-                areaType,
-                priceFrom,
-                priceTo,
-                areaFrom,
-                areaTo
-            });
-
             const filteredApartments = allApartments.filter(apartment => {
-                console.log('Checking apartment:', apartment.dataset);
-
                 // Type filter
                 if (apartment.dataset.type !== selectedType) {
-                    console.log('Failed type filter');
                     return false;
                 }
 
                 // Rooms filter
                 if (selectedRooms.length > 0 && !selectedRooms.includes(apartment.dataset.rooms)) {
-                    console.log('Failed rooms filter');
                     return false;
                 }
 
@@ -815,14 +843,12 @@
                     
                     // Skip price filtering for "по запросу" (price = 0)
                     if (priceValue === 0) {
-                        console.log('Skipping price filter - price on request');
+                        // Skip this filter for "по запросу" apartments
                     } else {
                         if (priceFrom !== null && priceValue < priceFrom) {
-                            console.log('Failed price from filter');
                             return false;
                         }
                         if (priceTo !== null && priceValue > priceTo) {
-                            console.log('Failed price to filter');
                             return false;
                         }
                     }
@@ -835,20 +861,15 @@
                         : parseFloat(apartment.dataset.areaLiving);
                     
                     if (areaFrom !== null && areaValue < areaFrom) {
-                        console.log('Failed area from filter');
                         return false;
                     }
                     if (areaTo !== null && areaValue > areaTo) {
-                        console.log('Failed area to filter');
                         return false;
                     }
                 }
 
-                console.log('Apartment passed all filters');
                 return true;
             });
-
-            console.log('Filtered apartments count:', filteredApartments.length);
 
             // Hide all apartments
             allApartments.forEach(apartment => {
@@ -861,6 +882,12 @@
             });
 
             updateResultsCount(filteredApartments.length);
+        }
+
+        // Apply filters and close dropdowns (called by "Применить" button)
+        function applyFilters() {
+            updateFilterResults();
+            closeAllDropdowns();
         }
 
         // Clear filters

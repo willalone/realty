@@ -46,17 +46,17 @@
     <section class="filter-section">
         <div class="container">
             <div class="filter-tabs">
-                <button class="filter-tab" onclick="toggleFilterDropdown('type')">
-                    Тип <span class="dropdown-arrow">▼</span>
+                <button class="filter-tab" onclick="toggleFilterDropdown('type', this)">
+                    Тип <span class="dropdown-arrow">⌄</span>
                 </button>
-                <button class="filter-tab" onclick="toggleFilterDropdown('rooms')">
-                    Комнат <span class="dropdown-arrow">▼</span>
+                <button class="filter-tab" onclick="toggleFilterDropdown('rooms', this)">
+                    Комнат <span class="dropdown-arrow">⌄</span>
                 </button>
-                <button class="filter-tab" onclick="toggleFilterDropdown('price')">
-                    Цена <span class="dropdown-arrow">▼</span>
+                <button class="filter-tab" onclick="toggleFilterDropdown('price', this)">
+                    Цена <span class="dropdown-arrow">⌄</span>
                 </button>
-                <button class="filter-tab" onclick="toggleFilterDropdown('area')">
-                    Площадь <span class="dropdown-arrow">▼</span>
+                <button class="filter-tab" onclick="toggleFilterDropdown('area', this)">
+                    Площадь <span class="dropdown-arrow">⌄</span>
                 </button>
             </div>
 
@@ -685,9 +685,9 @@
         }
 
         // Toggle filter dropdown
-        function toggleFilterDropdown(filterType) {
+        function toggleFilterDropdown(filterType, button) {
             const dropdown = document.getElementById(filterType + '-dropdown');
-            const arrow = event.currentTarget.querySelector('.dropdown-arrow');
+            const arrow = button.querySelector('.dropdown-arrow');
             
             // Close all other dropdowns
             document.querySelectorAll('.filter-dropdown').forEach(d => {
@@ -696,13 +696,28 @@
                 }
             });
             
+            // Reset all arrows
+            document.querySelectorAll('.dropdown-arrow').forEach(arr => {
+                arr.textContent = '⌄';
+            });
+            
             // Toggle current dropdown
             if (dropdown.style.display === 'none' || dropdown.style.display === '') {
                 dropdown.style.display = 'block';
-                arrow.textContent = '▲';
+                
+                // Position dropdown under the button
+                const buttonRect = button.getBoundingClientRect();
+                const filterSection = document.querySelector('.filter-section');
+                const sectionRect = filterSection.getBoundingClientRect();
+                
+                dropdown.style.position = 'absolute';
+                dropdown.style.left = (buttonRect.left - sectionRect.left) + 'px';
+                dropdown.style.top = (buttonRect.bottom - sectionRect.top + 4) + 'px';
+                
+                arrow.textContent = '⌃';
             } else {
                 dropdown.style.display = 'none';
-                arrow.textContent = '▼';
+                arrow.textContent = '⌄';
             }
         }
 
@@ -822,7 +837,7 @@
             
             // Reset arrows
             document.querySelectorAll('.dropdown-arrow').forEach(arrow => {
-                arrow.textContent = '▼';
+                arrow.textContent = '⌄';
             });
             
             // Show all apartments

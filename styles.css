@@ -598,6 +598,7 @@ body {
   display: flex;
   gap: 16px;
   margin-top: 32px;
+  justify-content: center;
 }
 
 .project-hero .hero-cta {

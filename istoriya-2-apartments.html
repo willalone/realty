@@ -822,6 +822,26 @@
             // Listen for changes in area inputs
             document.getElementById('areaFrom').addEventListener('input', applyFilters);
             document.getElementById('areaTo').addEventListener('input', applyFilters);
+            
+            // Listen for clicks outside filter dropdowns
+            document.addEventListener('click', function(event) {
+                const filterSection = document.querySelector('.filter-section');
+                if (!filterSection.contains(event.target)) {
+                    closeAllDropdowns();
+                }
+            });
+        }
+
+        // Close all filter dropdowns
+        function closeAllDropdowns() {
+            document.querySelectorAll('.filter-dropdown').forEach(dropdown => {
+                dropdown.style.display = 'none';
+            });
+            
+            // Reset all arrows
+            document.querySelectorAll('.dropdown-arrow').forEach(arrow => {
+                arrow.textContent = '⌄';
+            });
         }
 
         // Toggle filter dropdown
@@ -944,6 +964,9 @@
             });
 
             updateResultsCount(filteredApartments.length);
+            
+            // Close all dropdowns after applying filters
+            closeAllDropdowns();
         }
 
         // Clear filters

@@ -710,6 +710,26 @@
             // Listen for changes in area inputs
             document.getElementById('areaFrom').addEventListener('input', applyFilters);
             document.getElementById('areaTo').addEventListener('input', applyFilters);
+            
+            // Listen for clicks outside filter dropdowns
+            document.addEventListener('click', function(event) {
+                const filterSection = document.querySelector('.filter-section');
+                if (!filterSection.contains(event.target)) {
+                    closeAllDropdowns();
+                }
+            });
+        }
+
+        // Close all filter dropdowns
+        function closeAllDropdowns() {
+            document.querySelectorAll('.filter-dropdown').forEach(dropdown => {
+                dropdown.style.display = 'none';
+            });
+            
+            // Reset all arrows
+            document.querySelectorAll('.dropdown-arrow').forEach(arrow => {
+                arrow.textContent = '⌄';
+            });
         }
 
         // Toggle filter dropdown
@@ -781,29 +801,14 @@
             const areaFrom = document.getElementById('areaFrom').value ? parseFloat(document.getElementById('areaFrom').value) : null;
             const areaTo = document.getElementById('areaTo').value ? parseFloat(document.getElementById('areaTo').value) : null;
 
-            console.log('Applying filters:', {
-                selectedType,
-                selectedRooms,
-                priceType,
-                areaType,
-                priceFrom,
-                priceTo,
-                areaFrom,
-                areaTo
-            });
-
             const filteredApartments = allApartments.filter(apartment => {
-                console.log('Checking apartment:', apartment.dataset);
-
                 // Type filter
                 if (apartment.dataset.type !== selectedType) {
-                    console.log('Failed type filter');
                     return false;
                 }
 
                 // Rooms filter
                 if (selectedRooms.length > 0 && !selectedRooms.includes(apartment.dataset.rooms)) {
-                    console.log('Failed rooms filter');
                     return false;
                 }
 
@@ -815,14 +820,12 @@
                     
                     // Skip price filtering for "по запросу" (price = 0)
                     if (priceValue === 0) {
-                        console.log('Skipping price filter - price on request');
+                        // Skip this filter for "по запросу" apartments
                     } else {
                         if (priceFrom !== null && priceValue < priceFrom) {
-                            console.log('Failed price from filter');
                             return false;
                         }
                         if (priceTo !== null && priceValue > priceTo) {
-                            console.log('Failed price to filter');
                             return false;
                         }
                     }
@@ -835,20 +838,15 @@
                         : parseFloat(apartment.dataset.areaLiving);
                     
                     if (areaFrom !== null && areaValue < areaFrom) {
-                        console.log('Failed area from filter');
                         return false;
                     }
                     if (areaTo !== null && areaValue > areaTo) {
-                        console.log('Failed area to filter');
                         return false;
                     }
                 }
 
-                console.log('Apartment passed all filters');
                 return true;
             });
-
-            console.log('Filtered apartments count:', filteredApartments.length);
 
             // Hide all apartments
             allApartments.forEach(apartment => {
@@ -861,6 +859,9 @@
             });
 
             updateResultsCount(filteredApartments.length);
+            
+            // Close all dropdowns after applying filters
+            closeAllDropdowns();
         }
 
         // Clear filters

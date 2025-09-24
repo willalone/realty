@@ -58,15 +58,6 @@
             </div>
             <div class="booking-content">
                 <div class="booking-form">
-                    <div class="form-group">
-                        <label>Выберите объект:</label>
-                        <select id="objectSelect" class="form-input">
-                            <option value="">Выберите объект</option>
-                            <option value="dom101">ДОМ 101</option>
-                            <option value="narodnye">Народные кварталы</option>
-                            <option value="istoriya2">История 2</option>
-                        </select>
-                    </div>
                     
                     <div class="calendar-section">
                         <div class="calendar-compact">
@@ -909,7 +900,6 @@
         // Booking system functionality
         let selectedDate = null;
         let selectedTime = null;
-        let selectedObject = null;
         let bookedSlots = new Set();
         let currentWeekStart = new Date();
         // Initialize to Monday of current week
@@ -981,8 +971,6 @@
             // Load bookings first, then generate calendar
             loadBookingsFromStorage();
             generateCompactCalendar();
-            
-            document.getElementById('objectSelect').addEventListener('change', onObjectSelect);
             
             // Add phone mask
             const phoneInput = document.getElementById('visitorPhone');
@@ -1266,16 +1254,11 @@
             }
         }
 
-        // Object selection
-        function onObjectSelect(event) {
-            selectedObject = event.target.value;
-            // Calendar is always visible, no need to show/hide it
-        }
 
         // Submit booking
         function submitBooking() {
-            if (!selectedObject || !selectedDate || !selectedTime) {
-                alert('Пожалуйста, выберите объект, дату и время');
+            if (!selectedDate || !selectedTime) {
+                alert('Пожалуйста, выберите дату и время');
                 return;
             }
 
@@ -1310,7 +1293,6 @@
             }
 
             const bookingData = {
-                object: selectedObject,
                 date: selectedDate,
                 time: selectedTime,
                 name: name,
@@ -1328,15 +1310,8 @@
             const botToken = TG_BOT_TOKEN;
             const chatId = TG_CHAT_ID;
             
-            const objectNames = {
-                'dom101': 'ДОМ 101',
-                'narodnye': 'Народные кварталы',
-                'istoriya2': 'История 2'
-            };
-
             const message = `🏠 Новая заявка на просмотр квартиры
 
-📍 Объект: ${objectNames[bookingData.object]}
 📅 Дата: ${bookingData.date}
 ⏰ Время: ${bookingData.time}
 
@@ -1435,9 +1410,7 @@
         function resetBookingForm() {
             selectedDate = null;
             selectedTime = null;
-            selectedObject = null;
             
-            document.getElementById('objectSelect').value = '';
             document.getElementById('visitorName').value = '';
             document.getElementById('visitorPhone').value = '';
             document.getElementById('visitorEmail').value = '';

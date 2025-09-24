@@ -69,10 +69,6 @@
                             <span class="price">от 3 835 200 Р</span>
                             <span class="total-area">35.1 м²</span>
                         </div>
-                        <div class="navigation-arrows">
-                            <button class="nav-arrow prev" onclick="changeFloorPlan(-1)">‹</button>
-                            <button class="nav-arrow next" onclick="changeFloorPlan(1)">›</button>
-                        </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(5, 35.1, '10.80,34.20,35.10')">5 помещений</button>
                     </div>
                 </div>
@@ -97,10 +93,6 @@
                         <div class="price-area">
                             <span class="price">от 4 100 000 Р</span>
                             <span class="total-area">37.9 м²</span>
-                        </div>
-                        <div class="navigation-arrows">
-                            <button class="nav-arrow prev" onclick="changeFloorPlan(-1)">‹</button>
-                            <button class="nav-arrow next" onclick="changeFloorPlan(1)">›</button>
                         </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(6, 37.9, '12.20,36.80,37.90')">6 помещений</button>
                     </div>
@@ -127,10 +119,6 @@
                             <span class="price">от 4 350 000 Р</span>
                             <span class="total-area">39.8 м²</span>
                         </div>
-                        <div class="navigation-arrows">
-                            <button class="nav-arrow prev" onclick="changeFloorPlan(-1)">‹</button>
-                            <button class="nav-arrow next" onclick="changeFloorPlan(1)">›</button>
-                        </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(7, 39.8, '13.50,38.40,39.80')">7 помещений</button>
                     </div>
                 </div>
@@ -156,10 +144,6 @@
                         <div class="price-area">
                             <span class="price">от 4 600 000 Р</span>
                             <span class="total-area">41.5 м²</span>
-                        </div>
-                        <div class="navigation-arrows">
-                            <button class="nav-arrow prev" onclick="changeFloorPlan(-1)">‹</button>
-                            <button class="nav-arrow next" onclick="changeFloorPlan(1)">›</button>
                         </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(8, 41.5, '14.80,40.20,41.50')">8 помещений</button>
                     </div>
@@ -348,10 +332,6 @@
             nav.classList.toggle('show');
         }
 
-        function changeFloorPlan(direction) {
-            // Функция для переключения между планировками
-            console.log('Changing floor plan:', direction);
-        }
 
         function openApartmentsPanel(count, area, dimensions) {
             const panel = document.getElementById('apartments-panel');

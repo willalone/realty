@@ -68,10 +68,6 @@
                         <div class="price-area">
                             <span class="price">от 4,6 млн ₽</span>
                         </div>
-                        <div class="navigation-arrows">
-                            <button class="nav-arrow prev" onclick="changeFloorPlan(-1)">‹</button>
-                            <button class="nav-arrow next" onclick="changeFloorPlan(1)">›</button>
-                        </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(8, 39.0, '39.0,46.0,65.3')">8 помещений</button>
                     </div>
                 </div>
@@ -97,10 +93,6 @@
                         <div class="price-area">
                             <span class="price">от 7,3 млн ₽</span>
                         </div>
-                        <div class="navigation-arrows">
-                            <button class="nav-arrow prev" onclick="changeFloorPlan(-1)">‹</button>
-                            <button class="nav-arrow next" onclick="changeFloorPlan(1)">›</button>
-                        </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(12, 65.3, '65.3,72.1,78.5')">12 помещений</button>
                     </div>
                 </div>
@@ -125,10 +117,6 @@
                     <div class="floor-plan-info">
                         <div class="price-area">
                             <span class="price">от 8,9 млн ₽</span>
-                        </div>
-                        <div class="navigation-arrows">
-                            <button class="nav-arrow prev" onclick="changeFloorPlan(-1)">‹</button>
-                            <button class="nav-arrow next" onclick="changeFloorPlan(1)">›</button>
                         </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(4, 78.5, '78.5,85.2,92.1')">4 помещения</button>
                     </div>
@@ -229,10 +217,6 @@
             return apartmentsHTML;
         }
 
-        function changeFloorPlan(direction) {
-            // Placeholder for floor plan navigation
-            console.log('Change floor plan:', direction);
-        }
 
         function openModal(modalId) {
             console.log('openModal called with:', modalId);

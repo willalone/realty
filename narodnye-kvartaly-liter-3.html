@@ -68,10 +68,6 @@
                         <div class="price-area">
                             <span class="price">Цена по запросу</span>
                         </div>
-                        <div class="navigation-arrows">
-                            <button class="nav-arrow prev" onclick="changeFloorPlan(-1)">‹</button>
-                            <button class="nav-arrow next" onclick="changeFloorPlan(1)">›</button>
-                        </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(1, 19.87, '19.87,34.2,51.55')">1 помещение</button>
                     </div>
                 </div>
@@ -96,10 +92,6 @@
                     <div class="floor-plan-info">
                         <div class="price-area">
                             <span class="price">Цена по запросу</span>
-                        </div>
-                        <div class="navigation-arrows">
-                            <button class="nav-arrow prev" onclick="changeFloorPlan(-1)">‹</button>
-                            <button class="nav-arrow next" onclick="changeFloorPlan(1)">›</button>
                         </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(2, 34.2, '34.2,51.55,67.38')">2 помещения</button>
                     </div>
@@ -126,10 +118,6 @@
                         <div class="price-area">
                             <span class="price">Цена по запросу</span>
                         </div>
-                        <div class="navigation-arrows">
-                            <button class="nav-arrow prev" onclick="changeFloorPlan(-1)">‹</button>
-                            <button class="nav-arrow next" onclick="changeFloorPlan(1)">›</button>
-                        </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(2, 51.55, '51.55,67.38,73.2')">2 помещения</button>
                     </div>
                 </div>
@@ -154,10 +142,6 @@
                     <div class="floor-plan-info">
                         <div class="price-area">
                             <span class="price">Цена по запросу</span>
-                        </div>
-                        <div class="navigation-arrows">
-                            <button class="nav-arrow prev" onclick="changeFloorPlan(-1)">‹</button>
-                            <button class="nav-arrow next" onclick="changeFloorPlan(1)">›</button>
                         </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(1, 67.38, '67.38,73.2,85.1')">1 помещение</button>
                     </div>
@@ -258,10 +242,6 @@
             return apartmentsHTML;
         }
 
-        function changeFloorPlan(direction) {
-            // Placeholder for floor plan navigation
-            console.log('Change floor plan:', direction);
-        }
 
         function openModal(modalId) {
             console.log('openModal called with:', modalId);

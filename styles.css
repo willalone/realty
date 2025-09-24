@@ -42,7 +42,12 @@ body {
 .project-features .discount { font-size: 12px; color: var(--accent); font-weight: 600; }
 .project-features .status { font-size: 12px; color: var(--primary); font-weight: 600; }
 .project-actions { margin-top: 16px; }
-.promos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+.promos-grid { 
+  display: grid; 
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 32px; 
+  margin-top: 20px;
+}
 
 .skip-link { position: absolute; left: -9999px; top: 0; background: var(--primary); color: #fff; padding: 8px 12px; z-index: 1000; }
 .skip-link:focus { left: 12px; top: 12px; }
@@ -826,20 +831,22 @@ body {
   transition: transform 0.3s ease;
   position: relative;
   box-shadow: var(--shadow);
-  overflow: hidden;
   display: flex;
   flex-direction: column;
+  margin-top: 16px;
 }
 .promo-badge {
   position: absolute;
-  top: -8px;
-  right: 16px;
+  top: -12px;
+  right: 20px;
   background: var(--accent);
   color: white;
-  padding: 4px 12px;
-  border-radius: 12px;
+  padding: 8px 16px;
+  border-radius: 20px;
   font-size: 12px;
   font-weight: 600;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
 }
 .promo-details {
   margin: 16px 0;
@@ -855,15 +862,14 @@ body {
 
 .promo-image {
   width: 100%;
-  height: 250px;
+  height: 200px;
   overflow: hidden;
 }
 
 .promo-image img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center;
+  object-fit: cover;
   transition: transform 0.3s ease;
 }
 

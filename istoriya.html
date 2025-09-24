@@ -159,28 +159,6 @@
     </section>
 
 
-    <!-- Contact Section -->
-    <section class="contact-section">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <h3>Остались вопросы?</h3>
-                    <p>Задайте их в наших соцсетях или оставьте свои данные для обратной связи</p>
-                    <button class="btn btn-primary btn-large" onclick="openModal('consultation')">Получить консультацию</button>
-                </div>
-
-                <div class="contact-card">
-                    <h4>Контакты</h4>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <span class="contact-label">Телефон:</span>
-                            <a href="tel:+78612112850">+7(988)470-78-93</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Spacing at the end -->
     <div style="height: 80px;"></div>
@@ -232,6 +210,9 @@
             }
             
             modal.style.display = 'flex';
+            
+            // Initialize phone masks for newly created modal content
+            initPhoneMasks();
         }
 
         function closeModal() {
@@ -247,23 +228,31 @@
             const email = formData.get('email');
             const message = formData.get('message');
             
-            if (!name || !phone) {
-                alert('Пожалуйста, заполните имя и телефон');
+            // Validate name - only letters, minimum 2 characters
+            const nameRegex = /^[a-zA-Zа-яА-ЯёЁ\s\-']+$/;
+            if (!name || !nameRegex.test(name.trim())) {
+                showToast('Имя должно содержать только буквы и быть не менее 2 символов', 'error');
                 return;
             }
             
+            if (name.trim().length < 2) {
+                showToast('Имя должно содержать не менее 2 символов', 'error');
+                return;
+            }
+            
+            // Validate phone - must be exactly 11 digits
             const phoneDigits = phone.replace(/\D/g, '');
-            if (phoneDigits.length !== 11) {
-                alert('Введите корректный номер телефона');
+            if (!phone || phoneDigits.length !== 11) {
+                showToast('Введите корректный номер телефона в формате +7(999)999-99-99', 'error');
                 return;
             }
             
             const consultationData = {
                 object: 'istoriya',
-                name: name,
+                name: name.trim(),
                 phone: phone,
-                email: email,
-                message: message
+                email: email || '',
+                message: message || ''
             };
             
             sendConsultationToTelegram(consultationData);
@@ -295,22 +284,139 @@
             .then(response => response.json())
             .then(data => {
                 if (data.ok) {
-                    alert('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+                    showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
                     closeModal();
                 } else {
                     console.error('Telegram API error:', data);
-                    alert('Ошибка при отправке заявки. Попробуйте еще раз.');
+                    showToast('Ошибка при отправке заявки. Попробуйте еще раз.', 'error');
                 }
             })
             .catch(error => {
                 console.error('Network error:', error);
-                alert('Ошибка сети при отправке заявки. Попробуйте еще раз.');
+                showToast('Ошибка сети при отправке заявки. Попробуйте еще раз.', 'error');
             });
+        }
+
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.style.cssText = `
+                position: fixed;
+                top: 20vh;
+                left: 50%;
+                transform: translateX(-50%);
+                background: white;
+                color: #333;
+                padding: 20px 30px;
+                border-radius: 12px;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+                z-index: 9999;
+                font-size: 16px;
+                font-weight: 500;
+                max-width: 400px;
+                text-align: center;
+                border-left: 4px solid ${type === 'error' ? '#ef4444' : '#22c55e'};
+            `;
+            toast.innerHTML = `<div class="toast-content">${message}</div><button class="toast-close" aria-label="Закрыть" style="position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 20px; cursor: pointer; color: #666;">×</button>`;
+            document.body.appendChild(toast);
+
+            toast.querySelector('.toast-close').addEventListener('click', () => {
+                toast.remove();
+            });
+
+            setTimeout(() => {
+                if (toast.parentNode) {
+                    toast.remove();
+                }
+            }, 5000);
         }
 
         function toggleNav() {
             const nav = document.getElementById('nav')
             nav.classList.toggle('show');
+        }
+
+        // Phone number formatting functions
+        function formatPhoneNumber(event) {
+            let value = event.target.value.replace(/\D/g, '');
+            
+            // Limit to 11 digits maximum
+            if (value.length > 11) {
+                value = value.slice(0, 11);
+                event.target.value = formatPhoneValue(value);
+                return;
+            }
+            
+            if (value.length === 0) {
+                event.target.value = '';
+                return;
+            }
+            
+            event.target.value = formatPhoneValue(value);
+        }
+
+        function formatPhoneValue(value) {
+            if (value.length === 0) return '';
+            
+            if (value.length <= 1) {
+                return '+7(' + value;
+            } else if (value.length <= 4) {
+                return '+7(' + value.slice(1);
+            } else if (value.length <= 7) {
+                return '+7(' + value.slice(1, 4) + ')' + value.slice(4);
+            } else if (value.length <= 9) {
+                return '+7(' + value.slice(1, 4) + ')' + value.slice(4, 7) + '-' + value.slice(7);
+            } else {
+                return '+7(' + value.slice(1, 4) + ')' + value.slice(4, 7) + '-' + value.slice(7, 9) + '-' + value.slice(9, 11);
+            }
+        }
+
+        function handlePhoneKeydown(event) {
+            // Allow: backspace, delete, tab, escape, enter, home, end, left, right, up, down
+            if ([8, 9, 27, 13, 46, 35, 36, 37, 38, 39, 40].indexOf(event.keyCode) !== -1 ||
+                // Allow Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+                (event.keyCode === 65 && event.ctrlKey === true) ||
+                (event.keyCode === 67 && event.ctrlKey === true) ||
+                (event.keyCode === 86 && event.ctrlKey === true) ||
+                (event.keyCode === 88 && event.ctrlKey === true)) {
+                return;
+            }
+            
+            // Ensure that it is a number and stop the keypress
+            if ((event.shiftKey || (event.keyCode < 48 || event.keyCode > 57)) && (event.keyCode < 96 || event.keyCode > 105)) {
+                event.preventDefault();
+            }
+        }
+
+        function formatNameInput(event) {
+            let value = event.target.value;
+            // Remove numbers and special characters, keep only letters, spaces, hyphens, and apostrophes
+            value = value.replace(/[^a-zA-Zа-яА-ЯёЁ\s\-']/g, '');
+            event.target.value = value;
+        }
+
+        function handleNameKeydown(event) {
+            // Allow: backspace, delete, tab, escape, enter, home, end, left, right, up, down, space, hyphen, apostrophe
+            if ([8, 9, 27, 13, 46, 35, 36, 37, 38, 39, 40, 32, 189, 222].indexOf(event.keyCode) !== -1 ||
+                // Allow Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+                (event.keyCode === 65 && event.ctrlKey === true) ||
+                (event.keyCode === 67 && event.ctrlKey === true) ||
+                (event.keyCode === 86 && event.ctrlKey === true) ||
+                (event.keyCode === 88 && event.ctrlKey === true)) {
+                return;
+            }
+            
+            // Allow letters (both cases), spaces, hyphens, apostrophes
+            if ((event.keyCode >= 65 && event.keyCode <= 90) || // A-Z
+                (event.keyCode >= 97 && event.keyCode <= 122) || // a-z
+                (event.keyCode >= 1040 && event.keyCode <= 1103) || // Cyrillic
+                event.keyCode === 32 || // space
+                event.keyCode === 189 || // hyphen
+                event.keyCode === 222) { // apostrophe
+                return;
+            }
+            
+            event.preventDefault();
         }
 
         // Initialize phone masks and name validation for all inputs

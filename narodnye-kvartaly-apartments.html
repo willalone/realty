@@ -727,6 +727,10 @@
                         <div class="form-group">
                             <input type="tel" name="phone" placeholder="+7(___)___-__-__" required>
                         </div>
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="privacy-modal" required>
+                            <label for="privacy-modal">Я соглашаюсь с политикой конфиденциальности сайта</label>
+                        </div>
                         <button type="submit" class="btn btn-primary">Отправить заявку</button>
                     </form>
                 `
@@ -746,8 +750,34 @@
         function handleConsultationSubmit(event) {
             event.preventDefault();
             const formData = new FormData(event.target);
+            const privacyCheckbox = event.target.querySelector('input[type="checkbox"]');
             const name = formData.get('name');
             const phone = formData.get('phone');
+            
+            // Check privacy checkbox
+            if (!privacyCheckbox || !privacyCheckbox.checked) {
+                showToast('Необходимо согласие на обработку персональных данных', 'error');
+                return;
+            }
+
+            // Validate name - only letters, minimum 2 characters
+            const nameRegex = /^[a-zA-Zа-яА-ЯёЁ\s\-']+$/;
+            if (!nameRegex.test(name.trim())) {
+                showToast('Имя должно содержать только буквы', 'error');
+                return;
+            }
+
+            if (name.trim().length < 2) {
+                showToast('Имя должно содержать минимум 2 символа', 'error');
+                return;
+            }
+
+            // Validate phone - exactly 11 digits
+            const phoneRegex = /^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$/;
+            if (!phoneRegex.test(phone)) {
+                showToast('Введите корректный номер телефона в формате +7(999)999-99-99', 'error');
+                return;
+            }
             
             const message = `🏠 Новая заявка на консультацию
 
@@ -757,7 +787,7 @@
 
             sendToTelegram(message);
             closeModal();
-            showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+            showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
         }
 
         function sendToTelegram(message) {
@@ -787,25 +817,29 @@
             });
         }
 
-        function showToast(message) {
+        function showToast(message, type = 'info') {
             const toast = document.createElement('div');
-            toast.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: #4CAF50;
-                color: white;
-                padding: 12px 20px;
-                border-radius: 4px;
-                z-index: 10000;
-                font-size: 14px;
-            `;
-            toast.textContent = message;
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `<div class="toast-content">${message}</div><button class="toast-close" aria-label="Закрыть">×</button>`;
             document.body.appendChild(toast);
+
+            // Eye-level positioning (~20vh from top), centered and above all overlays
+            Object.assign(toast.style, {
+                position: 'fixed',
+                top: '20vh',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                zIndex: '9999',
+                maxWidth: '90vw'
+            });
             
-            setTimeout(() => {
-                document.body.removeChild(toast);
-            }, 3000);
+            const removeToast = () => {
+                if (toast && toast.parentNode) toast.parentNode.removeChild(toast);
+            };
+            
+            toast.querySelector('.toast-close')?.addEventListener('click', removeToast);
+            
+            setTimeout(removeToast, 4000);
         }
 
         function toggleNav() {

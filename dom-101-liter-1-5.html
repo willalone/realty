@@ -66,7 +66,7 @@
                     </div>
                     <div class="floor-plan-info">
                         <div class="price-area">
-                            <span class="price">от 4 329 000 Р</span>
+                            <span class="price">от 4 329 000 ₽</span>
                             <span class="total-area">33.3 м²</span>
                         </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(5, 33.3, '11.88,32.43,33.30')">5 помещений</button>
@@ -91,7 +91,7 @@
                     </div>
                     <div class="floor-plan-info">
                         <div class="price-area">
-                            <span class="price">от 4 535 700 Р</span>
+                            <span class="price">от 4 535 700 ₽</span>
                             <span class="total-area">34.89 м²</span>
                         </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(7, 34.89, '10.99,34.06,34.89')">7 помещений</button>
@@ -116,7 +116,7 @@
                     </div>
                     <div class="floor-plan-info">
                         <div class="price-area">
-                            <span class="price">от 4 686 500 Р</span>
+                            <span class="price">от 4 686 500 ₽</span>
                             <span class="total-area">36.05 м²</span>
                         </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(7, 34.89, '10.99,34.06,34.89')">7 помещений</button>
@@ -142,7 +142,7 @@
                     </div>
                     <div class="floor-plan-info">
                         <div class="price-area">
-                            <span class="price">от 5 038 800 Р</span>
+                            <span class="price">от 5 038 800 ₽</span>
                             <span class="total-area">38.76 м²</span>
                         </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(7, 34.89, '10.99,34.06,34.89')">7 помещений</button>
@@ -168,7 +168,7 @@
                     </div>
                     <div class="floor-plan-info">
                         <div class="price-area">
-                            <span class="price">от 5 200 000 Р</span>
+                            <span class="price">от 5 200 000 ₽</span>
                             <span class="total-area">40.54 м²</span>
                         </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(7, 34.89, '10.99,34.06,34.89')">7 помещений</button>
@@ -194,7 +194,7 @@
                     </div>
                     <div class="floor-plan-info">
                         <div class="price-area">
-                            <span class="price">от 5 200 000 Р</span>
+                            <span class="price">от 5 200 000 ₽</span>
                             <span class="total-area">40.54 м²</span>
                         </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(7, 34.89, '10.99,34.06,34.89')">7 помещений</button>
@@ -220,7 +220,7 @@
                     </div>
                     <div class="floor-plan-info">
                         <div class="price-area">
-                            <span class="price">от 5 200 000 Р</span>
+                            <span class="price">от 5 200 000 ₽</span>
                             <span class="total-area">40.54 м²</span>
                         </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(7, 34.89, '10.99,34.06,34.89')">7 помещений</button>
@@ -231,16 +231,15 @@
     </section>
 
     <!-- Apartments Detail Panel -->
-    <div id="apartments-panel" class="apartments-panel" style="display: none;">
-        <div class="panel-header">
-            <div class="panel-title">
-                <h3>Дом 101</h3>
-                <p>Литер 1.5 - I кв. 2030</p>
+    <div id="apartments-panel" class="apartments-panel" style="display: none;" onclick="closeApartmentsPanel()">
+        <div class="panel-content" onclick="event.stopPropagation()">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <h3>Дом 101</h3>
+                    <p>Литер 1.5 - I кв. 2030</p>
+                </div>
+                <button class="panel-close" onclick="closeApartmentsPanel()">&times;</button>
             </div>
-            <button class="panel-close" onclick="closeApartmentsPanel()">&times;</button>
-        </div>
-        
-        <div class="panel-content">
             <div class="panel-floor-plan">
                 <img src="src/img/варианты планировок/1к.png" alt="Планировка">
             </div>
@@ -290,7 +289,10 @@
                         </div>
                         <div class="form-group">
                             <input type="tel" name="phone" placeholder="+7(___)___-__-__" required>
-                        </div>
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="privacy-modal" required>
+                            <label for="privacy-modal">Я соглашаюсь с политикой конфиденциальности сайта</label>
+                        </div>                        </div>
                         <button type="submit" class="btn btn-primary">Отправить заявку</button>
                     </form>
                 `
@@ -341,7 +343,7 @@
                 console.log('Telegram response data:', data);
                 
                 if (data.ok) {
-                    showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+                    showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
                     closeModal();
                 } else {
                     console.error('Telegram API error:', data);
@@ -374,6 +376,17 @@
                 return;
             }
 
+            // Validate name - only letters, minimum 2 characters
+            const nameRegex = /^[a-zA-Zа-яА-ЯёЁ\s\-']+$/;
+            if (!nameRegex.test(data.name.trim())) {
+                showToast('Имя должно содержать только буквы', 'error');
+                return;
+            }
+
+            if (data.name.trim().length < 2) {
+                showToast('Имя должно содержать минимум 2 символа', 'error');
+                return;
+            }
             const phoneDigits = data.phone.replace(/\D/g, '');
             const phoneRegex = /^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$/;
             
@@ -430,8 +443,8 @@
                 apartmentItem.className = 'apartment-item';
                 apartmentItem.innerHTML = `
                     <div class="apartment-details">
-                        <div class="apartment-price">${apartment.price} P</div>
-                        <div class="apartment-price-per-m2">${apartment.pricePerM2} р/м²</div>
+                        <div class="apartment-price">${apartment.price} ₽</div>
+                        <div class="apartment-price-per-m2">${apartment.pricePerM2} ₽/м²</div>
                         <button class="status-button available">Свободно</button>
                     </div>
                     <div class="apartment-floor">${apartment.floor} этаж</div>

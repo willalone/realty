@@ -350,28 +350,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact-section">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <h3>Получить консультацию</h3>
-                    <p>Оставьте заявку для получения персонального предложения</p>
-                    <button class="btn btn-primary btn-large" onclick="openModal('consultation')">Оставить заявку</button>
-                        </div>
-
-                <div class="contact-card">
-                    <h4>Контакты</h4>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <span class="contact-label">Телефон:</span>
-                            <a href="tel:+78612112850">+7(988)470-78-93</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Spacing at the end -->
     <div style="height: 80px;"></div>
@@ -496,7 +474,7 @@
                 console.log('Telegram response data:', data);
                 
                 if (data.ok) {
-                    showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+                    showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
                     closeModal();
                 } else {
                     console.error('Telegram API error:', data);
@@ -526,6 +504,18 @@
 
             if (!data.name || !data.phone) {
                 showToast('Пожалуйста, заполните имя и телефон', 'error');
+                return;
+            }
+
+            // Validate name - only letters, minimum 2 characters
+            const nameRegex = /^[a-zA-Zа-яА-ЯёЁ\s\-']+$/;
+            if (!nameRegex.test(data.name.trim())) {
+                showToast('Имя должно содержать только буквы', 'error');
+                return;
+            }
+
+            if (data.name.trim().length < 2) {
+                showToast('Имя должно содержать минимум 2 символа', 'error');
                 return;
             }
 

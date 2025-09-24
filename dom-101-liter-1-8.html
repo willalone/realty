@@ -66,7 +66,7 @@
                     </div>
                     <div class="floor-plan-info">
                         <div class="price-area">
-                            <span class="price">от 4 200 000 Р</span>
+                            <span class="price">от 4 200 000 ₽</span>
                             <span class="total-area">38.2 м²</span>
                         </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(6, 38.2, '12.10,36.80,38.20')">6 помещений</button>
@@ -91,7 +91,7 @@
                     </div>
                     <div class="floor-plan-info">
                         <div class="price-area">
-                            <span class="price">от 4 500 000 Р</span>
+                            <span class="price">от 4 500 000 ₽</span>
                             <span class="total-area">41.0 м²</span>
                         </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(7, 41.0, '13.60,39.40,41.00')">7 помещений</button>
@@ -116,7 +116,7 @@
                     </div>
                     <div class="floor-plan-info">
                         <div class="price-area">
-                            <span class="price">от 4 900 000 Р</span>
+                            <span class="price">от 4 900 000 ₽</span>
                             <span class="total-area">44.5 м²</span>
                         </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(8, 44.5, '15.20,42.80,44.50')">8 помещений</button>
@@ -142,7 +142,7 @@
                     </div>
                     <div class="floor-plan-info">
                         <div class="price-area">
-                            <span class="price">от 5 400 000 Р</span>
+                            <span class="price">от 5 400 000 ₽</span>
                             <span class="total-area">48.1 м²</span>
                         </div>
                         <button class="rooms-button" onclick="openApartmentsPanel(9, 48.1, '16.80,46.20,48.10')">9 помещений</button>
@@ -153,16 +153,15 @@
     </section>
 
     <!-- Apartments Detail Panel -->
-    <div id="apartments-panel" class="apartments-panel" style="display: none;">
-        <div class="panel-header">
-            <div class="panel-title">
-                <h3>Дом 101</h3>
-                <p>Литер 1.8 - I кв. 2030</p>
+    <div id="apartments-panel" class="apartments-panel" style="display: none;" onclick="closeApartmentsPanel()">
+        <div class="panel-content" onclick="event.stopPropagation()">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <h3>Дом 101</h3>
+                    <p>Литер 1.8 - I кв. 2030</p>
+                </div>
+                <button class="panel-close" onclick="closeApartmentsPanel()">&times;</button>
             </div>
-            <button class="panel-close" onclick="closeApartmentsPanel()">&times;</button>
-        </div>
-        
-        <div class="panel-content">
             <div class="panel-floor-plan">
                 <img src="src/img/варианты планировок/1к.png" alt="Планировка">
             </div>
@@ -212,7 +211,10 @@
                         </div>
                         <div class="form-group">
                             <input type="tel" name="phone" placeholder="+7(___)___-__-__" required>
-                        </div>
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="privacy-modal" required>
+                            <label for="privacy-modal">Я соглашаюсь с политикой конфиденциальности сайта</label>
+                        </div>                        </div>
                         <button type="submit" class="btn btn-primary">Отправить заявку</button>
                     </form>
                 `
@@ -263,7 +265,7 @@
                 console.log('Telegram response data:', data);
                 
                 if (data.ok) {
-                    showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+                    showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
                     closeModal();
                 } else {
                     console.error('Telegram API error:', data);
@@ -296,6 +298,17 @@
                 return;
             }
 
+            // Validate name - only letters, minimum 2 characters
+            const nameRegex = /^[a-zA-Zа-яА-ЯёЁ\s\-']+$/;
+            if (!nameRegex.test(data.name.trim())) {
+                showToast('Имя должно содержать только буквы', 'error');
+                return;
+            }
+
+            if (data.name.trim().length < 2) {
+                showToast('Имя должно содержать минимум 2 символа', 'error');
+                return;
+            }
             const phoneDigits = data.phone.replace(/\D/g, '');
             const phoneRegex = /^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$/;
             
@@ -352,8 +365,8 @@
                 apartmentItem.className = 'apartment-item';
                 apartmentItem.innerHTML = `
                     <div class="apartment-details">
-                        <div class="apartment-price">${apartment.price} P</div>
-                        <div class="apartment-price-per-m2">${apartment.pricePerM2} р/м²</div>
+                        <div class="apartment-price">${apartment.price} ₽</div>
+                        <div class="apartment-price-per-m2">${apartment.pricePerM2} ₽/м²</div>
                         <button class="status-button available">Свободно</button>
                     </div>
                     <div class="apartment-floor">${apartment.floor} этаж</div>

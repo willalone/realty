@@ -932,7 +932,6 @@ function Footer({ onOpen }: { onOpen: (id: ModalId) => void }) {
         <ul className="footer-links">
           <li><a href="#projects">Проекты</a></li>
           <li><a href="#mortgage">Ипотека</a></li>
-          <li><a href="#about">О компании</a></li>
           <li><a href="#promos">Акции</a></li>
           <li><a href="/policy.html">Политика конфиденциальности</a></li>
         </ul>

@@ -1,8 +1,8 @@
 import { useState, useMemo, useEffect } from 'react';
 import '../styles.css';
-import dom101Image from './img/dom-101.jpg.webp';
-import narodnyeKvartalyImage from './img/narodnye-kvartaly.jpg.webp';
-import istoriya2Image from './img/istoriya-2.jpg.webp';
+import dom101Image from './img/dom-101.webp';
+import narodnyeKvartalyImage from './img/narodnye-kvartaly.webp';
+import istoriya2Image from './img/istoriya-2.webp';
 
 type ModalId = 'promo1' | 'promo2' | 'promo3' | 'state' | 'family' | 'consultation' | 'dom101' | 'narodnye' | 'istoriya2' | 'military';
 

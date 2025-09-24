@@ -912,6 +912,11 @@
         let selectedObject = null;
         let bookedSlots = new Set();
         let currentWeekStart = new Date();
+        // Initialize to Monday of current week
+        const today = new Date();
+        const dayOfWeek = today.getDay();
+        const diff = today.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1);
+        currentWeekStart = new Date(today.setDate(diff));
         let isBookingVisible = false;
 
         // Toggle booking calendar visibility
@@ -972,7 +977,10 @@
 
         // Initialize booking system
         function initBookingSystem() {
+            // Load bookings first, then generate calendar
+            loadBookingsFromStorage();
             generateCompactCalendar();
+            
             document.getElementById('objectSelect').addEventListener('change', onObjectSelect);
             
             // Add phone mask
@@ -980,8 +988,6 @@
             phoneInput.addEventListener('input', formatPhoneNumber);
             phoneInput.addEventListener('keydown', handlePhoneKeydown);
             phoneInput.setAttribute('maxlength', '17'); // +7(999)999-99-99
-            
-            loadBookingsFromStorage();
         }
 
         // Phone number formatting
@@ -1061,11 +1067,9 @@
             const calendarWeek = document.getElementById('calendarWeek');
             const currentWeekRange = document.getElementById('currentWeekRange');
             
-            // Calculate week start (Monday)
-            const today = new Date(currentWeekStart);
-            const dayOfWeek = today.getDay();
-            const diff = today.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1);
-            const monday = new Date(today.setDate(diff));
+            // Use currentWeekStart directly as it's already set to Monday
+            const monday = new Date(currentWeekStart);
+            console.log('Generating calendar for week starting:', monday);
             
             // Generate 7 days starting from Monday
             const days = [];
@@ -1252,9 +1256,7 @@
         // Object selection
         function onObjectSelect(event) {
             selectedObject = event.target.value;
-            if (selectedObject) {
-                document.getElementById('calendarGrid').style.display = 'block';
-            }
+            // Calendar is always visible, no need to show/hide it
         }
 
         // Submit booking

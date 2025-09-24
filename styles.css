@@ -4159,4 +4159,152 @@ body.novye-sezony .feature-highlight:hover {
     }
 }
 
+/* Filter Section Styles */
+.filter-section {
+    background: #f8f9fa;
+    padding: 40px 0;
+}
+
+.filter-container h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.filter-form {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.filter-group label {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 14px;
+}
+
+.filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+}
+
+.filter-option:hover {
+    color: var(--primary);
+}
+
+.filter-option input[type="radio"],
+.filter-option input[type="checkbox"] {
+    margin: 0;
+    width: 16px;
+    height: 16px;
+    accent-color: var(--primary);
+}
+
+.price-filter,
+.area-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.price-type,
+.area-type {
+    display: flex;
+    gap: 16px;
+}
+
+.price-range,
+.area-range {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.price-range input,
+.area-range input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+}
+
+.price-range input:focus,
+.area-range input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.price-unit,
+.area-unit {
+    font-size: 14px;
+    color: var(--text-secondary);
+    min-width: 20px;
+}
+
+.filter-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.filter-results {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.apartment-card[style*="display: none"] {
+    display: none !important;
+}
+
+/* Filter Mobile Responsive */
+@media (max-width: 768px) {
+    .filter-form {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+    
+    .filter-options {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .price-type,
+    .area-type {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .filter-actions {
+        flex-direction: column;
+    }
+}
+
 

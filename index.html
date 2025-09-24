@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ГК НВМ — недвижимость Краснодара</title>
-    <meta name="description" content="ГК НВМ — ведущий застройщик Краснодара. Новостройки, ипотека, акции. ДОМ 101, Народные кварталы, История 2." />
+    <title>СК НВМ — недвижимость Краснодара</title>
+    <meta name="description" content="СК НВМ — ведущий застройщик Краснодара. Новостройки, ипотека, акции. ДОМ 101, Народные кварталы, История 2." />
     <meta name="theme-color" content="#0b0d12" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -310,7 +310,7 @@
                     <div class="promo-content">
                         <div class="promo-badge">Акция</div>
                         <h3>Ремонт в подарок — в «Народных кварталах»!</h3>
-                        <p>Ремонт в подарок при покупке квартиры в ГК НВМ!</p>
+                        <p>Ремонт в подарок при покупке квартиры в СК НВМ!</p>
                         <div class="promo-details">
                             <span class="promo-period">До 30.09.2025</span>
                         </div>
@@ -574,7 +574,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 ГК НВМ. Все права защищены.</p>
+                <p>&copy; 2024 СК НВМ. Все права защищены.</p>
             </div>
         </div>
     </footer>
@@ -706,7 +706,7 @@
                         <p><strong>🎯 Условия:</strong> При покупке любой квартиры в жилом районе ЖК «Народные кварталы» до 30 сентября 2025 года вы получаете ремонт в подарок!</p>
                     </div>
                     <div style="margin-bottom: 20px;">
-                        <p><strong>📞 Контакты:</strong> С подробной информацией о правилах проведения акции можно ознакомиться по телефону офиса продаж +7 (800) 550-53-07</p>
+                        <p><strong>📞 Контакты:</strong> С подробной информацией о правилах проведения акции можно ознакомиться по телефону +7(988)470-78-93</p>
                     </div>
                     <button class="btn btn-primary" onclick="openModal('consultation')">Узнать подробности</button>
                 `,
@@ -729,7 +729,7 @@
                         <p><strong>🎯 Условия:</strong> При покупке любой квартиры в жилом районе ЖК «Народные кварталы» до 30 сентября 2025 года вы получаете ремонт и сертификат на мебель в подарок!</p>
                     </div>
                     <div style="margin-bottom: 20px;">
-                        <p><strong>📞 Контакты:</strong> С подробной информацией о правилах проведения акции можно ознакомиться по телефону офиса продаж +7 (800) 550-53-07</p>
+                        <p><strong>📞 Контакты:</strong> С подробной информацией о правилах проведения акции можно ознакомиться по телефону +7(988)470-78-93</p>
                     </div>
                     <button class="btn btn-primary" onclick="openModal('consultation')">Узнать подробности</button>
                 `,
@@ -1425,7 +1425,7 @@
             }
         });
 
-        // Initialize phone masks for all phone inputs
+        // Initialize phone masks and name validation for all inputs
         function initPhoneMasks() {
             // Find all phone inputs
             const phoneInputs = document.querySelectorAll('input[type="tel"], input[name="phone"]');
@@ -1442,6 +1442,56 @@
                     }, 10);
                 });
             });
+
+            // Find all name inputs and add validation
+            const nameInputs = document.querySelectorAll('input[name="name"], input[id="visitorName"]');
+            nameInputs.forEach(input => {
+                input.addEventListener('input', formatNameInput);
+                input.addEventListener('keydown', handleNameKeydown);
+                input.addEventListener('paste', function(e) {
+                    setTimeout(() => {
+                        formatNameInput({ target: input });
+                    }, 10);
+                });
+            });
+        }
+
+        // Format name input - only letters
+        function formatNameInput(event) {
+            const input = event.target;
+            let value = input.value;
+            
+            // Remove all non-letter characters (keeping spaces, hyphens, apostrophes for compound names)
+            value = value.replace(/[^a-zA-Zа-яА-ЯёЁ\s\-']/g, '');
+            
+            // Remove multiple spaces
+            value = value.replace(/\s+/g, ' ');
+            
+            input.value = value;
+        }
+
+        // Handle name input keydown
+        function handleNameKeydown(event) {
+            // Allow backspace, delete, tab, escape, enter, arrows
+            if ([8, 9, 27, 13, 46, 35, 36, 37, 38, 39, 40].indexOf(event.keyCode) !== -1 ||
+                // Allow Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+                (event.keyCode === 65 && event.ctrlKey === true) ||
+                (event.keyCode === 67 && event.ctrlKey === true) ||
+                (event.keyCode === 86 && event.ctrlKey === true) ||
+                (event.keyCode === 88 && event.ctrlKey === true)) {
+                return;
+            }
+            
+            // Block all non-letter characters
+            const isLetter = /^[a-zA-Zа-яА-ЯёЁ]$/.test(event.key);
+            const isSpace = event.keyCode === 32; // space
+            const isHyphen = event.keyCode === 189 || event.keyCode === 109; // hyphen
+            const isApostrophe = event.keyCode === 222; // apostrophe
+            
+            if (!isLetter && !isSpace && !isHyphen && !isApostrophe) {
+                event.preventDefault();
+                return;
+            }
         }
 
         // Send consultation form to Telegram
@@ -1519,6 +1569,32 @@
                 return;
             }
 
+            // Validate name - only letters
+            const nameRegex = /^[a-zA-Zа-яА-ЯёЁ\s\-']+$/;
+            if (!nameRegex.test(data.name.trim())) {
+                showToast('Имя должно содержать только буквы', 'error');
+                return;
+            }
+
+            if (data.name.trim().length < 2) {
+                showToast('Имя должно содержать минимум 2 символа', 'error');
+                return;
+            }
+
+            // Validate phone number
+            const phoneDigits = data.phone.replace(/\D/g, '');
+            const phoneRegex = /^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$/;
+            
+            if (phoneDigits.length !== 11) {
+                showToast('Введите полный номер телефона (11 цифр) в формате +7(999)999-99-99', 'error');
+                return;
+            }
+            
+            if (!phoneRegex.test(data.phone)) {
+                showToast('Введите корректный номер телефона в формате +7(999)999-99-99', 'error');
+                return;
+            }
+
             // Send to Telegram
             sendToTelegram(data);
             
@@ -1541,6 +1617,18 @@
             // Validate required fields
             if (!data.name || !data.phone) {
                 showToast('Пожалуйста, заполните имя и телефон', 'error');
+                return;
+            }
+
+            // Validate name - only letters
+            const nameRegex = /^[a-zA-Zа-яА-ЯёЁ\s\-']+$/;
+            if (!nameRegex.test(data.name.trim())) {
+                showToast('Имя должно содержать только буквы', 'error');
+                return;
+            }
+
+            if (data.name.trim().length < 2) {
+                showToast('Имя должно содержать минимум 2 символа', 'error');
                 return;
             }
 

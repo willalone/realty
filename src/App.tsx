@@ -294,6 +294,18 @@ function App() {
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
     
+    // Validate name - only letters
+    const nameRegex = /^[a-zA-Zа-яА-ЯёЁ\s\-']+$/;
+    if (!nameRegex.test((data.name as string).trim())) {
+      showToast('Имя должно содержать только буквы');
+      return;
+    }
+
+    if ((data.name as string).trim().length < 2) {
+      showToast('Имя должно содержать минимум 2 символа');
+      return;
+    }
+    
     if (!PHONE_RE.test(data.phone as string)) {
       showToast('Пожалуйста, введите корректный номер телефона');
       return;
@@ -577,6 +589,18 @@ function BookingForm({ onOpen }: { onOpen: (id: ModalId) => void }) {
       return;
     }
 
+    // Validate name - only letters
+    const nameRegex = /^[a-zA-Zа-яА-ЯёЁ\s\-']+$/;
+    if (!nameRegex.test((data.name as string).trim())) {
+      alert('Имя должно содержать только буквы');
+      return;
+    }
+
+    if ((data.name as string).trim().length < 2) {
+      alert('Имя должно содержать минимум 2 символа');
+      return;
+    }
+
     if (!PHONE_RE.test(data.phone as string)) {
       alert('Пожалуйста, введите корректный номер телефона');
       return;
@@ -760,6 +784,9 @@ function BookingForm({ onOpen }: { onOpen: (id: ModalId) => void }) {
             placeholder="Ваше имя"
             required
             className="form-input"
+            onChange={(e) => {
+              e.target.value = formatName(e.target.value);
+            }}
           />
           <input
             type="tel"
@@ -952,7 +979,7 @@ function Modal({ modal, onClose, onSubmit, formatRuPhone }: { modal: ModalId | n
       case 'promo1':
         return {
           title: 'Ремонт в подарок — в «Народных кварталах»!',
-          content: `🎁 **Ремонт в подарок при покупке квартиры в ГК НВМ!**
+          content: `🎁 **Ремонт в подарок при покупке квартиры в СК НВМ!**
 
 Спешим порадовать будущих жителей — при покупке любой квартиры в жилом районе ЖК «Народные кварталы» до 30 сентября 2025 года вы получаете ремонт в подарок!
 
@@ -966,7 +993,7 @@ function Modal({ modal, onClose, onSubmit, formatRuPhone }: { modal: ModalId | n
 
 📅 **Сроки акции:** с 14.05.2025 по 30.09.2025
 
-📞 **Контакты:** С подробной информацией о правилах проведения акции можно ознакомиться по телефону офиса продаж +7 (800) 550-53-07
+📞 **Контакты:** С подробной информацией о правилах проведения акции можно ознакомиться по телефону +7(988)470-78-93
 
 Организатор акции:
 ООО СЗ «ГРАДСТРОЙПРОЕКТ». ИНН 2311311443. ОГРН1202300058586. Проектная декларация на сайте наш.дом.рф.
@@ -991,7 +1018,7 @@ function Modal({ modal, onClose, onSubmit, formatRuPhone }: { modal: ModalId | n
 
 📅 **Сроки акции:** с 14.05.2025 по 30.09.2025
 
-📞 **Контакты:** С подробной информацией о правилах проведения акции можно ознакомиться по телефону офиса продаж +7 (800) 550-53-07
+📞 **Контакты:** С подробной информацией о правилах проведения акции можно ознакомиться по телефону +7(988)470-78-93
 
 ⏰ **Ограниченное время акции!**
 Количество квартир по специальным ценам ограничено.`
@@ -1253,6 +1280,9 @@ function Modal({ modal, onClose, onSubmit, formatRuPhone }: { modal: ModalId | n
               placeholder="Ваше имя"
               required
               className="form-input"
+              onChange={(e) => {
+                e.target.value = formatName(e.target.value);
+              }}
             />
             <input
               type="tel"
@@ -1278,5 +1308,14 @@ function Toast({ message }: { message: string | null }) {
   if (!message) return null;
   return <div className="toast">{message}</div>;
 }
+
+// Utility function for name formatting
+export const formatName = (value: string) => {
+  // Remove all non-letter characters (keeping spaces, hyphens, apostrophes for compound names)
+  let formatted = value.replace(/[^a-zA-Zа-яА-ЯёЁ\s\-']/g, '');
+  // Remove multiple spaces
+  formatted = formatted.replace(/\s+/g, ' ');
+  return formatted;
+};
 
 export default App;

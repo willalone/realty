@@ -1052,12 +1052,82 @@
             });
         }
 
+        // Initialize phone masks and name validation for all inputs
+        function initPhoneMasks() {
+            // Find all phone inputs
+            const phoneInputs = document.querySelectorAll('input[type="tel"], input[name="phone"]');
+            
+            phoneInputs.forEach(input => {
+                // Add event listeners
+                input.addEventListener('input', formatPhoneNumber);
+                input.addEventListener('keydown', handlePhoneKeydown);
+                input.setAttribute('maxlength', '17'); // ensure max length mask
+                input.addEventListener('paste', function(e) {
+                    // Allow paste, but format after paste
+                    setTimeout(() => {
+                        formatPhoneNumber({ target: input });
+                    }, 10);
+                });
+            });
+
+            // Find all name inputs and add validation
+            const nameInputs = document.querySelectorAll('input[name="name"], input[id="visitorName"]');
+            nameInputs.forEach(input => {
+                input.addEventListener('input', formatNameInput);
+                input.addEventListener('keydown', handleNameKeydown);
+                input.addEventListener('paste', function(e) {
+                    setTimeout(() => {
+                        formatNameInput({ target: input });
+                    }, 10);
+                });
+            });
+        }
+
+        // Format name input - only letters
+        function formatNameInput(event) {
+            const input = event.target;
+            let value = input.value;
+            
+            // Remove all non-letter characters (keeping spaces, hyphens, apostrophes for compound names)
+            value = value.replace(/[^a-zA-Zа-яА-ЯёЁ\s\-']/g, '');
+            
+            // Remove multiple spaces
+            value = value.replace(/\s+/g, ' ');
+            
+            input.value = value;
+        }
+
+        // Handle name input keydown
+        function handleNameKeydown(event) {
+            // Allow backspace, delete, tab, escape, enter, arrows
+            if ([8, 9, 27, 13, 46, 35, 36, 37, 38, 39, 40].indexOf(event.keyCode) !== -1 ||
+                // Allow Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+                (event.keyCode === 65 && event.ctrlKey === true) ||
+                (event.keyCode === 67 && event.ctrlKey === true) ||
+                (event.keyCode === 86 && event.ctrlKey === true) ||
+                (event.keyCode === 88 && event.ctrlKey === true)) {
+                return;
+            }
+            
+            // Block all non-letter characters
+            const isLetter = /^[a-zA-Zа-яА-ЯёЁ]$/.test(event.key);
+            const isSpace = event.keyCode === 32; // space
+            const isHyphen = event.keyCode === 189 || event.keyCode === 109; // hyphen
+            const isApostrophe = event.keyCode === 222; // apostrophe
+            
+            if (!isLetter && !isSpace && !isHyphen && !isApostrophe) {
+                event.preventDefault();
+                return;
+            }
+        }
+
         // Initialize when page loads
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM loaded, initializing...');
             try {
                 initBookingSystem();
                 initFinishTypes();
+                initPhoneMasks();
                 console.log('Initialization completed successfully');
             } catch (error) {
                 console.error('Initialization error:', error);

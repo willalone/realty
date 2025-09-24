@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЖК Народные кварталы - СК НВМ</title>
+    <meta name="description" content="ЖК Народные кварталы - комфортное жилье в Краснодаре. Цены от 3,0 млн ₽. 400+ планировок. Ремонт в подарок. -12% скидка." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="narodnye-kvartaly">
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-text">СК НВМ</span>
+            </div>
+            <button class="nav-toggle" onclick="toggleNav()" aria-label="Открыть меню">
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <nav class="nav" id="nav">
+                <a href="index.html#projects" class="nav-link">Проекты</a>
+                <a href="index.html#mortgage" class="nav-link">Ипотека</a>
+                <a href="index.html#promos" class="nav-link">Акции</a>
+            </nav>
+            <div class="header-actions">
+                <a href="tel:+78612112850" class="phone">+7(988)470-78-93</a>
+                <button class="btn btn-primary" onclick="openModal('consultation')">Обратный звонок</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <div class="hero-video">
+            <video autoplay muted loop playsinline preload="auto" poster="img/narodnye-kvartaly.jpg">
+                <source src="src/img/narodnye-kvartaly/narodnye-kvartaly.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="index.html">Главная</a> / <a href="index.html#projects">Проекты</a> / <span>Народные кварталы</span>
+            </div>
+            <div class="project-hero-content">
+                <div class="project-info">
+                    <div class="project-date">В продаже</div>
+                    <div class="project-status-badges">
+                        <span class="badge badge-primary">400+ планировок</span>
+                    </div>
+                    <h1>ЖР «Народные кварталы»</h1>
+                    <h2 class="project-subtitle">Современный жилой район с собственными детскими садами, школой и подземным паркингом</h2>
+                    <div class="hero-cta">
+                        <button class="btn btn-primary btn-large" onclick="openModal('consultation')">Получить предложение</button>
+                        <a href="narodnye-kvartaly-apartments.html" class="btn btn-secondary btn-large">Подобрать квартиру</a>
+                    </div>
+                </div>
+                <div class="project-features">
+                    <div class="feature-highlight">
+                        <h3>Паркинг</h3>
+                        <p>5000+ мест</p>
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Зеленая территория</h3>
+                        <p>18 000 м²</p>
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Кладовые</h3>
+                        <p>от 171 тыс. ₽</p>
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>3 детских сада</h3>
+                        <p>Школа 1550 мест</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Personal Selection Form -->
+            <div class="personal-selection">
+                <div class="container">
+                    <h3>Подготовим персональную подборку под ваши критерии</h3>
+                    <form class="selection-form" onsubmit="handleConsultationSubmit(event)">
+                        <div class="form-row">
+                            <input type="text" name="name" placeholder="Имя" required>
+                            <input type="tel" name="phone" placeholder="Телефон" required>
+                        </div>
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="privacy-narodnye" required>
+                            <label for="privacy-narodnye">Я соглашаюсь с политикой конфиденциальности сайта</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Получить консультацию</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Details -->
+    <section class="project-details">
+        <div class="container">
+            <div class="details-grid">
+                <div class="details-main">
+                    <div class="section-tabs">
+                        <button class="tab active">О проекте</button>
+                        <button class="tab">Видео</button>
+                    </div>
+                    
+                    <div class="tab-content active">
+                        <h2>О проекте</h2>
+                        <p>«Народные кварталы» — современный жилой район с собственными детскими садами, школой и подземным паркингом. Планировки от студий до трехкомнатных с гибкими условиями покупки.</p>
+                        
+                        <div class="project-sections-grid">
+                            <div class="project-section-card">
+                                <div class="section-image">
+                                    <img src="src/img/narodnye-kvartaly/detsk-ploshadki.png" alt="Детские площадки">
+                                </div>
+                                <div class="section-content">
+                                    <h3>Детские площадки</h3>
+                                    <p>Обширная территория для активного отдыха детей с современными игровыми комплексами, спортивными площадками и безопасным покрытием. 18000 м² спортивных и игровых зон.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="project-section-card">
+                                <div class="section-image">
+                                    <img src="src/img/narodnye-kvartaly/perspectiva.png" alt="Перспективный район">
+                                </div>
+                                <div class="section-content">
+                                    <h3>Перспективный район</h3>
+                                    <p>Район активно развивается с появлением новых транспортных развязок, торговых центров и объектов социальной инфраструктуры, что повышает инвестиционную привлекательность.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="project-section-card">
+                                <div class="section-image">
+                                    <img src="src/img/narodnye-kvartaly/blagoustroystvo.png" alt="Благоустройство">
+                                </div>
+                                <div class="section-content">
+                                    <h3>Благоустройство</h3>
+                                    <p>Профессионально спроектированные зоны отдыха с зелеными насаждениями, прогулочными аллеями и местами для семейного досуга.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="project-section-card">
+                                <div class="section-image">
+                                    <img src="src/img/narodnye-kvartaly/uslugi.png" alt="Услуги и магазины">
+                                </div>
+                                <div class="section-content">
+                                    <h3>Услуги и магазины в шаговой доступности</h3>
+                                    <p>Размещаются магазины, кафе, аптеки и другие объекты сферы услуг для удобства жителей. На первых этажах зданий.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="project-section-card">
+                                <div class="section-image">
+                                    <img src="src/img/narodnye-kvartaly/restorany.png" alt="Рестораны и кафе">
+                                </div>
+                                <div class="section-content">
+                                    <h3>Рестораны и кафе</h3>
+                                    <p>Гастрономическая зона на территории. Закусочные, семейные кафе, парковые кафе и рестораны прямо на первых этажах зданий. От быстрого перекуса до семейного ужина — все варианты питания в шаговой доступности от дома.</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        <h3>Варианты планировок</h3>
+                        <p>Выбирайте от функциональных студий до просторных трехкомнатных квартир</p>
+                        
+                        <div class="layout-options-grid">
+                            <div class="layout-card">
+                                <h4 class="layout-title">Студия</h4>
+                                <div class="layout-plan">
+                                    <img src="src/img/варианты планировок/народные кварталы/студия.png" alt="Студия">
+                                </div>
+                                <div class="layout-info">
+                                    <div class="layout-metrics">
+                                        <div class="metric">
+                                            <span class="metric-label">от</span>
+                                            <span class="metric-value">19,87</span>
+                                            <span class="metric-unit">м²</span>
+                                        </div>
+                                        <div class="metric">
+                                            <span class="metric-label">от</span>
+                                            <span class="metric-value">3,0</span>
+                                            <span class="metric-unit">млн ₽</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="layout-card">
+                                <h4 class="layout-title">1-комнатная</h4>
+                                <div class="layout-plan">
+                                    <img src="src/img/варианты планировок/народные кварталы/1к.png" alt="1-комнатная">
+                                </div>
+                                <div class="layout-info">
+                                    <div class="layout-metrics">
+                                        <div class="metric">
+                                            <span class="metric-label">от</span>
+                                            <span class="metric-value">34,2</span>
+                                            <span class="metric-unit">м²</span>
+                                        </div>
+                                        <div class="metric">
+                                            <span class="metric-label">от</span>
+                                            <span class="metric-value">4,7</span>
+                                            <span class="metric-unit">млн ₽</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="layout-card">
+                                <h4 class="layout-title">2-комнатная</h4>
+                                <div class="layout-plan">
+                                    <img src="src/img/варианты планировок/народные кварталы/2к.png" alt="2-комнатная">
+                                </div>
+                                <div class="layout-info">
+                                    <div class="layout-metrics">
+                                        <div class="metric">
+                                            <span class="metric-label">от</span>
+                                            <span class="metric-value">51,55</span>
+                                            <span class="metric-unit">м²</span>
+                                        </div>
+                                        <div class="metric">
+                                            <span class="metric-label">от</span>
+                                            <span class="metric-value">6,6</span>
+                                            <span class="metric-unit">млн ₽</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="layout-card">
+                                <h4 class="layout-title">3-комнатная</h4>
+                                <div class="layout-plan">
+                                    <img src="src/img/варианты планировок/народные кварталы/3к.png" alt="3-комнатная">
+                                </div>
+                                <div class="layout-info">
+                                    <div class="layout-metrics">
+                                        <div class="metric">
+                                            <span class="metric-label">от</span>
+                                            <span class="metric-value">67,38</span>
+                                            <span class="metric-unit">м²</span>
+                                        </div>
+                                        <div class="metric">
+                                            <span class="metric-label">от</span>
+                                            <span class="metric-value">7,9</span>
+                                            <span class="metric-unit">млн ₽</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details-sidebar">
+                    <div class="booking-card">
+                        <h3>Получить консультацию</h3>
+                        <p>Оставьте заявку и мы свяжемся с вами</p>
+                        <button class="btn btn-primary btn-large" onclick="openModal('consultation')">Оставить заявку</button>
+                    </div>
+
+                    <div class="contact-card">
+                        <h4>Контакты</h4>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <span class="contact-label">Телефон:</span>
+                                <a href="tel:+78612112850">+7(988)470-78-93</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Purchase Options -->
+    <section class="purchase-options">
+        <div class="container">
+            <h3>Варианты покупки</h3>
+            <div class="purchase-cards">
+                <div class="purchase-card">
+                    <div class="card-icon">🏦</div>
+                    <div class="card-content">
+                        <h4>Ипотека</h4>
+                    </div>
+                </div>
+                <div class="purchase-card">
+                    <div class="card-icon">👨‍👩‍👧‍👦</div>
+                    <div class="card-content">
+                        <h4>Материнский капитал</h4>
+                    </div>
+                </div>
+                <div class="purchase-card">
+                    <div class="card-icon">📅</div>
+                    <div class="card-content">
+                        <h4>Рассрочка</h4>
+                    </div>
+                </div>
+                <div class="purchase-card">
+                    <div class="card-icon">💰</div>
+                    <div class="card-content">
+                        <h4>Единовременная оплата</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="mortgage-details">
+                <div class="mortgage-row">
+                    <div class="mortgage-icon">💻</div>
+                    <div class="mortgage-info">
+                        <h4>IT-ипотека</h4>
+                        <div class="mortgage-specs">
+                            <span class="spec-item"><strong>Срок кредита:</strong> от 3 лет.</span>
+                            <span class="spec-item"><strong>Первоначальный взнос:</strong> от 20,1%</span>
+                            <span class="spec-item"><strong>Сумма кредита:</strong> до 9 млн ₽</span>
+                            <span class="spec-item"><strong>Ставка:</strong> от 5,99%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mortgage-row">
+                    <div class="mortgage-icon">👨‍👩‍👧‍👦</div>
+                    <div class="mortgage-info">
+                        <h4>Семейная ипотека</h4>
+                        <div class="mortgage-specs">
+                            <span class="spec-item"><strong>Срок кредита:</strong> от 12 мес.</span>
+                            <span class="spec-item"><strong>Первоначальный взнос:</strong> от 20%</span>
+                            <span class="spec-item"><strong>Сумма кредита:</strong> от 250 000 ₽</span>
+                            <span class="spec-item"><strong>Ставка:</strong> от 6%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Finish Types -->
+    <section class="finish-types-section">
+        <div class="container">
+            <div class="finish-header">
+                <h3>Виды отделок</h3>
+                <div class="finish-tabs">
+                    <button class="finish-tab active" data-finish="ready">Готовый ремонт</button>
+                    <button class="finish-tab" data-finish="fine">Чистовая</button>
+                    <button class="finish-tab" data-finish="rough">Черновая</button>
+                </div>
+            </div>
+            <div class="finish-content">
+                <div class="finish-panel active" id="ready-finish">
+                    <div class="finish-image">
+                        <img src="src/img/виды отделок/готовый ремонт.png" alt="Готовый ремонт">
+                    </div>
+                    <div class="finish-info">
+                        <p>Квартира полностью готова к заселению с качественной отделкой стен и потолков, напольными покрытиями, установленной сантехникой и встроенной мебелью. Можно сразу въезжать и наслаждаться комфортом.</p>
+                        <div class="finish-features">
+                            <div class="feature-card">
+                                <div class="feature-icon">✓</div>
+                                <div class="feature-content">
+                                    <h4>Ремонт в подарок</h4>
+                                    <p>Получите ремонт в подарок от компании НВМ при покупке квартиры.</p>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">✓</div>
+                                <div class="feature-content">
+                                    <h4>Современный дизайн</h4>
+                                    <p>Актуальные интерьерные решения.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="finish-panel" id="fine-finish">
+                    <div class="finish-image">
+                        <img src="src/img/виды отделок/чистовая.png" alt="Чистовая отделка">
+                    </div>
+                    <div class="finish-info">
+                        <p>Квартира с чистовой отделкой включает в себя все необходимые коммуникации, выровненные стены и потолки, подготовленные под финишную отделку. Остается только выбрать материалы и стиль.</p>
+                        <div class="finish-features">
+                            <div class="feature-card">
+                                <div class="feature-icon">✓</div>
+                                <div class="feature-content">
+                                    <h4>Гибкость выбора</h4>
+                                    <p>Возможность выбрать материалы и стиль отделки.</p>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">✓</div>
+                                <div class="feature-content">
+                                    <h4>Экономия средств</h4>
+                                    <p>Более доступная стоимость по сравнению с готовым ремонтом.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="finish-panel" id="rough-finish">
+                    <div class="finish-image">
+                        <img src="src/img/виды отделок/черновая.png" alt="Черновая отделка">
+                    </div>
+                    <div class="finish-info">
+                        <p>Черновая отделка включает в себя все инженерные коммуникации, выровненные стены и потолки, подготовленные под любую отделку. Максимальная свобода в выборе дизайна и материалов.</p>
+                        <div class="finish-features">
+                            <div class="feature-card">
+                                <div class="feature-icon">✓</div>
+                                <div class="feature-content">
+                                    <h4>Полная свобода</h4>
+                                    <p>Возможность создать уникальный дизайн с нуля.</p>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">✓</div>
+                                <div class="feature-content">
+                                    <h4>Максимальная экономия</h4>
+                                    <p>Самая доступная стоимость квартиры.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spacing after finish types -->
+    <div style="height: 80px;"></div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal-backdrop" style="display: none;" onclick="closeModal()">
+        <div class="modal-dialog" onclick="event.stopPropagation()">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+                <div id="modal-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Telegram config
+        const TG_BOT_TOKEN = (window && window.TELEGRAM_BOT_TOKEN) ? window.TELEGRAM_BOT_TOKEN : '8026350498:AAGcyKMsrJyD0mGgj26Ss2m49vX5jp8LzaM';
+        const TG_CHAT_ID = (window && window.TELEGRAM_CHAT_ID) ? window.TELEGRAM_CHAT_ID : '919481169';
+
+        // Include all the JavaScript functions from the main page
+        function openModal(modalId) {
+            console.log('openModal called with:', modalId);
+            const modal = document.getElementById('modal');
+            const modalBody = document.getElementById('modal-body');
+            
+            if (!modal || !modalBody) {
+                console.error('Modal elements not found');
+                return;
+            }
+            
+            const content = {
+                'consultation': `
+                    <h3>Консультация</h3>
+                    <form onsubmit="handleConsultationSubmit(event)">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="+7(___)___-__-__" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Отправить заявку</button>
+                    </form>
+                `
+            };
+            
+            modalBody.innerHTML = content[modalId] || '<p>Информация недоступна</p>';
+            modal.style.display = 'flex';
+            
+            // Initialize phone masks for newly created modal content
+            initPhoneMasks();
+            
+            console.log('Modal opened successfully');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        // Booking system functionality
+        let selectedDate = null;
+        let selectedTime = null;
+        let bookedSlots = new Set();
+        let currentWeekStart = new Date();
+        let isBookingVisible = false;
+
+        function toggleBookingCalendar(event) {
+            console.log('Toggle calendar clicked, current state:', isBookingVisible);
+            if (isBookingVisible) {
+                closeBookingCalendar();
+            } else {
+                showBookingCalendar();
+            }
+        }
+
+        function showBookingCalendar() {
+            console.log('ShowBookingCalendar called');
+            const bookingSection = document.getElementById('booking');
+            
+            if (bookingSection) {
+                bookingSection.style.display = 'block';
+                isBookingVisible = true;
+                
+                console.log('Calendar should be visible now');
+                
+                // Scroll to booking section
+                bookingSection.scrollIntoView({ behavior: 'smooth' });
+                
+                // Load saved bookings from localStorage
+                loadBookingsFromStorage();
+            } else {
+                console.error('Booking section not found!');
+            }
+        }
+
+        function closeBookingCalendar() {
+            const bookingSection = document.getElementById('booking');
+            
+            if (bookingSection) {
+                bookingSection.style.display = 'none';
+                isBookingVisible = false;
+            }
+        }
+
+        // Initialize booking system
+        function initBookingSystem() {
+            generateCompactCalendar();
+            
+            // Add phone mask
+            const phoneInput = document.getElementById('visitorPhone');
+            if (phoneInput) {
+                phoneInput.addEventListener('input', formatPhoneNumber);
+                phoneInput.addEventListener('keydown', handlePhoneKeydown);
+                phoneInput.setAttribute('maxlength', '17');
+            }
+            
+            loadBookingsFromStorage();
+        }
+
+        // Phone number formatting
+        function formatPhoneNumber(event) {
+            let value = event.target.value.replace(/\D/g, '');
+            
+            if (value.length > 11) {
+                value = value.slice(0, 11);
+                event.target.value = formatPhoneValue(value);
+                return;
+            }
+            
+            if (value.length === 0) {
+                event.target.value = '';
+                return;
+            }
+            
+            if (value.length === 1 && value[0] === '8') {
+                value = '7';
+            }
+            
+            if (value.length === 1 && value[0] !== '7') {
+                value = '7' + value;
+            }
+            
+            event.target.value = formatPhoneValue(value);
+        }
+
+        function formatPhoneValue(value) {
+            if (value.length === 0) return '';
+            if (value.length === 1 && value[0] === '7') return '+7(';
+            if (value.length <= 4) return '+7(' + value.slice(1);
+            if (value.length <= 7) return '+7(' + value.slice(1, 4) + ')' + value.slice(4);
+            if (value.length <= 9) return '+7(' + value.slice(1, 4) + ')' + value.slice(4, 7) + '-' + value.slice(7);
+            if (value.length <= 11) return '+7(' + value.slice(1, 4) + ')' + value.slice(4, 7) + '-' + value.slice(7, 9) + '-' + value.slice(9);
+            return '+7(' + value.slice(1, 4) + ')' + value.slice(4, 7) + '-' + value.slice(7, 9) + '-' + value.slice(9, 11);
+        }
+
+        function handlePhoneKeydown(event) {
+            const input = event.target;
+            const currentValue = input.value.replace(/\D/g, '');
+            
+            if ([8, 9, 27, 13, 46].indexOf(event.keyCode) !== -1 ||
+                (event.keyCode === 65 && event.ctrlKey === true) ||
+                (event.keyCode === 67 && event.ctrlKey === true) ||
+                (event.keyCode === 86 && event.ctrlKey === true) ||
+                (event.keyCode === 88 && event.ctrlKey === true)) {
+                return;
+            }
+            
+            if (currentValue.length >= 11 && 
+                ((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105))) {
+                event.preventDefault();
+                return;
+            }
+            
+            const isNumberKey = (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105);
+            const isNavKey = [35,36,37,38,39,40].includes(event.keyCode);
+            if (!isNumberKey && !isNavKey) {
+                event.preventDefault();
+                return;
+            }
+        }
+
+        // Generate compact week calendar
+        function generateCompactCalendar() {
+            const calendarWeek = document.getElementById('calendarWeek');
+            const currentWeekRange = document.getElementById('currentWeekRange');
+            
+            if (!calendarWeek || !currentWeekRange) return;
+            
+            const today = new Date(currentWeekStart);
+            const dayOfWeek = today.getDay();
+            const diff = today.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1);
+            const monday = new Date(today.setDate(diff));
+            
+            const days = [];
+            for (let i = 0; i < 7; i++) {
+                const date = new Date(monday);
+                date.setDate(monday.getDate() + i);
+                days.push(date);
+            }
+
+            const startDate = days[0];
+            const endDate = days[6];
+            const monthNames = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
+            
+            if (startDate.getMonth() === endDate.getMonth()) {
+                currentWeekRange.textContent = 
+                    `${startDate.getDate()}-${endDate.getDate()} ${monthNames[startDate.getMonth()]}`;
+            } else {
+                currentWeekRange.textContent = 
+                    `${startDate.getDate()} ${monthNames[startDate.getMonth()]} - ${endDate.getDate()} ${monthNames[endDate.getMonth()]}`;
+            }
+
+            let calendarHTML = '<div class="week-days">';
+            days.forEach(date => {
+                const dayOfWeek = date.getDay();
+                const dayNumber = date.getDate();
+                const dateStr = formatDate(date);
+                const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                date.setHours(0, 0, 0, 0);
+                const isPast = date < today;
+                const isToday = date.toDateString() === today.toDateString();
+                
+                const hasBookings = Array.from(bookedSlots).some(slot => slot.startsWith(dateStr));
+                const availableSlots = getAvailableSlotsCount(dateStr);
+                
+                let cellClass = 'week-day';
+                if (isPast) cellClass += ' past';
+                if (isWeekend) cellClass += ' weekend';
+                if (isToday) cellClass += ' today';
+                if (hasBookings) cellClass += ' has-bookings';
+                if (availableSlots > 0 && !isPast && !isWeekend) cellClass += ' available';
+                
+                const weekdayNames = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+                
+                calendarHTML += `<div class="${cellClass}" onclick="selectDate('${dateStr}')" data-date="${dateStr}">`;
+                calendarHTML += `<div class="weekday-name">${weekdayNames[dayOfWeek]}</div>`;
+                calendarHTML += `<div class="day-number">${dayNumber}</div>`;
+                if (availableSlots > 0) {
+                    calendarHTML += `<div class="slots-count">${availableSlots} слотов</div>`;
+                } else if (hasBookings) {
+                    calendarHTML += '<div class="booked-indicator">❌</div>';
+                }
+                calendarHTML += '</div>';
+            });
+            calendarHTML += '</div>';
+
+            calendarWeek.innerHTML = calendarHTML;
+        }
+
+        function getAvailableSlotsCount(dateStr) {
+            const timeSlots = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'];
+            return timeSlots.filter(time => !bookedSlots.has(dateStr + '_' + time)).length;
+        }
+
+        function previousWeek() {
+            currentWeekStart.setDate(currentWeekStart.getDate() - 7);
+            generateCompactCalendar();
+        }
+
+        function nextWeek() {
+            currentWeekStart.setDate(currentWeekStart.getDate() + 7);
+            generateCompactCalendar();
+        }
+
+        function formatDate(date) {
+            return date.getFullYear() + '-' + 
+                   String(date.getMonth() + 1).padStart(2, '0') + '-' + 
+                   String(date.getDate()).padStart(2, '0');
+        }
+
+        function selectDate(dateStr) {
+            selectedDate = dateStr;
+            const cells = document.querySelectorAll('.week-day');
+            cells.forEach(cell => cell.classList.remove('selected'));
+            
+            const selectedCell = document.querySelector(`[data-date="${dateStr}"]`);
+            if (selectedCell && !selectedCell.classList.contains('past') && 
+                !selectedCell.classList.contains('weekend')) {
+                selectedCell.classList.add('selected');
+                generateTimeSlots();
+                document.getElementById('timeSection').style.display = 'block';
+            }
+        }
+
+        function generateTimeSlots() {
+            const timeGrid = document.getElementById('timeGrid');
+            const timeSlots = [
+                '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', 
+                '15:00', '16:00', '17:00', '18:00', '19:00'
+            ];
+            
+            let timeHTML = '';
+            timeSlots.forEach(time => {
+                const slotKey = selectedDate + '_' + time;
+                const isBooked = bookedSlots.has(slotKey);
+                
+                let slotClass = 'time-slot';
+                if (isBooked) slotClass += ' booked';
+                
+                timeHTML += `<div class="${slotClass}" onclick="selectTime('${time}')" data-time="${time}">`;
+                timeHTML += `<span class="time-text">${time}</span>`;
+                if (isBooked) {
+                    timeHTML += '<span class="booked-icon">❌</span>';
+                }
+                timeHTML += '</div>';
+            });
+            
+            timeGrid.innerHTML = timeHTML;
+            
+            const availableCount = timeSlots.filter(time => !bookedSlots.has(selectedDate + '_' + time)).length;
+            document.getElementById('availableInfo').innerHTML = 
+                `<p>Доступно временных слотов: ${availableCount} из ${timeSlots.length}</p>`;
+        }
+
+        function selectTime(time) {
+            const slotKey = selectedDate + '_' + time;
+            if (!bookedSlots.has(slotKey)) {
+                selectedTime = time;
+                const slots = document.querySelectorAll('.time-slot');
+                slots.forEach(slot => slot.classList.remove('selected'));
+                
+                const selectedSlot = document.querySelector(`[data-time="${time}"]`);
+                if (selectedSlot) {
+                    selectedSlot.classList.add('selected');
+                    document.getElementById('bookingFormFields').style.display = 'block';
+                }
+            }
+        }
+
+        function submitBooking() {
+            if (!selectedDate || !selectedTime) {
+                alert('Пожалуйста, выберите дату и время');
+                return;
+            }
+
+            const name = document.getElementById('visitorName').value.trim();
+            const phone = document.getElementById('visitorPhone').value.trim();
+            const email = document.getElementById('visitorEmail').value.trim();
+            const comment = document.getElementById('visitorComment').value.trim();
+
+            if (!name || !phone) {
+                alert('Пожалуйста, заполните имя и телефон');
+                return;
+            }
+
+            const phoneDigits = phone.replace(/\D/g, '');
+            const phoneRegex = /^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$/;
+            
+            if (phoneDigits.length !== 11) {
+                showToast('Введите полный номер телефона (11 цифр) в формате +7(999)999-99-99');
+                return;
+            }
+            
+            if (!phoneRegex.test(phone)) {
+                showToast('Введите корректный номер телефона в формате +7(999)999-99-99');
+                return;
+            }
+
+            const bookingData = {
+                object: 'narodnye',
+                date: selectedDate,
+                time: selectedTime,
+                name: name,
+                phone: phone,
+                email: email,
+                comment: comment
+            };
+
+            sendBookingToTelegram(bookingData);
+        }
+
+        function sendBookingToTelegram(bookingData) {
+            const botToken = TG_BOT_TOKEN;
+            const chatId = TG_CHAT_ID;
+            
+            const objectNames = {
+                'dom101': 'ДОМ 101',
+                'narodnye': 'Народные кварталы',
+                'istoriya2': 'История 2'
+            };
+
+            const message = `🏠 Новая заявка на просмотр квартиры
+
+📍 Объект: ${objectNames[bookingData.object]}
+📅 Дата: ${bookingData.date}
+⏰ Время: ${bookingData.time}
+
+👤 Имя: ${bookingData.name}
+📞 Телефон: ${bookingData.phone}
+📧 Email: ${bookingData.email || 'не указан'}
+💬 Комментарий: ${bookingData.comment || 'нет'}`;
+
+            console.log('Sending to Telegram:', { botToken: botToken ? botToken.substring(0, 10) + '...' : '(empty)', chatId, message });
+
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: 'HTML'
+                }),
+                signal: controller.signal
+            })
+            .then(response => {
+                clearTimeout(timeoutId);
+                console.log('Telegram response status:', response.status);
+                return response.json();
+            })
+            .then(data => {
+                console.log('Telegram response data:', data);
+                
+                if (data.ok) {
+                    const slotKey = bookingData.date + '_' + bookingData.time;
+                    bookedSlots.add(slotKey);
+                    
+                    saveBookingsToStorage();
+                    
+                    const timeSlot = document.querySelector(`[data-time="${bookingData.time}"]`);
+                    if (timeSlot) {
+                        timeSlot.classList.add('booked');
+                        timeSlot.innerHTML = `<span class="time-text">${bookingData.time}</span><span class="booked-icon">❌</span>`;
+                    }
+                    
+                    generateCompactCalendar();
+                    
+                    showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+                    
+                    resetBookingForm();
+                } else {
+                    console.error('Telegram API error:', data);
+                    showToast(`Ошибка при отправке заявки: ${data.description || 'Неизвестная ошибка'}`);
+                }
+            })
+            .catch(error => {
+                clearTimeout(timeoutId);
+                console.error('Network error:', error);
+                
+                if (error.name === 'AbortError') {
+                    showToast('Превышено время ожидания. Попробуйте еще раз.');
+                } else {
+                    showToast('Ошибка сети при отправке заявки. Попробуйте еще раз.');
+                }
+            });
+        }
+
+        function saveBookingsToStorage() {
+            const bookingsArray = Array.from(bookedSlots);
+            localStorage.setItem('realtyBookings', JSON.stringify(bookingsArray));
+        }
+
+        function loadBookingsFromStorage() {
+            const savedBookings = localStorage.getItem('realtyBookings');
+            if (savedBookings) {
+                const bookingsArray = JSON.parse(savedBookings);
+                bookedSlots = new Set(bookingsArray);
+            }
+            
+            if (isBookingVisible) {
+                generateCompactCalendar();
+            }
+        }
+
+        function resetBookingForm() {
+            selectedDate = null;
+            selectedTime = null;
+            
+            document.getElementById('visitorName').value = '';
+            document.getElementById('visitorPhone').value = '';
+            document.getElementById('visitorEmail').value = '';
+            document.getElementById('visitorComment').value = '';
+            
+            document.getElementById('timeSection').style.display = 'none';
+            document.getElementById('bookingFormFields').style.display = 'none';
+            
+            generateCompactCalendar();
+        }
+
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `<div class="toast-content">${message}</div><button class="toast-close" aria-label="Закрыть">×</button>`;
+            document.body.appendChild(toast);
+
+            Object.assign(toast.style, {
+                position: 'fixed',
+                top: '20vh',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                zIndex: '9999',
+                maxWidth: '90vw'
+            });
+            
+            const removeToast = () => {
+                if (toast && toast.parentNode) toast.parentNode.removeChild(toast);
+            };
+            
+            toast.querySelector('.toast-close')?.addEventListener('click', removeToast);
+            
+            setTimeout(removeToast, 4000);
+        }
+
+        function sendToTelegram(data) {
+            const botToken = TG_BOT_TOKEN;
+            const chatId = TG_CHAT_ID;
+            
+            const message = `📞 Новая заявка на консультацию
+
+👤 Имя: ${data.name}
+📞 Телефон: ${data.phone}
+📋 Тип заявки: ${data.formType}`;
+
+            console.log('Sending consultation to Telegram:', { botToken: botToken ? botToken.substring(0, 10) + '...' : '(empty)', chatId, message });
+
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: 'HTML'
+                }),
+                signal: controller.signal
+            })
+            .then(response => {
+                clearTimeout(timeoutId);
+                console.log('Telegram response status:', response.status);
+                return response.json();
+            })
+            .then(data => {
+                console.log('Telegram response data:', data);
+                
+                if (data.ok) {
+                    showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+                    closeModal();
+                } else {
+                    console.error('Telegram API error:', data);
+                    showToast(`Ошибка при отправке заявки: ${data.description || 'Неизвестная ошибка'}`, 'error');
+                }
+            })
+            .catch(error => {
+                clearTimeout(timeoutId);
+                console.error('Network error:', error);
+                
+                if (error.name === 'AbortError') {
+                    showToast('Превышено время ожидания. Попробуйте еще раз.', 'error');
+                } else {
+                    showToast('Ошибка сети при отправке заявки. Попробуйте еще раз.', 'error');
+                }
+            });
+        }
+
+        function handleConsultationSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = {
+                name: formData.get('name'),
+                phone: formData.get('phone'),
+                formType: 'Консультация'
+            };
+
+            if (!data.name || !data.phone) {
+                showToast('Пожалуйста, заполните имя и телефон', 'error');
+                return;
+            }
+
+            const phoneDigits = data.phone.replace(/\D/g, '');
+            const phoneRegex = /^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$/;
+            
+            if (phoneDigits.length !== 11) {
+                showToast('Введите полный номер телефона (11 цифр) в формате +7(999)999-99-99', 'error');
+                return;
+            }
+            
+            if (!phoneRegex.test(data.phone)) {
+                showToast('Введите корректный номер телефона в формате +7(999)999-99-99', 'error');
+                return;
+            }
+
+            sendToTelegram(data);
+        }
+
+        function toggleNav() {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('show');
+        }
+
+        // Initialize finish types
+        function initFinishTypes() {
+            const finishTabs = document.querySelectorAll('.finish-tab');
+            const finishPanels = document.querySelectorAll('.finish-panel');
+            
+            finishTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const finishType = this.getAttribute('data-finish');
+                    
+                    finishTabs.forEach(t => t.classList.remove('active'));
+                    finishPanels.forEach(p => p.classList.remove('active'));
+                    
+                    this.classList.add('active');
+                    document.getElementById(finishType + '-finish').classList.add('active');
+                });
+            });
+        }
+
+        // Initialize section tabs
+        function initSectionTabs() {
+            const tabs = document.querySelectorAll('.section-tabs .tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabName = this.textContent.trim();
+                    
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    this.classList.add('active');
+                    
+                    if (tabName === 'О проекте') {
+                        document.querySelector('.tab-content').classList.add('active');
+                    } else if (tabName === 'Видео') {
+                        // Add video content here if needed
+                        document.querySelector('.tab-content').classList.add('active');
+                    }
+                });
+            });
+        }
+
+        // Initialize phone masks and name validation for all inputs
+        function initPhoneMasks() {
+            // Find all phone inputs
+            const phoneInputs = document.querySelectorAll('input[type="tel"], input[name="phone"]');
+            
+            phoneInputs.forEach(input => {
+                // Add event listeners
+                input.addEventListener('input', formatPhoneNumber);
+                input.addEventListener('keydown', handlePhoneKeydown);
+                input.setAttribute('maxlength', '17'); // ensure max length mask
+                input.addEventListener('paste', function(e) {
+                    // Allow paste, but format after paste
+                    setTimeout(() => {
+                        formatPhoneNumber({ target: input });
+                    }, 10);
+                });
+            });
+
+            // Find all name inputs and add validation
+            const nameInputs = document.querySelectorAll('input[name="name"], input[id="visitorName"]');
+            nameInputs.forEach(input => {
+                input.addEventListener('input', formatNameInput);
+                input.addEventListener('keydown', handleNameKeydown);
+                input.addEventListener('paste', function(e) {
+                    setTimeout(() => {
+                        formatNameInput({ target: input });
+                    }, 10);
+                });
+            });
+        }
+
+        // Phone number formatting
+        function formatPhoneNumber(event) {
+            let value = event.target.value.replace(/\D/g, '');
+            
+            // Limit to 11 digits maximum
+            if (value.length > 11) {
+                value = value.slice(0, 11);
+                event.target.value = formatPhoneValue(value);
+                return;
+            }
+            
+            if (value.length === 0) {
+                event.target.value = '';
+                return;
+            }
+            
+            // If user starts typing with 8, replace with 7
+            if (value.length === 1 && value[0] === '8') {
+                value = '7';
+            }
+            
+            // If user starts typing with any digit except 7, prepend 7
+            if (value.length === 1 && value[0] !== '7') {
+                value = '7' + value;
+            }
+            
+            // Use helper function to format
+            event.target.value = formatPhoneValue(value);
+        }
+
+        // Helper function to format phone value
+        function formatPhoneValue(value) {
+            if (value.length === 0) return '';
+            if (value.length === 1 && value[0] === '7') return '+7(';
+            if (value.length <= 4) return '+7(' + value.slice(1);
+            if (value.length <= 7) return '+7(' + value.slice(1, 4) + ')' + value.slice(4);
+            if (value.length <= 9) return '+7(' + value.slice(1, 4) + ')' + value.slice(4, 7) + '-' + value.slice(7);
+            if (value.length <= 11) return '+7(' + value.slice(1, 4) + ')' + value.slice(4, 7) + '-' + value.slice(7, 9) + '-' + value.slice(9);
+            return '+7(' + value.slice(1, 4) + ')' + value.slice(4, 7) + '-' + value.slice(7, 9) + '-' + value.slice(9, 11);
+        }
+
+        // Handle phone input keydown
+        function handlePhoneKeydown(event) {
+            const input = event.target;
+            const currentValue = input.value.replace(/\D/g, '');
+            
+            // Allow backspace, delete, tab, escape, enter
+            if ([8, 9, 27, 13, 46].indexOf(event.keyCode) !== -1 ||
+                // Allow Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+                (event.keyCode === 65 && event.ctrlKey === true) ||
+                (event.keyCode === 67 && event.ctrlKey === true) ||
+                (event.keyCode === 86 && event.ctrlKey === true) ||
+                (event.keyCode === 88 && event.ctrlKey === true)) {
+                return;
+            }
+            
+            // If we already have 11 digits and user is trying to add more
+            if (currentValue.length >= 11 && 
+                ((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105))) {
+                event.preventDefault();
+                return;
+            }
+            
+            // Block all non-numeric characters (allow navigation keys)
+            const isNumberKey = (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105);
+            const isNavKey = [35,36,37,38,39,40].includes(event.keyCode);
+            if (!isNumberKey && !isNavKey) {
+                event.preventDefault();
+                return;
+            }
+        }
+
+        // Format name input - only letters
+        function formatNameInput(event) {
+            const input = event.target;
+            let value = input.value;
+            
+            // Remove all non-letter characters (keeping spaces, hyphens, apostrophes for compound names)
+            value = value.replace(/[^a-zA-Zа-яА-ЯёЁ\s\-']/g, '');
+            
+            // Remove multiple spaces
+            value = value.replace(/\s+/g, ' ');
+            
+            input.value = value;
+        }
+
+        // Handle name input keydown
+        function handleNameKeydown(event) {
+            // Allow backspace, delete, tab, escape, enter, arrows
+            if ([8, 9, 27, 13, 46, 35, 36, 37, 38, 39, 40].indexOf(event.keyCode) !== -1 ||
+                // Allow Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+                (event.keyCode === 65 && event.ctrlKey === true) ||
+                (event.keyCode === 67 && event.ctrlKey === true) ||
+                (event.keyCode === 86 && event.ctrlKey === true) ||
+                (event.keyCode === 88 && event.ctrlKey === true)) {
+                return;
+            }
+            
+            // Block all non-letter characters
+            const isLetter = /^[a-zA-Zа-яА-ЯёЁ]$/.test(event.key);
+            const isSpace = event.keyCode === 32; // space
+            const isHyphen = event.keyCode === 189 || event.keyCode === 109; // hyphen
+            const isApostrophe = event.keyCode === 222; // apostrophe
+            
+            if (!isLetter && !isSpace && !isHyphen && !isApostrophe) {
+                event.preventDefault();
+                return;
+            }
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing...');
+            try {
+                initBookingSystem();
+                initFinishTypes();
+                initSectionTabs();
+                initPhoneMasks();
+                console.log('Initialization completed successfully');
+            } catch (error) {
+                console.error('Initialization error:', error);
+            }
+        });
+    </script>
+</body>
+</html>

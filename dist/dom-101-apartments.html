@@ -45,97 +45,93 @@
     <!-- Filter Section -->
     <section class="filter-section">
         <div class="container">
-            <div class="filter-container">
-                <h2>Подобрать квартиру</h2>
-                <div class="filter-form">
-                    <!-- Тип недвижимости -->
-                    <div class="filter-group">
-                        <label>Тип:</label>
-                        <div class="filter-options">
-                            <label class="filter-option">
-                                <input type="radio" name="type" value="apartment" checked>
-                                <span>Квартира</span>
-                            </label>
-                            <label class="filter-option">
-                                <input type="radio" name="type" value="apartments">
-                                <span>Апартаменты</span>
-                            </label>
-                        </div>
-                    </div>
+            <div class="filter-tabs">
+                <button class="filter-tab" onclick="toggleFilterDropdown('type')">
+                    Тип <span class="dropdown-arrow">▼</span>
+                </button>
+                <button class="filter-tab" onclick="toggleFilterDropdown('rooms')">
+                    Комнат <span class="dropdown-arrow">▼</span>
+                </button>
+                <button class="filter-tab" onclick="toggleFilterDropdown('price')">
+                    Цена <span class="dropdown-arrow">▼</span>
+                </button>
+                <button class="filter-tab" onclick="toggleFilterDropdown('area')">
+                    Площадь <span class="dropdown-arrow">▼</span>
+                </button>
+            </div>
 
-                    <!-- Количество комнат -->
-                    <div class="filter-group">
-                        <label>Комнаты:</label>
-                        <div class="filter-options">
-                            <label class="filter-option">
-                                <input type="checkbox" name="rooms" value="studio">
-                                <span>Студия</span>
-                            </label>
-                            <label class="filter-option">
-                                <input type="checkbox" name="rooms" value="1">
-                                <span>1</span>
-                            </label>
-                            <label class="filter-option">
-                                <input type="checkbox" name="rooms" value="2">
-                                <span>2</span>
-                            </label>
-                            <label class="filter-option">
-                                <input type="checkbox" name="rooms" value="3">
-                                <span>3</span>
-                            </label>
-                        </div>
+            <!-- Type Dropdown -->
+            <div class="filter-dropdown" id="type-dropdown">
+                <div class="dropdown-content">
+                    <div class="filter-section-title">Жилое</div>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="radio" name="type" value="apartment" checked>
+                            <span>Квартира</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="type" value="apartments">
+                            <span>Апартаменты</span>
+                        </label>
                     </div>
+                    <button class="apply-btn" onclick="applyFilters()">Применить</button>
+                </div>
+            </div>
 
-                    <!-- Цена -->
-                    <div class="filter-group">
-                        <label>Цена:</label>
-                        <div class="price-filter">
-                            <div class="price-type">
-                                <label class="filter-option">
-                                    <input type="radio" name="priceType" value="total" checked>
-                                    <span>За помещение</span>
-                                </label>
-                                <label class="filter-option">
-                                    <input type="radio" name="priceType" value="perM2">
-                                    <span>За м²</span>
-                                </label>
-                            </div>
-                            <div class="price-range">
-                                <input type="number" id="priceFrom" placeholder="От" min="0" step="1000">
-                                <span>-</span>
-                                <input type="number" id="priceTo" placeholder="До" min="0" step="1000">
-                                <span class="price-unit">₽</span>
-                            </div>
-                        </div>
+            <!-- Rooms Dropdown -->
+            <div class="filter-dropdown" id="rooms-dropdown">
+                <div class="dropdown-content">
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="rooms" value="studio">
+                            <span>Студия</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="rooms" value="1">
+                            <span>1</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="rooms" value="2">
+                            <span>2</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="rooms" value="3">
+                            <span>3</span>
+                        </label>
                     </div>
+                    <button class="apply-btn" onclick="applyFilters()">Применить</button>
+                </div>
+            </div>
 
-                    <!-- Площадь -->
-                    <div class="filter-group">
-                        <label>Площадь:</label>
-                        <div class="area-filter">
-                            <div class="area-type">
-                                <label class="filter-option">
-                                    <input type="radio" name="areaType" value="total" checked>
-                                    <span>Общая</span>
-                                </label>
-                                <label class="filter-option">
-                                    <input type="radio" name="areaType" value="living">
-                                    <span>Жилая</span>
-                                </label>
-                            </div>
-                            <div class="area-range">
-                                <input type="number" id="areaFrom" placeholder="От" min="0" step="0.1">
-                                <span>-</span>
-                                <input type="number" id="areaTo" placeholder="До" min="0" step="0.1">
-                                <span class="area-unit">м²</span>
-                            </div>
-                        </div>
+            <!-- Price Dropdown -->
+            <div class="filter-dropdown" id="price-dropdown">
+                <div class="dropdown-content">
+                    <div class="price-type-tabs">
+                        <button class="price-tab active" onclick="selectPriceType('total')">За помещение</button>
+                        <button class="price-tab" onclick="selectPriceType('perM2')">За м²</button>
                     </div>
+                    <div class="price-range">
+                        <input type="number" id="priceFrom" placeholder="ОТ" min="0" step="1000">
+                        <input type="number" id="priceTo" placeholder="ДО" min="0" step="1000">
+                        <span class="price-unit">₽</span>
+                    </div>
+                    <button class="apply-btn" onclick="applyFilters()">Применить</button>
+                </div>
+            </div>
 
-                    <div class="filter-actions">
-                        <button class="btn btn-outline" onclick="clearFilters()">Сбросить</button>
-                        <button class="btn btn-primary" onclick="applyFilters()">Применить</button>
+            <!-- Area Dropdown -->
+            <div class="filter-dropdown" id="area-dropdown">
+                <div class="dropdown-content">
+                    <div class="area-type-tabs">
+                        <button class="area-tab active" onclick="selectAreaType('total')">Общая</button>
+                        <button class="area-tab" onclick="selectAreaType('living')">Жилая</button>
                     </div>
+                    <div class="area-range">
+                        <input type="number" id="areaFrom" placeholder="ОТ" min="0" step="0.1">
+                        <input type="number" id="areaTo" placeholder="ДО" min="0" step="0.1">
+                        <span class="area-unit">M²</span>
+                    </div>
+                    <button class="apply-btn" onclick="applyFilters()">Применить</button>
                 </div>
             </div>
         </div>
@@ -674,19 +670,68 @@
 
         // Filter functionality
         let allApartments = [];
+        let currentPriceType = 'total';
+        let currentAreaType = 'total';
 
         // Initialize filter system
         function initFilter() {
             allApartments = Array.from(document.querySelectorAll('.apartment-card'));
             updateResultsCount(allApartments.length);
+            
+            // Hide all dropdowns initially
+            document.querySelectorAll('.filter-dropdown').forEach(dropdown => {
+                dropdown.style.display = 'none';
+            });
+        }
+
+        // Toggle filter dropdown
+        function toggleFilterDropdown(filterType) {
+            const dropdown = document.getElementById(filterType + '-dropdown');
+            const arrow = event.currentTarget.querySelector('.dropdown-arrow');
+            
+            // Close all other dropdowns
+            document.querySelectorAll('.filter-dropdown').forEach(d => {
+                if (d !== dropdown) {
+                    d.style.display = 'none';
+                }
+            });
+            
+            // Toggle current dropdown
+            if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+                dropdown.style.display = 'block';
+                arrow.textContent = '▲';
+            } else {
+                dropdown.style.display = 'none';
+                arrow.textContent = '▼';
+            }
+        }
+
+        // Select price type
+        function selectPriceType(type) {
+            currentPriceType = type;
+            document.querySelectorAll('.price-tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Update hidden radio inputs
+            document.querySelector(`input[name="priceType"][value="${type}"]`).checked = true;
+        }
+
+        // Select area type
+        function selectAreaType(type) {
+            currentAreaType = type;
+            document.querySelectorAll('.area-tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Update hidden radio inputs
+            document.querySelector(`input[name="areaType"][value="${type}"]`).checked = true;
         }
 
         // Apply filters
         function applyFilters() {
             const selectedType = document.querySelector('input[name="type"]:checked').value;
             const selectedRooms = Array.from(document.querySelectorAll('input[name="rooms"]:checked')).map(cb => cb.value);
-            const priceType = document.querySelector('input[name="priceType"]:checked').value;
-            const areaType = document.querySelector('input[name="areaType"]:checked').value;
+            const priceType = currentPriceType;
+            const areaType = currentAreaType;
             
             const priceFrom = document.getElementById('priceFrom').value ? parseFloat(document.getElementById('priceFrom').value) : null;
             const priceTo = document.getElementById('priceTo').value ? parseFloat(document.getElementById('priceTo').value) : null;
@@ -753,10 +798,14 @@
             document.querySelectorAll('input[name="rooms"]').forEach(cb => cb.checked = false);
             
             // Reset price type to total
-            document.querySelector('input[name="priceType"][value="total"]').checked = true;
+            currentPriceType = 'total';
+            document.querySelectorAll('.price-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelector('.price-tab').classList.add('active');
             
             // Reset area type to total
-            document.querySelector('input[name="areaType"][value="total"]').checked = true;
+            currentAreaType = 'total';
+            document.querySelectorAll('.area-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelector('.area-tab').classList.add('active');
             
             // Clear price inputs
             document.getElementById('priceFrom').value = '';
@@ -765,6 +814,16 @@
             // Clear area inputs
             document.getElementById('areaFrom').value = '';
             document.getElementById('areaTo').value = '';
+            
+            // Close all dropdowns
+            document.querySelectorAll('.filter-dropdown').forEach(dropdown => {
+                dropdown.style.display = 'none';
+            });
+            
+            // Reset arrows
+            document.querySelectorAll('.dropdown-arrow').forEach(arrow => {
+                arrow.textContent = '▼';
+            });
             
             // Show all apartments
             allApartments.forEach(apartment => {

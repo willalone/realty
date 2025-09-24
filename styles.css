@@ -4162,93 +4162,144 @@ body.novye-sezony .feature-highlight:hover {
 /* Filter Section Styles */
 .filter-section {
     background: #f8f9fa;
-    padding: 40px 0;
+    padding: 20px 0;
+    position: relative;
 }
 
-.filter-container h2 {
-    font-size: 28px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.filter-form {
-    background: white;
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-}
-
-.filter-group {
+.filter-tabs {
     display: flex;
-    flex-direction: column;
     gap: 12px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
-.filter-group label {
-    font-weight: 600;
-    color: var(--text);
+.filter-tab {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 12px 20px;
     font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.filter-tab:hover {
+    border-color: #007bff;
+    color: #007bff;
+}
+
+.filter-tab.active {
+    border-color: #007bff;
+    background: #007bff;
+    color: white;
+}
+
+.dropdown-arrow {
+    font-size: 12px;
+    transition: transform 0.2s ease;
+}
+
+.filter-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none;
+}
+
+.dropdown-content {
+    padding: 20px;
+}
+
+.filter-section-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
 }
 
 .filter-options {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 12px;
+    margin-bottom: 20px;
 }
 
 .filter-option {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     cursor: pointer;
     font-size: 14px;
-    color: var(--text-secondary);
-    transition: color 0.2s ease;
+    color: #333;
+    padding: 8px 0;
 }
 
 .filter-option:hover {
-    color: var(--primary);
+    color: #007bff;
 }
 
 .filter-option input[type="radio"],
 .filter-option input[type="checkbox"] {
     margin: 0;
-    width: 16px;
-    height: 16px;
-    accent-color: var(--primary);
+    width: 18px;
+    height: 18px;
+    accent-color: #007bff;
 }
 
-.price-filter,
-.area-filter {
+.price-type-tabs,
+.area-type-tabs {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
 }
 
-.price-type,
-.area-type {
-    display: flex;
-    gap: 16px;
+.price-tab,
+.area-tab {
+    flex: 1;
+    padding: 12px 20px;
+    background: #f8f9fa;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.price-tab.active,
+.area-tab.active {
+    background: #333;
+    color: white;
 }
 
 .price-range,
 .area-range {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
+    margin-bottom: 20px;
 }
 
 .price-range input,
 .area-range input {
     flex: 1;
-    padding: 10px 12px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
+    padding: 12px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
     font-size: 14px;
     transition: border-color 0.2s ease;
 }
@@ -4256,22 +4307,32 @@ body.novye-sezony .feature-highlight:hover {
 .price-range input:focus,
 .area-range input:focus {
     outline: none;
-    border-color: var(--primary);
+    border-color: #007bff;
 }
 
 .price-unit,
 .area-unit {
     font-size: 14px;
-    color: var(--text-secondary);
-    min-width: 20px;
+    color: #666;
+    font-weight: 500;
+    min-width: 30px;
 }
 
-.filter-actions {
-    grid-column: 1 / -1;
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    margin-top: 10px;
+.apply-btn {
+    width: 100%;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.apply-btn:hover {
+    background: #c82333;
 }
 
 .filter-results {
@@ -4286,24 +4347,36 @@ body.novye-sezony .feature-highlight:hover {
 
 /* Filter Mobile Responsive */
 @media (max-width: 768px) {
-    .filter-form {
-        grid-template-columns: 1fr;
-        padding: 20px;
-    }
-    
-    .filter-options {
+    .filter-tabs {
         flex-direction: column;
         gap: 8px;
     }
     
-    .price-type,
-    .area-type {
-        flex-direction: column;
-        gap: 8px;
+    .filter-tab {
+        width: 100%;
+        justify-content: space-between;
     }
     
-    .filter-actions {
+    .filter-dropdown {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 400px;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+    
+    .price-type-tabs,
+    .area-type-tabs {
         flex-direction: column;
+    }
+    
+    .price-range,
+    .area-range {
+        flex-direction: column;
+        gap: 8px;
     }
 }
 

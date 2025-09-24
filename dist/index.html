@@ -916,7 +916,8 @@
         const today = new Date();
         const dayOfWeek = today.getDay();
         const diff = today.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1);
-        currentWeekStart = new Date(today.setDate(diff));
+        currentWeekStart = new Date(today.getFullYear(), today.getMonth(), diff);
+        console.log('Initialized currentWeekStart to:', currentWeekStart);
         let isBookingVisible = false;
 
         // Toggle booking calendar visibility
@@ -1067,6 +1068,16 @@
             const calendarWeek = document.getElementById('calendarWeek');
             const currentWeekRange = document.getElementById('currentWeekRange');
             
+            console.log('generateCompactCalendar called, elements found:', {
+                calendarWeek: !!calendarWeek,
+                currentWeekRange: !!currentWeekRange
+            });
+            
+            if (!calendarWeek || !currentWeekRange) {
+                console.error('Calendar elements not found!');
+                return;
+            }
+            
             // Use currentWeekStart directly as it's already set to Monday
             const monday = new Date(currentWeekStart);
             console.log('Generating calendar for week starting:', monday);
@@ -1125,14 +1136,16 @@
                 calendarHTML += `<div class="day-number">${dayNumber}</div>`;
                 if (availableSlots > 0) {
                     calendarHTML += `<div class="slots-count">${availableSlots} слотов</div>`;
-                } else if (hasBookings) {
+                } else if (hasNoAvailableSlots) {
                     calendarHTML += '<div class="booked-indicator">❌</div>';
                 }
                 calendarHTML += '</div>';
             });
             calendarHTML += '</div>';
 
+            console.log('Generated calendar HTML:', calendarHTML);
             calendarWeek.innerHTML = calendarHTML;
+            console.log('Calendar HTML set, element content length:', calendarWeek.innerHTML.length);
         }
 
         // Get available slots count for a date
@@ -1468,6 +1481,13 @@
             try {
                 initBookingSystem();
                 initPhoneMasks();
+                
+                // Force calendar generation after a small delay to ensure DOM is ready
+                setTimeout(() => {
+                    console.log('Force generating calendar...');
+                    generateCompactCalendar();
+                }, 100);
+                
                 console.log('Initialization completed successfully');
             } catch (error) {
                 console.error('Initialization error:', error);

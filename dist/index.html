@@ -1101,15 +1101,16 @@
                 const isPast = date < today;
                 const isToday = date.toDateString() === today.toDateString();
                 
-                // Check if any slots are booked for this date
-                const hasBookings = Array.from(bookedSlots).some(slot => slot.startsWith(dateStr));
+                // Check available slots for this date
                 const availableSlots = getAvailableSlotsCount(dateStr);
+                const hasNoAvailableSlots = availableSlots === 0;
                 
                 let cellClass = 'week-day';
                 if (isPast) cellClass += ' past';
                 if (isWeekend) cellClass += ' weekend';
                 if (isToday) cellClass += ' today';
-                if (hasBookings) cellClass += ' has-bookings';
+                // Red background only if no available slots
+                if (hasNoAvailableSlots) cellClass += ' has-bookings';
                 // Allow booking on weekends too
                 if (availableSlots > 0 && !isPast) cellClass += ' available';
                 
@@ -1133,7 +1134,18 @@
         // Get available slots count for a date
         function getAvailableSlotsCount(dateStr) {
             const timeSlots = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'];
-            return timeSlots.filter(time => !bookedSlots.has(dateStr + '_' + time)).length;
+            const today = new Date();
+            const selectedDateObj = new Date(dateStr);
+            const isToday = selectedDateObj.toDateString() === today.toDateString();
+            const currentHour = today.getHours();
+            const minHour = currentHour + 2; // 2 hours buffer
+            
+            return timeSlots.filter(time => {
+                const isBooked = bookedSlots.has(dateStr + '_' + time);
+                const timeHour = parseInt(time.split(':')[0]);
+                const isPastTime = isToday && timeHour <= minHour;
+                return !isBooked && !isPastTime;
+            }).length;
         }
 
         // Navigation functions
@@ -1187,18 +1199,19 @@
                 const slotKey = selectedDate + '_' + time;
                 const isBooked = bookedSlots.has(slotKey);
                 
-                // Check if time is in the past for today
+                // Check if time is in the past for today (including 2-hour buffer)
                 const timeHour = parseInt(time.split(':')[0]);
-                const isPastTime = isToday && timeHour <= currentHour;
+                const minHour = currentHour + 2; // 2 hours buffer
+                const isPastTime = isToday && timeHour <= minHour;
                 
                 let slotClass = 'time-slot';
-                if (isBooked) slotClass += ' booked';
-                if (isPastTime) slotClass += ' past-time';
+                if (isBooked || isPastTime) slotClass += ' disabled';
                 
-                timeHTML += `<div class="${slotClass}" onclick="${isPastTime ? '' : 'selectTime(\'' + time + '\')'}" data-time="${time}">`;
+                const isClickable = !isBooked && !isPastTime;
+                timeHTML += `<div class="${slotClass}" onclick="${isClickable ? 'selectTime(\'' + time + '\')' : ''}" data-time="${time}">`;
                 timeHTML += `<span class="time-text">${time}</span>`;
                 if (isBooked) {
-                    timeHTML += '<span class="booked-icon">❌</span>';
+                    timeHTML += '<span class="booked-icon">🔒</span>';
                 } else if (isPastTime) {
                     timeHTML += '<span class="past-icon">⏰</span>';
                 }
@@ -1212,7 +1225,7 @@
                 const slotKey = selectedDate + '_' + time;
                 const isBooked = bookedSlots.has(slotKey);
                 const timeHour = parseInt(time.split(':')[0]);
-                const isPastTime = isToday && timeHour <= currentHour;
+                const isPastTime = isToday && timeHour <= minHour;
                 return !isBooked && !isPastTime;
             }).length;
             

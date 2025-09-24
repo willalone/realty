@@ -473,6 +473,10 @@
             
             modalBody.innerHTML = content[modalId] || '<p>Информация недоступна</p>';
             modal.style.display = 'flex';
+            
+            // Initialize phone masks for newly created modal content
+            initPhoneMasks();
+            
             console.log('Modal opened successfully');
         }
 

@@ -443,7 +443,7 @@ body {
 .project-location { color: var(--muted); margin-top: -4px; }
 .project-prices { list-style: none; padding: 0; margin: 12px 0 16px; display: grid; gap: 6px; }
 
-.tabs { display: inline-flex; background: var(--surface); padding: 8px; border-radius: 12px; border: 1px solid var(--border); gap: 20px; }
+.tabs { display: inline-flex; background: var(--surface); padding: 8px; border-radius: 12px; border: none; gap: 20px; }
 .tab { background: transparent; color: var(--muted); border: none; padding: 16px 36px; border-radius: 8px; cursor: pointer; font-weight: 500; transition: all 0.3s ease; }
 .tab.active { color: var(--primary); background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
 .tab-panels { margin-top: 12px; }

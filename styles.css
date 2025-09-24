@@ -4168,64 +4168,84 @@ body.novye-sezony .feature-highlight:hover {
 
 .filter-tabs {
     display: flex;
-    gap: 12px;
+    gap: 8px;
     justify-content: flex-start;
     flex-wrap: wrap;
+    background: linear-gradient(135deg, #f8fffe 0%, #f0fdf4 100%);
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid #e5f3e5;
+    box-shadow: 0 4px 20px rgba(34, 197, 94, 0.08);
 }
 
 .filter-tab {
     background: white;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 12px 20px;
+    border: 2px solid #e5f3e5;
+    border-radius: 12px;
+    padding: 14px 20px;
     font-size: 14px;
-    font-weight: 500;
-    color: #333;
+    font-weight: 600;
+    color: #374151;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     gap: 8px;
     position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .filter-tab:hover {
-    border-color: #007bff;
-    color: #007bff;
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(34, 197, 94, 0.15);
 }
 
 .filter-tab.active {
-    border-color: #007bff;
-    background: #007bff;
+    border-color: var(--primary);
+    background: linear-gradient(135deg, var(--primary), var(--primary-600));
     color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(34, 197, 94, 0.25);
 }
 
 .clear-filters-btn {
-    background: #f8f9fa;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 12px 16px;
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+    border: 2px solid #fecaca;
+    border-radius: 12px;
+    padding: 14px 20px;
     font-size: 14px;
-    font-weight: 500;
-    color: #666;
+    font-weight: 600;
+    color: #dc2626;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     margin-left: auto;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.08);
 }
 
 .clear-filters-btn:hover {
-    border-color: #dc3545;
-    background: #dc3545;
+    border-color: #dc2626;
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
     color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.25);
 }
 
 .clear-icon {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     line-height: 1;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(220, 38, 38, 0.1);
+    border-radius: 50%;
 }
 
 .dropdown-arrow {
@@ -4239,46 +4259,59 @@ body.novye-sezony .feature-highlight:hover {
     position: absolute;
     top: 100%;
     left: 0;
-    width: 280px;
+    width: 300px;
     background: white;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid #e5f3e5;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(34, 197, 94, 0.12);
     z-index: 1000;
     display: none;
     overflow: hidden;
+    backdrop-filter: blur(10px);
 }
 
 .dropdown-content {
-    padding: 16px;
+    padding: 20px;
+    background: linear-gradient(135deg, #f8fffe 0%, #f0fdf4 100%);
 }
 
 .filter-section-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 16px;
+    text-align: center;
+    padding: 8px 0;
+    border-bottom: 2px solid #e5f3e5;
 }
 
 .filter-options {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-bottom: 16px;
+    gap: 12px;
+    margin-bottom: 20px;
 }
 
 .filter-option {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
     cursor: pointer;
     font-size: 14px;
-    color: #333;
-    padding: 4px 0;
+    font-weight: 500;
+    color: #374151;
+    padding: 12px 16px;
+    border-radius: 10px;
+    background: white;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
 }
 
 .filter-option:hover {
-    color: #007bff;
+    color: var(--primary);
+    background: #f0fdf4;
+    border-color: #e5f3e5;
+    transform: translateX(4px);
 }
 
 .filter-option input[type="radio"],
@@ -4292,29 +4325,39 @@ body.novye-sezony .feature-highlight:hover {
 .price-type-tabs,
 .area-type-tabs {
     display: flex;
-    margin-bottom: 16px;
-    border-radius: 6px;
+    margin-bottom: 20px;
+    border-radius: 12px;
     overflow: hidden;
-    border: 1px solid #e0e0e0;
+    border: 2px solid #e5f3e5;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .price-tab,
 .area-tab {
     flex: 1;
-    padding: 8px 16px;
-    background: #f8f9fa;
+    padding: 12px 16px;
+    background: white;
     border: none;
     font-size: 13px;
-    font-weight: 500;
-    color: #666;
+    font-weight: 600;
+    color: #6b7280;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.price-tab:hover,
+.area-tab:hover {
+    color: var(--primary);
+    background: #f0fdf4;
 }
 
 .price-tab.active,
 .area-tab.active {
-    background: #333;
+    background: linear-gradient(135deg, var(--primary), var(--primary-600));
     color: white;
+    box-shadow: 0 2px 8px rgba(34, 197, 94, 0.2);
 }
 
 .price-range,
@@ -4328,45 +4371,57 @@ body.novye-sezony .feature-highlight:hover {
 .price-range input,
 .area-range input {
     flex: 1;
-    padding: 8px 12px;
-    border: 1px solid #e0e0e0;
-    border-radius: 6px;
-    font-size: 13px;
-    transition: border-color 0.2s ease;
+    padding: 12px 16px;
+    border: 2px solid #e5f3e5;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
     min-width: 0;
     width: 100%;
     box-sizing: border-box;
+    background: white;
+    color: #374151;
 }
 
 .price-range input:focus,
 .area-range input:focus {
     outline: none;
-    border-color: #007bff;
+    border-color: var(--primary);
+    background: #f0fdf4;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
 }
 
 .price-unit,
 .area-unit {
-    font-size: 13px;
-    color: #666;
-    font-weight: 500;
-    min-width: 25px;
+    font-size: 14px;
+    color: #6b7280;
+    font-weight: 600;
+    min-width: 30px;
+    padding: 8px 12px;
+    background: #f9fafb;
+    border-radius: 8px;
+    border: 1px solid #e5f3e5;
 }
 
 .apply-btn {
     width: 100%;
-    background: #dc3545;
+    background: linear-gradient(135deg, var(--primary), var(--primary-600));
     color: white;
     border: none;
-    border-radius: 6px;
-    padding: 10px 16px;
-    font-size: 13px;
-    font-weight: 500;
+    border-radius: 12px;
+    padding: 14px 20px;
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(34, 197, 94, 0.2);
 }
 
 .apply-btn:hover {
-    background: #c82333;
+    background: linear-gradient(135deg, var(--primary-600), #15803d);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(34, 197, 94, 0.3);
 }
 
 .filter-results {
@@ -4383,17 +4438,20 @@ body.novye-sezony .feature-highlight:hover {
 @media (max-width: 768px) {
     .filter-tabs {
         flex-direction: column;
-        gap: 8px;
+        gap: 12px;
+        padding: 16px;
     }
     
     .filter-tab {
         width: 100%;
         justify-content: space-between;
+        padding: 16px 20px;
     }
     
     .clear-filters-btn {
         margin-left: 0;
         justify-content: center;
+        padding: 16px 20px;
     }
     
     .filter-dropdown {
@@ -4405,17 +4463,33 @@ body.novye-sezony .feature-highlight:hover {
         max-width: 400px;
         max-height: 80vh;
         overflow-y: auto;
+        border-radius: 20px;
+    }
+    
+    .dropdown-content {
+        padding: 24px;
     }
     
     .price-type-tabs,
     .area-type-tabs {
         flex-direction: column;
+        gap: 4px;
+    }
+    
+    .price-tab,
+    .area-tab {
+        border-radius: 8px;
     }
     
     .price-range,
     .area-range {
         flex-direction: column;
-        gap: 8px;
+        gap: 12px;
+    }
+    
+    .filter-option {
+        padding: 16px;
+        font-size: 15px;
     }
 }
 

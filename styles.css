@@ -444,49 +444,30 @@ body {
 .project-prices { list-style: none; padding: 0; margin: 12px 0 16px; display: grid; gap: 6px; }
 
 .tabs { 
-  display: inline-flex; 
-  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(248,255,248,0.8)); 
-  padding: 12px; 
-  border-radius: 20px; 
-  border: 2px solid rgba(34, 197, 94, 0.1); 
+  display: flex; 
   gap: 8px; 
-  box-shadow: 0 8px 32px rgba(34, 197, 94, 0.15);
-  backdrop-filter: blur(10px);
+  background: #f8f9fa; 
+  padding: 4px; 
+  border-radius: 12px; 
 }
 .tab { 
   background: transparent; 
-  color: var(--muted); 
   border: none; 
-  padding: 16px 32px; 
-  border-radius: 16px; 
-  cursor: pointer; 
+  padding: 12px 20px; 
+  border-radius: 8px; 
+  font-size: 14px; 
   font-weight: 600; 
-  font-size: 15px;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
-  position: relative;
-  overflow: hidden;
-}
-.tab:hover {
-  color: var(--primary);
-  background: rgba(34, 197, 94, 0.05);
-  transform: translateY(-2px);
+  color: var(--muted); 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
 }
 .tab.active { 
-  color: white; 
-  background: linear-gradient(135deg, var(--primary), var(--primary-600)); 
-  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.4);
-  transform: translateY(-3px);
+  background: white; 
+  color: var(--primary); 
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
 }
-.tab.active::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
-  border-radius: 16px;
-  pointer-events: none;
+.tab:hover:not(.active) { 
+  color: var(--text); 
 }
 .tab-panels { margin-top: 12px; }
 .tab-panel { display: none; }

@@ -69,12 +69,12 @@ p, span, div {
 
 /* Mobile-specific text improvements */
 @media (max-width: 768px) {
-  h1 { font-size: 1.25rem; line-height: 1.2; }
-  h2 { font-size: 1.125rem; line-height: 1.3; }
-  h3 { font-size: 1rem; line-height: 1.3; }
-  h4 { font-size: 0.875rem; line-height: 1.4; }
-  h5 { font-size: 0.75rem; line-height: 1.4; }
-  h6 { font-size: 0.625rem; line-height: 1.4; }
+  h1 { font-size: 1.125rem; line-height: 1.2; }
+  h2 { font-size: 1rem; line-height: 1.3; }
+  h3 { font-size: 0.875rem; line-height: 1.3; }
+  h4 { font-size: 0.75rem; line-height: 1.4; }
+  h5 { font-size: 0.625rem; line-height: 1.4; }
+  h6 { font-size: 0.5rem; line-height: 1.4; }
   
   p {
     font-size: 14px;
@@ -88,12 +88,12 @@ p, span, div {
 }
 
 @media (max-width: 480px) {
-  h1 { font-size: 1.125rem; line-height: 1.1; }
-  h2 { font-size: 1rem; line-height: 1.2; }
-  h3 { font-size: 0.875rem; line-height: 1.2; }
-  h4 { font-size: 0.75rem; line-height: 1.3; }
-  h5 { font-size: 0.625rem; line-height: 1.3; }
-  h6 { font-size: 0.5rem; line-height: 1.3; }
+  h1 { font-size: 1rem; line-height: 1.1; }
+  h2 { font-size: 0.875rem; line-height: 1.2; }
+  h3 { font-size: 0.75rem; line-height: 1.2; }
+  h4 { font-size: 0.625rem; line-height: 1.3; }
+  h5 { font-size: 0.5rem; line-height: 1.3; }
+  h6 { font-size: 0.375rem; line-height: 1.3; }
   
   p {
     font-size: 12px;
@@ -3366,18 +3366,18 @@ body.istoriya-2 .feature-highlight:hover {
   h3 { font-size: 1rem; }
   
   /* Заголовки в секциях проектов */
-  .project-section h2 { font-size: 1rem; }
-  .project-section h3 { font-size: 0.875rem; }
-  .section-title { font-size: 1rem; }
-  .section h2 { font-size: 1rem; }
+  .project-section h2 { font-size: 0.875rem; }
+  .project-section h3 { font-size: 0.75rem; }
+  .section-title { font-size: 0.875rem; }
+  .section h2 { font-size: 0.875rem; }
 }
 
 @media (max-width: 480px) {
   /* Заголовки в секциях проектов для очень маленьких экранов */
-  .project-section h2 { font-size: 0.75rem; }
-  .project-section h3 { font-size: 0.625rem; }
-  .section-title { font-size: 0.75rem; }
-  .section h2 { font-size: 0.75rem; }
+  .project-section h2 { font-size: 0.625rem; }
+  .project-section h3 { font-size: 0.5rem; }
+  .section-title { font-size: 0.625rem; }
+  .section h2 { font-size: 0.625rem; }
   
   /* Header */
   .header-inner { 
@@ -3547,8 +3547,8 @@ body.istoriya-2 .feature-highlight:hover {
   
   /* Floor plans grid improvements */
   .floor-plans-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
   
   .floor-plan-card {
@@ -3557,37 +3557,37 @@ body.istoriya-2 .feature-highlight:hover {
   }
   
   .floor-plan-header {
-    padding: 8px 10px 6px;
+    padding: 12px 14px 8px;
   }
   
   .floor-plan-header h3 {
-    font-size: 12px;
+    font-size: 14px;
     margin: 0;
   }
   
   .floor-plan-header .location {
-    font-size: 10px;
-    margin: 2px 0;
+    font-size: 12px;
+    margin: 4px 0;
   }
   
   .floor-plan-image {
-    height: 80px;
+    height: 120px;
   }
   
   .floor-plan-info {
-    padding: 8px 10px 10px;
+    padding: 12px 14px 14px;
   }
   
   .rooms-button {
     width: 100%;
-    padding: 6px 8px;
-    font-size: 10px;
+    padding: 8px 12px;
+    font-size: 12px;
   }
   
   /* Apartments grid improvements */
   .apartments-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
   
   .apartment-card {
@@ -3750,12 +3750,12 @@ body.istoriya-2 .feature-highlight:hover {
   
   /* Hero section for very small screens */
   h1 { 
-    font-size: 1rem; 
+    font-size: 0.875rem; 
     line-height: 1.1;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
-  h2 { font-size: 0.875rem; }
-  h3 { font-size: 0.75rem; }
+  h2 { font-size: 0.75rem; }
+  h3 { font-size: 0.625rem; }
   
   /* Project cards for very small screens */
   .project-card {
@@ -3775,11 +3775,11 @@ body.istoriya-2 .feature-highlight:hover {
   }
   
   .project-title h3 {
-    font-size: 12px;
+    font-size: 10px;
   }
   
   .project-title h4 {
-    font-size: 10px;
+    font-size: 8px;
   }
   
   .apartment-type {
@@ -3789,15 +3789,15 @@ body.istoriya-2 .feature-highlight:hover {
   
   /* Заголовки в карточках для очень маленьких экранов */
   .project-title {
-    font-size: 10px;
+    font-size: 8px;
   }
   
   .project-title h3 {
-    font-size: 10px;
+    font-size: 8px;
   }
   
   .project-title h4 {
-    font-size: 8px;
+    font-size: 6px;
   }
   
   /* Modal improvements for very small screens */
@@ -4005,13 +4005,13 @@ body.istoriya-2 .feature-highlight:hover {
   }
   
   .hero h1 {
-    font-size: 1.125rem;
+    font-size: 1rem;
     line-height: 1.2;
     margin: 0 0 6px 0;
   }
   
   .hero p {
-    font-size: 0.75rem;
+    font-size: 0.625rem;
     margin-bottom: 12px;
   }
   
@@ -4031,44 +4031,44 @@ body.istoriya-2 .feature-highlight:hover {
   }
   
   .floor-plan-header {
-    padding: 6px 8px 4px;
+    padding: 8px 10px 6px;
   }
   
   .floor-plan-header h3 {
-    font-size: 10px;
+    font-size: 12px;
     margin: 0;
   }
   
   .floor-plan-header .location {
-    font-size: 8px;
-    margin: 1px 0;
+    font-size: 10px;
+    margin: 2px 0;
   }
   
   .floor-plan-image {
-    height: 60px;
+    height: 80px;
   }
   
   .floor-plan-info {
-    padding: 6px 8px 8px;
+    padding: 8px 10px 10px;
   }
   
   .rooms-button {
     width: 100%;
-    padding: 4px 6px;
-    font-size: 8px;
+    padding: 6px 8px;
+    font-size: 10px;
   }
   
   /* Apartment cards for very small screens */
   .apartment-card {
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
   
   .apartment-card .project-image {
-    height: 120px;
+    height: 100px;
   }
   
   .apartment-card .project-content {
-    padding: 10px;
+    padding: 8px;
   }
   
   /* Filter improvements for very small screens */

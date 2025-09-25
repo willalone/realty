@@ -43,12 +43,73 @@
         </div>
     </section>
 
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-tabs">
+                <button class="filter-tab" onclick="toggleFilterDropdown('type', this)">Тип <span class="dropdown-arrow">⌄</span></button>
+                <button class="filter-tab" onclick="toggleFilterDropdown('rooms', this)">Комнат <span class="dropdown-arrow">⌄</span></button>
+                <button class="filter-tab" onclick="toggleFilterDropdown('price', this)">Цена <span class="dropdown-arrow">⌄</span></button>
+                <button class="filter-tab" onclick="toggleFilterDropdown('area', this)">Площадь <span class="dropdown-arrow">⌄</span></button>
+                <button class="clear-filters-btn" onclick="clearFilters()"><span class="clear-icon">×</span>Сбросить</button>
+            </div>
+            <div class="filter-dropdown" id="type-dropdown">
+                <div class="dropdown-content">
+                    <div class="filter-section-title">Жилое</div>
+                    <div class="filter-options">
+                        <label class="filter-option"><input type="radio" name="type" value="apartment" checked><span>Квартира</span></label>
+                    </div>
+                    <button class="apply-btn" onclick="applyFilters()">Применить</button>
+                </div>
+            </div>
+            <div class="filter-dropdown" id="rooms-dropdown">
+                <div class="dropdown-content">
+                    <div class="filter-options">
+                        <label class="filter-option"><input type="checkbox" name="rooms" value="studio"><span>Студия</span></label>
+                        <label class="filter-option"><input type="checkbox" name="rooms" value="1"><span>1</span></label>
+                        <label class="filter-option"><input type="checkbox" name="rooms" value="2"><span>2</span></label>
+                        <label class="filter-option"><input type="checkbox" name="rooms" value="3"><span>3</span></label>
+                    </div>
+                    <button class="apply-btn" onclick="applyFilters()">Применить</button>
+                </div>
+            </div>
+            <div class="filter-dropdown" id="price-dropdown">
+                <div class="dropdown-content">
+                    <div class="price-type-tabs">
+                        <button class="price-tab active" onclick="selectPriceType('total')">За помещение</button>
+                        <button class="price-tab" onclick="selectPriceType('perM2')">За м²</button>
+                    </div>
+                    <div class="price-range">
+                        <input type="number" id="priceFrom" placeholder="ОТ" min="0" step="1000">
+                        <input type="number" id="priceTo" placeholder="ДО" min="0" step="1000">
+                        <span class="price-unit">₽</span>
+                    </div>
+                    <button class="apply-btn" onclick="applyFilters()">Применить</button>
+                </div>
+            </div>
+            <div class="filter-dropdown" id="area-dropdown">
+                <div class="dropdown-content">
+                    <div class="area-type-tabs">
+                        <button class="area-tab active" onclick="selectAreaType('total')">Общая</button>
+                        <button class="area-tab" onclick="selectAreaType('living')">Жилая</button>
+                    </div>
+                    <div class="area-range">
+                        <input type="number" id="areaFrom" placeholder="ОТ" min="0" step="0.1">
+                        <input type="number" id="areaTo" placeholder="ДО" min="0" step="0.1">
+                        <span class="area-unit">M²</span>
+                    </div>
+                    <button class="apply-btn" onclick="applyFilters()">Применить</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Floor Plans Grid -->
     <section class="floor-plans-section">
         <div class="container">
             <div class="floor-plans-grid">
                 <!-- Планировка 1 -->
-                <div class="floor-plan-card">
+                <div class="floor-plan-card" data-type="apartment" data-rooms="1" data-price-total="4500000" data-price-per-m2="116883" data-area-total="38.5" data-area-living="37.2">
                     <div class="floor-plan-header">
                         <h3>Литер 1.7</h3>
                         <p class="location">Краснодар</p>
@@ -74,7 +135,7 @@
                 </div>
 
                 <!-- Планировка 2 -->
-                <div class="floor-plan-card">
+                <div class="floor-plan-card" data-type="apartment" data-rooms="1" data-price-total="4800000" data-price-per-m2="116505" data-area-total="41.2" data-area-living="39.8">
                     <div class="floor-plan-header">
                         <h3>Литер 1.7</h3>
                         <p class="location">Краснодар</p>
@@ -99,7 +160,7 @@
                 </div>
 
                 <!-- Планировка 3 -->
-                <div class="floor-plan-card">
+                <div class="floor-plan-card" data-type="apartment" data-rooms="1" data-price-total="5200000" data-price-per-m2="118722" data-area-total="43.8" data-area-living="42.1">
                     <div class="floor-plan-header">
                         <h3>Литер 1.7</h3>
                         <p class="location">Краснодар</p>
@@ -124,7 +185,7 @@
                 </div>
 
                 <!-- Планировка 4 -->
-                <div class="floor-plan-card">
+                <div class="floor-plan-card" data-type="apartment" data-rooms="1" data-price-total="5800000" data-price-per-m2="122881" data-area-total="47.2" data-area-living="45.3">
                     <div class="floor-plan-header">
                         <h3>Литер 1.7</h3>
                         <p class="location">Краснодар</p>
@@ -188,6 +249,28 @@
     </div>
 
     <script>
+        // Filter functionality (reused)
+        let allCards = [];
+        let currentPriceType = 'total';
+        let currentAreaType = 'total';
+        function initFilter() {
+            allCards = Array.from(document.querySelectorAll('.floor-plan-card'));
+            document.querySelectorAll('.filter-dropdown').forEach(d => d.style.display = 'none');
+            addFilterEventListeners();
+        }
+        function addFilterEventListeners() {
+            document.querySelectorAll('input[name="type"]').forEach(r => r.addEventListener('change', updateFilterResults));
+            document.querySelectorAll('input[name="rooms"]').forEach(cb => cb.addEventListener('change', updateFilterResults));
+            ['priceFrom','priceTo','areaFrom','areaTo'].forEach(id => { const el = document.getElementById(id); if (el) el.addEventListener('input', updateFilterResults); });
+            document.addEventListener('click', function(event) { const fs = document.querySelector('.filter-section'); if (fs && !fs.contains(event.target)) closeAllDropdowns(); });
+        }
+        function toggleFilterDropdown(filterType, button) { const dropdown = document.getElementById(filterType + '-dropdown'); const arrow = button.querySelector('.dropdown-arrow'); document.querySelectorAll('.filter-dropdown').forEach(d => { if (d !== dropdown) d.style.display = 'none'; }); document.querySelectorAll('.dropdown-arrow').forEach(arr => arr.textContent = '⌄'); if (dropdown.style.display === 'none' || dropdown.style.display === '') { dropdown.style.display = 'block'; const rectBtn = button.getBoundingClientRect(); const section = document.querySelector('.filter-section'); const rectSec = section.getBoundingClientRect(); dropdown.style.position = 'absolute'; dropdown.style.left = (rectBtn.left - rectSec.left) + 'px'; dropdown.style.top = (rectBtn.bottom - rectSec.top + 4) + 'px'; arrow.textContent = '⌃'; } else { dropdown.style.display = 'none'; arrow.textContent = '⌄'; } }
+        function closeAllDropdowns() { document.querySelectorAll('.filter-dropdown').forEach(d => d.style.display = 'none'); document.querySelectorAll('.dropdown-arrow').forEach(arr => arr.textContent = '⌄'); }
+        function selectPriceType(type) { currentPriceType = type; document.querySelectorAll('.price-tab').forEach(t => t.classList.remove('active')); event.target.classList.add('active'); updateFilterResults(); }
+        function selectAreaType(type) { currentAreaType = type; document.querySelectorAll('.area-tab').forEach(t => t.classList.remove('active')); event.target.classList.add('active'); updateFilterResults(); }
+        function applyFilters() { updateFilterResults(); closeAllDropdowns(); }
+        function clearFilters() { const defType = document.querySelector('input[name="type"][value="apartment"]'); if (defType) defType.checked = true; document.querySelectorAll('input[name="rooms"]').forEach(cb => cb.checked = false); currentPriceType = 'total'; document.querySelectorAll('.price-tab').forEach(t => t.classList.remove('active')); const pt = document.querySelector('.price-tab'); if (pt) pt.classList.add('active'); currentAreaType = 'total'; document.querySelectorAll('.area-tab').forEach(t => t.classList.remove('active')); const at = document.querySelector('.area-tab'); if (at) at.classList.add('active'); ['priceFrom','priceTo','areaFrom','areaTo'].forEach(id => { const el = document.getElementById(id); if (el) el.value=''; }); allCards.forEach(c => c.style.display = 'block'); }
+        function updateFilterResults() { const selectedType = document.querySelector('input[name="type"]:checked')?.value || 'apartment'; const selectedRooms = Array.from(document.querySelectorAll('input[name="rooms"]:checked')).map(cb => cb.value); const priceFrom = document.getElementById('priceFrom')?.value ? parseFloat(document.getElementById('priceFrom').value) : null; const priceTo = document.getElementById('priceTo')?.value ? parseFloat(document.getElementById('priceTo').value) : null; const areaFrom = document.getElementById('areaFrom')?.value ? parseFloat(document.getElementById('areaFrom').value) : null; const areaTo = document.getElementById('areaTo')?.value ? parseFloat(document.getElementById('areaTo').value) : null; const filtered = allCards.filter(card => { if (card.dataset.type !== selectedType) return false; if (selectedRooms.length > 0 && !selectedRooms.includes(card.dataset.rooms)) return false; if (priceFrom !== null || priceTo !== null) { const priceValue = currentPriceType === 'total' ? parseFloat(card.dataset.priceTotal) : parseFloat(card.dataset.pricePerM2); if (priceFrom !== null && priceValue < priceFrom) return false; if (priceTo !== null && priceValue > priceTo) return false; } if (areaFrom !== null || areaTo !== null) { const areaValue = currentAreaType === 'total' ? parseFloat(card.dataset.areaTotal) : parseFloat(card.dataset.areaLiving); if (areaFrom !== null && areaValue < areaFrom) return false; if (areaTo !== null && areaValue > areaTo) return false; } return true; }); allCards.forEach(card => card.style.display = 'none'); filtered.forEach(card => card.style.display = 'block'); }
         // Telegram config
         const TG_BOT_TOKEN = (window && window.TELEGRAM_BOT_TOKEN) ? window.TELEGRAM_BOT_TOKEN : '8026350498:AAGcyKMsrJyD0mGgj26Ss2m49vX5jp8LzaM';
         const TG_CHAT_ID = (window && window.TELEGRAM_CHAT_ID) ? window.TELEGRAM_CHAT_ID : '919481169';
@@ -560,6 +643,7 @@
         // Initialize phone masks on page load
         document.addEventListener('DOMContentLoaded', function() {
             initPhoneMasks();
+            initFilter();
         });
     </script>
 </body>

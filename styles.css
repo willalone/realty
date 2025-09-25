@@ -22,6 +22,76 @@ body {
   color: var(--text);
   background: var(--bg);
   line-height: 1.6;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Prevent horizontal overflow on all elements */
+* {
+  max-width: 100%;
+}
+
+/* Ensure images don't overflow */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Text overflow prevention */
+h1, h2, h3, h4, h5, h6 {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+p, span, div {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Prevent text from overflowing containers */
+.text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Mobile-specific text improvements */
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; line-height: 1.2; }
+  h2 { font-size: 1.75rem; line-height: 1.3; }
+  h3 { font-size: 1.5rem; line-height: 1.3; }
+  h4 { font-size: 1.25rem; line-height: 1.4; }
+  h5 { font-size: 1.125rem; line-height: 1.4; }
+  h6 { font-size: 1rem; line-height: 1.4; }
+  
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .btn {
+    font-size: 16px;
+    padding: 12px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 1.75rem; line-height: 1.1; }
+  h2 { font-size: 1.5rem; line-height: 1.2; }
+  h3 { font-size: 1.25rem; line-height: 1.2; }
+  h4 { font-size: 1.125rem; line-height: 1.3; }
+  h5 { font-size: 1rem; line-height: 1.3; }
+  h6 { font-size: 0.875rem; line-height: 1.3; }
+  
+  p {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  
+  .btn {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
 }
 
 .container { width: min(1120px, 92%); margin: 0 auto; }
@@ -257,7 +327,9 @@ body {
 
 .hero { position: relative; padding: 64px 0 40px; }
 .hero-inner { display: grid; grid-template-columns: 1.1fr; gap: 24px; }
-.hero-content { }
+.hero-content { 
+  text-align: center;
+}
 .hero h1 { margin: 0 0 10px; font-size: 40px; line-height: 1.2; }
 .hero p { margin: 0 0 18px; color: var(--muted); }
 .hero-cta { display: flex; gap: 12px; margin-bottom: 14px; }
@@ -268,15 +340,21 @@ body {
 .booking-header { margin-bottom: 20px; }
 .booking-header h3 { margin: 0 0 8px; font-size: 20px; }
 .booking-header p { margin: 0; color: var(--muted); font-size: 14px; }
-.booking-content { }
+.booking-content { 
+  padding: 0;
+}
 .booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
-.calendar-section { }
+.calendar-section { 
+  padding: 0;
+}
 .calendar-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
 .calendar-header h4 { margin: 0; font-size: 16px; }
 .calendar-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 8px; }
 .weekday { text-align: center; font-size: 12px; color: var(--muted); padding: 8px 0; }
 .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
-.time-section { }
+.time-section { 
+  padding: 0;
+}
 .time-section h4 { margin: 0 0 12px; font-size: 16px; }
 .time-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
 .booking-form-fields { display: grid; gap: 12px; }
@@ -3324,17 +3402,93 @@ body.istoriya-2 .feature-highlight:hover {
   }
   
   /* Навигация */
-  .nav-toggle { display: inline-flex; }
-  .nav { 
-    display: flex; 
-    gap: 4px;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
+  .nav-toggle { 
+    display: inline-flex; 
+    position: relative;
+    z-index: 1001;
   }
+  
+  .nav { 
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .nav.show {
+    display: flex;
+  }
+  
   .nav-link {
-    padding: 8px 12px !important;
-    font-size: 12px !important;
+    padding: 16px 24px !important;
+    font-size: 18px !important;
+    color: white !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 12px !important;
+    width: 200px;
+    text-align: center;
+    transition: all 0.3s ease !important;
+  }
+  
+  .nav-link:hover {
+    background: var(--primary) !important;
+    color: white !important;
+    transform: translateY(-2px) !important;
+  }
+  
+  .nav-link.active {
+    background: var(--primary) !important;
+    color: white !important;
+  }
+  
+  /* Mobile menu close button */
+  .nav-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+  }
+  
+  /* Mobile menu overlay */
+  .nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+  }
+  
+  .nav-overlay.show {
+    display: block;
   }
   .nav-list { 
     position: absolute; 
@@ -3363,6 +3517,179 @@ body.istoriya-2 .feature-highlight:hover {
   .nav-list a.active {
     background: var(--primary);
     color: var(--text);
+  }
+  
+  /* Floor plans grid improvements */
+  .floor-plans-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .floor-plan-card {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .floor-plan-header {
+    padding: 12px 16px 8px;
+  }
+  
+  .floor-plan-header h3 {
+    font-size: 16px;
+  }
+  
+  .floor-plan-header .location {
+    font-size: 12px;
+  }
+  
+  .floor-plan-image {
+    height: 150px;
+  }
+  
+  .floor-plan-info {
+    padding: 12px 16px 16px;
+  }
+  
+  .rooms-button {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+  
+  /* Apartments grid improvements */
+  .apartments-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .apartment-card {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  /* Filter improvements */
+  .filter-section {
+    padding: 16px 0;
+  }
+  
+  .filter-tabs {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+  }
+  
+  .filter-tab {
+    width: 100%;
+    justify-content: space-between;
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+  
+  .filter-button {
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  
+  .filter-dropdown {
+    width: 100%;
+    left: 0;
+    right: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 1000;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  }
+  
+  .filter-option {
+    padding: 12px;
+    font-size: 14px;
+  }
+  
+  /* Apartments panel improvements */
+  .apartments-panel {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+  }
+  
+  .panel-content {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    padding: 20px;
+  }
+  
+  .panel-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  
+  .panel-title h3 {
+    font-size: 18px;
+  }
+  
+  .panel-title p {
+    font-size: 14px;
+  }
+  
+  .panel-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  
+  .panel-floor-plan {
+    margin: 16px 0;
+  }
+  
+  .panel-floor-plan img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .panel-summary {
+    margin: 16px 0;
+  }
+  
+  .apartments-list {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+  
+  .apartment-item {
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+  }
+  
+  .apartment-details {
+    width: 100%;
+  }
+  
+  .apartment-floor {
+    font-size: 14px;
+  }
+  
+  .apartment-price {
+    font-size: 14px;
+  }
+  
+  .status-button {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 12px;
   }
 }
 
@@ -3426,26 +3753,201 @@ body.istoriya-2 .feature-highlight:hover {
   
   /* Modal improvements for very small screens */
   .modal {
-    padding: 16px;
+    padding: 12px;
   }
   
   .modal-content {
     width: 100%;
     max-width: 100%;
     margin: 0;
-    max-height: 90vh;
+    max-height: 95vh;
     overflow-y: auto;
+    border-radius: 12px;
   }
   
   .form-group {
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
   
   .form-group input,
   .form-group textarea {
     padding: 12px;
     font-size: 16px; /* Prevents zoom on iOS */
+    border-radius: 8px;
+    border: 1px solid #ddd;
   }
+  
+  .form-group label {
+    font-size: 14px;
+    margin-bottom: 6px;
+    display: block;
+  }
+  
+  .btn {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+  
+  /* Form improvements */
+  .form-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .form-row .form-group {
+    width: 100%;
+  }
+  
+  /* Table improvements for mobile */
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  table {
+    min-width: 100%;
+    font-size: 12px;
+  }
+  
+  th, td {
+    padding: 8px 4px;
+    white-space: nowrap;
+  }
+  
+  /* List improvements */
+  ul, ol {
+    padding-left: 16px;
+  }
+  
+  li {
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+  
+  /* Card improvements */
+  .card {
+    margin-bottom: 12px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .card-header {
+    padding: 12px;
+    font-size: 14px;
+  }
+  
+  .card-body {
+    padding: 12px;
+  }
+  
+  .card-footer {
+    padding: 8px 12px;
+  }
+  
+  /* Toast notifications for mobile */
+  .toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 32px);
+    max-width: 400px;
+    padding: 12px 16px;
+    background: var(--primary);
+    color: white;
+    border-radius: 8px;
+    font-size: 14px;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Loading spinner for mobile */
+  .spinner {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Mobile-specific utilities */
+  .mobile-only {
+    display: block;
+  }
+  
+  .desktop-only {
+    display: none;
+  }
+  
+  .text-center-mobile {
+    text-align: center;
+  }
+  
+  .full-width-mobile {
+    width: 100%;
+  }
+}
+
+/* Desktop-specific styles */
+@media (min-width: 769px) {
+  .mobile-only {
+    display: none;
+  }
+  
+  .desktop-only {
+    display: block;
+  }
+  
+  .nav-toggle {
+    display: none;
+  }
+  
+  .nav {
+    display: flex;
+    position: static;
+    width: auto;
+    height: auto;
+    background: transparent;
+    backdrop-filter: none;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .nav-link {
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+    color: var(--muted) !important;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    border-radius: 12px !important;
+    width: auto;
+    text-align: left;
+    transition: all 0.3s ease !important;
+  }
+  
+  .nav-link:hover {
+    color: var(--primary) !important;
+    background: linear-gradient(135deg, rgba(79,124,255,0.1), rgba(79,124,255,0.2)) !important;
+    border-color: var(--primary) !important;
+    transform: translateY(-2px) !important;
+  }
+  
+  .nav-link.active {
+    color: #fff !important;
+    background: linear-gradient(135deg, var(--primary), #60a5fa) !important;
+    border-color: var(--primary) !important;
+  }
+}
   
   .hero { padding: 40px 0; }
   
@@ -3458,7 +3960,178 @@ body.istoriya-2 .feature-highlight:hover {
     width: 98%; 
     margin: 10px; 
   }
-}
+  
+  /* Floor plan cards for very small screens */
+  .floor-plan-card {
+    margin-bottom: 12px;
+  }
+  
+  .floor-plan-header {
+    padding: 8px 10px 6px;
+  }
+  
+  .floor-plan-header h3 {
+    font-size: 13px;
+  }
+  
+  .floor-plan-header .location {
+    font-size: 10px;
+  }
+  
+  .floor-plan-image {
+    height: 100px;
+  }
+  
+  .floor-plan-info {
+    padding: 8px 10px 10px;
+  }
+  
+  .rooms-button {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+  
+  /* Apartment cards for very small screens */
+  .apartment-card {
+    margin-bottom: 12px;
+  }
+  
+  .apartment-card .project-image {
+    height: 120px;
+  }
+  
+  .apartment-card .project-content {
+    padding: 10px;
+  }
+  
+  /* Filter improvements for very small screens */
+  .filter-section {
+    padding: 8px 0;
+  }
+  
+  .filter-tabs {
+    padding: 6px;
+    gap: 6px;
+  }
+  
+  .filter-tab {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+  
+  .filter-button {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+  
+  .filter-dropdown {
+    max-width: 98vw;
+    max-height: 90vh;
+    padding: 12px;
+  }
+  
+  .filter-option {
+    padding: 8px;
+    font-size: 11px;
+  }
+  
+  /* Apartments panel for very small screens */
+  .apartments-panel {
+    padding: 12px;
+  }
+  
+  .panel-content {
+    padding: 12px;
+  }
+  
+  .panel-title h3 {
+    font-size: 14px;
+  }
+  
+  .panel-title p {
+    font-size: 11px;
+  }
+  
+  .panel-close {
+    top: 12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+  
+  .panel-floor-plan {
+    margin: 8px 0;
+  }
+  
+  .panel-summary {
+    margin: 8px 0;
+  }
+  
+  .apartments-list {
+    max-height: 45vh;
+  }
+  
+  .apartment-item {
+    padding: 6px;
+    gap: 4px;
+  }
+  
+  .apartment-floor {
+    font-size: 11px;
+  }
+  
+  .apartment-price {
+    font-size: 11px;
+  }
+  
+  .status-button {
+    padding: 4px 8px;
+    font-size: 9px;
+  }
+  
+  /* Grid improvements for very small screens */
+  .grid-2, .grid-3, .grid-4 {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .projects-grid {
+    gap: 12px;
+  }
+  
+  .promos-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .floor-plans-grid {
+    gap: 12px;
+  }
+  
+  .apartments-grid {
+    gap: 12px;
+  }
+  
+  /* Mobile navigation for very small screens */
+  .nav {
+    gap: 12px;
+  }
+  
+  .nav-link {
+    font-size: 14px;
+    padding: 10px 16px;
+    width: 160px;
+  }
+  
+  .nav-close {
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
 
 /* Booking Section Styles */
 .booking-section {

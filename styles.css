@@ -3188,6 +3188,84 @@ body.istoriya-2 .feature-highlight:hover {
   /* Сетки в одну колонку */
   .grid-2 { grid-template-columns: 1fr; }
   .grid-3 { grid-template-columns: 1fr; }
+  
+  /* Header improvements */
+  .header-inner {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .header-actions {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    order: 3;
+  }
+  
+  .phone {
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .btn {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+  
+  /* Navigation improvements */
+  .nav {
+    width: 100%;
+    order: 2;
+    justify-content: center;
+  }
+  
+  .nav-link {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+  
+  /* Hero section improvements */
+  .hero-cta {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+  
+  .hero-cta .btn {
+    width: 100%;
+  }
+  
+  /* Modal improvements for mobile */
+  .modal {
+    padding: 20px;
+  }
+  
+  .modal-content {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  /* Project tabs improvements */
+  .tabs {
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+    width: 100%;
+  }
+  
+  .tab {
+    width: 100%;
+    text-align: center;
+    padding: 12px 16px;
+  }
+  
   .grid-4 { grid-template-columns: 1fr; }
   .projects-grid { flex-direction: column; }
   .promos-grid { grid-template-columns: 1fr; }
@@ -3292,9 +3370,82 @@ body.istoriya-2 .feature-highlight:hover {
 @media (max-width: 480px) {
   .container { padding: 0 12px; }
   
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.75rem; }
-  h3 { font-size: 1.25rem; }
+  /* Header for very small screens */
+  .header-inner {
+    padding: 8px 0;
+  }
+  
+  .logo {
+    font-size: 20px;
+  }
+  
+  .nav-link {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+  
+  .phone {
+    font-size: 12px;
+  }
+  
+  .btn {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+  
+  /* Hero section for very small screens */
+  h1 { 
+    font-size: 1.8rem; 
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.1rem; }
+  
+  /* Project cards for very small screens */
+  .project-card {
+    margin-bottom: 16px;
+  }
+  
+  .project-image {
+    height: 180px;
+  }
+  
+  .project-info {
+    padding: 12px;
+  }
+  
+  .project-title {
+    font-size: 16px;
+  }
+  
+  .apartment-type {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+  
+  /* Modal improvements for very small screens */
+  .modal {
+    padding: 16px;
+  }
+  
+  .modal-content {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  .form-group {
+    margin-bottom: 16px;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 12px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
   
   .hero { padding: 40px 0; }
   
@@ -3732,6 +3883,35 @@ body.istoriya-2 .feature-highlight:hover {
   .project-card {
     flex-direction: column;
     min-height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .project-image {
+    height: 200px;
+    width: 100%;
+  }
+  
+  .project-info {
+    padding: 16px;
+  }
+  
+  .project-title {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  
+  .project-location {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  
+  .apartments-list {
+    gap: 8px;
+  }
+  
+  .apartment-type {
+    font-size: 14px;
+    padding: 8px 12px;
   }
   
   .project-image {
@@ -4476,6 +4656,36 @@ body.novye-sezony .feature-highlight:hover {
         flex-direction: column;
         gap: 12px;
         padding: 16px;
+    }
+    
+    .filter-section {
+        width: 100%;
+        margin-bottom: 12px;
+    }
+    
+    .filter-button {
+        width: 100%;
+        justify-content: space-between;
+        padding: 12px 16px;
+    }
+    
+    .filter-dropdown {
+        width: 100%;
+        left: 0;
+        right: 0;
+        position: relative;
+        margin-top: 8px;
+    }
+    
+    .price-range,
+    .area-range {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .price-range input,
+    .area-range input {
+        width: 100%;
     }
     
     .filter-tab {

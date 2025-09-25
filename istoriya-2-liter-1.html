@@ -36,92 +36,30 @@
     <section class="floor-plans-hero">
         <div class="container">
             <div class="breadcrumbs">
-                <a href="index.html">Главная</a> / <a href="index.html#projects">Проекты</a> / <a href="istoriya-2.html">История 2</a> / <a href="istoriya-2-apartments.html">Литеры</a> / <span>Литер 1</span>
+                <a href="index.html">Главная</a> / <a href="index.html#projects">Проекты</a> / <a href="istoriya-2.html">История 2</a> / <a href="istoriya-2-apartments.html">Литеры</a> / <span>Ул. Екатерининская, 3. Литер 1</span>
             </div>
-            <h1>Литер 1</h1>
-            <p class="hero-subtitle">Краснодар, пос. Южный</p>
+            <h1>Ул. Екатерининская, 3. Литер 1</h1>
+            <p class="hero-subtitle">Краснодар, Екатерининская, 3</p>
         </div>
     </section>
+
+    <!-- Filters under title -->
+    <section class="filter-section"><div class="container"><div class="filter-tabs">
+        <button class="filter-tab" onclick="toggleFilterDropdown('type', this)">Тип <span class="dropdown-arrow">⌄</span></button>
+        <button class="filter-tab" onclick="toggleFilterDropdown('rooms', this)">Комнат <span class="dropdown-arrow">⌄</span></button>
+        <button class="filter-tab" onclick="toggleFilterDropdown('price', this)">Цена <span class="dropdown-arrow">⌄</span></button>
+        <button class="filter-tab" onclick="toggleFilterDropdown('area', this)">Площадь <span class="dropdown-arrow">⌄</span></button>
+        <button class="clear-filters-btn" onclick="clearFilters()"><span class="clear-icon">×</span>Сбросить</button>
+    </div>
+    <div class="filter-dropdown" id="type-dropdown"><div class="dropdown-content"><div class="filter-section-title">Жилое</div><div class="filter-options"><label class="filter-option"><input type="radio" name="type" value="apartment" checked><span>Квартира</span></label></div><button class="apply-btn" onclick="applyFilters()">Применить</button></div></div>
+    <div class="filter-dropdown" id="rooms-dropdown"><div class="dropdown-content"><div class="filter-options"><label class="filter-option"><input type="checkbox" name="rooms" value="1"><span>1</span></label><label class="filter-option"><input type="checkbox" name="rooms" value="2"><span>2</span></label></div><button class="apply-btn" onclick="applyFilters()">Применить</button></div></div>
+    <div class="filter-dropdown" id="price-dropdown"><div class="dropdown-content"><div class="price-type-tabs"><button class="price-tab active" onclick="selectPriceType('total')">За помещение</button><button class="price-tab" onclick="selectPriceType('perM2')">За м²</button></div><div class="price-range"><input type="number" id="priceFrom" placeholder="ОТ" min="0" step="1000"><input type="number" id="priceTo" placeholder="ДО" min="0" step="1000"><span class="price-unit">₽</span></div><button class="apply-btn" onclick="applyFilters()">Применить</button></div></div>
+    <div class="filter-dropdown" id="area-dropdown"><div class="dropdown-content"><div class="area-type-tabs"><button class="area-tab active" onclick="selectAreaType('total')">Общая</button><button class="area-tab" onclick="selectAreaType('living')">Жилая</button></div><div class="area-range"><input type="number" id="areaFrom" placeholder="ОТ" min="0" step="0.1"><input type="number" id="areaTo" placeholder="ДО" min="0" step="0.1"><span class="area-unit">M²</span></div><button class="apply-btn" onclick="applyFilters()">Применить</button></div></div></div></section>
 
     <!-- Floor Plans Section -->
     <section class="floor-plans-section">
         <div class="container">
-            <div class="floor-plans-grid">
-                <!-- 1-комнатная -->
-                <div class="floor-plan-card">
-                    <div class="floor-plan-header">
-                        <h3>Литер 1</h3>
-                        <p class="location">Краснодар, пос. Южный</p>
-                        <span class="room-badge">1к</span>
-                    </div>
-                    <div class="floor-plan-image">
-                        <img src="src/img/варианты планировок/1к.png" alt="1-комнатная">
-                        <div class="area-details">
-                            <div class="area-box">
-                                <span class="area-value">39,0</span>
-                                <span class="area-value">46,0</span>
-                                <span class="area-value">65,3</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="floor-plan-info">
-                        <div class="price-area">
-                            <span class="price">от 4,6 млн ₽</span>
-                        </div>
-                        <button class="rooms-button" onclick="openApartmentsPanel(8, 39.0, '39.0,46.0,65.3')">8 помещений</button>
-                    </div>
-                </div>
-
-                <!-- 2-комнатная -->
-                <div class="floor-plan-card">
-                    <div class="floor-plan-header">
-                        <h3>Литер 1</h3>
-                        <p class="location">Краснодар, пос. Южный</p>
-                        <span class="room-badge">2к</span>
-                    </div>
-                    <div class="floor-plan-image">
-                        <img src="src/img/варианты планировок/2к.png" alt="2-комнатная">
-                        <div class="area-details">
-                            <div class="area-box">
-                                <span class="area-value">65,3</span>
-                                <span class="area-value">72,1</span>
-                                <span class="area-value">78,5</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="floor-plan-info">
-                        <div class="price-area">
-                            <span class="price">от 7,3 млн ₽</span>
-                        </div>
-                        <button class="rooms-button" onclick="openApartmentsPanel(12, 65.3, '65.3,72.1,78.5')">12 помещений</button>
-                    </div>
-                </div>
-
-                <!-- 3-комнатная -->
-                <div class="floor-plan-card">
-                    <div class="floor-plan-header">
-                        <h3>Литер 1</h3>
-                        <p class="location">Краснодар, пос. Южный</p>
-                        <span class="room-badge">3к</span>
-                    </div>
-                    <div class="floor-plan-image">
-                        <img src="src/img/варианты планировок/3к.png" alt="3-комнатная">
-                        <div class="area-details">
-                            <div class="area-box">
-                                <span class="area-value">78,5</span>
-                                <span class="area-value">85,2</span>
-                                <span class="area-value">92,1</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="floor-plan-info">
-                        <div class="price-area">
-                            <span class="price">от 8,9 млн ₽</span>
-                        </div>
-                        <button class="rooms-button" onclick="openApartmentsPanel(4, 78.5, '78.5,85.2,92.1')">4 помещения</button>
-                    </div>
-                </div>
-            </div>
+            <div class="floor-plans-grid" id="grid"></div>
         </div>
     </section>
 
@@ -131,16 +69,16 @@
             <div class="panel-header">
                 <div class="panel-title">
                     <h3>История 2</h3>
-                    <p>Литер 1 - Дома сданы</p>
+                    <p>Ул. Екатерининская, 3. Литер 1</p>
                 </div>
                 <button class="panel-close" onclick="closeApartmentsPanel()">&times;</button>
             </div>
             <div class="panel-floor-plan">
-                <img src="src/img/варианты планировок/1к.png" alt="Планировка">
+                <img src="src/img/варианты планировок/история-2/1к.png" alt="Планировка">
             </div>
             <div class="panel-summary">
-                <p class="room-info">Помещение: <span id="panel-area">39.0</span> м²</p>
-                <p class="found-info">Найдено: <span id="panel-count">8</span> помещений</p>
+                <p class="room-info">Помещение: <span id="panel-area">—</span> м²</p>
+                <p class="found-info">Найдено: <span id="panel-count">—</span> помещений</p>
             </div>
             <div class="apartments-list" id="apartments-list">
                 <!-- Список квартир будет заполнен JavaScript -->
@@ -163,17 +101,17 @@
         const TG_BOT_TOKEN = (window && window.TELEGRAM_BOT_TOKEN) ? window.TELEGRAM_BOT_TOKEN : '8026350498:AAGcyKMsrJyD0mGgj26Ss2m49vX5jp8LzaM';
         const TG_CHAT_ID = (window && window.TELEGRAM_CHAT_ID) ? window.TELEGRAM_CHAT_ID : '919481169';
 
-        function openApartmentsPanel(count, area, dimensions) {
+        function openApartmentsPanel(count) {
             const panel = document.getElementById('apartments-panel');
             const panelArea = document.getElementById('panel-area');
             const panelCount = document.getElementById('panel-count');
             const apartmentsList = document.getElementById('apartments-list');
             
-            if (panelArea) panelArea.textContent = area;
+            if (panelArea) panelArea.textContent = '—';
             if (panelCount) panelCount.textContent = count;
             
             // Generate apartments list
-            const apartments = generateApartmentsList(count, area);
+            const apartments = generateApartmentsList(count);
             if (apartmentsList) {
                 apartmentsList.innerHTML = apartments;
             }
@@ -192,21 +130,18 @@
             }, 300);
         }
 
-        function generateApartmentsList(count, area) {
-            const basePrice = 4600000; // Базовая цена для История 2
+        function generateApartmentsList(count) {
             let apartmentsHTML = '';
             
             for (let i = 1; i <= count; i++) {
-                const floor = Math.floor(Math.random() * 9) + 1; // 1-9 этажи
-                const price = basePrice + Math.floor(Math.random() * 3000000);
-                const pricePerM2 = Math.floor(price / area);
+                const floor = Math.floor(Math.random() * 7) + 1;
                 
                 const apartmentItem = `
                     <div class="apartment-item">
                         <div class="apartment-details">
                             <div class="apartment-floor">${floor} этаж</div>
-                            <div class="apartment-price">${price.toLocaleString()} ₽</div>
-                            <div class="apartment-price-per-m2">${pricePerM2.toLocaleString()} ₽/м²</div>
+                            <div class="apartment-price">Цена по запросу</div>
+                            <div class="apartment-price-per-m2">—</div>
                         </div>
                         <button class="status-button available">Свободно</button>
                     </div>
@@ -215,6 +150,22 @@
             }
             
             return apartmentsHTML;
+        }
+
+        // Cards + filter (цена/площадь не участвуют)
+        function card(titleBadge, roomsValue, count){
+            const img = roomsValue==='1' ? 'src/img/варианты планировок/история-2/1к.png' : 'src/img/варианты планировок/история-2/2к.png';
+            return `<div class="floor-plan-card" data-type="apartment" data-rooms="${roomsValue}" data-price-total="0" data-price-per-m2="0" data-area-total="0" data-area-living="0">
+                <div class="floor-plan-header"><h3>История 2</h3><p class="location">Екатерининская, 3</p><span class="room-badge">${titleBadge}</span></div>
+                <div class="floor-plan-image"><img src="${img}" alt="${titleBadge}"><div class="area-details"><div class="area-box"><span class="area-value">—</span><span class="area-value">—</span><span class="area-value">—</span></div></div></div>
+                <div class="floor-plan-info"><div class="price-area"><span class="price">Цена по запросу</span></div><button class="rooms-button" onclick="openApartmentsPanel(${count})">${count} помещений</button></div>
+            </div>`
+        }
+        function render(){
+            const g=document.getElementById('grid'); let h='';
+            h+=card('1к','1',7);
+            h+=card('2к','2',1);
+            g.innerHTML=h; initFilter();
         }
 
 
@@ -267,7 +218,7 @@
 
 👤 Имя: ${name}
 📞 Телефон: ${phone}
-📍 Проект: История 2 - Литер 1`;
+📍 Проект: История 2 - Екатерининская, 3. Литер 1`;
 
             sendToTelegram(message);
             closeModal();
@@ -326,11 +277,20 @@
             const nav = document.getElementById('nav');
             nav.classList.toggle('show');
         }
+        // Фильтр
+        let allCards=[]; let currentPriceType='total'; let currentAreaType='total';
+        function initFilter(){ allCards=Array.from(document.querySelectorAll('.floor-plan-card')); document.querySelectorAll('.filter-dropdown').forEach(d=>d.style.display='none'); addFilterEventListeners(); }
+        function addFilterEventListeners(){ document.querySelectorAll('input[name="type"]').forEach(r=>r.addEventListener('change',updateFilterResults)); document.querySelectorAll('input[name="rooms"]').forEach(cb=>cb.addEventListener('change',updateFilterResults)); ['priceFrom','priceTo','areaFrom','areaTo'].forEach(id=>{ const el=document.getElementById(id); if(el) el.addEventListener('input',updateFilterResults); }); document.addEventListener('click',function(e){ const fs=document.querySelector('.filter-section'); if(fs && !fs.contains(e.target)) closeAllDropdowns();}); }
+        function toggleFilterDropdown(filterType,button){ const dropdown=document.getElementById(filterType+'-dropdown'); const arrow=button.querySelector('.dropdown-arrow'); document.querySelectorAll('.filter-dropdown').forEach(d=>{ if(d!==dropdown) d.style.display='none';}); document.querySelectorAll('.dropdown-arrow').forEach(a=>a.textContent='⌄'); if(dropdown.style.display==='none'||dropdown.style.display===''){ dropdown.style.display='block'; const rb=button.getBoundingClientRect(); const sec=document.querySelector('.filter-section').getBoundingClientRect(); dropdown.style.position='absolute'; dropdown.style.left=(rb.left-sec.left)+'px'; dropdown.style.top=(rb.bottom-sec.top+4)+'px'; arrow.textContent='⌃'; } else { dropdown.style.display='none'; arrow.textContent='⌄'; } }
+        function closeAllDropdowns(){ document.querySelectorAll('.filter-dropdown').forEach(d=>d.style.display='none'); document.querySelectorAll('.dropdown-arrow').forEach(a=>a.textContent='⌄'); }
+        function selectPriceType(type){ currentPriceType=type; document.querySelectorAll('.price-tab').forEach(t=>t.classList.remove('active')); event.target.classList.add('active'); updateFilterResults(); }
+        function selectAreaType(type){ currentAreaType=type; document.querySelectorAll('.area-tab').forEach(t=>t.classList.remove('active')); event.target.classList.add('active'); updateFilterResults(); }
+        function applyFilters(){ updateFilterResults(); closeAllDropdowns(); }
+        function clearFilters(){ const def=document.querySelector('input[name="type"][value="apartment"]'); if(def) def.checked=true; document.querySelectorAll('input[name="rooms"]').forEach(cb=>cb.checked=false); currentPriceType='total'; document.querySelectorAll('.price-tab').forEach(t=>t.classList.remove('active')); const pt=document.querySelector('.price-tab'); if(pt) pt.classList.add('active'); currentAreaType='total'; document.querySelectorAll('.area-tab').forEach(t=>t.classList.remove('active')); const at=document.querySelector('.area-tab'); if(at) at.classList.add('active'); ['priceFrom','priceTo','areaFrom','areaTo'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value='';}); allCards.forEach(c=>c.style.display='block'); }
+        function updateFilterResults(){ const selectedType=document.querySelector('input[name="type"]:checked')?.value||'apartment'; const selectedRooms=Array.from(document.querySelectorAll('input[name="rooms"]:checked')).map(cb=>cb.value); const priceFromEl=document.getElementById('priceFrom'); const priceToEl=document.getElementById('priceTo'); const areaFromEl=document.getElementById('areaFrom'); const areaToEl=document.getElementById('areaTo'); const priceFilterActive=!!(priceFromEl?.value||priceToEl?.value); const areaFilterActive=!!(areaFromEl?.value||areaToEl?.value); const filtered=allCards.filter(card=>{ if(card.dataset.type!==selectedType) return false; if(selectedRooms.length>0 && !selectedRooms.includes(card.dataset.rooms)) return false; if(priceFilterActive||areaFilterActive) return false; return true; }); allCards.forEach(c=>c.style.display='none'); filtered.forEach(c=>c.style.display='block'); }
 
         // Initialize when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded, initializing...');
-        });
+        document.addEventListener('DOMContentLoaded', render);
     </script>
 </body>
 </html>

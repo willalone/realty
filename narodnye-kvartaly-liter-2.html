@@ -43,61 +43,29 @@
         </div>
     </section>
 
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-tabs">
+                <button class="filter-tab" onclick="toggleFilterDropdown('type', this)">Тип <span class="dropdown-arrow">⌄</span></button>
+                <button class="filter-tab" onclick="toggleFilterDropdown('rooms', this)">Комнат <span class="dropdown-arrow">⌄</span></button>
+                <button class="filter-tab" onclick="toggleFilterDropdown('price', this)">Цена <span class="dropdown-arrow">⌄</span></button>
+                <button class="filter-tab" onclick="toggleFilterDropdown('area', this)">Площадь <span class="dropdown-arrow">⌄</span></button>
+                <button class="clear-filters-btn" onclick="clearFilters()"><span class="clear-icon">×</span>Сбросить</button>
+            </div>
+
+            <div class="filter-dropdown" id="type-dropdown"><div class="dropdown-content"><div class="filter-section-title">Жилое</div><div class="filter-options"><label class="filter-option"><input type="radio" name="type" value="apartment" checked><span>Квартира</span></label></div><button class="apply-btn" onclick="applyFilters()">Применить</button></div></div>
+            <div class="filter-dropdown" id="rooms-dropdown"><div class="dropdown-content"><div class="filter-options"><label class="filter-option"><input type="checkbox" name="rooms" value="studio"><span>Студия</span></label><label class="filter-option"><input type="checkbox" name="rooms" value="1"><span>1</span></label><label class="filter-option"><input type="checkbox" name="rooms" value="2"><span>2</span></label><label class="filter-option"><input type="checkbox" name="rooms" value="3"><span>3</span></label></div><button class="apply-btn" onclick="applyFilters()">Применить</button></div></div>
+            <div class="filter-dropdown" id="price-dropdown"><div class="dropdown-content"><div class="price-type-tabs"><button class="price-tab active" onclick="selectPriceType('total')">За помещение</button><button class="price-tab" onclick="selectPriceType('perM2')">За м²</button></div><div class="price-range"><input type="number" id="priceFrom" placeholder="ОТ" min="0" step="1000"><input type="number" id="priceTo" placeholder="ДО" min="0" step="1000"><span class="price-unit">₽</span></div><button class="apply-btn" onclick="applyFilters()">Применить</button></div></div>
+            <div class="filter-dropdown" id="area-dropdown"><div class="dropdown-content"><div class="area-type-tabs"><button class="area-tab active" onclick="selectAreaType('total')">Общая</button><button class="area-tab" onclick="selectAreaType('living')">Жилая</button></div><div class="area-range"><input type="number" id="areaFrom" placeholder="ОТ" min="0" step="0.1"><input type="number" id="areaTo" placeholder="ДО" min="0" step="0.1"><span class="area-unit">M²</span></div><button class="apply-btn" onclick="applyFilters()">Применить</button></div></div>
+        </div>
+    </section>
+
     <!-- Floor Plans Section -->
     <section class="floor-plans-section">
         <div class="container">
             <div class="floor-plans-grid">
-                <!-- Студия -->
-                <div class="floor-plan-card">
-                    <div class="floor-plan-header">
-                        <h3>Литер 2</h3>
-                        <p class="location">Краснодар, Народная</p>
-                        <span class="room-badge">студия</span>
-                    </div>
-                    <div class="floor-plan-image">
-                        <img src="src/img/варианты планировок/народные кварталы/студия.png" alt="Студия">
-                        <div class="area-details">
-                            <div class="area-box">
-                                <span class="area-value">19,87</span>
-                                <span class="area-value">34,2</span>
-                                <span class="area-value">51,55</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="floor-plan-info">
-                        <div class="price-area">
-                            <span class="price">Цена по запросу</span>
-                        </div>
-                        <button class="rooms-button" onclick="openApartmentsPanel(2, 19.87, '19.87,34.2,51.55')">2 помещения</button>
-                    </div>
-                </div>
-
-                <!-- 1-комнатная -->
-                <div class="floor-plan-card">
-                    <div class="floor-plan-header">
-                        <h3>Литер 2</h3>
-                        <p class="location">Краснодар, Народная</p>
-                        <span class="room-badge">1к</span>
-                    </div>
-                    <div class="floor-plan-image">
-                        <img src="src/img/варианты планировок/народные кварталы/1к.png" alt="1-комнатная">
-                        <div class="area-details">
-                            <div class="area-box">
-                                <span class="area-value">34,2</span>
-                                <span class="area-value">51,55</span>
-                                <span class="area-value">67,38</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="floor-plan-info">
-                        <div class="price-area">
-                            <span class="price">Цена по запросу</span>
-                        </div>
-                        <button class="rooms-button" onclick="openApartmentsPanel(3, 34.2, '34.2,51.55,67.38')">3 помещения</button>
-                    </div>
-                </div>
-
-                <!-- 2-комнатная -->
+                <!-- 2-комнатная (1) -->
                 <div class="floor-plan-card">
                     <div class="floor-plan-header">
                         <h3>Литер 2</h3>
@@ -116,13 +84,88 @@
                     </div>
                     <div class="floor-plan-info">
                         <div class="price-area">
-                            <span class="price">Цена по запросу</span>
+                            <span class="price">Цены по запросу</span>
                         </div>
-                        <button class="rooms-button" onclick="openApartmentsPanel(5, 51.55, '51.55,67.38,73.2')">5 помещений</button>
+                        <button class="rooms-button" onclick="openApartmentsPanel(4, 51.55, '51.55,67.38,73.2')">4 помещения</button>
                     </div>
                 </div>
 
-                <!-- 3-комнатная -->
+                <!-- 2-комнатная (2) -->
+                <div class="floor-plan-card">
+                    <div class="floor-plan-header">
+                        <h3>Литер 2</h3>
+                        <p class="location">Краснодар, Народная</p>
+                        <span class="room-badge">2к</span>
+                    </div>
+                    <div class="floor-plan-image">
+                        <img src="src/img/варианты планировок/народные кварталы/2к.png" alt="2-комнатная">
+                        <div class="area-details">
+                            <div class="area-box">
+                                <span class="area-value">51,55</span>
+                                <span class="area-value">67,38</span>
+                                <span class="area-value">73,2</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floor-plan-info">
+                        <div class="price-area">
+                            <span class="price">Цены по запросу</span>
+                        </div>
+                        <button class="rooms-button" onclick="openApartmentsPanel(4, 51.55, '51.55,67.38,73.2')">4 помещения</button>
+                    </div>
+                </div>
+
+                <!-- 2-комнатная (3) -->
+                <div class="floor-plan-card">
+                    <div class="floor-plan-header">
+                        <h3>Литер 2</h3>
+                        <p class="location">Краснодар, Народная</p>
+                        <span class="room-badge">2к</span>
+                    </div>
+                    <div class="floor-plan-image">
+                        <img src="src/img/варианты планировок/народные кварталы/2к.png" alt="2-комнатная">
+                        <div class="area-details">
+                            <div class="area-box">
+                                <span class="area-value">51,55</span>
+                                <span class="area-value">67,38</span>
+                                <span class="area-value">73,2</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floor-plan-info">
+                        <div class="price-area">
+                            <span class="price">Цены по запросу</span>
+                        </div>
+                        <button class="rooms-button" onclick="openApartmentsPanel(4, 51.55, '51.55,67.38,73.2')">4 помещения</button>
+                    </div>
+                </div>
+
+                <!-- 2-комнатная (4) -->
+                <div class="floor-plan-card">
+                    <div class="floor-plan-header">
+                        <h3>Литер 2</h3>
+                        <p class="location">Краснодар, Народная</p>
+                        <span class="room-badge">2к</span>
+                    </div>
+                    <div class="floor-plan-image">
+                        <img src="src/img/варианты планировок/народные кварталы/2к.png" alt="2-комнатная">
+                        <div class="area-details">
+                            <div class="area-box">
+                                <span class="area-value">51,55</span>
+                                <span class="area-value">67,38</span>
+                                <span class="area-value">73,2</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floor-plan-info">
+                        <div class="price-area">
+                            <span class="price">Цены по запросу</span>
+                        </div>
+                        <button class="rooms-button" onclick="openApartmentsPanel(4, 51.55, '51.55,67.38,73.2')">4 помещения</button>
+                    </div>
+                </div>
+
+                <!-- 3-комнатная (1) -->
                 <div class="floor-plan-card">
                     <div class="floor-plan-header">
                         <h3>Литер 2</h3>
@@ -141,9 +184,34 @@
                     </div>
                     <div class="floor-plan-info">
                         <div class="price-area">
-                            <span class="price">Цена по запросу</span>
+                            <span class="price">Цены по запросу</span>
                         </div>
-                        <button class="rooms-button" onclick="openApartmentsPanel(4, 67.38, '67.38,73.2,85.1')">4 помещения</button>
+                        <button class="rooms-button" onclick="openApartmentsPanel(2, 67.38, '67.38,73.2,85.1')">2 помещения</button>
+                    </div>
+                </div>
+
+                <!-- 3-комнатная (2) -->
+                <div class="floor-plan-card">
+                    <div class="floor-plan-header">
+                        <h3>Литер 2</h3>
+                        <p class="location">Краснодар, Народная</p>
+                        <span class="room-badge">3к</span>
+                    </div>
+                    <div class="floor-plan-image">
+                        <img src="src/img/варианты планировок/народные кварталы/3к.png" alt="3-комнатная">
+                        <div class="area-details">
+                            <div class="area-box">
+                                <span class="area-value">67,38</span>
+                                <span class="area-value">73,2</span>
+                                <span class="area-value">85,1</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floor-plan-info">
+                        <div class="price-area">
+                            <span class="price">Цены по запросу</span>
+                        </div>
+                        <button class="rooms-button" onclick="openApartmentsPanel(2, 67.38, '67.38,73.2,85.1')">2 помещения</button>
                     </div>
                 </div>
             </div>
@@ -218,27 +286,21 @@
         }
 
         function generateApartmentsList(count, area) {
-            const basePrice = 3000000; // Базовая цена для Народных кварталов
             let apartmentsHTML = '';
-            
             for (let i = 1; i <= count; i++) {
                 const floor = Math.floor(Math.random() * 9) + 1; // 1-9 этажи
-                const price = basePrice + Math.floor(Math.random() * 2000000);
-                const pricePerM2 = Math.floor(price / area);
-                
                 const apartmentItem = `
                     <div class="apartment-item">
                         <div class="apartment-details">
                             <div class="apartment-floor">${floor} этаж</div>
-                            <div class="apartment-price">${price.toLocaleString()} ₽</div>
-                            <div class="apartment-price-per-m2">${pricePerM2.toLocaleString()} ₽/м²</div>
+                            <div class="apartment-price">Цена по запросу</div>
+                            <div class="apartment-price-per-m2">—</div>
                         </div>
                         <button class="status-button available">Свободно</button>
                     </div>
                 `;
                 apartmentsHTML += apartmentItem;
             }
-            
             return apartmentsHTML;
         }
 
@@ -352,9 +414,57 @@
             nav.classList.toggle('show');
         }
 
+        // Filter like on "Литеры" page
+        let allCards = [];
+        let currentPriceType = 'total';
+        let currentAreaType = 'total';
+
+        function mapRoomsBadgeToValue(text) {
+            const t = (text || '').toLowerCase();
+            if (t.includes('студ')) return 'studio';
+            if (t.includes('1к') || t === '1') return '1';
+            if (t.includes('2к') || t === '2') return '2';
+            if (t.includes('3к') || t === '3') return '3';
+            return '';
+        }
+
+        function hydrateCardDatasets() {
+            document.querySelectorAll('.floor-plan-card').forEach(card => {
+                card.dataset.type = 'apartment';
+                const badge = card.querySelector('.room-badge');
+                card.dataset.rooms = mapRoomsBadgeToValue(badge ? badge.textContent.trim() : '');
+                card.dataset.priceTotal = '0';
+                card.dataset.pricePerM2 = '0';
+                card.dataset.areaTotal = '0';
+                card.dataset.areaLiving = '0';
+            });
+        }
+
+        function initFilter() {
+            hydrateCardDatasets();
+            allCards = Array.from(document.querySelectorAll('.floor-plan-card'));
+            document.querySelectorAll('.filter-dropdown').forEach(d => d.style.display = 'none');
+            addFilterEventListeners();
+        }
+
+        function addFilterEventListeners() {
+            document.querySelectorAll('input[name="type"]').forEach(r => r.addEventListener('change', updateFilterResults));
+            document.querySelectorAll('input[name="rooms"]').forEach(cb => cb.addEventListener('change', updateFilterResults));
+            ['priceFrom','priceTo','areaFrom','areaTo'].forEach(id=>{ const el=document.getElementById(id); if(el) el.addEventListener('input',updateFilterResults); });
+            document.addEventListener('click', function(e){ const fs=document.querySelector('.filter-section'); if(fs && !fs.contains(e.target)) closeAllDropdowns();});
+        }
+
+        function toggleFilterDropdown(filterType,button){ const dropdown=document.getElementById(filterType+'-dropdown'); const arrow=button.querySelector('.dropdown-arrow'); document.querySelectorAll('.filter-dropdown').forEach(d=>{ if(d!==dropdown) d.style.display='none';}); document.querySelectorAll('.dropdown-arrow').forEach(a=>a.textContent='⌄'); if(dropdown.style.display==='none'||dropdown.style.display===''){ dropdown.style.display='block'; const rb=button.getBoundingClientRect(); const sec=document.querySelector('.filter-section').getBoundingClientRect(); dropdown.style.position='absolute'; dropdown.style.left=(rb.left-sec.left)+'px'; dropdown.style.top=(rb.bottom-sec.top+4)+'px'; arrow.textContent='⌃'; } else { dropdown.style.display='none'; arrow.textContent='⌄'; } }
+        function closeAllDropdowns(){ document.querySelectorAll('.filter-dropdown').forEach(d=>d.style.display='none'); document.querySelectorAll('.dropdown-arrow').forEach(a=>a.textContent='⌄'); }
+        function selectPriceType(type){ currentPriceType=type; document.querySelectorAll('.price-tab').forEach(t=>t.classList.remove('active')); event.target.classList.add('active'); updateFilterResults(); }
+        function selectAreaType(type){ currentAreaType=type; document.querySelectorAll('.area-tab').forEach(t=>t.classList.remove('active')); event.target.classList.add('active'); updateFilterResults(); }
+        function applyFilters(){ updateFilterResults(); closeAllDropdowns(); }
+        function clearFilters(){ const def=document.querySelector('input[name="type"][value="apartment"]'); if(def) def.checked=true; document.querySelectorAll('input[name="rooms"]').forEach(cb=>cb.checked=false); currentPriceType='total'; document.querySelectorAll('.price-tab').forEach(t=>t.classList.remove('active')); const pt=document.querySelector('.price-tab'); if(pt) pt.classList.add('active'); currentAreaType='total'; document.querySelectorAll('.area-tab').forEach(t=>t.classList.remove('active')); const at=document.querySelector('.area-tab'); if(at) at.classList.add('active'); ['priceFrom','priceTo','areaFrom','areaTo'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value='';}); allCards.forEach(c=>c.style.display='block'); }
+        function updateFilterResults(){ const selectedType=document.querySelector('input[name="type"]:checked')?.value||'apartment'; const selectedRooms=Array.from(document.querySelectorAll('input[name="rooms"]:checked')).map(cb=>cb.value); const priceFromEl=document.getElementById('priceFrom'); const priceToEl=document.getElementById('priceTo'); const areaFromEl=document.getElementById('areaFrom'); const areaToEl=document.getElementById('areaTo'); const priceFilterActive=!!(priceFromEl?.value||priceToEl?.value); const areaFilterActive=!!(areaFromEl?.value||areaToEl?.value); const filtered=allCards.filter(card=>{ if(card.dataset.type!==selectedType) return false; if(selectedRooms.length>0 && !selectedRooms.includes(card.dataset.rooms)) return false; if(priceFilterActive||areaFilterActive) return false; return true; }); allCards.forEach(c=>c.style.display='none'); filtered.forEach(c=>c.style.display='block'); }
+
         // Initialize when page loads
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded, initializing...');
+            initFilter();
         });
     </script>
 </body>

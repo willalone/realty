@@ -153,18 +153,18 @@
         }
 
         // Cards + filter (цена/площадь не участвуют)
-        function card(titleBadge, roomsValue, count){
+        function card(titleBadge, roomsValue){
             const img = roomsValue==='1' ? 'src/img/варианты планировок/история-2/1к.png' : 'src/img/варианты планировок/история-2/2к.png';
             return `<div class="floor-plan-card" data-type="apartment" data-rooms="${roomsValue}" data-price-total="0" data-price-per-m2="0" data-area-total="0" data-area-living="0">
                 <div class="floor-plan-header"><h3>История 2</h3><p class="location">Екатерининская, 3</p><span class="room-badge">${titleBadge}</span></div>
                 <div class="floor-plan-image"><img src="${img}" alt="${titleBadge}"><div class="area-details"><div class="area-box"><span class="area-value">—</span><span class="area-value">—</span><span class="area-value">—</span></div></div></div>
-                <div class="floor-plan-info"><div class="price-area"><span class="price">Цена по запросу</span></div><button class="rooms-button" onclick="openApartmentsPanel(${count})">${count} помещений</button></div>
+                <div class="floor-plan-info"><div class="price-area"><span class="price">Цена по запросу</span></div><button class="rooms-button" onclick="openApartmentsPanel(1)">Подробнее</button></div>
             </div>`
         }
         function render(){
             const g=document.getElementById('grid'); let h='';
-            h+=card('1к','1',7);
-            h+=card('2к','2',1);
+            for(let i=0;i<7;i++){ h+=card('1к','1'); }
+            for(let i=0;i<1;i++){ h+=card('2к','2'); }
             g.innerHTML=h; initFilter();
         }
 

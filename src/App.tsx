@@ -63,7 +63,7 @@ function App() {
   const sendToTelegram = async (data: any) => {
     // Получаем данные из переменных окружения или используем значения по умолчанию для GitHub Pages
     const BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN || '8026350498:AAGcyKMsrJyD0mGgj26Ss2m49vX5jp8LzaM';
-    const CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID || '919481169';
+    const CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID || '5918352278';
     
     console.log('🔧 Используемые данные бота:', { BOT_TOKEN: BOT_TOKEN ? '***' : 'undefined', CHAT_ID });
     

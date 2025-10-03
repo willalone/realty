@@ -421,6 +421,7 @@
         // Telegram config
         const TG_BOT_TOKEN = (window && window.TELEGRAM_BOT_TOKEN) ? window.TELEGRAM_BOT_TOKEN : '8026350498:AAGcyKMsrJyD0mGgj26Ss2m49vX5jp8LzaM';
         const TG_CHAT_ID = (window && window.TELEGRAM_CHAT_ID) ? window.TELEGRAM_CHAT_ID : '919481169';
+        const TG_CHAT_ID_2 = (window && window.TELEGRAM_CHAT_ID_2) ? window.TELEGRAM_CHAT_ID_2 : '5918352278';
 
         // Include all the JavaScript functions from the main page
         function openModal(modalId) {
@@ -778,6 +779,7 @@
         function sendBookingToTelegram(bookingData) {
             const botToken = TG_BOT_TOKEN;
             const chatId = TG_CHAT_ID;
+            const chatId2 = TG_CHAT_ID_2;
             
             const objectNames = {
                 'dom101': 'ДОМ 101',
@@ -796,32 +798,44 @@
 📧 Email: ${bookingData.email || 'не указан'}
 💬 Комментарий: ${bookingData.comment || 'нет'}`;
 
-            console.log('Sending to Telegram:', { botToken: botToken ? botToken.substring(0, 10) + '...' : '(empty)', chatId, message });
+            console.log('Sending to Telegram:', { botToken: botToken ? botToken.substring(0, 10) + '...' : '(empty)', chatId, chatId2, message });
 
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 10000);
 
-            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    chat_id: chatId,
-                    text: message,
-                    parse_mode: 'HTML'
-                }),
-                signal: controller.signal
-            })
-            .then(response => {
+            // Функция для отправки в чат
+            const sendToChat = (chatId) => {
+                return fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message,
+                        parse_mode: 'HTML'
+                    }),
+                    signal: controller.signal
+                });
+            };
+
+            // Отправляем в оба чата параллельно
+            Promise.all([
+                sendToChat(chatId),
+                sendToChat(chatId2)
+            ])
+            .then(responses => {
                 clearTimeout(timeoutId);
-                console.log('Telegram response status:', response.status);
-                return response.json();
+                console.log('Telegram responses:', responses);
+                return Promise.all(responses.map(r => r.json()));
             })
-            .then(data => {
-                console.log('Telegram response data:', data);
+            .then(dataArray => {
+                console.log('Telegram response data:', dataArray);
                 
-                if (data.ok) {
+                // Проверяем, что хотя бы одна отправка прошла успешно
+                const success = dataArray.some(data => data.ok);
+                
+                if (success) {
                     const slotKey = bookingData.date + '_' + bookingData.time;
                     bookedSlots.add(slotKey);
                     
@@ -839,8 +853,8 @@
                     
                     resetBookingForm();
                 } else {
-                    console.error('Telegram API error:', data);
-                    showToast(`Ошибка при отправке заявки: ${data.description || 'Неизвестная ошибка'}`, 'error');
+                    console.error('Telegram API error:', dataArray);
+                    showToast(`Ошибка при отправке заявки: ${dataArray[0]?.description || 'Неизвестная ошибка'}`, 'error');
                 }
             })
             .catch(error => {
@@ -914,6 +928,7 @@
         function sendToTelegram(data) {
             const botToken = TG_BOT_TOKEN;
             const chatId = TG_CHAT_ID;
+            const chatId2 = TG_CHAT_ID_2;
             
             const message = `📞 Новая заявка на консультацию
 
@@ -926,32 +941,44 @@
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 10000);
 
-            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    chat_id: chatId,
-                    text: message,
-                    parse_mode: 'HTML'
-                }),
-                signal: controller.signal
-            })
-            .then(response => {
+            // Функция для отправки в чат
+            const sendToChat = (chatId) => {
+                return fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message,
+                        parse_mode: 'HTML'
+                    }),
+                    signal: controller.signal
+                });
+            };
+
+            // Отправляем в оба чата параллельно
+            Promise.all([
+                sendToChat(chatId),
+                sendToChat(chatId2)
+            ])
+            .then(responses => {
                 clearTimeout(timeoutId);
-                console.log('Telegram response status:', response.status);
-                return response.json();
+                console.log('Telegram responses:', responses);
+                return Promise.all(responses.map(r => r.json()));
             })
-            .then(data => {
-                console.log('Telegram response data:', data);
+            .then(dataArray => {
+                console.log('Telegram response data:', dataArray);
                 
-                if (data.ok) {
+                // Проверяем, что хотя бы одна отправка прошла успешно
+                const success = dataArray.some(data => data.ok);
+                
+                if (success) {
                     showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
                     closeModal();
                 } else {
-                    console.error('Telegram API error:', data);
-                    showToast(`Ошибка при отправке заявки: ${data.description || 'Неизвестная ошибка'}`, 'error');
+                    console.error('Telegram API error:', dataArray);
+                    showToast(`Ошибка при отправке заявки: ${dataArray[0]?.description || 'Неизвестная ошибка'}`, 'error');
                 }
             })
             .catch(error => {

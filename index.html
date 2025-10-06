@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>СК НВМ — недвижимость Краснодара</title>
+    <meta name="description" content="СК НВМ — ведущий застройщик Краснодара. Новостройки, ипотека, акции. ДОМ 101, Народные кварталы, История 2." />
+    <meta name="keywords" content="недвижимость Краснодар, новостройки, квартиры, ипотека, застройщик, СК НВМ, ДОМ 101, Народные кварталы, История 2" />
+    <meta name="author" content="СК НВМ" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0b0d12" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sk-nvm-krasnodar.ru/" />
+    <meta property="og:title" content="СК НВМ — недвижимость Краснодара" />
+    <meta property="og:description" content="СК НВМ — ведущий застройщик Краснодара. Новостройки, ипотека, акции. ДОМ 101, Народные кварталы, История 2." />
+    <meta property="og:image" content="https://sk-nvm-krasnodar.ru/img/dom-101.webp" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:site_name" content="СК НВМ" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://sk-nvm-krasnodar.ru/" />
+    <meta property="twitter:title" content="СК НВМ — недвижимость Краснодара" />
+    <meta property="twitter:description" content="СК НВМ — ведущий застройщик Краснодара. Новостройки, ипотека, акции. ДОМ 101, Народные кварталы, История 2." />
+    <meta property="twitter:image" content="https://sk-nvm-krasnodar.ru/img/dom-101.webp" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sk-nvm-krasnodar.ru/" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "СК НВМ",
+      "url": "https://sk-nvm-krasnodar.ru",
+      "logo": "https://sk-nvm-krasnodar.ru/img/dom-101.webp",
+      "description": "Ведущий застройщик Краснодара с 10-летней историей",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Краснодар",
+        "addressCountry": "RU"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+7(988)470-78-93",
+        "contactType": "sales"
+      }
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <meta name="google-site-verification" content="CZH_LjIHJ1k0c0A1NMQzAvQYxu_Uu0SDLwhMfvZ9N8Y" />
+    
+    <link rel="stylesheet" crossorigin href="/assets/index-DQhm3N8H.css">
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-text">СК НВМ</span>
+            </div>
+            <button class="nav-toggle" onclick="toggleNav()" aria-label="Открыть меню">
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <nav class="nav" id="nav">
+                <a href="#projects" class="nav-link">Проекты</a>
+                <a href="#mortgage" class="nav-link">Ипотека</a>
+                <a href="#promos" class="nav-link">Акции</a>
+            </nav>
+            <div class="header-actions">
+                <a href="tel:+78612112850" class="phone">+7(988)470-78-93</a>
+                <button class="btn btn-primary" onclick="openModal('consultation')">Обратный звонок</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container hero-inner">
+            <div class="hero-content">
+                <h1>СК НВМ – НАДЕЖНЫЙ ЗАСТРОЙЩИК С 10-ЛЕТНЕЙ ИСТОРИЕЙ</h1>
+                <div class="hero-cta">
+                    <button class="btn btn-primary" onclick="toggleBookingCalendar(event)">Записаться на просмотр</button>
+                    <button class="btn btn-secondary" onclick="openModal('consultation')">Получить консультацию</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="booking-section" style="display: none;">
+        <div class="container">
+            <div class="booking-header">
+                <div class="booking-header-top">
+                    <h2>Записаться на просмотр</h2>
+                    <button class="btn-close" onclick="closeBookingCalendar()" title="Закрыть календарь">&times;</button>
+                </div>
+                <p>Выберите удобное время для посещения наших объектов</p>
+            </div>
+            <div class="booking-content">
+                <div class="booking-form">
+                    
+                    <div class="calendar-section">
+                        <div class="calendar-compact">
+                            <h3>Выберите дату</h3>
+                            <div class="calendar-week" id="calendarWeek">
+                                <!-- Compact calendar will be generated by JavaScript -->
+                            </div>
+                            <div class="calendar-navigation">
+                                <button class="btn btn-outline" onclick="previousWeek()">← Предыдущая</button>
+                                <span id="currentWeekRange"></span>
+                                <button class="btn btn-outline" onclick="nextWeek()">Следующая →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="time-section" id="timeSection" style="display: none;">
+                        <h3>Выберите время</h3>
+                        <div class="time-grid" id="timeGrid">
+                            <!-- Time slots will be generated by JavaScript -->
+                        </div>
+                        <div class="available-info" id="availableInfo"></div>
+                    </div>
+
+                    <div class="booking-form-fields" id="bookingFormFields" style="display: none;">
+                        <div class="form-group">
+                            <input type="text" id="visitorName" class="form-input" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="visitorPhone" class="form-input" placeholder="+7(___)___-__-__" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="visitorEmail" class="form-input" placeholder="Email (необязательно)">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="visitorComment" class="form-input" placeholder="Комментарий (необязательно)" rows="3"></textarea>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="submitBooking()">Записаться на просмотр</button>
+                    </div>
+                </div>
+          </div>
+        </div>
+      </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-tabs">
+                <div class="tabs">
+                    <button class="tab active" onclick="switchTab('active')">Активные проекты</button>
+                    <button class="tab" onclick="switchTab('completed')">Завершенные проекты</button>
+                </div>
+            </div>
+            
+            <div class="projects-grid active-projects">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/assets/dom-101-DyGUA1T-.webp" alt="ДОМ 101">
+                        <div class="project-badges">
+                            <span class="badge badge-discount">-12%</span>
+                            <span class="badge badge-primary">Квартал для жизни</span>
+                        </div>
+                        <div class="project-status-overlay">Старт продаж</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3>ДОМ 101</h3>
+                            <a href="dom-101.html" class="project-link">О ПРОЕКТЕ →</a>
+                        </div>
+                        <div class="project-location">
+                            <span class="location-icon">📍</span>
+                            <span>г. Краснодар, улица Дорожная</span>
+                        </div>
+                        <div class="project-apartments">
+                            <h4>КВАРТИРЫ в продаже</h4>
+                            <div class="apartment-type">
+                                <span class="apartment-rooms">Студии</span>
+                                <span class="apartment-price">от 3,8 млн ₽</span>
+                            </div>
+                            <div class="apartment-type">
+                                <span class="apartment-rooms">1-к</span>
+                                <span class="apartment-price">от 4,3 млн ₽</span>
+                            </div>
+                            <div class="apartment-type">
+                                <span class="apartment-rooms">2-к</span>
+                                <span class="apartment-price">от 5,4 млн ₽</span>
+                            </div>
+                            <div class="apartment-type">
+                                <span class="apartment-rooms">3-к</span>
+                                <span class="apartment-price">от 8,1 млн ₽</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/assets/narodnye-kvartaly-DhxIEz21.webp" alt="Народные кварталы">
+                        <div class="project-badges">
+                            <span class="badge badge-discount">-12%</span>
+                            <span class="badge badge-primary">Ремонт в подарок</span>
+                        </div>
+                        <div class="project-status-overlay">400+ планировок</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3>Народные кварталы</h3>
+                            <a href="narodnye-kvartaly.html" class="project-link">О ПРОЕКТЕ →</a>
+                        </div>
+                        <div class="project-location">
+                            <span class="location-icon">📍</span>
+                            <span>г. Краснодар, улица Народная</span>
+                        </div>
+                        <div class="project-apartments">
+                            <h4>КВАРТИРЫ в продаже</h4>
+                            <div class="apartment-type">
+                                <span class="apartment-rooms">Студии</span>
+                                <span class="apartment-price">от 3,0 млн ₽</span>
+                            </div>
+                            <div class="apartment-type">
+                                <span class="apartment-rooms">1-к</span>
+                                <span class="apartment-price">от 4,7 млн ₽</span>
+                            </div>
+                            <div class="apartment-type">
+                                <span class="apartment-rooms">2-к</span>
+                                <span class="apartment-price">от 6,6 млн ₽</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/assets/istoriya-2-DDTPKE0S.webp" alt="История 2">
+                        <div class="project-badges">
+                            <span class="badge badge-discount">-12%</span>
+                            <span class="badge badge-primary">Ремонт в подарок</span>
+                        </div>
+                        <div class="project-status-overlay">Дома сданы</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3>История 2</h3>
+                            <a href="istoriya-2.html" class="project-link">О ПРОЕКТЕ →</a>
+                        </div>
+                        <div class="project-location">
+                            <span class="location-icon">📍</span>
+                            <span>г. Краснодар, пос. Южный, Казачья</span>
+                        </div>
+                        <div class="project-apartments">
+                            <h4>КВАРТИРЫ в продаже</h4>
+                            <div class="apartment-type">
+                                <span class="apartment-rooms">2-к</span>
+                                <span class="apartment-price">от 7,3 млн ₽</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="projects-grid completed-projects" style="display: none;">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/assets/istoriya-2-DDTPKE0S.webp" alt="ЖК История">
+                        <div class="project-badges">
+                            <span class="badge badge-discount">-12%</span>
+                            <span class="badge badge-primary">Элитное жилье</span>
+                        </div>
+                        <div class="project-status-overlay">Дома сданы</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3>ЖК История</h3>
+                            <a href="istoriya.html" class="project-link">О ПРОЕКТЕ →</a>
+                        </div>
+                        <div class="project-location">
+                            <span class="location-icon">📍</span>
+                            <span>г. Краснодар, исторический центр</span>
+                        </div>
+                        <div class="project-apartments">
+                            <h4>КВАРТИРЫ в продаже</h4>
+                            <div class="apartment-type">
+                                <span class="apartment-rooms">1-к</span>
+                                <span class="apartment-price">от 3,9 млн ₽</span>
+                            </div>
+                            <div class="apartment-type">
+                                <span class="apartment-rooms">2-к</span>
+                                <span class="apartment-price">от 6,2 млн ₽</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/assets/dom-101-DyGUA1T-.webp" alt="ЖК Новые сезоны">
+                        <div class="project-badges">
+                            <span class="badge badge-discount">-12%</span>
+                            <span class="badge badge-primary">Современные планировки</span>
+                        </div>
+                        <div class="project-status-overlay">Дома сданы</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3>ЖК Новые сезоны</h3>
+                            <a href="novye-sezony.html" class="project-link">О ПРОЕКТЕ →</a>
+                        </div>
+                        <div class="project-location">
+                            <span class="location-icon">📍</span>
+                            <span>г. Краснодар, новый район</span>
+                        </div>
+                        <div class="project-apartments">
+                            <h4>КВАРТИРЫ в продаже</h4>
+                            <div class="apartment-type">
+                                <span class="apartment-rooms">1-к</span>
+                                <span class="apartment-price">от 4,2 млн ₽</span>
+                            </div>
+                            <div class="apartment-type">
+                                <span class="apartment-rooms">2-к</span>
+                                <span class="apartment-price">от 5,8 млн ₽</span>
+                            </div>
+                            <div class="apartment-type">
+                                <span class="apartment-rooms">3-к</span>
+                                <span class="apartment-price">от 7,5 млн ₽</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promos Section -->
+    <section id="promos" class="promos">
+        <div class="container">
+            <h2>Акции</h2>
+            <div class="promos-grid">
+                <div class="promo-card">
+                    <div class="promo-image">
+                        <img src="/assets/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F%202-Cl2Juye2.png" alt="Ремонт в подарок - История 2!">
+                    </div>
+                    <div class="promo-content">
+                        <div class="promo-badge">Акция</div>
+                        <h3>Ремонт в подарок — в «Народных кварталах»!</h3>
+                        <p>Ремонт в подарок при покупке квартиры в СК НВМ!</p>
+                        <div class="promo-details">
+                            <span class="promo-period">До 30.09.2025</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="openModal('promo1')">Подробнее</button>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <div class="promo-image">
+                        <img src="/assets/%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D1%8B%D0%B5%20%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B0%D0%BB%D1%8B-CdxcYooh.png" alt="Ремонт в подарок - в Народных Кварталах!">
+                    </div>
+                    <div class="promo-content">
+                        <div class="promo-badge">Подарок</div>
+                        <h3>Ремонт + Сертификат на мебель в подарок</h3>
+                        <p>Отделка под ключ — без лишних хлопот</p>
+                        <div class="promo-details">
+                            <span class="promo-feature">Любая планировка — акция действует на все квартиры</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="openModal('promo2')">Подробнее</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mortgage Section -->
+    <section id="mortgage" class="mortgage">
+        <div class="container">
+            <h2>Ипотека</h2>
+            <div class="mortgage-intro">
+                <h3>Разнообразие льготных программ</h3>
+                <p>Специальные программы ипотечного кредитования от ведущих банков России: выгодные условия для партнёров</p>
+            </div>
+            
+            <div class="mortgage-highlights">
+                <div class="highlight-item">
+                    <div class="highlight-icon">📅</div>
+                    <h4>Срок кредитования до 30 лет</h4>
+                    <p>от 1 года</p>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">💰</div>
+                    <h4>Первоначальный взнос</h4>
+                    <p>от 20,01%</p>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">📈</div>
+                    <h4>Процентная ставка от 6%</h4>
+                    <p>Страхование</p>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-icon">💳</div>
+                    <h4>Сумма кредита</h4>
+                    <p>от 500 000 ₽</p>
+                </div>
+            </div>
+            
+            <div class="mortgage-programs">
+                <h3>Ипотечные программы</h3>
+                <div class="mortgage-grid">
+                    <!-- IT-ипотека -->
+                    <div class="mortgage-card">
+                        <div class="mortgage-header">
+                            <h4>IT-ипотека</h4>
+                            <button class="btn btn-outline" onclick="openModal('it-mortgage')">Подробнее</button>
+                        </div>
+                        <div class="mortgage-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Сумма кредита</span>
+                                <span class="detail-value">до 9 млн ₽</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Срок кредита</span>
+                                <span class="detail-value">от 3 лет</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Ставка</span>
+                                <span class="detail-value">от 5,99%</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Первоначальный взнос</span>
+                                <span class="detail-value">от 20,1%</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Полная стоимость кредита</span>
+                                <span class="detail-value">8,115% – 15,946%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Семейная ипотека -->
+                    <div class="mortgage-card">
+                        <div class="mortgage-header">
+                            <h4>Семейная ипотека</h4>
+                            <button class="btn btn-outline" onclick="openModal('family-mortgage')">Подробнее</button>
+                        </div>
+                        <div class="mortgage-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Сумма кредита</span>
+                                <span class="detail-value">от 250 000 ₽</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Срок кредита</span>
+                                <span class="detail-value">от 12 мес.</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Ставка</span>
+                                <span class="detail-value">от 6%</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Первоначальный взнос</span>
+                                <span class="detail-value">от 20%</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Полная стоимость кредита</span>
+                                <span class="detail-value">6,008% — 7,678%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Военная ипотека -->
+                    <div class="mortgage-card">
+                        <div class="mortgage-header">
+                            <h4>Военная ипотека</h4>
+                            <button class="btn btn-outline" onclick="openModal('military-mortgage')">Подробнее</button>
+                        </div>
+                        <div class="mortgage-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Сумма кредита</span>
+                                <span class="detail-value">до 9 млн ₽</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Срок кредита</span>
+                                <span class="detail-value">5 — 30 лет</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Ставка</span>
+                                <span class="detail-value">от 6%</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Первоначальный взнос</span>
+                                <span class="detail-value">от 20,1%</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Полная стоимость кредита</span>
+                                <span class="detail-value">6,428% – 6,940%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Семейная военная ипотека -->
+                    <div class="mortgage-card">
+                        <div class="mortgage-header">
+                            <h4>Семейная военная ипотека</h4>
+                            <button class="btn btn-outline" onclick="openModal('family-military-mortgage')">Подробнее</button>
+                        </div>
+                        <div class="mortgage-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Сумма кредита</span>
+                                <span class="detail-value">до 4 975 000 ₽</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Срок кредита</span>
+                                <span class="detail-value">от 12 мес.</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Ставка</span>
+                                <span class="detail-value">от 6%</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Первоначальный взнос</span>
+                                <span class="detail-value">от 30%</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Полная стоимость кредита</span>
+                                <span class="detail-value">5,995% - 6,166%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Семейная ипотека для учителей -->
+                    <div class="mortgage-card">
+                        <div class="mortgage-header">
+                            <h4>Семейная ипотека для учителей</h4>
+                            <button class="btn btn-outline" onclick="openModal('teacher-mortgage')">Подробнее</button>
+                        </div>
+                        <div class="mortgage-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Сумма кредита</span>
+                                <span class="detail-value">от 300 000 ₽</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Срок кредита</span>
+                                <span class="detail-value">от 6 мес.</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Ставка</span>
+                                <span class="detail-value">5%</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Первоначальный взнос</span>
+                                <span class="detail-value">от 20,1%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Consultation Section -->
+    <section id="consultation" class="consultation">
+        <div class="container">
+            <div class="consultation-content">
+                <div class="consultation-text">
+                    <h2>Получить лучшие предложения</h2>
+                    <p>Оставьте телефон — обсудим все детали лично</p>
+                </div>
+                <div class="consultation-form">
+                    <form onsubmit="handleConsultationSubmit(event)">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="+7(___)___-__-__" required>
+                        </div>
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="privacy-consultation" required>
+                            <label for="privacy-consultation">Я соглашаюсь с политикой конфиденциальности сайта</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Получить консультацию</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>СК НВМ</h4>
+                    <p>Ведущий застройщик Краснодара</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <p>+7(988)470-78-93</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Проекты</h4>
+                    <ul>
+                        <li><a href="#projects">ДОМ 101</a></li>
+                        <li><a href="#projects">Народные кварталы</a></li>
+                        <li><a href="#projects">История 2</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Услуги</h4>
+                    <ul>
+                        <li><a href="#mortgage">Ипотека</a></li>
+                        <li><a href="#promos">Акции</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 СК НВМ. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal" class="modal-backdrop" style="display: none;" onclick="closeModal()">
+        <div class="modal-dialog" onclick="event.stopPropagation()">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+                <div id="modal-body"></div>
+            </div>
+      </div>
+    </div>
+
+    <script src="/config.js"></script>
+    <script>
+        // Telegram config (override via window.TELEGRAM_BOT_TOKEN and window.TELEGRAM_CHAT_ID)
+        const TG_BOT_TOKEN = (window && window.TELEGRAM_BOT_TOKEN) ? window.TELEGRAM_BOT_TOKEN : 'YOUR_BOT_TOKEN_HERE';
+        const TG_CHAT_ID = (window && window.TELEGRAM_CHAT_ID) ? window.TELEGRAM_CHAT_ID : 'YOUR_CHAT_ID_HERE';
+        const TG_CHAT_ID_2 = (window && window.TELEGRAM_CHAT_ID_2) ? window.TELEGRAM_CHAT_ID_2 : 'YOUR_CHAT_ID_2_HERE';
+        // Простая JavaScript функциональность
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function openModal(modalId) {
+            console.log('openModal called with:', modalId);
+            const modal = document.getElementById('modal');
+            const modalBody = document.getElementById('modal-body');
+            
+            if (!modal || !modalBody) {
+                console.error('Modal elements not found');
+                return;
+            }
+            
+            // Простой контент для модальных окон
+            const content = {
+                'consultation': `
+                    <h3>Консультация</h3>
+                    <form onsubmit="handleConsultationSubmit(event)">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="+7(___)___-__-__" required>
+                        </div>
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="privacy-modal" required>
+                            <label for="privacy-modal">Я соглашаюсь с политикой конфиденциальности сайта</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Отправить заявку</button>
+        </form>
+                `,
+                'dom101': `
+                    <h3>🏠 ДОМ 101</h3>
+                    <div style="margin-bottom: 20px;">
+                        <p><strong>📍 Адрес:</strong> г. Краснодар, улица Народная</p>
+                        <p><strong>💰 Цены:</strong> от 4,7 млн ₽</p>
+                        <p><strong>🏢 Типы квартир:</strong> 1-комнатные, студии, 2-комнатные, 3-комнатные</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h4>Особенности проекта:</h4>
+                        <ul style="margin: 10px 0; padding-left: 20px;">
+                            <li>400+ планировок на выбор</li>
+                            <li>Ремонт в подарок от застройщика</li>
+                            <li>Скидка -12% на все квартиры</li>
+                            <li>Старт продаж уже начался</li>
+                        </ul>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h4>Инфраструктура:</h4>
+                        <p>Жилой комплекс с развитой инфраструктурой, включая детские сады, школы, фитнес-центры и прогулочные аллеи.</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal('consultation')">Получить консультацию</button>
+                `,
+                'narodnye': `
+                    <h3>🏘️ Народные кварталы</h3>
+                    <div style="margin-bottom: 20px;">
+                        <p><strong>📍 Адрес:</strong> г. Краснодар, пос. Южный, Казачья</p>
+                        <p><strong>💰 Цены:</strong> от 3,9 млн ₽</p>
+                        <p><strong>🏢 Типы квартир:</strong> 1-комнатные, 2-комнатные</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h4>Особенности проекта:</h4>
+                        <ul style="margin: 10px 0; padding-left: 20px;">
+                            <li>Квартал для жизни</li>
+                            <li>Ремонт в подарок от застройщика</li>
+                            <li>Скидка -12% на все квартиры</li>
+                            <li>Дома уже сданы</li>
+                        </ul>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h4>Преимущества:</h4>
+                        <p>Готовый к заселению квартал с полной инфраструктурой и благоустроенной территорией.</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal('consultation')">Получить консультацию</button>
+                `,
+                'istoriya2': `
+                    <h3>🏛️ История 2</h3>
+                    <div style="margin-bottom: 20px;">
+                        <p><strong>📍 Адрес:</strong> г. Краснодар, пос. Южный, Казачья</p>
+                        <p><strong>💰 Цены:</strong> от 6,2 млн ₽</p>
+                        <p><strong>🏢 Типы квартир:</strong> 2-комнатные</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h4>Особенности проекта:</h4>
+                        <ul style="margin: 10px 0; padding-left: 20px;">
+                            <li>Элитное жилье в историческом центре</li>
+                            <li>Ремонт в подарок от застройщика</li>
+                            <li>Скидка -12% на все квартиры</li>
+                            <li>Дома уже сданы</li>
+                        </ul>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h4>Преимущества:</h4>
+                        <p>Премиальный жилой комплекс с высоким качеством отделки и эксклюзивными планировками.</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal('consultation')">Получить консультацию</button>
+                `,
+                'promo1': `
+                    <h3>🎁 Ремонт в подарок — в «Народных кварталах»!</h3>
+                    <div style="margin-bottom: 20px;">
+                        <p><strong>📅 Сроки акции:</strong> с 14.05.2025 по 30.09.2025</p>
+                        <p><strong>🏢 Проект:</strong> ЖК «Народные кварталы»</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h4>Что входит в акцию:</h4>
+                        <ul style="margin: 10px 0; padding-left: 20px;">
+                            <li>Отделка под ключ — без лишних хлопот</li>
+                            <li>Любая планировка — акция действует на все квартиры</li>
+                            <li>Любой вид расчета</li>
+                        </ul>
+                    </div>
+                    <div style="background: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(79,124,255,0.1)); padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+                        <p><strong>🎯 Условия:</strong> При покупке любой квартиры в жилом районе ЖК «Народные кварталы» до 30 сентября 2025 года вы получаете ремонт в подарок!</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <p><strong>📞 Контакты:</strong> С подробной информацией о правилах проведения акции можно ознакомиться по телефону +7(988)470-78-93</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal('consultation')">Узнать подробности</button>
+                `,
+                'promo2': `
+                    <h3>🎁 Ремонт + Сертификат на мебель в подарок</h3>
+                    <div style="margin-bottom: 20px;">
+                        <p><strong>📅 Сроки акции:</strong> с 14.05.2025 по 30.09.2025</p>
+                        <p><strong>🏢 Проект:</strong> ЖК «Народные кварталы»</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h4>Что входит в акцию:</h4>
+                        <ul style="margin: 10px 0; padding-left: 20px;">
+                            <li>Отделка под ключ — без лишних хлопот</li>
+                            <li>Сертификат на мебель в подарок</li>
+                            <li>Любая планировка — акция действует на все квартиры</li>
+                            <li>Любой вид расчета</li>
+                        </ul>
+                    </div>
+                    <div style="background: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(79,124,255,0.1)); padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+                        <p><strong>🎯 Условия:</strong> При покупке любой квартиры в жилом районе ЖК «Народные кварталы» до 30 сентября 2025 года вы получаете ремонт и сертификат на мебель в подарок!</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <p><strong>📞 Контакты:</strong> С подробной информацией о правилах проведения акции можно ознакомиться по телефону +7(988)470-78-93</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal('consultation')">Узнать подробности</button>
+                `,
+                'promo3': `
+                    <h3>⏰ Рассрочка 0%</h3>
+                    <div style="margin-bottom: 20px;">
+                        <p><strong>📅 Срок рассрочки:</strong> до 24 месяцев</p>
+                        <p><strong>🏢 Проекты:</strong> ДОМ 101, Народные кварталы, История 2</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h4>Условия:</h4>
+                        <ul style="margin: 10px 0; padding-left: 20px;">
+                            <li>Без переплат и скрытых комиссий</li>
+                            <li>Первоначальный взнос от 20%</li>
+                            <li>Без справок о доходах</li>
+                            <li>Одобрение за 1 день</li>
+                        </ul>
+                    </div>
+                    <div style="background: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(79,124,255,0.1)); padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+                        <p><strong>📊 Пример:</strong> Квартира 6 млн ₽, взнос 1,2 млн ₽, остальное без процентов на 24 месяца!</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal('consultation')">Рассчитать рассрочку</button>
+                `,
+                'state': `
+                    <h3>🏛️ Государственная ипотека</h3>
+                    <div style="margin-bottom: 20px;">
+                        <p><strong>💰 Ставка:</strong> от 6% годовых</p>
+                        <p><strong>🏦 Банки:</strong> Сбербанк, ВТБ, Газпромбанк</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h4>Условия:</h4>
+                        <ul style="margin: 10px 0; padding-left: 20px;">
+                            <li>Первоначальный взнос от 20%</li>
+                            <li>Срок кредита до 30 лет</li>
+                            <li>Сумма кредита до 12 млн ₽</li>
+                            <li>Государственная поддержка</li>
+                        </ul>
+                    </div>
+                    <div style="background: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(79,124,255,0.1)); padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+                        <p><strong>📈 Преимущества:</strong> Низкая ставка благодаря государственной поддержке</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal('consultation')">Подать заявку</button>
+                `,
+                'family': `
+                    <h3>👨‍👩‍👧‍👦 Семейная ипотека</h3>
+                    <div style="margin-bottom: 20px;">
+                        <p><strong>💰 Ставка:</strong> от 6% годовых</p>
+                        <p><strong>🏦 Банки:</strong> Сбербанк, ВТБ, Всероссийский банк развития регионов</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h4>Кто может получить:</h4>
+                        <ul style="margin: 10px 0; padding-left: 20px;">
+                            <li>Семьи с детьми до 6 лет</li>
+                            <li>Семьи с двумя и более детьми до 18 лет</li>
+                            <li>Семьи с детьми-инвалидами</li>
+                            <li>Молодые семьи до 35 лет</li>
+                        </ul>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h4>Условия:</h4>
+                        <ul style="margin: 10px 0; padding-left: 20px;">
+                            <li>Первоначальный взнос от 20%</li>
+                            <li>Срок кредита до 30 лет</li>
+                            <li>Сумма кредита до 12 млн ₽</li>
+                            <li>Льготная ставка на весь срок</li>
+                        </ul>
+                    </div>
+                    <div style="background: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(79,124,255,0.1)); padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+                        <p><strong>💝 Бонус:</strong> При покупке квартиры в наших проектах дополнительная скидка!</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal('consultation')">Проверить условия</button>
+                `,
+                'military': `
+                    <h3>🎖️ Военная ипотека</h3>
+                    <div style="margin-bottom: 20px;">
+                        <p><strong>💰 Ставка:</strong> от 6% годовых</p>
+                        <p><strong>👨‍✈️ Для кого:</strong> Военнослужащие, участники НИС</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h4>Условия программы:</h4>
+                        <ul style="margin: 10px 0; padding-left: 20px;">
+                            <li>Участие в накопительно-ипотечной системе</li>
+                            <li>Стаж военной службы от 3 лет</li>
+                            <li>Первоначальный взнос от 20%</li>
+                            <li>Срок кредита до 25 лет</li>
+                        </ul>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h4>Преимущества:</h4>
+                        <ul style="margin: 10px 0; padding-left: 20px;">
+                            <li>Льготная процентная ставка</li>
+                            <li>Государственная поддержка</li>
+                            <li>Быстрое одобрение</li>
+                            <li>Специальные условия для военных</li>
+                        </ul>
+      </div>
+                    <div style="background: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(79,124,255,0.1)); padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+                        <p><strong>🏠 Спецпредложение:</strong> Скидка -12% на все квартиры для военнослужащих!</p>
+    </div>
+                    <button class="btn btn-primary" onclick="openModal('consultation')">Узнать подробности</button>
+                `,
+                'it-mortgage': `
+                    <h3>IT-ипотека</h3>
+                    <form onsubmit="handleMortgageSubmit(event, 'IT-ипотека')">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="+7(___)___-__-__" required>
+                        </div>
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="privacy-it-mortgage" required>
+                            <label for="privacy-it-mortgage">Я соглашаюсь с политикой конфиденциальности сайта</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Отправить заявку</button>
+                    </form>
+                `,
+                'family-mortgage': `
+                    <h3>Семейная ипотека</h3>
+                    <form onsubmit="handleMortgageSubmit(event, 'Семейная ипотека')">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="+7(___)___-__-__" required>
+                        </div>
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="privacy-family-mortgage" required>
+                            <label for="privacy-family-mortgage">Я соглашаюсь с политикой конфиденциальности сайта</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Отправить заявку</button>
+                    </form>
+                `,
+                'military-mortgage': `
+                    <h3>Военная ипотека</h3>
+                    <form onsubmit="handleMortgageSubmit(event, 'Военная ипотека')">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="+7(___)___-__-__" required>
+                        </div>
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="privacy-military-mortgage" required>
+                            <label for="privacy-military-mortgage">Я соглашаюсь с политикой конфиденциальности сайта</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Отправить заявку</button>
+                    </form>
+                `,
+                'family-military-mortgage': `
+                    <h3>Семейная военная ипотека</h3>
+                    <form onsubmit="handleMortgageSubmit(event, 'Семейная военная ипотека')">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="+7(___)___-__-__" required>
+                        </div>
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="privacy-family-military-mortgage" required>
+                            <label for="privacy-family-military-mortgage">Я соглашаюсь с политикой конфиденциальности сайта</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Отправить заявку</button>
+                    </form>
+                `,
+                'teacher-mortgage': `
+                    <h3>Семейная ипотека для учителей</h3>
+                    <form onsubmit="handleMortgageSubmit(event, 'Семейная ипотека для учителей')">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="+7(___)___-__-__" required>
+                        </div>
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="privacy-teacher-mortgage" required>
+                            <label for="privacy-teacher-mortgage">Я соглашаюсь с политикой конфиденциальности сайта</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Отправить заявку</button>
+                    </form>
+                `
+            };
+            
+            modalBody.innerHTML = content[modalId] || '<p>Информация недоступна</p>';
+            modal.style.display = 'flex';
+            
+            // Initialize phone masks for newly created modal content
+            initPhoneMasks();
+            
+            console.log('Modal opened successfully');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        // Booking system functionality
+        let selectedDate = null;
+        let selectedTime = null;
+        let bookedSlots = new Set();
+        let currentWeekStart = new Date();
+        // Initialize to Monday of current week
+        const today = new Date();
+        const dayOfWeek = today.getDay();
+        const diff = today.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1);
+        currentWeekStart = new Date(today.getFullYear(), today.getMonth(), diff);
+        console.log('Initialized currentWeekStart to:', currentWeekStart);
+        let isBookingVisible = false;
+
+        // Toggle booking calendar visibility
+        function toggleBookingCalendar(event) {
+            console.log('Toggle calendar clicked, current state:', isBookingVisible);
+            if (isBookingVisible) {
+                // Hide calendar
+                closeBookingCalendar();
+            } else {
+                // Show calendar
+                showBookingCalendar();
+            }
+        }
+
+        // Show booking calendar
+        function showBookingCalendar() {
+            console.log('ShowBookingCalendar called');
+            const bookingSection = document.getElementById('booking');
+            const button = document.querySelector('button[onclick*="toggleBookingCalendar"]') || 
+                          document.querySelector('.btn-primary');
+            
+            console.log('Booking section found:', bookingSection);
+            console.log('Button found:', button);
+            
+            if (bookingSection) {
+                bookingSection.style.display = 'block';
+                if (button) {
+                    button.textContent = 'Скрыть календарь';
+                }
+                isBookingVisible = true;
+                
+                console.log('Calendar should be visible now');
+                
+                // Scroll to booking section
+                bookingSection.scrollIntoView({ behavior: 'smooth' });
+                
+                // Load saved bookings from localStorage
+                loadBookingsFromStorage();
+            } else {
+                console.error('Booking section not found!');
+            }
+        }
+
+        // Close booking calendar
+        function closeBookingCalendar() {
+            const bookingSection = document.getElementById('booking');
+            const button = document.querySelector('button[onclick*="toggleBookingCalendar"]') || 
+                          document.querySelector('.btn-primary');
+            
+            if (bookingSection) {
+                bookingSection.style.display = 'none';
+                if (button) {
+                    button.textContent = 'Смотреть квартиры';
+                }
+                isBookingVisible = false;
+            }
+        }
+
+        // Initialize booking system
+        function initBookingSystem() {
+            // Load bookings first, then generate calendar
+            loadBookingsFromStorage();
+            generateCompactCalendar();
+            
+            // Add phone mask
+            const phoneInput = document.getElementById('visitorPhone');
+            phoneInput.addEventListener('input', formatPhoneNumber);
+            phoneInput.addEventListener('keydown', handlePhoneKeydown);
+            phoneInput.setAttribute('maxlength', '17'); // +7(999)999-99-99
+        }
+
+        // Phone number formatting
+        function formatPhoneNumber(event) {
+            let value = event.target.value.replace(/\D/g, '');
+            
+            // Limit to 11 digits maximum
+            if (value.length > 11) {
+                value = value.slice(0, 11);
+                event.target.value = formatPhoneValue(value);
+                return;
+            }
+            
+            if (value.length === 0) {
+                event.target.value = '';
+                return;
+            }
+            
+            // If user starts typing with 8, replace with 7
+            if (value.length === 1 && value[0] === '8') {
+                value = '7';
+            }
+            
+            // If user starts typing with any digit except 7, prepend 7
+            if (value.length === 1 && value[0] !== '7') {
+                value = '7' + value;
+            }
+            
+            // Use helper function to format
+            event.target.value = formatPhoneValue(value);
+        }
+
+        // Helper function to format phone value
+        function formatPhoneValue(value) {
+            if (value.length === 0) return '';
+            if (value.length === 1 && value[0] === '7') return '+7(';
+            if (value.length <= 4) return '+7(' + value.slice(1);
+            if (value.length <= 7) return '+7(' + value.slice(1, 4) + ')' + value.slice(4);
+            if (value.length <= 9) return '+7(' + value.slice(1, 4) + ')' + value.slice(4, 7) + '-' + value.slice(7);
+            if (value.length <= 11) return '+7(' + value.slice(1, 4) + ')' + value.slice(4, 7) + '-' + value.slice(7, 9) + '-' + value.slice(9);
+            return '+7(' + value.slice(1, 4) + ')' + value.slice(4, 7) + '-' + value.slice(7, 9) + '-' + value.slice(9, 11);
+        }
+
+        // Handle phone input keydown
+        function handlePhoneKeydown(event) {
+            const input = event.target;
+            const currentValue = input.value.replace(/\D/g, '');
+            
+            // Allow backspace, delete, tab, escape, enter
+            if ([8, 9, 27, 13, 46].indexOf(event.keyCode) !== -1 ||
+                // Allow Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+                (event.keyCode === 65 && event.ctrlKey === true) ||
+                (event.keyCode === 67 && event.ctrlKey === true) ||
+                (event.keyCode === 86 && event.ctrlKey === true) ||
+                (event.keyCode === 88 && event.ctrlKey === true)) {
+                return;
+            }
+            
+            // If we already have 11 digits and user is trying to add more
+            if (currentValue.length >= 11 && 
+                ((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105))) {
+                event.preventDefault();
+                return;
+            }
+            
+            // Block all non-numeric characters (allow navigation keys)
+            const isNumberKey = (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105);
+            const isNavKey = [35,36,37,38,39,40].includes(event.keyCode);
+            if (!isNumberKey && !isNavKey) {
+                event.preventDefault();
+                return;
+            }
+        }
+
+        // Generate compact week calendar
+        function generateCompactCalendar() {
+            const calendarWeek = document.getElementById('calendarWeek');
+            const currentWeekRange = document.getElementById('currentWeekRange');
+            
+            console.log('generateCompactCalendar called, elements found:', {
+                calendarWeek: !!calendarWeek,
+                currentWeekRange: !!currentWeekRange
+            });
+            
+            if (!calendarWeek || !currentWeekRange) {
+                console.error('Calendar elements not found!');
+                return;
+            }
+            
+            // Use currentWeekStart directly as it's already set to Monday
+            const monday = new Date(currentWeekStart);
+            console.log('Generating calendar for week starting:', monday);
+            
+            // Generate 7 days starting from Monday
+            const days = [];
+            for (let i = 0; i < 7; i++) {
+                const date = new Date(monday);
+                date.setDate(monday.getDate() + i);
+                days.push(date);
+            }
+
+            // Update week range display
+            const startDate = days[0];
+            const endDate = days[6];
+            const monthNames = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
+            
+            if (startDate.getMonth() === endDate.getMonth()) {
+                currentWeekRange.textContent = 
+                    `${startDate.getDate()}-${endDate.getDate()} ${monthNames[startDate.getMonth()]}`;
+            } else {
+                currentWeekRange.textContent = 
+                    `${startDate.getDate()} ${monthNames[startDate.getMonth()]} - ${endDate.getDate()} ${monthNames[endDate.getMonth()]}`;
+            }
+
+            // Create compact calendar HTML
+            let calendarHTML = '<div class="week-days">';
+            days.forEach(date => {
+                const dayOfWeek = date.getDay();
+                const dayNumber = date.getDate();
+                const dateStr = formatDate(date);
+                const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                date.setHours(0, 0, 0, 0);
+                const isPast = date < today;
+                const isToday = date.toDateString() === today.toDateString();
+                
+                // Check available slots for this date
+                const availableSlots = getAvailableSlotsCount(dateStr);
+                const hasNoAvailableSlots = availableSlots === 0;
+                
+                let cellClass = 'week-day';
+                if (isPast) cellClass += ' past';
+                if (isWeekend) cellClass += ' weekend';
+                if (isToday) cellClass += ' today';
+                // Red background only if no available slots
+                if (hasNoAvailableSlots) cellClass += ' has-bookings';
+                // Allow booking on weekends too
+                if (availableSlots > 0 && !isPast) cellClass += ' available';
+                
+                const weekdayNames = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+                
+                calendarHTML += `<div class="${cellClass}" onclick="selectDate('${dateStr}')" data-date="${dateStr}">`;
+                calendarHTML += `<div class="weekday-name">${weekdayNames[dayOfWeek]}</div>`;
+                calendarHTML += `<div class="day-number">${dayNumber}</div>`;
+                if (availableSlots > 0) {
+                    calendarHTML += `<div class="slots-count">${availableSlots} слотов</div>`;
+                } else if (hasNoAvailableSlots) {
+                    calendarHTML += '<div class="booked-indicator">❌</div>';
+                }
+                calendarHTML += '</div>';
+            });
+            calendarHTML += '</div>';
+
+            console.log('Generated calendar HTML:', calendarHTML);
+            calendarWeek.innerHTML = calendarHTML;
+            console.log('Calendar HTML set, element content length:', calendarWeek.innerHTML.length);
+        }
+
+        // Get available slots count for a date
+        function getAvailableSlotsCount(dateStr) {
+            const timeSlots = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'];
+            const today = new Date();
+            const selectedDateObj = new Date(dateStr);
+            const isToday = selectedDateObj.toDateString() === today.toDateString();
+            const currentHour = today.getHours();
+            const minHour = currentHour + 2; // 2 hours buffer
+            
+            return timeSlots.filter(time => {
+                const isBooked = bookedSlots.has(dateStr + '_' + time);
+                const timeHour = parseInt(time.split(':')[0]);
+                const isPastTime = isToday && timeHour <= minHour;
+                return !isBooked && !isPastTime;
+            }).length;
+        }
+
+        // Navigation functions
+        function previousWeek() {
+            currentWeekStart.setDate(currentWeekStart.getDate() - 7);
+            generateCompactCalendar();
+        }
+
+        function nextWeek() {
+            currentWeekStart.setDate(currentWeekStart.getDate() + 7);
+            generateCompactCalendar();
+        }
+
+        // Format date for storage
+        function formatDate(date) {
+            return date.getFullYear() + '-' + 
+                   String(date.getMonth() + 1).padStart(2, '0') + '-' + 
+                   String(date.getDate()).padStart(2, '0');
+        }
+
+        // Select date
+        function selectDate(dateStr) {
+            selectedDate = dateStr;
+            const cells = document.querySelectorAll('.week-day');
+            cells.forEach(cell => cell.classList.remove('selected'));
+            
+            const selectedCell = document.querySelector(`[data-date="${dateStr}"]`);
+            if (selectedCell && !selectedCell.classList.contains('past')) {
+                selectedCell.classList.add('selected');
+                generateTimeSlots();
+                document.getElementById('timeSection').style.display = 'block';
+            }
+        }
+
+        // Generate time slots
+        function generateTimeSlots() {
+            const timeGrid = document.getElementById('timeGrid');
+            const timeSlots = [
+                '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', 
+                '15:00', '16:00', '17:00', '18:00', '19:00'
+            ];
+            
+            // Check if selected date is today
+            const today = new Date();
+            const selectedDateObj = new Date(selectedDate);
+            const isToday = selectedDateObj.toDateString() === today.toDateString();
+            const currentHour = today.getHours();
+            
+            let timeHTML = '';
+            timeSlots.forEach(time => {
+                const slotKey = selectedDate + '_' + time;
+                const isBooked = bookedSlots.has(slotKey);
+                
+                // Check if time is in the past for today (including 2-hour buffer)
+                const timeHour = parseInt(time.split(':')[0]);
+                const minHour = currentHour + 2; // 2 hours buffer
+                const isPastTime = isToday && timeHour <= minHour;
+                
+                let slotClass = 'time-slot';
+                if (isBooked || isPastTime) slotClass += ' disabled';
+                
+                const isClickable = !isBooked && !isPastTime;
+                timeHTML += `<div class="${slotClass}" onclick="${isClickable ? 'selectTime(\'' + time + '\')' : ''}" data-time="${time}">`;
+                timeHTML += `<span class="time-text">${time}</span>`;
+                if (isBooked) {
+                    timeHTML += '<span class="booked-icon">🔒</span>';
+                } else if (isPastTime) {
+                    timeHTML += '<span class="past-icon">⏰</span>';
+                }
+                timeHTML += '</div>';
+            });
+            
+            timeGrid.innerHTML = timeHTML;
+            
+            // Update available info
+            const availableCount = timeSlots.filter(time => {
+                const slotKey = selectedDate + '_' + time;
+                const isBooked = bookedSlots.has(slotKey);
+                const timeHour = parseInt(time.split(':')[0]);
+                const isPastTime = isToday && timeHour <= minHour;
+                return !isBooked && !isPastTime;
+            }).length;
+            
+            document.getElementById('availableInfo').innerHTML = 
+                `<p>Доступно временных слотов: ${availableCount} из ${timeSlots.length}</p>`;
+        }
+
+        // Select time
+        function selectTime(time) {
+            const slotKey = selectedDate + '_' + time;
+            if (!bookedSlots.has(slotKey)) {
+                selectedTime = time;
+                const slots = document.querySelectorAll('.time-slot');
+                slots.forEach(slot => slot.classList.remove('selected'));
+                
+                const selectedSlot = document.querySelector(`[data-time="${time}"]`);
+                if (selectedSlot) {
+                    selectedSlot.classList.add('selected');
+                    document.getElementById('bookingFormFields').style.display = 'block';
+                }
+            }
+        }
+
+
+        // Submit booking
+        function submitBooking() {
+            if (!selectedDate || !selectedTime) {
+                alert('Пожалуйста, выберите дату и время');
+                return;
+            }
+
+            const name = document.getElementById('visitorName').value.trim();
+            const phone = document.getElementById('visitorPhone').value.trim();
+            const email = document.getElementById('visitorEmail').value.trim();
+            const comment = document.getElementById('visitorComment').value.trim();
+
+            if (!name || !phone) {
+                alert('Пожалуйста, заполните имя и телефон');
+                return;
+            }
+
+            // Validate phone number - check for exactly 11 digits
+            const phoneDigits = phone.replace(/\D/g, '');
+            const phoneRegex = /^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$/;
+            
+            if (phoneDigits.length !== 11) {
+                showToast('Введите полный номер телефона (11 цифр) в формате +7(999)999-99-99', 'error');
+                return;
+            }
+            
+            if (!phoneRegex.test(phone)) {
+                showToast('Введите корректный номер телефона в формате +7(999)999-99-99', 'error');
+                return;
+            }
+            
+            // Additional validation: check if phone starts with 7
+            if (!phoneDigits.startsWith('7')) {
+                showToast('Номер телефона должен начинаться с +7', 'error');
+                return;
+            }
+
+            const bookingData = {
+                date: selectedDate,
+                time: selectedTime,
+                name: name,
+                phone: phone,
+                email: email,
+                comment: comment
+            };
+
+            sendBookingToTelegram(bookingData);
+        }
+
+        // Send booking to Telegram
+        function sendBookingToTelegram(bookingData) {
+            // Read from safe globals or fallback placeholders
+            const botToken = TG_BOT_TOKEN;
+            const chatId = TG_CHAT_ID;
+            const chatId2 = TG_CHAT_ID_2;
+            
+            const message = `🏠 Новая заявка на просмотр квартиры
+
+📅 Дата: ${bookingData.date}
+⏰ Время: ${bookingData.time}
+
+👤 Имя: ${bookingData.name}
+📞 Телефон: ${bookingData.phone}
+📧 Email: ${bookingData.email || 'не указан'}
+💬 Комментарий: ${bookingData.comment || 'нет'}`;
+
+            console.log('Sending to Telegram:', { botToken: botToken ? botToken.substring(0, 10) + '...' : '(empty)', chatId, chatId2, message });
+
+            // Create AbortController for timeout
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+
+            // Функция для отправки в чат
+            const sendToChat = (chatId) => {
+                return fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message,
+                        parse_mode: 'HTML'
+                    }),
+                    signal: controller.signal
+                });
+            };
+
+            // Отправляем в оба чата параллельно
+            Promise.all([
+                sendToChat(chatId),
+                sendToChat(chatId2)
+            ])
+            .then(responses => {
+                clearTimeout(timeoutId);
+                console.log('Telegram responses:', responses);
+                return Promise.all(responses.map(r => r.json()));
+            })
+            .then(dataArray => {
+                console.log('Telegram response data:', dataArray);
+                
+                // Проверяем, что хотя бы одна отправка прошла успешно
+                const success = dataArray.some(data => data.ok);
+                
+                if (success) {
+                    // Mark slot as booked
+                    const slotKey = bookingData.date + '_' + bookingData.time;
+                    bookedSlots.add(slotKey);
+                    
+                    // Save to localStorage
+                    saveBookingsToStorage();
+                    
+                    // Update UI
+                    const timeSlot = document.querySelector(`[data-time="${bookingData.time}"]`);
+                    if (timeSlot) {
+                        timeSlot.classList.add('booked');
+                        timeSlot.innerHTML = `<span class="time-text">${bookingData.time}</span><span class="booked-icon">❌</span>`;
+                    }
+                    
+                    // Regenerate calendar to show updated booking status
+                    generateCompactCalendar();
+                    
+                    // Show success message
+                    showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
+                    
+                    // Reset form
+                    resetBookingForm();
+                } else {
+                    console.error('Telegram API error:', data);
+                    showToast(`Ошибка при отправке заявки: ${data.description || 'Неизвестная ошибка'}`, 'error');
+                }
+            })
+            .catch(error => {
+                clearTimeout(timeoutId);
+                console.error('Network error:', error);
+                
+                if (error.name === 'AbortError') {
+                    showToast('Превышено время ожидания. Попробуйте еще раз.', 'error');
+                } else {
+                    showToast('Ошибка сети при отправке заявки. Попробуйте еще раз.', 'error');
+                }
+            });
+        }
+
+        // Save bookings to localStorage
+        function saveBookingsToStorage() {
+            const bookingsArray = Array.from(bookedSlots);
+            localStorage.setItem('realtyBookings', JSON.stringify(bookingsArray));
+        }
+
+        // Load bookings from localStorage
+        function loadBookingsFromStorage() {
+            const savedBookings = localStorage.getItem('realtyBookings');
+            if (savedBookings) {
+                const bookingsArray = JSON.parse(savedBookings);
+                bookedSlots = new Set(bookingsArray);
+            }
+            
+            // Regenerate calendar with loaded bookings
+            if (isBookingVisible) {
+                generateCompactCalendar();
+            }
+        }
+
+        // Reset booking form
+        function resetBookingForm() {
+            selectedDate = null;
+            selectedTime = null;
+            
+            document.getElementById('visitorName').value = '';
+            document.getElementById('visitorPhone').value = '';
+            document.getElementById('visitorEmail').value = '';
+            document.getElementById('visitorComment').value = '';
+            
+            document.getElementById('timeSection').style.display = 'none';
+            document.getElementById('bookingFormFields').style.display = 'none';
+            
+            generateCompactCalendar();
+        }
+
+        // Show toast notification
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `<div class="toast-content">${message}</div><button class="toast-close" aria-label="Закрыть">×</button>`;
+            document.body.appendChild(toast);
+
+            // Eye-level positioning (~20vh from top), centered and above all overlays
+            Object.assign(toast.style, {
+                position: 'fixed',
+                top: '20vh',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                zIndex: '9999',
+                maxWidth: '90vw'
+            });
+            
+            const removeToast = () => {
+                if (toast && toast.parentNode) toast.parentNode.removeChild(toast);
+            };
+            
+            toast.querySelector('.toast-close')?.addEventListener('click', removeToast);
+            
+            setTimeout(removeToast, 4000);
+        }
+
+        // Initialize booking system when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing...');
+            try {
+                initBookingSystem();
+                initPhoneMasks();
+                
+                // Force calendar generation after a small delay to ensure DOM is ready
+                setTimeout(() => {
+                    console.log('Force generating calendar...');
+                    generateCompactCalendar();
+                }, 100);
+                
+                console.log('Initialization completed successfully');
+            } catch (error) {
+                console.error('Initialization error:', error);
+            }
+        });
+
+        // Initialize phone masks and name validation for all inputs
+        function initPhoneMasks() {
+            // Find all phone inputs
+            const phoneInputs = document.querySelectorAll('input[type="tel"], input[name="phone"]');
+            
+            phoneInputs.forEach(input => {
+                // Add event listeners
+                input.addEventListener('input', formatPhoneNumber);
+                input.addEventListener('keydown', handlePhoneKeydown);
+                input.setAttribute('maxlength', '17'); // ensure max length mask
+                input.addEventListener('paste', function(e) {
+                    // Allow paste, but format after paste
+                    setTimeout(() => {
+                        formatPhoneNumber({ target: input });
+                    }, 10);
+                });
+            });
+
+            // Find all name inputs and add validation
+            const nameInputs = document.querySelectorAll('input[name="name"], input[id="visitorName"]');
+            nameInputs.forEach(input => {
+                input.addEventListener('input', formatNameInput);
+                input.addEventListener('keydown', handleNameKeydown);
+                input.addEventListener('paste', function(e) {
+                    setTimeout(() => {
+                        formatNameInput({ target: input });
+                    }, 10);
+                });
+            });
+        }
+
+        // Format name input - only letters
+        function formatNameInput(event) {
+            const input = event.target;
+            let value = input.value;
+            
+            // Remove all non-letter characters (keeping spaces, hyphens, apostrophes for compound names)
+            value = value.replace(/[^a-zA-Zа-яА-ЯёЁ\s\-']/g, '');
+            
+            // Remove multiple spaces
+            value = value.replace(/\s+/g, ' ');
+            
+            input.value = value;
+        }
+
+        // Handle name input keydown
+        function handleNameKeydown(event) {
+            // Allow backspace, delete, tab, escape, enter, arrows
+            if ([8, 9, 27, 13, 46, 35, 36, 37, 38, 39, 40].indexOf(event.keyCode) !== -1 ||
+                // Allow Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+                (event.keyCode === 65 && event.ctrlKey === true) ||
+                (event.keyCode === 67 && event.ctrlKey === true) ||
+                (event.keyCode === 86 && event.ctrlKey === true) ||
+                (event.keyCode === 88 && event.ctrlKey === true)) {
+                return;
+            }
+            
+            // Block all non-letter characters
+            const isLetter = /^[a-zA-Zа-яА-ЯёЁ]$/.test(event.key);
+            const isSpace = event.keyCode === 32; // space
+            const isHyphen = event.keyCode === 189 || event.keyCode === 109; // hyphen
+            const isApostrophe = event.keyCode === 222; // apostrophe
+            
+            if (!isLetter && !isSpace && !isHyphen && !isApostrophe) {
+                event.preventDefault();
+                return;
+            }
+        }
+
+        // Send consultation form to Telegram
+        function sendToTelegram(data) {
+            // Read from safe globals or fallback placeholders
+            const botToken = TG_BOT_TOKEN || 'YOUR_BOT_TOKEN_HERE';
+            const chatId = TG_CHAT_ID || 'YOUR_CHAT_ID_HERE';
+            const chatId2 = TG_CHAT_ID_2 || 'YOUR_CHAT_ID_2_HERE';
+            
+            const message = `📞 Новая заявка на консультацию
+
+👤 Имя: ${data.name}
+📞 Телефон: ${data.phone}
+📋 Тип заявки: ${data.formType}`;
+
+            console.log('Sending consultation to Telegram:', { botToken: botToken ? botToken.substring(0, 10) + '...' : '(empty)', chatId, chatId2, message });
+
+            // Create AbortController for timeout
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+
+            // Функция для отправки в чат
+            const sendToChat = (chatId) => {
+                return fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message,
+                        parse_mode: 'HTML'
+                    }),
+                    signal: controller.signal
+                });
+            };
+
+            // Отправляем в оба чата параллельно
+            Promise.all([
+                sendToChat(chatId),
+                sendToChat(chatId2)
+            ])
+            .then(responses => {
+                clearTimeout(timeoutId);
+                console.log('Telegram responses:', responses);
+                return Promise.all(responses.map(r => r.json()));
+            })
+            .then(dataArray => {
+                console.log('Telegram response data:', dataArray);
+                
+                // Проверяем, что хотя бы одна отправка прошла успешно
+                const success = dataArray.some(data => data.ok);
+                
+                if (success) {
+                    showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
+                    closeModal();
+                } else {
+                    console.error('Telegram API error:', dataArray);
+                    showToast(`Ошибка при отправке заявки: ${dataArray[0]?.description || 'Неизвестная ошибка'}`, 'error');
+                }
+            })
+            .catch(error => {
+                clearTimeout(timeoutId);
+                console.error('Network error:', error);
+                
+                if (error.name === 'AbortError') {
+                    showToast('Превышено время ожидания. Попробуйте еще раз.', 'error');
+                } else {
+                    showToast('Ошибка сети при отправке заявки. Попробуйте еще раз.', 'error');
+                }
+            });
+        }
+
+        // Handle mortgage form submission
+        function handleMortgageSubmit(event, mortgageType) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const privacyCheckbox = event.target.querySelector('input[type="checkbox"]');
+            
+            const data = {
+                name: formData.get('name'),
+                phone: formData.get('phone'),
+                formType: `Заявка на ${mortgageType}`
+            };
+
+            // Validate required fields
+            if (!data.name || !data.phone) {
+                showToast('Пожалуйста, заполните имя и телефон', 'error');
+                return;
+            }
+
+            // Check privacy checkbox
+            if (!privacyCheckbox || !privacyCheckbox.checked) {
+                showToast('Необходимо согласие на обработку персональных данных', 'error');
+                return;
+            }
+
+            // Validate name - only letters
+            const nameRegex = /^[a-zA-Zа-яА-ЯёЁ\s\-']+$/;
+            if (!nameRegex.test(data.name.trim())) {
+                showToast('Имя должно содержать только буквы', 'error');
+                return;
+            }
+
+            if (data.name.trim().length < 2) {
+                showToast('Имя должно содержать минимум 2 символа', 'error');
+                return;
+            }
+
+            // Validate phone number
+            const phoneDigits = data.phone.replace(/\D/g, '');
+            const phoneRegex = /^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$/;
+            
+            if (phoneDigits.length !== 11) {
+                showToast('Введите полный номер телефона (11 цифр) в формате +7(999)999-99-99', 'error');
+                return;
+            }
+            
+            if (!phoneRegex.test(data.phone)) {
+                showToast('Введите корректный номер телефона в формате +7(999)999-99-99', 'error');
+                return;
+            }
+
+            // Send to Telegram
+            sendToTelegram(data);
+            
+            // Close modal
+            closeModal();
+            
+            // Show success message
+            showToast(`Заявка на ${mortgageType} отправлена!`, 'success');
+        }
+
+        function handleConsultationSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const privacyCheckbox = event.target.querySelector('input[type="checkbox"]');
+            
+            const data = {
+                name: formData.get('name'),
+                phone: formData.get('phone'),
+                formType: 'Консультация'
+            };
+
+            // Validate required fields
+            if (!data.name || !data.phone) {
+                showToast('Пожалуйста, заполните имя и телефон', 'error');
+                return;
+            }
+
+            // Check privacy checkbox
+            if (!privacyCheckbox || !privacyCheckbox.checked) {
+                showToast('Необходимо согласие на обработку персональных данных', 'error');
+                return;
+            }
+
+            // Validate name - only letters
+            const nameRegex = /^[a-zA-Zа-яА-ЯёЁ\s\-']+$/;
+            if (!nameRegex.test(data.name.trim())) {
+                showToast('Имя должно содержать только буквы', 'error');
+                return;
+            }
+
+            if (data.name.trim().length < 2) {
+                showToast('Имя должно содержать минимум 2 символа', 'error');
+                return;
+            }
+
+            // Validate phone number
+            const phoneDigits = data.phone.replace(/\D/g, '');
+            const phoneRegex = /^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$/;
+            
+            if (phoneDigits.length !== 11) {
+                showToast('Введите полный номер телефона (11 цифр) в формате +7(999)999-99-99', 'error');
+                return;
+            }
+            
+            if (!phoneRegex.test(data.phone)) {
+                showToast('Введите корректный номер телефона в формате +7(999)999-99-99', 'error');
+                return;
+            }
+
+            // Send to Telegram
+            sendToTelegram(data);
+        }
+
+        // Мобильное меню
+        function toggleNav() {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('show');
+        }
+
+        // Tab switching functionality
+        function switchTab(tabType) {
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Switch between active and completed projects
+            const activeProjects = document.querySelector('.active-projects');
+            const completedProjects = document.querySelector('.completed-projects');
+            
+            if (tabType === 'active') {
+                if (activeProjects) activeProjects.style.display = 'grid';
+                if (completedProjects) completedProjects.style.display = 'none';
+            } else if (tabType === 'completed') {
+                if (activeProjects) activeProjects.style.display = 'none';
+                if (completedProjects) completedProjects.style.display = 'grid';
+            }
+        }
+        
+        // View switching functionality
+        function switchView(viewType) {
+            const viewBtns = document.querySelectorAll('.view-btn');
+            viewBtns.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Here you would switch between cards and map view
+            console.log('Switched to:', viewType);
+        }
+        
+        // Make functions globally available
+        window.openModal = openModal;
+        window.closeModal = closeModal;
+        window.toggleBookingCalendar = toggleBookingCalendar;
+        window.handleConsultationSubmit = handleConsultationSubmit;
+        window.toggleNav = toggleNav;
+        window.switchTab = switchTab;
+        window.switchView = switchView;
+        
+        console.log('All functions are now globally available');
+
+        // Закрытие меню при клике на ссылку
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                scrollToSection(targetId);
+                // Закрываем мобильное меню
+                document.getElementById('nav').classList.remove('show');
+            });
+        });
+
+        // Закрытие меню при клике вне его
+        document.addEventListener('click', function(e) {
+            const nav = document.getElementById('nav');
+            const navToggle = document.querySelector('.nav-toggle');
+            if (!nav.contains(e.target) && !navToggle.contains(e.target)) {
+                nav.classList.remove('show');
+            }
+        });
+    </script>
+  </body>
+  </html>

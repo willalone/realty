@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://sk-nvm-krasnodar.ru/sitemap.xml
+
+# Crawl-delay для предотвращения перегрузки
+Crawl-delay: 1
+
+# Разрешить индексацию всех страниц
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+
+# Разрешить Google и Yandex
+User-agent: Googlebot
+Allow: /
+
+User-agent: YandexBot
+Allow: /

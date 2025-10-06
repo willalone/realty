@@ -7,8 +7,9 @@
   "scripts": {
     "dev": "node scripts/generate-config.cjs && vite",
     "build": "node scripts/generate-config.cjs && tsc -b && vite build",
+    "build:github": "node scripts/generate-config.cjs && tsc -b && vite build --config vite.config.github.ts",
     "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build:github && gh-pages -d dist"
   },
   "dependencies": {
     "react": "^18.3.1",

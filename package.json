@@ -5,9 +5,9 @@
   "type": "module",
   "homepage": "https://willalone.github.io/realty/",
   "scripts": {
-    "dev": "node scripts/generate-config.cjs && vite",
-    "build": "node scripts/generate-config.cjs && tsc -b && vite build",
-    "build:github": "node scripts/generate-config.cjs && tsc -b && vite build --config vite.config.github.ts",
+    "dev": "node scripts/inline-config.cjs && vite",
+    "build": "node scripts/inline-config.cjs && tsc -b && vite build",
+    "build:github": "node scripts/inline-config.cjs && tsc -b && vite build --config vite.config.github.ts",
     "preview": "vite preview",
     "deploy": "npm run build:github && gh-pages -d dist"
   },

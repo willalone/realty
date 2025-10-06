@@ -16,5 +16,11 @@ export default defineConfig({
     assetsDir: 'assets',
     sourcemap: false,
     minify: 'esbuild',
+    rollupOptions: {
+      input: {
+        main: 'index.html',
+      },
+    },
   },
+  publicDir: 'public',
 });

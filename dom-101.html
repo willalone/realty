@@ -438,12 +438,26 @@
         </div>
     </div>
 
-    <script src="/config.js"></script>
     <script>
-        // Telegram config
-        const TG_BOT_TOKEN = (window && window.TELEGRAM_BOT_TOKEN) ? window.TELEGRAM_BOT_TOKEN : 'YOUR_BOT_TOKEN_HERE';
-        const TG_CHAT_ID = (window && window.TELEGRAM_CHAT_ID) ? window.TELEGRAM_CHAT_ID : 'YOUR_CHAT_ID_HERE';
-        const TG_CHAT_ID_2 = (window && window.TELEGRAM_CHAT_ID_2) ? window.TELEGRAM_CHAT_ID_2 : 'YOUR_CHAT_ID_2_HERE';
+        
+        // Telegram config (встроенная конфигурация)
+        window.TELEGRAM_CONFIG = {
+            BOT_TOKEN: '8026350498:AAGcyKMsrJyD0mGgj26Ss2m49vX5jp8LzaM',
+            CHAT_ID: '919481169',
+            CHAT_ID_2: '5918352278'
+        };
+        
+        // Для обратной совместимости
+        window.TELEGRAM_BOT_TOKEN = window.TELEGRAM_CONFIG.BOT_TOKEN;
+        window.TELEGRAM_CHAT_ID = window.TELEGRAM_CONFIG.CHAT_ID;
+        window.TELEGRAM_CHAT_ID_2 = window.TELEGRAM_CONFIG.CHAT_ID_2;
+        
+        console.log('🔧 Telegram config loaded:', {
+            BOT_TOKEN: window.TELEGRAM_CONFIG.BOT_TOKEN ? 'configured' : 'missing',
+            CHAT_ID: window.TELEGRAM_CONFIG.CHAT_ID ? 'configured' : 'missing',
+            CHAT_ID_2: window.TELEGRAM_CONFIG.CHAT_ID_2 ? 'configured' : 'missing'
+        });
+
 
         // Include all the JavaScript functions from the main page
         // (Copy all functions from index.html script section)

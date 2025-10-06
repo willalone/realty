@@ -637,8 +637,8 @@
     <script>
         // Telegram config (override via window.TELEGRAM_BOT_TOKEN and window.TELEGRAM_CHAT_ID)
         const TG_BOT_TOKEN = (window && window.TELEGRAM_BOT_TOKEN) ? window.TELEGRAM_BOT_TOKEN : 'YOUR_BOT_TOKEN_HERE';
-        const TG_CHAT_ID = (window && window.TELEGRAM_CHAT_ID) ? window.TELEGRAM_CHAT_ID : '919481169';
-        const TG_CHAT_ID_2 = (window && window.TELEGRAM_CHAT_ID_2) ? window.TELEGRAM_CHAT_ID_2 : '5918352278';
+        const TG_CHAT_ID = (window && window.TELEGRAM_CHAT_ID) ? window.TELEGRAM_CHAT_ID : 'YOUR_CHAT_ID_HERE';
+        const TG_CHAT_ID_2 = (window && window.TELEGRAM_CHAT_ID_2) ? window.TELEGRAM_CHAT_ID_2 : 'YOUR_CHAT_ID_2_HERE';
         // Простая JavaScript функциональность
         function scrollToSection(sectionId) {
             document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
@@ -1632,8 +1632,8 @@
         function sendToTelegram(data) {
             // Read from safe globals or fallback placeholders
             const botToken = TG_BOT_TOKEN || 'YOUR_BOT_TOKEN_HERE';
-            const chatId = TG_CHAT_ID || '919481169';
-            const chatId2 = TG_CHAT_ID_2 || '5918352278';
+            const chatId = TG_CHAT_ID || 'YOUR_CHAT_ID_HERE';
+            const chatId2 = TG_CHAT_ID_2 || 'YOUR_CHAT_ID_2_HERE';
             
             const message = `📞 Новая заявка на консультацию
 

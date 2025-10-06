@@ -18,6 +18,7 @@ build/
 
 # Security files
 config.js
+public/config.js
 *.cjs
 SECURITY.md
 

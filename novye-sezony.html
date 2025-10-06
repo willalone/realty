@@ -272,8 +272,8 @@
         }
 
         function sendConsultationToTelegram(formData) {
-            const botToken = TG_BOT_TOKEN;
-            const chatId = TG_CHAT_ID;
+            const botToken = window.TELEGRAM_BOT_TOKEN;
+            const chatId = window.TELEGRAM_CHAT_ID;
             const message = `📝 Новая заявка на консультацию
             
 👤 Имя: ${formData.name}

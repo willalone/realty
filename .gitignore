@@ -10,10 +10,16 @@ build/
 
 # Environment variables
 .env
+.env.*
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Security files
+config.js
+*.cjs
+SECURITY.md
 
 # IDE
 .vscode/

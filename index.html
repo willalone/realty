@@ -636,23 +636,13 @@
 
     <script>
         
-        // Telegram config (встроенная конфигурация)
-        window.TELEGRAM_CONFIG = {
-            BOT_TOKEN: '8026350498:AAGcyKMsrJyD0mGgj26Ss2m49vX5jp8LzaM',
-            CHAT_ID: '919481169',
-            CHAT_ID_2: '5918352278'
+        // Secure API configuration
+        window.API_CONFIG = {
+            // Replace with your Vercel deployment URL
+            BASE_URL: 'https://vercel.com/alis-projects-fe7bdad0'
         };
         
-        // Для обратной совместимости
-        window.TELEGRAM_BOT_TOKEN = window.TELEGRAM_CONFIG.BOT_TOKEN;
-        window.TELEGRAM_CHAT_ID = window.TELEGRAM_CONFIG.CHAT_ID;
-        window.TELEGRAM_CHAT_ID_2 = window.TELEGRAM_CONFIG.CHAT_ID_2;
-        
-        console.log('🔧 Telegram config loaded:', {
-            BOT_TOKEN: window.TELEGRAM_CONFIG.BOT_TOKEN ? 'configured' : 'missing',
-            CHAT_ID: window.TELEGRAM_CONFIG.CHAT_ID ? 'configured' : 'missing',
-            CHAT_ID_2: window.TELEGRAM_CONFIG.CHAT_ID_2 ? 'configured' : 'missing'
-        });
+        console.log('🔧 Secure API config loaded');
 
         // Простая JavaScript функциональность
         function scrollToSection(sectionId) {
@@ -1398,62 +1388,26 @@
             sendBookingToTelegram(bookingData);
         }
 
-        // Send booking to Telegram
-        function sendBookingToTelegram(bookingData) {
-            // Read from safe globals or fallback placeholders
-            const botToken = window.TELEGRAM_BOT_TOKEN;
-            const chatId = window.TELEGRAM_CHAT_ID;
-            const chatId2 = window.TELEGRAM_CHAT_ID_2;
-            
-            const message = `🏠 Новая заявка на просмотр квартиры
+        // Send booking via secure API
+        async function sendBookingToTelegram(bookingData) {
+            try {
+                console.log('Sending booking request to secure API:', bookingData);
 
-📅 Дата: ${bookingData.date}
-⏰ Время: ${bookingData.time}
-
-👤 Имя: ${bookingData.name}
-📞 Телефон: ${bookingData.phone}
-📧 Email: ${bookingData.email || 'не указан'}
-💬 Комментарий: ${bookingData.comment || 'нет'}`;
-
-            console.log('Sending to Telegram:', { botToken: botToken ? botToken.substring(0, 10) + '...' : '(empty)', chatId, chatId2, message });
-
-            // Create AbortController for timeout
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
-
-            // Функция для отправки в чат
-            const sendToChat = (chatId) => {
-                return fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                const response = await fetch(`${window.API_CONFIG.BASE_URL}/api/telegram`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        chat_id: chatId,
-                        text: message,
-                        parse_mode: 'HTML'
-                    }),
-                    signal: controller.signal
+                        type: 'booking',
+                        data: bookingData
+                    })
                 });
-            };
 
-            // Отправляем в оба чата параллельно
-            Promise.all([
-                sendToChat(chatId),
-                sendToChat(chatId2)
-            ])
-            .then(responses => {
-                clearTimeout(timeoutId);
-                console.log('Telegram responses:', responses);
-                return Promise.all(responses.map(r => r.json()));
-            })
-            .then(dataArray => {
-                console.log('Telegram response data:', dataArray);
-                
-                // Проверяем, что хотя бы одна отправка прошла успешно
-                const success = dataArray.some(data => data.ok);
-                
-                if (success) {
+                const result = await response.json();
+                console.log('API response:', result);
+
+                if (response.ok && result.success) {
                     // Mark slot as booked
                     const slotKey = bookingData.date + '_' + bookingData.time;
                     bookedSlots.add(slotKey);
@@ -1477,20 +1431,18 @@
                     // Reset form
                     resetBookingForm();
                 } else {
-                    console.error('Telegram API error:', data);
-                    showToast(`Ошибка при отправке заявки: ${data.description || 'Неизвестная ошибка'}`, 'error');
+                    console.error('API Error:', result.error);
+                    showToast(`Ошибка при отправке заявки: ${result.error || 'Неизвестная ошибка'}`, 'error');
                 }
-            })
-            .catch(error => {
-                clearTimeout(timeoutId);
-                console.error('Network error:', error);
+            } catch (error) {
+                console.error('Network Error:', error);
                 
                 if (error.name === 'AbortError') {
                     showToast('Превышено время ожидания. Попробуйте еще раз.', 'error');
                 } else {
                     showToast('Ошибка сети при отправке заявки. Попробуйте еще раз.', 'error');
                 }
-            });
+            }
         }
 
         // Save bookings to localStorage
@@ -1643,75 +1595,41 @@
             }
         }
 
-        // Send consultation form to Telegram
-        function sendToTelegram(data) {
-            // Read from safe globals or fallback placeholders
-            const botToken = window.TELEGRAM_BOT_TOKEN || 'YOUR_BOT_TOKEN_HERE';
-            const chatId = window.TELEGRAM_CHAT_ID || 'YOUR_CHAT_ID_HERE';
-            const chatId2 = window.TELEGRAM_CHAT_ID_2 || 'YOUR_CHAT_ID_2_HERE';
-            
-            const message = `📞 Новая заявка на консультацию
+        // Send consultation form via secure API
+        async function sendToTelegram(data) {
+            try {
+                console.log('Sending consultation request to secure API:', data);
 
-👤 Имя: ${data.name}
-📞 Телефон: ${data.phone}
-📋 Тип заявки: ${data.formType}`;
-
-            console.log('Sending consultation to Telegram:', { botToken: botToken ? botToken.substring(0, 10) + '...' : '(empty)', chatId, chatId2, message });
-
-            // Create AbortController for timeout
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
-
-            // Функция для отправки в чат
-            const sendToChat = (chatId) => {
-                return fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                const response = await fetch(`${window.API_CONFIG.BASE_URL}/api/telegram`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        chat_id: chatId,
-                        text: message,
-                        parse_mode: 'HTML'
-                    }),
-                    signal: controller.signal
+                        type: 'consultation',
+                        data: data
+                    })
                 });
-            };
 
-            // Отправляем в оба чата параллельно
-            Promise.all([
-                sendToChat(chatId),
-                sendToChat(chatId2)
-            ])
-            .then(responses => {
-                clearTimeout(timeoutId);
-                console.log('Telegram responses:', responses);
-                return Promise.all(responses.map(r => r.json()));
-            })
-            .then(dataArray => {
-                console.log('Telegram response data:', dataArray);
-                
-                // Проверяем, что хотя бы одна отправка прошла успешно
-                const success = dataArray.some(data => data.ok);
-                
-                if (success) {
+                const result = await response.json();
+                console.log('API response:', result);
+
+                if (response.ok && result.success) {
                     showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
                     closeModal();
                 } else {
-                    console.error('Telegram API error:', dataArray);
-                    showToast(`Ошибка при отправке заявки: ${dataArray[0]?.description || 'Неизвестная ошибка'}`, 'error');
+                    console.error('API Error:', result.error);
+                    showToast(`Ошибка при отправке заявки: ${result.error || 'Неизвестная ошибка'}`, 'error');
                 }
-            })
-            .catch(error => {
-                clearTimeout(timeoutId);
-                console.error('Network error:', error);
+            } catch (error) {
+                console.error('Network Error:', error);
                 
                 if (error.name === 'AbortError') {
                     showToast('Превышено время ожидания. Попробуйте еще раз.', 'error');
                 } else {
                     showToast('Ошибка сети при отправке заявки. Попробуйте еще раз.', 'error');
                 }
-            });
+            }
         }
 
         // Handle mortgage form submission

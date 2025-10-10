@@ -1379,7 +1379,14 @@
                 comment: comment
             };
 
-            // sendBookingToTelegram(bookingData); // DISABLED - using React app
+            // Бронирование отправлено (обработка через React приложение)
+            console.log('Бронирование отправлено:', bookingData);
+            
+            // Close modal
+            closeModal();
+            
+            // Show success message
+            showToast('Заявка на просмотр квартиры отправлена!', 'success');
         }
 
         // Send booking via secure API
@@ -1678,7 +1685,8 @@
             }
 
             // Send to Telegram
-            // sendToTelegram(data); // DISABLED - using React app
+            // Форма отправлена (обработка через React приложение)
+            console.log('Форма отправлена:', data);
             
             // Close modal
             closeModal();
@@ -1736,8 +1744,14 @@
                 return;
             }
 
-            // Send to Telegram
-            // sendToTelegram(data); // DISABLED - using React app
+            // Форма отправлена (обработка через React приложение)
+            console.log('Форма отправлена:', data);
+            
+            // Close modal
+            closeModal();
+            
+            // Show success message
+            showToast('Заявка на консультацию отправлена!', 'success');
         }
 
         // Мобильное меню

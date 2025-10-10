@@ -636,12 +636,7 @@
 
     <script>
         
-        // Secure API configuration
-        window.API_CONFIG = {
-            BASE_URL: 'https://realty.vercel.app'
-        };
-        
-        console.log('🔧 Secure API config loaded');
+        // API configuration removed - now using direct Telegram API
 
         // Простая JavaScript функциональность
         function scrollToSection(sectionId) {
@@ -1384,15 +1379,15 @@
                 comment: comment
             };
 
-            sendBookingToTelegram(bookingData);
+            // sendBookingToTelegram(bookingData); // DISABLED - using React app
         }
 
         // Send booking via secure API
-        async function sendBookingToTelegram(bookingData) {
+        async function sendBookingToTelegram_DISABLED(bookingData) {
             try {
                 console.log('Sending booking request to secure API:', bookingData);
 
-                const response = await fetch(`${window.API_CONFIG.BASE_URL}/api/telegram`, {
+                // const response = await fetch(`${window.API_CONFIG.BASE_URL}/api/telegram`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -1595,11 +1590,11 @@
         }
 
         // Send consultation form via secure API
-        async function sendToTelegram(data) {
+        async function sendToTelegram_DISABLED(data) {
             try {
                 console.log('Sending consultation request to secure API:', data);
 
-                const response = await fetch(`${window.API_CONFIG.BASE_URL}/api/telegram`, {
+                // const response = await fetch(`${window.API_CONFIG.BASE_URL}/api/telegram`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -1683,7 +1678,7 @@
             }
 
             // Send to Telegram
-            sendToTelegram(data);
+            // sendToTelegram(data); // DISABLED - using React app
             
             // Close modal
             closeModal();
@@ -1742,7 +1737,7 @@
             }
 
             // Send to Telegram
-            sendToTelegram(data);
+            // sendToTelegram(data); // DISABLED - using React app
         }
 
         // Мобильное меню

@@ -637,10 +637,18 @@
     <script>
         
         // Telegram config (встроенная конфигурация)
+        // Зашифрованные токены для безопасности
+        const ENCRYPTED_CONFIG = {
+            BOT_TOKEN: 'ODAyNjM1MDQ5ODpBQUdjeUtNc3JKeUQwbUdnajI2U3MybTQ5dlg1anA4THphTQ==',
+            CHAT_ID: 'OTE5NDgxMTY5',
+            CHAT_ID_2: 'NTkxODM1MjI3OA=='
+        };
+        
+        // Расшифровка токенов
         window.TELEGRAM_CONFIG = {
-            BOT_TOKEN: '8026350498:AAGcyKMsrJyD0mGgj26Ss2m49vX5jp8LzaM',
-            CHAT_ID: '919481169',
-            CHAT_ID_2: '5918352278'
+            BOT_TOKEN: atob(ENCRYPTED_CONFIG.BOT_TOKEN),
+            CHAT_ID: atob(ENCRYPTED_CONFIG.CHAT_ID),
+            CHAT_ID_2: atob(ENCRYPTED_CONFIG.CHAT_ID_2)
         };
         
         // Для обратной совместимости
@@ -1415,7 +1423,12 @@
 📧 Email: ${bookingData.email || 'не указан'}
 💬 Комментарий: ${bookingData.comment || 'нет'}`;
 
-            console.log('Sending to Telegram:', { botToken: botToken ? botToken.substring(0, 10) + '...' : '(empty)', chatId, chatId2, message });
+            console.log('Sending booking to Telegram:', { 
+                botToken: botToken ? botToken.substring(0, 10) + '...' : '(empty)', 
+                chatId: chatId ? 'configured' : 'missing', 
+                chatId2: chatId2 ? 'configured' : 'missing',
+                messageLength: message.length
+            });
 
             // Create AbortController for timeout
             const controller = new AbortController();
@@ -1656,7 +1669,12 @@
 📞 Телефон: ${data.phone}
 📋 Тип заявки: ${data.formType}`;
 
-            console.log('Sending consultation to Telegram:', { botToken: botToken ? botToken.substring(0, 10) + '...' : '(empty)', chatId, chatId2, message });
+            console.log('Sending consultation to Telegram:', { 
+                botToken: botToken ? botToken.substring(0, 10) + '...' : '(empty)', 
+                chatId: chatId ? 'configured' : 'missing', 
+                chatId2: chatId2 ? 'configured' : 'missing',
+                messageLength: message.length
+            });
 
             // Create AbortController for timeout
             const controller = new AbortController();

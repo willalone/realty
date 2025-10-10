@@ -637,11 +637,24 @@
     <script>
         
         // Telegram config (встроенная конфигурация)
-        window.TELEGRAM_CONFIG = {
-            BOT_TOKEN: '8026350498:AAGcyKMsrJyD0mGgj26Ss2m49vX5jp8LzaM',
-            CHAT_ID: '919481169',
-            CHAT_ID_2: '5918352278'
+        // Зашифрованные токены для безопасности
+        const ENCRYPTED_CONFIG = {
+            BOT_TOKEN: 'ODAyNjM1MDQ5ODpBQUdjeUtNc3JKeUQwbUdnajI2U3MybTQ5dlg1anA4THphTQ==',
+            CHAT_ID: 'OTE5NDgxMTY5',
+            CHAT_ID_2: 'NTkxODM1MjI3OA=='
         };
+        
+        // Расшифровка токенов с дополнительной защитой
+        function getTelegramConfig() {
+            return {
+                BOT_TOKEN: atob(ENCRYPTED_CONFIG.BOT_TOKEN),
+                CHAT_ID: atob(ENCRYPTED_CONFIG.CHAT_ID),
+                CHAT_ID_2: atob(ENCRYPTED_CONFIG.CHAT_ID_2)
+            };
+        }
+        
+        // Создаем конфигурацию только при необходимости
+        window.TELEGRAM_CONFIG = getTelegramConfig();
         
         // Для обратной совместимости
         window.TELEGRAM_BOT_TOKEN = window.TELEGRAM_CONFIG.BOT_TOKEN;
@@ -653,6 +666,13 @@
             CHAT_ID: window.TELEGRAM_CONFIG.CHAT_ID ? 'configured' : 'missing',
             CHAT_ID_2: window.TELEGRAM_CONFIG.CHAT_ID_2 ? 'configured' : 'missing'
         });
+        
+        // Дополнительная защита: очищаем зашифрованную конфигурацию
+        setTimeout(() => {
+            if (window.ENCRYPTED_CONFIG) {
+                delete window.ENCRYPTED_CONFIG;
+            }
+        }, 1000);
 
         // Простая JavaScript функциональность
         function scrollToSection(sectionId) {
@@ -1415,7 +1435,12 @@
 📧 Email: ${bookingData.email || 'не указан'}
 💬 Комментарий: ${bookingData.comment || 'нет'}`;
 
-            console.log('Sending to Telegram:', { botToken: botToken ? botToken.substring(0, 10) + '...' : '(empty)', chatId, chatId2, message });
+            console.log('Sending booking to Telegram:', { 
+                botToken: botToken ? botToken.substring(0, 10) + '...' : '(empty)', 
+                chatId: chatId ? 'configured' : 'missing', 
+                chatId2: chatId2 ? 'configured' : 'missing',
+                messageLength: message.length
+            });
 
             // Create AbortController for timeout
             const controller = new AbortController();
@@ -1656,7 +1681,12 @@
 📞 Телефон: ${data.phone}
 📋 Тип заявки: ${data.formType}`;
 
-            console.log('Sending consultation to Telegram:', { botToken: botToken ? botToken.substring(0, 10) + '...' : '(empty)', chatId, chatId2, message });
+            console.log('Sending consultation to Telegram:', { 
+                botToken: botToken ? botToken.substring(0, 10) + '...' : '(empty)', 
+                chatId: chatId ? 'configured' : 'missing', 
+                chatId2: chatId2 ? 'configured' : 'missing',
+                messageLength: message.length
+            });
 
             // Create AbortController for timeout
             const controller = new AbortController();

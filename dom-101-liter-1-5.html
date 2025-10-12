@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Варианты квартир - Литер 1.5 - ЖК ДОМ 101 - СК НВМ</title>
+    <meta name="description" content="Варианты квартир в Литере 1.5 ЖК ДОМ 101. Планировки от 33,3 м². Цены от 4,3 млн ₽." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dom-101-floor-plans">
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-text">СК НВМ</span>
+            </div>
+            <button class="nav-toggle" onclick="toggleNav()" aria-label="Открыть меню">
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <nav class="nav" id="nav">
+                <a href="index.html#projects" class="nav-link">Проекты</a>
+                <a href="index.html#mortgage" class="nav-link">Ипотека</a>
+                <a href="index.html#promos" class="nav-link">Акции</a>
+            </nav>
+            <div class="header-actions">
+                <a href="tel:+78612112850" class="phone">+7(988)470-78-93</a>
+                <button class="btn btn-primary" onclick="openModal('consultation')">Обратный звонок</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="floor-plans-hero">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="index.html">Главная</a> / <a href="index.html#projects">Проекты</a> / <a href="dom-101.html">ДОМ 101</a> / <a href="dom-101-apartments.html">Варианты квартир</a> / <span>Литер 1.5</span>
+            </div>
+            <h1>Литер 1.5</h1>
+            <p class="hero-subtitle">Краснодар</p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-tabs">
+                <button class="filter-tab" onclick="toggleFilterDropdown('type', this)">Тип <span class="dropdown-arrow">⌄</span></button>
+                <button class="filter-tab" onclick="toggleFilterDropdown('rooms', this)">Комнат <span class="dropdown-arrow">⌄</span></button>
+                <button class="filter-tab" onclick="toggleFilterDropdown('price', this)">Цена <span class="dropdown-arrow">⌄</span></button>
+                <button class="filter-tab" onclick="toggleFilterDropdown('area', this)">Площадь <span class="dropdown-arrow">⌄</span></button>
+                <button class="clear-filters-btn" onclick="clearFilters()"><span class="clear-icon">×</span>Сбросить</button>
+            </div>
+            <div class="filter-dropdown" id="type-dropdown">
+                <div class="dropdown-content">
+                    <div class="filter-section-title">Жилое</div>
+                    <div class="filter-options">
+                        <label class="filter-option"><input type="radio" name="type" value="apartment" checked><span>Квартира</span></label>
+                    </div>
+                    <button class="apply-btn" onclick="applyFilters()">Применить</button>
+                </div>
+            </div>
+            <div class="filter-dropdown" id="rooms-dropdown">
+                <div class="dropdown-content">
+                    <div class="filter-options">
+                        <label class="filter-option"><input type="checkbox" name="rooms" value="studio"><span>Студия</span></label>
+                        <label class="filter-option"><input type="checkbox" name="rooms" value="1"><span>1</span></label>
+                        <label class="filter-option"><input type="checkbox" name="rooms" value="2"><span>2</span></label>
+                        <label class="filter-option"><input type="checkbox" name="rooms" value="3"><span>3</span></label>
+                    </div>
+                    <button class="apply-btn" onclick="applyFilters()">Применить</button>
+                </div>
+            </div>
+            <div class="filter-dropdown" id="price-dropdown">
+                <div class="dropdown-content">
+                    <div class="price-type-tabs">
+                        <button class="price-tab active" onclick="selectPriceType('total')">За помещение</button>
+                        <button class="price-tab" onclick="selectPriceType('perM2')">За м²</button>
+                    </div>
+                    <div class="price-range">
+                        <input type="number" id="priceFrom" placeholder="ОТ" min="0" step="1000">
+                        <input type="number" id="priceTo" placeholder="ДО" min="0" step="1000">
+                        <span class="price-unit">₽</span>
+                    </div>
+                    <button class="apply-btn" onclick="applyFilters()">Применить</button>
+                </div>
+            </div>
+            <div class="filter-dropdown" id="area-dropdown">
+                <div class="dropdown-content">
+                    <div class="area-type-tabs">
+                        <button class="area-tab active" onclick="selectAreaType('total')">Общая</button>
+                        <button class="area-tab" onclick="selectAreaType('living')">Жилая</button>
+                    </div>
+                    <div class="area-range">
+                        <input type="number" id="areaFrom" placeholder="ОТ" min="0" step="0.1">
+                        <input type="number" id="areaTo" placeholder="ДО" min="0" step="0.1">
+                        <span class="area-unit">M²</span>
+                    </div>
+                    <button class="apply-btn" onclick="applyFilters()">Применить</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floor Plans Grid -->
+    <section class="floor-plans-section">
+        <div class="container">
+            <div class="floor-plans-grid">
+                <!-- Планировка 1 -->
+                <div class="floor-plan-card" data-type="apartment" data-rooms="1" data-price-total="6393600" data-price-per-m2="192000" data-area-total="33.3" data-area-living="11.88">
+                    <div class="floor-plan-header">
+                        <h3>Литер 1.5</h3>
+                        <p class="location">Краснодар</p>
+                        <div class="room-badge">1к</div>
+                    </div>
+                    <div class="floor-plan-image">
+                        <img src="src/img/варианты планировок/дом-101/1к-1.png" alt="Планировка 1к">
+                        <div class="area-details">
+                            <div class="area-box">
+                                <span class="area-value">11.88</span>
+                                <span class="area-value">32.43</span>
+                                <span class="area-value">33.30</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floor-plan-info">
+                        <div class="price-area">
+                            <span class="price">от 6 393 600 ₽</span>
+                            <span class="total-area">33.3 м²</span>
+                        </div>
+                        <button class="rooms-button" onclick="openApartmentsPanel(5, 33.3, '11.88,32.43,33.30')">5 помещений</button>
+                    </div>
+                </div>
+
+                <!-- Планировка 2 -->
+                <div class="floor-plan-card" data-type="apartment" data-rooms="1" data-price-total="6698880" data-price-per-m2="192000" data-area-total="34.89" data-area-living="10.99">
+                    <div class="floor-plan-header">
+                        <h3>Литер 1.5</h3>
+                        <p class="location">Краснодар</p>
+                    </div>
+                    <div class="floor-plan-image">
+                        <img src="src/img/варианты планировок/дом-101/1к-2.png" alt="Планировка 1к">
+                        <div class="area-details">
+                            <div class="area-box">
+                                <span class="area-value">10.99</span>
+                                <span class="area-value">34.06</span>
+                                <span class="area-value">34.89</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floor-plan-info">
+                        <div class="price-area">
+                            <span class="price">от 6 698 880 ₽</span>
+                            <span class="total-area">34.89 м²</span>
+                        </div>
+                        <button class="rooms-button" onclick="openApartmentsPanel(7, 34.89, '10.99,34.06,34.89')">7 помещений</button>
+                    </div>
+                </div>
+
+                <!-- Планировка 3 -->
+                <div class="floor-plan-card" data-type="apartment" data-rooms="1" data-price-total="6921600" data-price-per-m2="192000" data-area-total="36.05" data-area-living="11.17">
+                    <div class="floor-plan-header">
+                        <h3>Литер 1.5</h3>
+                        <p class="location">Краснодар</p>
+                    </div>
+                    <div class="floor-plan-image">
+                        <img src="src/img/варианты планировок/дом-101/1к-3.png" alt="Планировка 1к">
+                        <div class="area-details">
+                            <div class="area-box">
+                                <span class="area-value">11.17</span>
+                                <span class="area-value">34.80</span>
+                                <span class="area-value">36.05</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floor-plan-info">
+                        <div class="price-area">
+                            <span class="price">от 6 921 600 ₽</span>
+                            <span class="total-area">36.05 м²</span>
+                        </div>
+                        <button class="rooms-button" onclick="openApartmentsPanel(7, 36.05, '11.17,34.80,36.05')">7 помещений</button>
+                    </div>
+                </div>
+
+                <!-- Планировка 4 -->
+                <div class="floor-plan-card" data-type="apartment" data-rooms="1" data-price-total="7441920" data-price-per-m2="192000" data-area-total="38.76" data-area-living="13.36">
+                    <div class="floor-plan-header">
+                        <h3>Литер 1.5</h3>
+                        <p class="location">Краснодар</p>
+                        <div class="room-badge">1к</div>
+                    </div>
+                    <div class="floor-plan-image">
+                        <img src="src/img/варианты планировок/дом-101/1к-4.png" alt="Планировка 1к">
+                        <div class="area-details">
+                            <div class="area-box">
+                                <span class="area-value">13.36</span>
+                                <span class="area-value">37.26</span>
+                                <span class="area-value">38.76</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floor-plan-info">
+                        <div class="price-area">
+                            <span class="price">от 7 441 920 ₽</span>
+                            <span class="total-area">38.76 м²</span>
+                        </div>
+                        <button class="rooms-button" onclick="openApartmentsPanel(7, 38.76, '13.36,37.26,38.76')">7 помещений</button>
+                    </div>
+                </div>
+
+                <!-- Планировка 5 -->
+                <div class="floor-plan-card" data-type="apartment" data-rooms="1" data-price-total="7441920" data-price-per-m2="192000" data-area-total="38.76" data-area-living="13.36">
+                    <div class="floor-plan-header">
+                        <h3>Литер 1.5</h3>
+                        <p class="location">Краснодар</p>
+                        <div class="room-badge">1к</div>
+                    </div>
+                    <div class="floor-plan-image">
+                        <img src="src/img/варианты планировок/дом-101/1к-1.png" alt="Планировка 1к">
+                        <div class="area-details">
+                            <div class="area-box">
+                                <span class="area-value">13.25</span>
+                                <span class="area-value">39.15</span>
+                                <span class="area-value">40.54</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floor-plan-info">
+                        <div class="price-area">
+                            <span class="price">от 7 441 920 ₽</span>
+                            <span class="total-area">38.76 м²</span>
+                        </div>
+                        <button class="rooms-button" onclick="openApartmentsPanel(7, 38.76, '13.36,37.26,38.76')">7 помещений</button>
+                    </div>
+                </div>
+
+                <!-- Планировка 6 -->
+                <div class="floor-plan-card" data-type="apartment" data-rooms="1" data-price-total="7783680" data-price-per-m2="192000" data-area-total="40.54" data-area-living="13.25">
+                    <div class="floor-plan-header">
+                        <h3>Литер 1.5</h3>
+                        <p class="location">Краснодар</p>
+                        <div class="room-badge">1к</div>
+                    </div>
+                    <div class="floor-plan-image">
+                        <img src="src/img/варианты планировок/дом-101/1к-2.png" alt="Планировка 1к">
+                        <div class="area-details">
+                            <div class="area-box">
+                                <span class="area-value">13.25</span>
+                                <span class="area-value">39.15</span>
+                                <span class="area-value">40.54</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floor-plan-info">
+                        <div class="price-area">
+                            <span class="price">от 7 783 680 ₽</span>
+                            <span class="total-area">40.54 м²</span>
+                        </div>
+                        <button class="rooms-button" onclick="openApartmentsPanel(7, 40.54, '13.25,39.15,40.54')">7 помещений</button>
+                    </div>
+                </div>
+
+                <!-- Планировка 7 -->
+                <div class="floor-plan-card" data-type="apartment" data-rooms="1" data-price-total="7783680" data-price-per-m2="192000" data-area-total="40.54" data-area-living="13.25">
+                    <div class="floor-plan-header">
+                        <h3>Литер 1.5</h3>
+                        <p class="location">Краснодар</p>
+                        <div class="room-badge">1к</div>
+                    </div>
+                    <div class="floor-plan-image">
+                        <img src="src/img/варианты планировок/дом-101/1к-3.png" alt="Планировка 1к">
+                        <div class="area-details">
+                            <div class="area-box">
+                                <span class="area-value">13.25</span>
+                                <span class="area-value">39.15</span>
+                                <span class="area-value">40.54</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floor-plan-info">
+                        <div class="price-area">
+                            <span class="price">от 7 783 680 ₽</span>
+                            <span class="total-area">40.54 м²</span>
+                        </div>
+                        <button class="rooms-button" onclick="openApartmentsPanel(7, 40.54, '13.25,39.15,40.54')">7 помещений</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apartments Detail Panel -->
+    <div id="apartments-panel" class="apartments-panel" style="display: none;" onclick="closeApartmentsPanel()">
+        <div class="panel-content" onclick="event.stopPropagation()">
+            <div class="panel-header">
+                <div class="panel-title">
+                    <h3>Дом 101</h3>
+                    <p>Литер 1.5 - I кв. 2030</p>
+                </div>
+                <button class="panel-close" onclick="closeApartmentsPanel()">&times;</button>
+            </div>
+            <div class="panel-floor-plan">
+                <img src="src/img/варианты планировок/1к.png" alt="Планировка">
+            </div>
+            
+            <div class="panel-summary">
+                <p class="room-info">Помещение: 1 комнатная, <span id="panel-area">34.89</span> м²</p>
+                <p class="found-info">Найдено: <span id="panel-count">7</span> помещений</p>
+            </div>
+            
+            <div class="apartments-list" id="apartments-list">
+                <!-- Список квартир будет заполнен JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal-backdrop" style="display: none;" onclick="closeModal()">
+        <div class="modal-dialog" onclick="event.stopPropagation()">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+                <div id="modal-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        // Обфусцированные данные конфигурации
+        const _0x1a2b = [
+            ['ODAyNjM1MDQ5ODpBQUdjeUtNc3JKeUQwbUdnajI2U3MybTQ5dlg1anA4THphTQ=='],
+            ['OTE5NDgxMTY5'],
+            ['NTkxODM1MjI3OA==']
+        ];
+        const _0x3c4d = ['BOT_TOKEN', 'CHAT_ID', 'CHAT_ID_2'];
+        
+        // Дополнительная защита - проверка домена
+        const _0x5678 = ['sk-nvm-krasnodar.ru', 'localhost'];
+        const _0x9abc = location.hostname;
+        
+        // Функция декодирования с обфускацией
+        function _0x5e6f(_0x7890) {
+            try {
+                return atob(_0x7890);
+            } catch (e) {
+                return null;
+            }
+        }
+        
+        // Создание конфигурации с усложненным доступом
+        function _0x9abc() {
+            // Проверка домена
+            if (!_0x5678.includes(_0x9abc)) {
+                console.warn('Unauthorized domain');
+                return null;
+            }
+            
+            const _0xdef0 = {};
+            for (let _0x1234 = 0; _0x1234 < _0x3c4d.length; _0x1234++) {
+                _0xdef0[_0x3c4d[_0x1234]] = _0x5e6f(_0x1a2b[_0x1234][0]);
+            }
+            return _0xdef0;
+        }
+        
+        // Инициализация конфигурации
+        window.TELEGRAM_CONFIG = _0x9abc();
+        
+        // Для обратной совместимости
+        window.TELEGRAM_BOT_TOKEN = window.TELEGRAM_CONFIG.BOT_TOKEN;
+        window.TELEGRAM_CHAT_ID = window.TELEGRAM_CONFIG.CHAT_ID;
+        window.TELEGRAM_CHAT_ID_2 = window.TELEGRAM_CONFIG.CHAT_ID_2;
+        
+        console.log('🔧 Telegram config loaded:', {
+            BOT_TOKEN: window.TELEGRAM_CONFIG.BOT_TOKEN ? 'configured' : 'missing',
+            CHAT_ID: window.TELEGRAM_CONFIG.CHAT_ID ? 'configured' : 'missing',
+            CHAT_ID_2: window.TELEGRAM_CONFIG.CHAT_ID_2 ? 'configured' : 'missing'
+        });
+        
+        // Автоматическая очистка обфусцированных данных
+        setTimeout(() => {
+            try {
+                if (typeof _0x1a2b !== 'undefined') {
+                    _0x1a2b.forEach(arr => arr.length = 0);
+                    _0x1a2b.length = 0;
+                    _0x3c4d.length = 0;
+                    _0x5678.length = 0;
+                }
+            } catch (e) {
+                // Игнорируем ошибки очистки
+            }
+        }, 2000);
+
+        function openModal(modalId) {
+            console.log('openModal called with:', modalId);
+            const modal = document.getElementById('modal');
+            const modalBody = document.getElementById('modal-body');
+            
+            if (!modal || !modalBody) {
+                console.error('Modal elements not found');
+                return;
+            }
+            
+            const content = {
+                'consultation': `
+                    <h3>Консультация</h3>
+                    <form onsubmit="handleConsultationSubmit(event)">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="+7(___)___-__-__" required>
+                        </div>
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="privacy-modal" required>
+                            <label for="privacy-modal">Я соглашаюсь с политикой конфиденциальности сайта</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Отправить заявку</button>
+                    </form>
+                `
+            };
+            
+            modalBody.innerHTML = content[modalId] || '<p>Информация недоступна</p>';
+            modal.style.display = 'flex';
+            
+            // Initialize phone masks for dynamically created content
+            initPhoneMasks();
+            
+            console.log('Modal opened successfully');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function _0xijkl(data) {
+            const botToken = window.TELEGRAM_BOT_TOKEN;
+            const chatId = window.TELEGRAM_CHAT_ID;
+            
+            const message = `📞 Новая заявка на консультацию
+
+👤 Имя: ${data.name}
+📞 Телефон: ${data.phone}
+📋 Тип заявки: ${data.formType}`;
+
+            console.log('Sending consultation to Telegram:', { botToken: botToken ? botToken.substring(0, 10) + '...' : '(empty)', chatId, message });
+
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: 'HTML'
+                }),
+                signal: controller.signal
+            })
+            .then(response => {
+                clearTimeout(timeoutId);
+                console.log('Telegram response status:', response.status);
+                return response.json();
+            })
+            .then(data => {
+                console.log('Telegram response data:', data);
+                
+                if (data.ok) {
+                    showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
+                    closeModal();
+                } else {
+                    console.error('Telegram API error:', data);
+                    showToast(`Ошибка при отправке заявки: ${data.description || 'Неизвестная ошибка'}`, 'error');
+                }
+            })
+            .catch(error => {
+                clearTimeout(timeoutId);
+                console.error('Network error:', error);
+                
+                if (error.name === 'AbortError') {
+                    showToast('Превышено время ожидания. Попробуйте еще раз.', 'error');
+                } else {
+                    showToast('Ошибка сети при отправке заявки. Попробуйте еще раз.', 'error');
+                }
+            });
+        }
+
+        function handleConsultationSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = {
+                name: formData.get('name'),
+                phone: formData.get('phone'),
+                formType: 'Консультация'
+            };
+
+            if (!data.name || !data.phone) {
+                showToast('Пожалуйста, заполните имя и телефон', 'error');
+                return;
+            }
+
+            // Validate name - only letters, minimum 2 characters
+            const nameRegex = /^[a-zA-Zа-яА-ЯёЁ\s\-']+$/;
+            if (!nameRegex.test(data.name.trim())) {
+                showToast('Имя должно содержать только буквы', 'error');
+                return;
+            }
+
+            if (data.name.trim().length < 2) {
+                showToast('Имя должно содержать минимум 2 символа', 'error');
+                return;
+            }
+            const phoneDigits = data.phone.replace(/\D/g, '');
+            const phoneRegex = /^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$/;
+            
+            if (phoneDigits.length !== 11) {
+                showToast('Введите полный номер телефона (11 цифр) в формате +7(999)999-99-99', 'error');
+                return;
+            }
+            
+            if (!phoneRegex.test(data.phone)) {
+                showToast('Введите корректный номер телефона в формате +7(999)999-99-99', 'error');
+                return;
+            }
+
+            _0xijkl(data);
+        }
+
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `<div class="toast-content">${message}</div><button class="toast-close" aria-label="Закрыть">×</button>`;
+            document.body.appendChild(toast);
+            
+            const removeToast = () => {
+                if (toast && toast.parentNode) toast.parentNode.removeChild(toast);
+            };
+            
+            toast.querySelector('.toast-close')?.addEventListener('click', removeToast);
+            
+            setTimeout(removeToast, 4000);
+        }
+
+        function toggleNav() {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('show');
+        }
+
+
+        function openApartmentsPanel(count, area, dimensions) {
+            const panel = document.getElementById('apartments-panel');
+            const panelArea = document.getElementById('panel-area');
+            const panelCount = document.getElementById('panel-count');
+            const apartmentsList = document.getElementById('apartments-list');
+            
+            // Обновляем информацию
+            panelArea.textContent = area;
+            panelCount.textContent = count;
+            
+            // Генерируем список квартир
+            apartmentsList.innerHTML = '';
+            
+            const apartments = generateApartmentsList(count, area);
+            apartments.forEach(apartment => {
+                const apartmentItem = document.createElement('div');
+                apartmentItem.className = 'apartment-item';
+                apartmentItem.innerHTML = `
+                    <div class="apartment-details">
+                        <div class="apartment-price">${apartment.price} ₽</div>
+                        <div class="apartment-price-per-m2">${apartment.pricePerM2} ₽/м²</div>
+                        <button class="status-button available">Свободно</button>
+                    </div>
+                    <div class="apartment-floor">${apartment.floor} этаж</div>
+                `;
+                apartmentsList.appendChild(apartmentItem);
+            });
+            
+            panel.style.display = 'block';
+            setTimeout(() => {
+                panel.classList.add('show');
+            }, 10);
+        }
+
+        // ===== Filters (reused from other pages) =====
+        let allCards = [];
+        let currentPriceType = 'total';
+        let currentAreaType = 'total';
+        function initFilter() {
+            allCards = Array.from(document.querySelectorAll('.floor-plan-card'));
+            document.querySelectorAll('.filter-dropdown').forEach(d => d.style.display = 'none');
+            addFilterEventListeners();
+        }
+        function addFilterEventListeners() {
+            document.querySelectorAll('input[name="type"]').forEach(r => r.addEventListener('change', updateFilterResults));
+            document.querySelectorAll('input[name="rooms"]').forEach(cb => cb.addEventListener('change', updateFilterResults));
+            ['priceFrom','priceTo','areaFrom','areaTo'].forEach(id => { const el = document.getElementById(id); if (el) el.addEventListener('input', updateFilterResults); });
+            document.addEventListener('click', function(event) { const fs = document.querySelector('.filter-section'); if (fs && !fs.contains(event.target)) closeAllDropdowns(); });
+        }
+        function toggleFilterDropdown(filterType, button) { const dropdown = document.getElementById(filterType + '-dropdown'); const arrow = button.querySelector('.dropdown-arrow'); document.querySelectorAll('.filter-dropdown').forEach(d => { if (d !== dropdown) d.style.display = 'none'; }); document.querySelectorAll('.dropdown-arrow').forEach(arr => arr.textContent = '⌄'); if (dropdown.style.display === 'none' || dropdown.style.display === '') { dropdown.style.display = 'block'; const rectBtn = button.getBoundingClientRect(); const section = document.querySelector('.filter-section'); const rectSec = section.getBoundingClientRect(); dropdown.style.position = 'absolute'; dropdown.style.left = (rectBtn.left - rectSec.left) + 'px'; dropdown.style.top = (rectBtn.bottom - rectSec.top + 4) + 'px'; arrow.textContent = '⌃'; } else { dropdown.style.display = 'none'; arrow.textContent = '⌄'; } }
+        function closeAllDropdowns() { document.querySelectorAll('.filter-dropdown').forEach(d => d.style.display = 'none'); document.querySelectorAll('.dropdown-arrow').forEach(arr => arr.textContent = '⌄'); }
+        function selectPriceType(type) { currentPriceType = type; document.querySelectorAll('.price-tab').forEach(t => t.classList.remove('active')); event.target.classList.add('active'); updateFilterResults(); }
+        function selectAreaType(type) { currentAreaType = type; document.querySelectorAll('.area-tab').forEach(t => t.classList.remove('active')); event.target.classList.add('active'); updateFilterResults(); }
+        function applyFilters() { updateFilterResults(); closeAllDropdowns(); }
+        function clearFilters() { const defType = document.querySelector('input[name="type"][value="apartment"]'); if (defType) defType.checked = true; document.querySelectorAll('input[name="rooms"]').forEach(cb => cb.checked = false); currentPriceType = 'total'; document.querySelectorAll('.price-tab').forEach(t => t.classList.remove('active')); const pt = document.querySelector('.price-tab'); if (pt) pt.classList.add('active'); currentAreaType = 'total'; document.querySelectorAll('.area-tab').forEach(t => t.classList.remove('active')); const at = document.querySelector('.area-tab'); if (at) at.classList.add('active'); ['priceFrom','priceTo','areaFrom','areaTo'].forEach(id => { const el = document.getElementById(id); if (el) el.value=''; }); allCards.forEach(c => c.style.display = 'block'); }
+        function updateFilterResults() { const selectedType = document.querySelector('input[name="type"]:checked')?.value || 'apartment'; const selectedRooms = Array.from(document.querySelectorAll('input[name="rooms"]:checked')).map(cb => cb.value); const priceFrom = document.getElementById('priceFrom')?.value ? parseFloat(document.getElementById('priceFrom').value) : null; const priceTo = document.getElementById('priceTo')?.value ? parseFloat(document.getElementById('priceTo').value) : null; const areaFrom = document.getElementById('areaFrom')?.value ? parseFloat(document.getElementById('areaFrom').value) : null; const areaTo = document.getElementById('areaTo')?.value ? parseFloat(document.getElementById('areaTo').value) : null; const filtered = allCards.filter(card => { if (card.dataset.type !== selectedType) return false; if (selectedRooms.length > 0 && !selectedRooms.includes(card.dataset.rooms)) return false; if (priceFrom !== null || priceTo !== null) { const priceValue = currentPriceType === 'total' ? parseFloat(card.dataset.priceTotal) : parseFloat(card.dataset.pricePerM2); if (priceFrom !== null && priceValue < priceFrom) return false; if (priceTo !== null && priceValue > priceTo) return false; } if (areaFrom !== null || areaTo !== null) { const areaValue = currentAreaType === 'total' ? parseFloat(card.dataset.areaTotal) : parseFloat(card.dataset.areaLiving); if (areaFrom !== null && areaValue < areaFrom) return false; if (areaTo !== null && areaValue > areaTo) return false; } return true; }); allCards.forEach(card => card.style.display = 'none'); filtered.forEach(card => card.style.display = 'block'); }
+        function closeApartmentsPanel() {
+            const panel = document.getElementById('apartments-panel');
+            panel.classList.remove('show');
+            setTimeout(() => {
+                panel.style.display = 'none';
+            }, 300);
+        }
+
+        function generateApartmentsList(count, area) {
+            const apartments = [];
+            const basePrice = Math.floor(4330000 + (area - 30) * 50000);
+            const pricePerM2 = Math.floor(basePrice / area);
+            
+            for (let i = 0; i < count; i++) {
+                const floor = 9 - i; // Начинаем с 9 этажа
+                const priceVariation = Math.floor(Math.random() * 200000) - 100000;
+                const price = basePrice + priceVariation;
+                
+                apartments.push({
+                    floor: floor,
+                    price: price.toLocaleString('ru-RU'),
+                    pricePerM2: Math.floor(price / area).toLocaleString('ru-RU')
+                });
+            }
+            
+            return apartments;
+        }
+
+        // Phone mask functions
+        function formatPhoneNumber(input) {
+            let value = input.value.replace(/\D/g, '');
+            if (value.length === 0) {
+                input.value = '';
+                return;
+            }
+            
+            if (value[0] === '7') {
+                value = value.substring(1);
+            } else if (value[0] === '8') {
+                value = value.substring(1);
+            }
+            
+            if (value.length > 10) {
+                value = value.substring(0, 10);
+            }
+            
+            let formattedValue = '+7';
+            if (value.length > 0) {
+                formattedValue += '(' + value.substring(0, 3);
+            }
+            if (value.length >= 4) {
+                formattedValue += ')' + value.substring(3, 6);
+            }
+            if (value.length >= 7) {
+                formattedValue += '-' + value.substring(6, 8);
+            }
+            if (value.length >= 9) {
+                formattedValue += '-' + value.substring(8, 10);
+            }
+            
+            input.value = formattedValue;
+        }
+
+        function formatPhoneValue(value) {
+            let digits = value.replace(/\D/g, '');
+            if (digits.length === 0) return '';
+            
+            if (digits[0] === '7') {
+                digits = digits.substring(1);
+            } else if (digits[0] === '8') {
+                digits = digits.substring(1);
+            }
+            
+            if (digits.length > 10) {
+                digits = digits.substring(0, 10);
+            }
+            
+            let formatted = '+7';
+            if (digits.length > 0) {
+                formatted += '(' + digits.substring(0, 3);
+            }
+            if (digits.length >= 4) {
+                formatted += ')' + digits.substring(3, 6);
+            }
+            if (digits.length >= 7) {
+                formatted += '-' + digits.substring(6, 8);
+            }
+            if (digits.length >= 9) {
+                formatted += '-' + digits.substring(8, 10);
+            }
+            
+            return formatted;
+        }
+
+        function handlePhoneKeydown(event) {
+            const input = event.target;
+            const key = event.key;
+            
+            // Allow: backspace, delete, tab, escape, enter
+            if ([8, 9, 27, 13, 46].indexOf(event.keyCode) !== -1 ||
+                // Allow: Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+                (event.keyCode === 65 && event.ctrlKey === true) ||
+                (event.keyCode === 67 && event.ctrlKey === true) ||
+                (event.keyCode === 86 && event.ctrlKey === true) ||
+                (event.keyCode === 88 && event.ctrlKey === true)) {
+                return;
+            }
+            
+            // Ensure that it is a number and stop the keypress
+            if ((event.shiftKey || (event.keyCode < 48 || event.keyCode > 57)) && (event.keyCode < 96 || event.keyCode > 105)) {
+                event.preventDefault();
+            }
+        }
+
+        function formatNameInput(input) {
+            let value = input.value;
+            // Remove numbers and special characters, keep only letters, spaces, hyphens, and apostrophes
+            value = value.replace(/[^a-zA-Zа-яА-ЯёЁ\s\-']/g, '');
+            input.value = value;
+        }
+
+        function handleNameKeydown(event) {
+            const key = event.key;
+            // Allow: backspace, delete, tab, escape, enter, space, hyphen, apostrophe
+            if ([8, 9, 27, 13, 32, 45, 39].indexOf(event.keyCode) !== -1 ||
+                // Allow: Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+                (event.keyCode === 65 && event.ctrlKey === true) ||
+                (event.keyCode === 67 && event.ctrlKey === true) ||
+                (event.keyCode === 86 && event.ctrlKey === true) ||
+                (event.keyCode === 88 && event.ctrlKey === true)) {
+                return;
+            }
+            
+            // Allow letters (A-Z, a-z, а-я, А-Я, ё, Ё)
+            if ((event.keyCode >= 65 && event.keyCode <= 90) ||
+                (event.keyCode >= 97 && event.keyCode <= 122) ||
+                (event.keyCode >= 1040 && event.keyCode <= 1103) ||
+                event.keyCode === 1105 || event.keyCode === 1025) {
+                return;
+            }
+            
+            event.preventDefault();
+        }
+
+        function initPhoneMasks() {
+            const phoneInputs = document.querySelectorAll('input[type="tel"]');
+            phoneInputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    formatPhoneNumber(this);
+                });
+                input.addEventListener('keydown', handlePhoneKeydown);
+                input.addEventListener('paste', function(e) {
+                    setTimeout(() => {
+                        formatPhoneNumber(this);
+                    }, 10);
+                });
+            });
+
+            const nameInputs = document.querySelectorAll('input[type="text"][name="name"]');
+            nameInputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    formatNameInput(this);
+                });
+                input.addEventListener('keydown', handleNameKeydown);
+                input.addEventListener('paste', function(e) {
+                    setTimeout(() => {
+                        formatNameInput(this);
+                    }, 10);
+                });
+            });
+        }
+
+        // Initialize phone masks on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initPhoneMasks();
+            initFilter();
+        });
+    </script>
+</body>
+</html>

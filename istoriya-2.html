@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЖК История 2 - СК НВМ</title>
+    <meta name="description" content="ЖК История 2 - готовые дома в Краснодаре. Цены от 6,2 млн ₽. 2-комнатные квартиры. Дома сданы. Ремонт в подарок." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="istoriya-2">
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-text">СК НВМ</span>
+            </div>
+            <button class="nav-toggle" onclick="toggleNav()" aria-label="Открыть меню">
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <nav class="nav" id="nav">
+                <a href="index.html#projects" class="nav-link">Проекты</a>
+                <a href="index.html#mortgage" class="nav-link">Ипотека</a>
+                <a href="index.html#promos" class="nav-link">Акции</a>
+            </nav>
+            <div class="header-actions">
+                <a href="tel:+78612112850" class="phone">+7(988)470-78-93</a>
+                <button class="btn btn-primary" onclick="openModal('consultation')">Обратный звонок</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <div class="hero-video">
+            <img src="img/istoriya-2.webp" alt="История 2" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="video-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="index.html">Главная</a> / <a href="index.html#projects">Проекты</a> / <span>История 2</span>
+            </div>
+            <div class="project-hero-content">
+                <div class="project-info">
+                    <div class="project-date">Дома сданы</div>
+                    <div class="project-status-badges">
+                        <span class="badge badge-primary">Готово к заселению</span>
+                    </div>
+                    <h1>История 2</h1>
+                    <h2 class="project-subtitle">Элитное жилье в историческом центре</h2>
+                    <div class="hero-cta">
+                        <button class="btn btn-primary btn-large" onclick="openModal('consultation')">Получить предложение</button>
+                        <a href="istoriya-2-apartments.html" class="btn btn-secondary btn-large">Подобрать квартиру</a>
+                    </div>
+                </div>
+                <div class="project-features">
+                    <div class="feature-highlight">
+                        <h3>Дома сданы</h3>
+                        <p>Готовы к немедленному заселению</p>
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Экологически чистая зона</h3>
+                        <p>Тихий район с хорошей экологией</p>
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Ремонт в подарок</h3>
+                        <p>Получите ремонт в подарок при покупке</p>
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Благоустроенная территория</h3>
+                        <p>Готовые парковочные места и детские площадки</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Personal Selection Form -->
+            <div class="personal-selection">
+                <div class="container">
+                    <h3>Подготовим персональную подборку под ваши критерии</h3>
+                    <form class="selection-form" onsubmit="handleConsultationSubmit(event)">
+                        <div class="form-row">
+                            <input type="text" name="name" placeholder="Имя" required>
+                            <input type="tel" name="phone" placeholder="Телефон" required>
+                        </div>
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="privacy-istoriya" required>
+                            <label for="privacy-istoriya">Я соглашаюсь с политикой конфиденциальности сайта</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Получить консультацию</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- О проекте -->
+    <section class="project-about">
+        <div class="container">
+            <div class="section-tabs">
+                <button class="tab active">О проекте</button>
+            </div>
+            <div class="tab-content active">
+                    <h2>О проекте</h2>
+                <p>Жилой комплекс «История 2» — это 12 современных литеров с полной инфраструктурой. Новый детский сад на территории. Удобная транспортная доступность, общественный транспорт — в шаговой доступности.</p>
+                
+                <div class="project-sections-grid">
+                    <div class="project-section-card">
+                        <div class="section-image">
+                            <img src="src/img/istoria-2/zona-otdyha.png" alt="Зона отдыха">
+                        </div>
+                        <div class="section-content">
+                            <h3>Зона отдыха</h3>
+                            <p>Расположены зоны отдыха в тени деревьев с креслами на территории жилого комплекса. Профессионально спроектированные зоны отдыха с зелеными насаждениями, прогулочными аллеями и местами для семейного досуга.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-section-card">
+                        <div class="section-image">
+                            <img src="src/img/istoria-2/design.png" alt="Ландшафтный дизайн">
+                        </div>
+                        <div class="section-content">
+                            <h3>Ландшафтный дизайн</h3>
+                            <p>Профессионально спроектированные зоны отдыха с зелеными насаждениями, прогулочными аллеями и местами для семейного досуга. Ландшафтный дизайн территории с современными решениями.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-section-card">
+                        <div class="section-image">
+                            <img src="src/img/istoria-2/detsk-sad.png" alt="Детский сад">
+                        </div>
+                        <div class="section-content">
+                            <h3>Детский сад на территории</h3>
+                            <p>Современный детский сад для жильцов. Новый детский сад на территории с полной инфраструктурой для комфортного развития детей.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-section-card">
+                        <div class="section-image">
+                            <img src="src/img/istoria-2/detsk-ploshadki.png" alt="Детские площадки">
+                        </div>
+                        <div class="section-content">
+                            <h3>Детские площадки</h3>
+                            <p>Обширная территория для активного отдыха детей с современными игровыми комплексами, спортивными площадками и безопасным покрытием. Также в дополнение к детскому саду реализованы спортивные детские площадки и другие зоны для активного отдыха.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Варианты планировок -->
+    <section class="layout-options">
+        <div class="container">
+            <h2>Варианты планировок</h2>
+            <p>Выбирайте от функциональных студий до просторных трехкомнатных квартир</p>
+            <div class="layout-options-grid">
+                <div class="layout-card">
+                    <h4 class="layout-title">1-комнатная</h4>
+                    <div class="layout-plan">
+                        <img src="src/img/варианты планировок/история-2/1к.png" alt="1-комнатная">
+                    </div>
+                    <div class="layout-info">
+                        <div class="layout-metrics">
+                            <div class="metric">
+                                <span class="metric-label">от</span>
+                                <span class="metric-value">39,0</span>
+                                <span class="metric-unit">м²</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">от</span>
+                                <span class="metric-value">4,6</span>
+                                <span class="metric-unit">млн ₽</span>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layout-card">
+                    <h4 class="layout-title">2-комнатная</h4>
+                    <div class="layout-plan">
+                        <img src="src/img/варианты планировок/история-2/2к.png" alt="2-комнатная">
+                    </div>
+                    <div class="layout-info">
+                        <div class="layout-metrics">
+                            <div class="metric">
+                                <span class="metric-label">от</span>
+                                <span class="metric-value">65,3</span>
+                                <span class="metric-unit">м²</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">от</span>
+                                <span class="metric-value">7,3</span>
+                                <span class="metric-unit">млн ₽</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Варианты покупки -->
+    <section class="purchase-options">
+        <div class="container">
+            <h2>Варианты покупки</h2>
+            <div class="purchase-cards">
+                <div class="purchase-card">
+                    <div class="card-icon">💰</div>
+                    <div class="card-content">
+                        <h4>Единоразовый платеж</h4>
+                    </div>
+                </div>
+                <div class="purchase-card">
+                    <div class="card-icon">📅</div>
+                    <div class="card-content">
+                        <h4>Рассрочка</h4>
+                    </div>
+                </div>
+                <div class="purchase-card">
+                    <div class="card-icon">👶</div>
+                    <div class="card-content">
+                        <h4>Материнский капитал</h4>
+                    </div>
+                </div>
+                <div class="purchase-card">
+                    <div class="card-icon">🏦</div>
+                    <div class="card-content">
+                        <h4>Ипотека</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="mortgage-details">
+                <div class="mortgage-row">
+                    <div class="mortgage-icon">💻</div>
+                    <div class="mortgage-info">
+                        <h4>IT-ипотека</h4>
+                        <div class="mortgage-specs">
+                            <span class="spec-item"><strong>Срок кредита:</strong> от 3 лет.</span>
+                            <span class="spec-item"><strong>Первоначальный взнос:</strong> от 20,1%</span>
+                            <span class="spec-item"><strong>Сумма кредита:</strong> до 9 млн ₽</span>
+                            <span class="spec-item"><strong>Ставка:</strong> от 5,99%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mortgage-row">
+                    <div class="mortgage-icon">👨‍👩‍👧‍👦</div>
+                    <div class="mortgage-info">
+                        <h4>Семейная ипотека</h4>
+                        <div class="mortgage-specs">
+                            <span class="spec-item"><strong>Срок кредита:</strong> от 12 мес.</span>
+                            <span class="spec-item"><strong>Первоначальный взнос:</strong> от 20%</span>
+                            <span class="spec-item"><strong>Сумма кредита:</strong> от 250 000 ₽</span>
+                            <span class="spec-item"><strong>Ставка:</strong> от 6%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Виды отделок -->
+    <section class="finish-types-section">
+        <div class="container">
+            <div class="finish-header">
+                <h2>Виды отделок</h2>
+                <div class="finish-tabs">
+                    <button class="finish-tab active" data-finish="ready">Готовый ремонт</button>
+                    <button class="finish-tab" data-finish="fine">Чистовая</button>
+                    <button class="finish-tab" data-finish="rough">Черновая</button>
+                </div>
+            </div>
+            <div class="finish-content">
+                <div class="finish-panel active" id="ready-finish">
+                    <div class="finish-image">
+                        <img src="src/img/виды отделок/готовый ремонт.png" alt="Готовый ремонт">
+                    </div>
+                    <div class="finish-info">
+                        <p>Ремонт в подарок от компании НВМ при покупке квартиры. Квартира полностью готова к заселению с качественной отделкой стен и потолков, напольными покрытиями, установленной сантехникой и встроенной мебелью.</p>
+                        <div class="finish-features">
+                            <div class="feature-card">
+                                <div class="feature-icon">✓</div>
+                                <div class="feature-content">
+                                    <h4>Сэкономленное время</h4>
+                                    <p>Квартира готова к заселению сразу.</p>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">✓</div>
+                                <div class="feature-content">
+                                    <h4>Современный дизайн</h4>
+                                    <p>Актуальные интерьерные решения.</p>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="finish-panel" id="fine-finish">
+                    <div class="finish-image">
+                        <img src="src/img/виды отделок/чистовая.png" alt="Чистовая отделка">
+                    </div>
+                    <div class="finish-info">
+                        <p>Чистовая отделка включает в себя все необходимые коммуникации, выровненные стены и потолки, подготовленные под финишную отделку. Идеально подходит для тех, кто хочет создать индивидуальный интерьер.</p>
+                        <div class="finish-features">
+                            <div class="feature-card">
+                                <div class="feature-icon">✓</div>
+                                <div class="feature-content">
+                                    <h4>Готовые коммуникации</h4>
+                                    <p>Все инженерные системы установлены.</p>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">✓</div>
+                                <div class="feature-content">
+                                    <h4>Индивидуальный дизайн</h4>
+                                    <p>Возможность создать уникальный интерьер.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                <div class="finish-panel" id="rough-finish">
+                    <div class="finish-image">
+                        <img src="src/img/виды отделок/черновая.png" alt="Черновая отделка">
+                    </div>
+                    <div class="finish-info">
+                        <p>Черновая отделка включает базовые коммуникации и минимальную отделку. Подходит для тех, кто планирует капитальный ремонт по собственному проекту.</p>
+                        <div class="finish-features">
+                            <div class="feature-card">
+                                <div class="feature-icon">✓</div>
+                                <div class="feature-content">
+                                    <h4>Экономия средств</h4>
+                                    <p>Более доступная стоимость квартиры.</p>
+                                </div>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">✓</div>
+                                <div class="feature-content">
+                                    <h4>Полная свобода</h4>
+                                    <p>Возможность реализовать любой дизайн.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Spacing at the end -->
+    <div style="height: 80px;"></div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal-backdrop" style="display: none;" onclick="closeModal()">
+        <div class="modal-dialog" onclick="event.stopPropagation()">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+                <div id="modal-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        // Telegram config (встроенная конфигурация)
+        window.TELEGRAM_CONFIG = {
+            BOT_TOKEN: '8026350498:AAGcyKMsrJyD0mGgj26Ss2m49vX5jp8LzaM',
+            CHAT_ID: '919481169',
+            CHAT_ID_2: '5918352278'
+        };
+        
+        // Для обратной совместимости
+        window.TELEGRAM_BOT_TOKEN = window.TELEGRAM_CONFIG.BOT_TOKEN;
+        window.TELEGRAM_CHAT_ID = window.TELEGRAM_CONFIG.CHAT_ID;
+        window.TELEGRAM_CHAT_ID_2 = window.TELEGRAM_CONFIG.CHAT_ID_2;
+        
+        console.log('🔧 Telegram config loaded:', {
+            BOT_TOKEN: window.TELEGRAM_CONFIG.BOT_TOKEN ? 'configured' : 'missing',
+            CHAT_ID: window.TELEGRAM_CONFIG.CHAT_ID ? 'configured' : 'missing',
+            CHAT_ID_2: window.TELEGRAM_CONFIG.CHAT_ID_2 ? 'configured' : 'missing'
+        });
+
+
+        // Include all the JavaScript functions from the main page
+        function openModal(modalId) {
+            console.log('openModal called with:', modalId);
+            const modal = document.getElementById('modal');
+            const modalBody = document.getElementById('modal-body');
+            
+            if (!modal || !modalBody) {
+                console.error('Modal elements not found');
+                return;
+            }
+            
+            const content = {
+                'consultation': `
+                    <h3>Консультация</h3>
+                    <form onsubmit="handleConsultationSubmit(event)">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="+7(___)___-__-__" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Отправить заявку</button>
+                    </form>
+                `
+            };
+            
+            modalBody.innerHTML = content[modalId] || '<p>Информация недоступна</p>';
+            modal.style.display = 'flex';
+            
+            // Initialize phone masks for newly created modal content
+            initPhoneMasks();
+            
+            console.log('Modal opened successfully');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+
+
+
+
+
+
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `<div class="toast-content">${message}</div><button class="toast-close" aria-label="Закрыть">×</button>`;
+            document.body.appendChild(toast);
+
+            Object.assign(toast.style, {
+                position: 'fixed',
+                top: '20vh',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                zIndex: '9999',
+                maxWidth: '90vw'
+            });
+            
+            const removeToast = () => {
+                if (toast && toast.parentNode) toast.parentNode.removeChild(toast);
+            };
+            
+            toast.querySelector('.toast-close')?.addEventListener('click', removeToast);
+            
+            setTimeout(removeToast, 4000);
+        }
+
+        function _0xijkl(data) {
+            const botToken = window.TELEGRAM_BOT_TOKEN;
+            const chatId = window.TELEGRAM_CHAT_ID;
+            
+            const message = `📞 Новая заявка на консультацию
+
+👤 Имя: ${data.name}
+📞 Телефон: ${data.phone}
+📋 Тип заявки: ${data.formType}`;
+
+            console.log('Sending consultation to Telegram:', { botToken: botToken ? botToken.substring(0, 10) + '...' : '(empty)', chatId, message });
+
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: 'HTML'
+                }),
+                signal: controller.signal
+            })
+            .then(response => {
+                clearTimeout(timeoutId);
+                console.log('Telegram response status:', response.status);
+                return response.json();
+            })
+            .then(data => {
+                console.log('Telegram response data:', data);
+                
+                if (data.ok) {
+                    showToast('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
+                    closeModal();
+                } else {
+                    console.error('Telegram API error:', data);
+                    showToast(`Ошибка при отправке заявки: ${data.description || 'Неизвестная ошибка'}`, 'error');
+                }
+            })
+            .catch(error => {
+                clearTimeout(timeoutId);
+                console.error('Network error:', error);
+                
+                if (error.name === 'AbortError') {
+                    showToast('Превышено время ожидания. Попробуйте еще раз.', 'error');
+                } else {
+                    showToast('Ошибка сети при отправке заявки. Попробуйте еще раз.', 'error');
+                }
+            });
+        }
+
+        function handleConsultationSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = {
+                name: formData.get('name'),
+                phone: formData.get('phone'),
+                formType: 'Консультация'
+            };
+
+            if (!data.name || !data.phone) {
+                showToast('Пожалуйста, заполните имя и телефон', 'error');
+                return;
+            }
+
+            // Validate name - only letters, minimum 2 characters
+            const nameRegex = /^[a-zA-Zа-яА-ЯёЁ\s\-']+$/;
+            if (!nameRegex.test(data.name.trim())) {
+                showToast('Имя должно содержать только буквы', 'error');
+                return;
+            }
+
+            if (data.name.trim().length < 2) {
+                showToast('Имя должно содержать минимум 2 символа', 'error');
+                return;
+            }
+
+            const phoneDigits = data.phone.replace(/\D/g, '');
+            const phoneRegex = /^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$/;
+            
+            if (phoneDigits.length !== 11) {
+                showToast('Введите полный номер телефона (11 цифр) в формате +7(999)999-99-99', 'error');
+                return;
+            }
+            
+            if (!phoneRegex.test(data.phone)) {
+                showToast('Введите корректный номер телефона в формате +7(999)999-99-99', 'error');
+                return;
+            }
+
+            _0xijkl(data);
+        }
+
+        function toggleNav() {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('show');
+        }
+
+        // Initialize finish types
+        function initFinishTypes() {
+            const finishTabs = document.querySelectorAll('.finish-tab');
+            const finishPanels = document.querySelectorAll('.finish-panel');
+            
+            finishTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const finishType = this.getAttribute('data-finish');
+                    
+                    finishTabs.forEach(t => t.classList.remove('active'));
+                    finishPanels.forEach(p => p.classList.remove('active'));
+                    
+                    this.classList.add('active');
+                    document.getElementById(finishType + '-finish').classList.add('active');
+                });
+            });
+        }
+
+        // Initialize section tabs
+        function initSectionTabs() {
+            const tabs = document.querySelectorAll('.section-tabs .tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabName = this.textContent.trim();
+                    
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    this.classList.add('active');
+                    
+                    if (tabName === 'О проекте') {
+                        document.querySelector('.tab-content').classList.add('active');
+                    }
+                });
+            });
+        }
+
+        // Initialize phone masks and name validation for all inputs
+        function initPhoneMasks() {
+            // Find all phone inputs
+            const phoneInputs = document.querySelectorAll('input[type="tel"], input[name="phone"]');
+            
+            phoneInputs.forEach(input => {
+                // Add event listeners
+                input.addEventListener('input', formatPhoneNumber);
+                input.addEventListener('keydown', handlePhoneKeydown);
+                input.setAttribute('maxlength', '17'); // ensure max length mask
+                input.addEventListener('paste', function(e) {
+                    // Allow paste, but format after paste
+                    setTimeout(() => {
+                        formatPhoneNumber({ target: input });
+                    }, 10);
+                });
+            });
+
+            // Find all name inputs and add validation
+            const nameInputs = document.querySelectorAll('input[name="name"], input[id="visitorName"]');
+            nameInputs.forEach(input => {
+                input.addEventListener('input', formatNameInput);
+                input.addEventListener('keydown', handleNameKeydown);
+                input.addEventListener('paste', function(e) {
+                    setTimeout(() => {
+                        formatNameInput({ target: input });
+                    }, 10);
+                });
+            });
+        }
+
+        // Phone number formatting
+        function formatPhoneNumber(event) {
+            let value = event.target.value.replace(/\D/g, '');
+            
+            // Limit to 11 digits maximum
+            if (value.length > 11) {
+                value = value.slice(0, 11);
+                event.target.value = formatPhoneValue(value);
+                return;
+            }
+            
+            if (value.length === 0) {
+                event.target.value = '';
+                return;
+            }
+            
+            // If user starts typing with 8, replace with 7
+            if (value.length === 1 && value[0] === '8') {
+                value = '7';
+            }
+            
+            // If user starts typing with any digit except 7, prepend 7
+            if (value.length === 1 && value[0] !== '7') {
+                value = '7' + value;
+            }
+            
+            // Use helper function to format
+            event.target.value = formatPhoneValue(value);
+        }
+
+        // Helper function to format phone value
+        function formatPhoneValue(value) {
+            if (value.length === 0) return '';
+            if (value.length === 1 && value[0] === '7') return '+7(';
+            if (value.length <= 4) return '+7(' + value.slice(1);
+            if (value.length <= 7) return '+7(' + value.slice(1, 4) + ')' + value.slice(4);
+            if (value.length <= 9) return '+7(' + value.slice(1, 4) + ')' + value.slice(4, 7) + '-' + value.slice(7);
+            if (value.length <= 11) return '+7(' + value.slice(1, 4) + ')' + value.slice(4, 7) + '-' + value.slice(7, 9) + '-' + value.slice(9);
+            return '+7(' + value.slice(1, 4) + ')' + value.slice(4, 7) + '-' + value.slice(7, 9) + '-' + value.slice(9, 11);
+        }
+
+        // Handle phone input keydown
+        function handlePhoneKeydown(event) {
+            const input = event.target;
+            const currentValue = input.value.replace(/\D/g, '');
+            
+            // Allow backspace, delete, tab, escape, enter
+            if ([8, 9, 27, 13, 46].indexOf(event.keyCode) !== -1 ||
+                // Allow Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+                (event.keyCode === 65 && event.ctrlKey === true) ||
+                (event.keyCode === 67 && event.ctrlKey === true) ||
+                (event.keyCode === 86 && event.ctrlKey === true) ||
+                (event.keyCode === 88 && event.ctrlKey === true)) {
+                return;
+            }
+            
+            // If we already have 11 digits and user is trying to add more
+            if (currentValue.length >= 11 && 
+                ((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105))) {
+                event.preventDefault();
+                return;
+            }
+            
+            // Block all non-numeric characters (allow navigation keys)
+            const isNumberKey = (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105);
+            const isNavKey = [35,36,37,38,39,40].includes(event.keyCode);
+            if (!isNumberKey && !isNavKey) {
+                event.preventDefault();
+                return;
+            }
+        }
+
+        // Format name input - only letters
+        function formatNameInput(event) {
+            const input = event.target;
+            let value = input.value;
+            
+            // Remove all non-letter characters (keeping spaces, hyphens, apostrophes for compound names)
+            value = value.replace(/[^a-zA-Zа-яА-ЯёЁ\s\-']/g, '');
+            
+            // Remove multiple spaces
+            value = value.replace(/\s+/g, ' ');
+            
+            input.value = value;
+        }
+
+        // Handle name input keydown
+        function handleNameKeydown(event) {
+            // Allow backspace, delete, tab, escape, enter, arrows
+            if ([8, 9, 27, 13, 46, 35, 36, 37, 38, 39, 40].indexOf(event.keyCode) !== -1 ||
+                // Allow Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+X
+                (event.keyCode === 65 && event.ctrlKey === true) ||
+                (event.keyCode === 67 && event.ctrlKey === true) ||
+                (event.keyCode === 86 && event.ctrlKey === true) ||
+                (event.keyCode === 88 && event.ctrlKey === true)) {
+                return;
+            }
+            
+            // Block all non-letter characters
+            const isLetter = /^[a-zA-Zа-яА-ЯёЁ]$/.test(event.key);
+            const isSpace = event.keyCode === 32; // space
+            const isHyphen = event.keyCode === 189 || event.keyCode === 109; // hyphen
+            const isApostrophe = event.keyCode === 222; // apostrophe
+            
+            if (!isLetter && !isSpace && !isHyphen && !isApostrophe) {
+                event.preventDefault();
+                return;
+            }
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing...');
+            try {
+                initFinishTypes();
+                initSectionTabs();
+                initPhoneMasks();
+                console.log('Initialization completed successfully');
+            } catch (error) {
+                console.error('Initialization error:', error);
+            }
+        });
+    </script>
+</body>
+</html>

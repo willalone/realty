@@ -441,11 +441,70 @@
     <script>
         
         // Telegram config (встроенная конфигурация)
-        window.TELEGRAM_CONFIG = {
-            BOT_TOKEN: '8026350498:AAGcyKMsrJyD0mGgj26Ss2m49vX5jp8LzaM',
-            CHAT_ID: '919481169',
-            CHAT_ID_2: '5918352278'
-        };
+        
+        // Обфусцированные данные конфигурации
+        const _0x1a2b = [
+            ['ODAyNjM1MDQ5ODpBQUdjeUtNc3JKeUQwbUdnajI2U3MybTQ5dlg1anA4THphTQ=='],
+            ['OTE5NDgxMTY5'],
+            ['NTkxODM1MjI3OA==']
+        ];
+        const _0x3c4d = ['BOT_TOKEN', 'CHAT_ID', 'CHAT_ID_2'];
+        
+        // Дополнительная защита - проверка домена
+        const _0x5678 = ['sk-nvm-krasnodar.ru', 'localhost'];
+        const _0x9abc = location.hostname;
+        
+        // Функция декодирования с обфускацией
+        function _0x5e6f(_0x7890) {
+            try {
+                return atob(_0x7890);
+            } catch (e) {
+                return null;
+            }
+        }
+        
+        // Создание конфигурации с усложненным доступом
+        function _0x9abc() {
+            // Проверка домена
+            if (!_0x5678.includes(_0x9abc)) {
+                console.warn('Unauthorized domain');
+                return null;
+            }
+            
+            const _0xdef0 = {};
+            for (let _0x1234 = 0; _0x1234 < _0x3c4d.length; _0x1234++) {
+                _0xdef0[_0x3c4d[_0x1234]] = _0x5e6f(_0x1a2b[_0x1234][0]);
+            }
+            return _0xdef0;
+        }
+        
+        // Инициализация конфигурации
+        window.TELEGRAM_CONFIG = _0x9abc();
+        
+        // Для обратной совместимости
+        window.TELEGRAM_BOT_TOKEN = window.TELEGRAM_CONFIG.BOT_TOKEN;
+        window.TELEGRAM_CHAT_ID = window.TELEGRAM_CONFIG.CHAT_ID;
+        window.TELEGRAM_CHAT_ID_2 = window.TELEGRAM_CONFIG.CHAT_ID_2;
+        
+        console.log('🔧 Telegram config loaded:', {
+            BOT_TOKEN: window.TELEGRAM_CONFIG.BOT_TOKEN ? 'configured' : 'missing',
+            CHAT_ID: window.TELEGRAM_CONFIG.CHAT_ID ? 'configured' : 'missing',
+            CHAT_ID_2: window.TELEGRAM_CONFIG.CHAT_ID_2 ? 'configured' : 'missing'
+        });
+        
+        // Автоматическая очистка обфусцированных данных
+        setTimeout(() => {
+            try {
+                if (typeof _0x1a2b !== 'undefined') {
+                    _0x1a2b.forEach(arr => arr.length = 0);
+                    _0x1a2b.length = 0;
+                    _0x3c4d.length = 0;
+                    _0x5678.length = 0;
+                }
+            } catch (e) {
+                // Игнорируем ошибки очистки
+            }
+        }, 2000);
         
         // Для обратной совместимости
         window.TELEGRAM_BOT_TOKEN = window.TELEGRAM_CONFIG.BOT_TOKEN;

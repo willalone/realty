@@ -637,24 +637,44 @@
     <script>
         
         // Telegram config (встроенная конфигурация)
-        // Зашифрованные токены для безопасности
-        const ENCRYPTED_CONFIG = {
-            BOT_TOKEN: 'ODAyNjM1MDQ5ODpBQUdjeUtNc3JKeUQwbUdnajI2U3MybTQ5dlg1anA4THphTQ==',
-            CHAT_ID: 'OTE5NDgxMTY5',
-            CHAT_ID_2: 'NTkxODM1MjI3OA=='
-        };
+        // Обфусцированные данные конфигурации
+        const _0x1a2b = [
+            ['ODAyNjM1MDQ5ODpBQUdjeUtNc3JKeUQwbUdnajI2U3MybTQ5dlg1anA4THphTQ=='],
+            ['OTE5NDgxMTY5'],
+            ['NTkxODM1MjI3OA==']
+        ];
+        const _0x3c4d = ['BOT_TOKEN', 'CHAT_ID', 'CHAT_ID_2'];
         
-        // Расшифровка токенов с дополнительной защитой
-        function getTelegramConfig() {
-            return {
-                BOT_TOKEN: atob(ENCRYPTED_CONFIG.BOT_TOKEN),
-                CHAT_ID: atob(ENCRYPTED_CONFIG.CHAT_ID),
-                CHAT_ID_2: atob(ENCRYPTED_CONFIG.CHAT_ID_2)
-            };
+        // Дополнительная защита - проверка домена
+        const _0x5678 = ['sk-nvm-krasnodar.ru', 'localhost'];
+        const _0x9abc = location.hostname;
+        
+        // Функция декодирования с обфускацией
+        function _0x5e6f(_0x7890) {
+            try {
+                return atob(_0x7890);
+            } catch (e) {
+                return null;
+            }
         }
         
-        // Создаем конфигурацию только при необходимости
-        window.TELEGRAM_CONFIG = getTelegramConfig();
+        // Создание конфигурации с усложненным доступом
+        function _0x9abc() {
+            // Проверка домена
+            if (!_0x5678.includes(_0x9abc)) {
+                console.warn('Unauthorized domain');
+                return null;
+            }
+            
+            const _0xdef0 = {};
+            for (let _0x1234 = 0; _0x1234 < _0x3c4d.length; _0x1234++) {
+                _0xdef0[_0x3c4d[_0x1234]] = _0x5e6f(_0x1a2b[_0x1234][0]);
+            }
+            return _0xdef0;
+        }
+        
+        // Инициализация конфигурации
+        window.TELEGRAM_CONFIG = _0x9abc();
         
         // Для обратной совместимости
         window.TELEGRAM_BOT_TOKEN = window.TELEGRAM_CONFIG.BOT_TOKEN;
@@ -667,12 +687,19 @@
             CHAT_ID_2: window.TELEGRAM_CONFIG.CHAT_ID_2 ? 'configured' : 'missing'
         });
         
-        // Дополнительная защита: очищаем зашифрованную конфигурацию
+        // Автоматическая очистка обфусцированных данных
         setTimeout(() => {
-            if (window.ENCRYPTED_CONFIG) {
-                delete window.ENCRYPTED_CONFIG;
+            try {
+                if (typeof _0x1a2b !== 'undefined') {
+                    _0x1a2b.forEach(arr => arr.length = 0);
+                    _0x1a2b.length = 0;
+                    _0x3c4d.length = 0;
+                    _0x5678.length = 0;
+                }
+            } catch (e) {
+                // Игнорируем ошибки очистки
             }
-        }, 1000);
+        }, 2000);
 
         // Простая JavaScript функциональность
         function scrollToSection(sectionId) {
@@ -1415,11 +1442,11 @@
                 comment: comment
             };
 
-            sendBookingToTelegram(bookingData);
+            _0xbcde(bookingData);
         }
 
         // Send booking to Telegram
-        function sendBookingToTelegram(bookingData) {
+        function _0xbcde(_0xefgh) {
             // Read from safe globals or fallback placeholders
             const botToken = window.TELEGRAM_BOT_TOKEN;
             const chatId = window.TELEGRAM_CHAT_ID;
@@ -1669,7 +1696,7 @@
         }
 
         // Send consultation form to Telegram
-        function sendToTelegram(data) {
+        function _0xijkl(_0xmnop) {
             // Read from safe globals or fallback placeholders
             const botToken = window.TELEGRAM_BOT_TOKEN || 'YOUR_BOT_TOKEN_HERE';
             const chatId = window.TELEGRAM_CHAT_ID || 'YOUR_CHAT_ID_HERE';
@@ -1796,7 +1823,7 @@
             }
 
             // Send to Telegram
-            sendToTelegram(data);
+            _0xijkl(data);
             
             // Close modal
             closeModal();
@@ -1855,7 +1882,7 @@
             }
 
             // Send to Telegram
-            sendToTelegram(data);
+            _0xijkl(data);
         }
 
         // Мобильное меню

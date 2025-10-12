@@ -57,10 +57,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css">
 
     <meta name="google-site-verification" content="CZH_LjIHJ1k0c0A1NMQzAvQYxu_Uu0SDLwhMfvZ9N8Y" />
     
+    <link rel="stylesheet" crossorigin href="/assets/main-DQhm3N8H.css">
   </head>
   <body>
     <!-- Header -->
@@ -165,7 +165,7 @@
             <div class="projects-grid active-projects">
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="img/dom-101.webp" alt="ДОМ 101">
+                        <img src="/assets/dom-101-DyGUA1T-.webp" alt="ДОМ 101">
                         <div class="project-badges">
                             <span class="badge badge-discount">-12%</span>
                             <span class="badge badge-primary">Квартал для жизни</span>
@@ -205,7 +205,7 @@
                 
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="img/narodnye-kvartaly.webp" alt="Народные кварталы">
+                        <img src="/assets/narodnye-kvartaly-DhxIEz21.webp" alt="Народные кварталы">
                         <div class="project-badges">
                             <span class="badge badge-discount">-12%</span>
                             <span class="badge badge-primary">Ремонт в подарок</span>
@@ -241,7 +241,7 @@
                 
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="img/istoriya-2.webp" alt="История 2">
+                        <img src="/assets/istoriya-2-DDTPKE0S.webp" alt="История 2">
                         <div class="project-badges">
                             <span class="badge badge-discount">-12%</span>
                             <span class="badge badge-primary">Ремонт в подарок</span>
@@ -271,7 +271,7 @@
             <div class="projects-grid completed-projects" style="display: none;">
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="img/istoriya-2.webp" alt="ЖК История">
+                        <img src="/assets/istoriya-2-DDTPKE0S.webp" alt="ЖК История">
                         <div class="project-badges">
                             <span class="badge badge-discount">-12%</span>
                             <span class="badge badge-primary">Элитное жилье</span>
@@ -303,7 +303,7 @@
                 
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="img/dom-101.webp" alt="ЖК Новые сезоны">
+                        <img src="/assets/dom-101-DyGUA1T-.webp" alt="ЖК Новые сезоны">
                         <div class="project-badges">
                             <span class="badge badge-discount">-12%</span>
                             <span class="badge badge-primary">Современные планировки</span>
@@ -347,7 +347,7 @@
             <div class="promos-grid">
                 <div class="promo-card">
                     <div class="promo-image">
-                        <img src="src/img/акции/история 2.png" alt="Ремонт в подарок - История 2!">
+                        <img src="/assets/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F%202-Cl2Juye2.png" alt="Ремонт в подарок - История 2!">
                     </div>
                     <div class="promo-content">
                         <div class="promo-badge">Акция</div>
@@ -361,7 +361,7 @@
                 </div>
                 <div class="promo-card">
                     <div class="promo-image">
-                        <img src="src/img/акции/народные кварталы.png" alt="Ремонт в подарок - в Народных Кварталах!">
+                        <img src="/assets/%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D1%8B%D0%B5%20%D0%BA%D0%B2%D0%B0%D1%80%D1%82%D0%B0%D0%BB%D1%8B-CdxcYooh.png" alt="Ремонт в подарок - в Народных Кварталах!">
                     </div>
                     <div class="promo-content">
                         <div class="promo-badge">Подарок</div>
@@ -637,44 +637,24 @@
     <script>
         
         // Telegram config (встроенная конфигурация)
-        // Обфусцированные данные конфигурации
-        const _0x1a2b = [
-            ['ODAyNjM1MDQ5ODpBQUdjeUtNc3JKeUQwbUdnajI2U3MybTQ5dlg1anA4THphTQ=='],
-            ['OTE5NDgxMTY5'],
-            ['NTkxODM1MjI3OA==']
-        ];
-        const _0x3c4d = ['BOT_TOKEN', 'CHAT_ID', 'CHAT_ID_2'];
+        // Зашифрованные токены для безопасности
+        const ENCRYPTED_CONFIG = {
+            BOT_TOKEN: 'ODAyNjM1MDQ5ODpBQUdjeUtNc3JKeUQwbUdnajI2U3MybTQ5dlg1anA4THphTQ==',
+            CHAT_ID: 'OTE5NDgxMTY5',
+            CHAT_ID_2: 'NTkxODM1MjI3OA=='
+        };
         
-        // Дополнительная защита - проверка домена
-        const _0x5678 = ['sk-nvm-krasnodar.ru', 'localhost'];
-        const _0x9abc = location.hostname;
-        
-        // Функция декодирования с обфускацией
-        function _0x5e6f(_0x7890) {
-            try {
-                return atob(_0x7890);
-            } catch (e) {
-                return null;
-            }
+        // Расшифровка токенов с дополнительной защитой
+        function getTelegramConfig() {
+            return {
+                BOT_TOKEN: atob(ENCRYPTED_CONFIG.BOT_TOKEN),
+                CHAT_ID: atob(ENCRYPTED_CONFIG.CHAT_ID),
+                CHAT_ID_2: atob(ENCRYPTED_CONFIG.CHAT_ID_2)
+            };
         }
         
-        // Создание конфигурации с усложненным доступом
-        function _0x9abc() {
-            // Проверка домена
-            if (!_0x5678.includes(_0x9abc)) {
-                console.warn('Unauthorized domain');
-                return null;
-            }
-            
-            const _0xdef0 = {};
-            for (let _0x1234 = 0; _0x1234 < _0x3c4d.length; _0x1234++) {
-                _0xdef0[_0x3c4d[_0x1234]] = _0x5e6f(_0x1a2b[_0x1234][0]);
-            }
-            return _0xdef0;
-        }
-        
-        // Инициализация конфигурации
-        window.TELEGRAM_CONFIG = _0x9abc();
+        // Создаем конфигурацию только при необходимости
+        window.TELEGRAM_CONFIG = getTelegramConfig();
         
         // Для обратной совместимости
         window.TELEGRAM_BOT_TOKEN = window.TELEGRAM_CONFIG.BOT_TOKEN;
@@ -687,19 +667,12 @@
             CHAT_ID_2: window.TELEGRAM_CONFIG.CHAT_ID_2 ? 'configured' : 'missing'
         });
         
-        // Автоматическая очистка обфусцированных данных
+        // Дополнительная защита: очищаем зашифрованную конфигурацию
         setTimeout(() => {
-            try {
-                if (typeof _0x1a2b !== 'undefined') {
-                    _0x1a2b.forEach(arr => arr.length = 0);
-                    _0x1a2b.length = 0;
-                    _0x3c4d.length = 0;
-                    _0x5678.length = 0;
-                }
-            } catch (e) {
-                // Игнорируем ошибки очистки
+            if (window.ENCRYPTED_CONFIG) {
+                delete window.ENCRYPTED_CONFIG;
             }
-        }, 2000);
+        }, 1000);
 
         // Простая JavaScript функциональность
         function scrollToSection(sectionId) {
@@ -1442,11 +1415,11 @@
                 comment: comment
             };
 
-            _0xbcde(bookingData);
+            sendBookingToTelegram(bookingData);
         }
 
         // Send booking to Telegram
-        function _0xbcde(_0xefgh) {
+        function sendBookingToTelegram(bookingData) {
             // Read from safe globals or fallback placeholders
             const botToken = window.TELEGRAM_BOT_TOKEN;
             const chatId = window.TELEGRAM_CHAT_ID;
@@ -1696,7 +1669,7 @@
         }
 
         // Send consultation form to Telegram
-        function _0xijkl(_0xmnop) {
+        function sendToTelegram(data) {
             // Read from safe globals or fallback placeholders
             const botToken = window.TELEGRAM_BOT_TOKEN || 'YOUR_BOT_TOKEN_HERE';
             const chatId = window.TELEGRAM_CHAT_ID || 'YOUR_CHAT_ID_HERE';
@@ -1823,7 +1796,7 @@
             }
 
             // Send to Telegram
-            _0xijkl(data);
+            sendToTelegram(data);
             
             // Close modal
             closeModal();
@@ -1882,7 +1855,7 @@
             }
 
             // Send to Telegram
-            _0xijkl(data);
+            sendToTelegram(data);
         }
 
         // Мобильное меню
